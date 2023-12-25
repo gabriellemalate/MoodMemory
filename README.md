@@ -1,70 +1,274 @@
-# Getting Started with Create React App
+# Project Title
+MoodMemory
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+MoodMemory is a place to log, track, and view your moods & mood patterns with ease. MoodMemory also allows users to keep a log of memories, new and old. MoodMemory provides users a platform to manage their memory and mood with clarity in a painless way.
 
-In the project directory, you can run:
+### Problem
 
-### `npm start`
+Mood tracking is a challenging chore to maintain 
+- It is most popularly used by people with mood disorders, such as Bipolar Disorder, to take note of durations of manic states and depressive states. Mood tracking is also used to see patterns of what kind of external circumstances urge either state to halt or spring up, for each indivdual, from what may seem to be coming out of nowhere if tracking was not involved.
+- When in certain states -manic or depressive or a "hypo" sort- it is difficult for persons with mood disorders to make good decisions or to see a bigger picture. The severity can vary from lack of self awareness noticed in speaking volume for example, to no longer seeing other viable options to manage strong emotions other than to unalive one's self.
+- Mood tracking keeps us informed about ourselves especially if our mood has been affecting our daily life and means to function, especially when it negatively impacts our ability to take care of our basic needs. 
+- Mood tracking is also highly beneficial for those who menstruate whose symptoms are debilitating their physical and mental mobility.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Memory logging is the missing tool for persons with dimishing mind flexibility, such as early onset dementia, where saving new memories are no longer easy, and older ones start to get lost.
+- Memory logging is important in this technological age as our capacities to store memories are yielding lower, as technology evolves.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### User Profile
 
-### `npm test`
+- People with Seasonal Affective Disorder (SAD) / People affected by cold or gray weather and shorter days
+    - to assure it is purely seasonal and not related to longer term depression
+- People with Mood Disorders
+    - needing to find their mood state patterns.
+    - needing to find their external instigators.
+    - wanting to see when they feel most stable in order to sustain those environments longterm.
+- People about to take or are taking new medication 
+    - to see if there are any side effects from their new medication affecting mood and energy.
+- People who menstruate and have mood related symptoms
+- People with PTSD
+    - looking to track their triggers.
+    - tracking the effectiveness of their therapy
+- People in therapy 
+    - looking to trac their progress.
+- People with memory problems / declining mind flexibility
+    - needing to remember important life events.
+    - looking to stay reminded of their individuality.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Features
 
-### `npm run build`
+- I want to log my mood without having to think about what to write. (AddMood Prompts)
+- I want to log if my medications are effective and how it affects my mood. (Medication Log)
+- I want to log my mood with consisent necessary information. (Required Add Inputs)
+- I want to have the options to extend my logs on days I have more time and energy. (Extended AddMood Prompts)
+- I want the ability look at my moods and easily assess patterns. ('"Emoji-Emotion Display" Choices' Array)
+- I want a place where I can peruse through all of my past moods. (Library of Moods)
+- I want clarity on what events cause certain moods for me. (Significant/Impactful Event Input)
+- I want to factor in my menstruation cycle into my mood tracking  (Menses Input)
+- I want to store new and old memories that are becoming fleeting. (Memory Add)
+- I want to be able to toggle the sorting of my memories by date logged and the date of the memories themselves (Memory Sort)
+- I want the ability to scroll through all the memories I've logged (Memories Library)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Implementation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React
+- Client libraries: 
+    - react
+    - react-router
+    - axios
 
-### `npm run eject`
+<!-- more will be added -->
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### APIs
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<!-- List any external sources of data that will be used in your app. -->
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Sitemap
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Welcome Page
+- Mood Home Page
+- Mood Library
+- Memory Home Page
+- Memory Library
 
-## Learn More
+### Mockups
+***note: the blocks outlined in yellow or have yellow background colors are NOT functional project goals. They are NOT meant to be functional or fully so for this submission. Those components are there purely for display or even less so only as a possibility/idea.
+-- this "display/visual only" reminder will be noted by a legend within the mockups as well
+#### Welcome Page
+![](1.WelcomePage.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Mood Home Page
+![](2.MoodHome.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Mood Library Page
+![](3.MoodLibrary.png)
 
-### Code Splitting
+#### Memory Home Page
+![](4.MemoryHome.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### Memory Library Page
+![](5.MemoryLibrary.png)
 
-### Analyzing the Bundle Size
+#### BONUS "Nice To Have" Memory Room Carousal Mockup
+*(!!!) This one is ***not*** part of my project goals for submission. It is a "nice to have"
+This is ***not*** an expected output. This mockup was created just in case I find the time after the main project components to add a feature. 
+This is a possible feature to add but ***not*** part of my guidelines for submssion completion.
+Just placing this here for possible future reference.
+![](BONUS"NICE-TO-HAVE"RoomCarousel.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Data
 
-### Making a Progressive Web App
+<!-- Describe your data and the relationships between them. You can show this visually using diagrams, or write it out. 
+![](sql-diagram.png) -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Endpoints
 
-### Advanced Configuration
+**GET /moods /<etc>**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Get logged moods for mood library previews. 
 
-### Deployment
+Parameters:
+- id: logged mood id as number
+- date: us:en data type date
+- time: time showing hour and minute in us;en standard with lowercase am and pm with no periods
+- state: mood state ("Low", "WNL", "Elevated") + ":" + severity level ("Mild", "Moderate", "Severe")
+- irr: numerical value 0 - 3 in 1 increments.
+- anx: numerical value 0 - 3 in 1 increments.
+- hours: numerical value 0 - 24 in 1 increments indicating hours slept.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Response:
+```
+{
+    "id": 1,
+    "date": "12/22/23"
+    "time": "11:50pm"
+    "state": "Low:Mild",
+    "irritability": 3,
+    "anxiety": 0,
+    "hours": 4,
+    "title": "Fight Response",
+        <!-- or " " for empty, -->
+    "symptoms": "Feeling indifferent about most things. Annoyed at every illogical phrase I hear from anyone. Keeping isolated to avoid conflict from my temper.", 
+        <!-- or " " for empty, -->
+    "medication": [
+        {
+            "id": 1,
+            "name": "Lamotrigine",
+            "dosage": "100mg",
+            "recurrent": 1,
+            "taken": false
+        }
+    ],
+    "appointment": [
+        {
+            "type": "CT Scan",
+            "doctor": "Karina Farina",
+            "attended": true
+        }
+        {
+            "type": "Therapy",
+            "doctor": "Gloria Chavez",
+            "attended": true
+        }
+    ],
+    "impact": "Zinzanni",
+    "mensesDay": 1,
+    "flowLvl": "low",
+    "painLvl": "none",
+    "mensesNotes": " ",
+}
+```
 
-### `npm run build` fails to minify
+**GET /moods/:id/ <etc>**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Get a logged mood by id for the expanded view of a selected mood.
+
+Parameters:
+- id: logged mood id as number
+- date: us:en data type date
+- time: time showing hour and minute in us;en standard with lowercase am and pm with no periods
+- state: mood state ("Low", "WNL", "Elevated") + ":" + severity level ("Mild", "Moderate", "Severe")
+- irr: numerical value 0 - 3 in 1 increments.
+- anx: numerical value 0 - 3 in 1 increments.
+- hours: numerical value 0 - 24 in 1 increments indicating hours slept.
+- title: user input title string
+- symp: user input detail string
+- medId: logged medication as number
+- medName: medicine name
+- medDose: string type number data plus unit typically mg
+- medX: number value of times medicine is taken.
+- medTake: boolean if medicine was take "true" or not "false"
+- appId: logged appointment as number
+- appType: appointment type name
+- appDr: doctor name
+- appAtt: boolean if attended appointment or not
+- impact: user input string value. impactful event of the day
+- mensesDay: number value in 1 increments indicating series number of days of menstruation
+- flow: low/med/high
+- pain: non/low/med/high
+- mensesNotes: user input string value of menses details
+
+Response:
+```
+{
+    "id": 1,
+    "mood": "Low:Mild",
+    "irritability": 3,
+    "anxiety": 0,
+    "hours": 4,
+    "title": "Fight Response",
+        <!-- or " " for empty, -->
+    "symptoms": "Feeling indifferent about most things. Annoyed at every illogical phrase I hear from anyone. Keeping isolated to avoid conflict from my temper.", 
+        <!-- or " " for empty, -->
+    "medication": [
+        {
+            "id": 1,
+            "name": "Lamotrigine",
+            "dosage": "100mg",
+            "recurrent": 1,
+            "taken": false
+        }
+    ],
+    "appointment": [
+        {
+            "id": 1,
+            "type": "CT Scan",
+            "doctor": "Karina Farina",
+            "attended": true
+        }
+        {
+            "id": 2,
+            "type": "Therapy",
+            "doctor": "Gloria Chavez",
+            "attended": true
+        }
+    ],
+    "impact": "Zinzanni",
+    "mensesDay": 1,
+    "flowLvl": "low",
+    "painLvl": "none",
+    "mensesNotes": " ",
+}
+```
+<!-- more added later -->
+
+### Auth
+
+## Roadmap
+
+<!-- Scope your project as a sprint. Break down the tasks that will need to be completed and map out timeframes for implementation. Think about what you can reasonably complete before the due date. The more detail you provide, the easier it will be to build. -->
+
+- Create client
+    - react project with routes and boilerplate pages
+
+- Create server
+    - express project with routing
+
+- 
+<!-- more added later -->
+
+## Nice-to-haves
+
+POSSIBLY
+- mobile & tablet responsive design
+- contact me footer
+- dynamic memory counter & dynamic mood counter in the user toggle side nav bar.
+- unsaved log warning window
+- display the chosen emoji-emotion from the form just submitted into the "log successful" pop up.
+- search bar displays all moods in mood library with the typed keyword
+- search bar display all memories in the memory library with the typed keyword.
+
+PROBABLY NOT SOON
+- loading animation with memory poetry
+- memory rooms page: space to organize memories into user specified compartments. + ability to view them via a "room carousel"
+- log in, create new user, forgot password.
+- mood map
+
+DEFINITELY NOT SOON
+- place to store & manage mood patterns.
+- combine the moodmap with the memory timeline in a joint line graph with adjustable date scopes. This feature is great for people with PTSD, or even PTSD from multiple events, especially when some expereinces may have been mentally blocked from a survival coping mechanism while the resulting fight/flight/fawn/freeze behaviors are still actively affecting the person.
+- mood chart in table form in the all moods page
+- visual graph of memory timeline
