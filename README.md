@@ -3,7 +3,10 @@ MoodMemory
 
 ## Overview
 
-MoodMemory is a place to log, track, and view your moods & mood patterns with ease. MoodMemory also allows users to keep a log of memories, new and old. MoodMemory provides users a platform to manage their memory and mood with clarity in a painless way.
+MoodMemory is a place to log, track, and view your moods & mood patterns with ease. 
+MoodMemory will also allow users to keep a log of memories, new and old. MoodMemory provides users a platform to manage their memory and mood with clarity in a painless way.
+
+It is for mobile use in this submission, but *nice to have*: it will be available with responsive design to tablet and  desktop sizes
 
 ### Problem
 
@@ -42,13 +45,14 @@ Mood tracking is a challenging chore to maintain
 - I want to log if my medications are effective and how it affects my mood. (Medication Log)
 - I want to log my mood with consisent necessary information. (Required Add Inputs)
 - I want to have the options to extend my logs on days I have more time and energy. (Extended AddMood Prompts)
-- I want the ability look at my moods and easily assess patterns. ('"Emoji-Emotion Display" Choices' Array)
-- I want a place where I can peruse through all of my past moods. (Library of Moods)
-- I want clarity on what events cause certain moods for me. (Significant/Impactful Event Input)
+- I want the ability look at my moods and easily assess patterns. (Mood Maps)
+- I want an easy, succinct way to explain how I feel. ('"Emoji-Emotion Display" Choices' Array)
+- I want a place where I can peruse through all of my past moods. (Mood Logs Tab)
+- I want clarity on what events cause certain moods for me. (Impactful Event Input and Trigger Input)
 - I want to factor in my menstruation cycle into my mood tracking  (Menses Input)
-- I want to store new and old memories that are becoming fleeting. (Memory Add)
-- I want to be able to toggle the sorting of my memories by date logged and the date of the memories themselves (Memory Sort)
-- I want the ability to scroll through all the memories I've logged (Memories Library)
+- I want the ability to look back through years of my logs and see patterns (Scrollable Mood Maps feature)
+- *display only for this submission* I want to store new and old memories that are becoming fleeting. (Memory Add)
+- *nice to have* I want the ability to scroll through all the memories I've logged (Memories Library)
 
 ## Implementation
 
@@ -59,6 +63,7 @@ Mood tracking is a challenging chore to maintain
     - react
     - react-router
     - axios
+    - @mui/x-charts/LineChart
 
 <!-- more will be added -->
 
@@ -69,34 +74,39 @@ Mood tracking is a challenging chore to maintain
 ### Sitemap
 
 - Welcome Page
-- Mood Home Page
-- Mood Library
-- Memory Home Page
-- Memory Library
+- Mood Home Page / Log a Mood
+- Mood Logs
+- Mood Maps
+- *this will be for display purpose only for the submission* Memory Home Page / Log a Memory
+- *this is a nice to have display feature for the submission* Memory Library
 
 ### Mockups
-***note: the blocks outlined in yellow or have yellow background colors are NOT functional project goals. They are NOT meant to be functional or fully so for this submission. Those components are there purely for display or even less so only as a possibility/idea.
--- this "display/visual only" reminder will be noted by a legend within the mockups as well
+**note** the blocks with ***yellow*** background colors are *not* meant to be functional or fully so for this project submission completion. These components are there purely for display.
+**note** the blocks with ***black*** background colors are *nice to haves*. They are *not* project submission completion goals at all.
+*these reminders will be noted by a legend within the mockups as well*
+
 #### Welcome Page
 ![](1.WelcomePage.png)
 
 #### Mood Home Page
 ![](2.MoodHome.png)
 
-#### Mood Library Page
+#### Mood Logs Page
+![](3.MoodLibrary.png)
+
+#### Mood  Page
 ![](3.MoodLibrary.png)
 
 #### Memory Home Page
+*nice to have* **functional** feature. full functionality beyond display are *not* part of my guidelines for submssion completion.
 ![](4.MemoryHome.png)
 
 #### Memory Library Page
+*nice to have* feature. *not* part of my guidelines for submssion completion.
 ![](5.MemoryLibrary.png)
 
 #### BONUS "Nice To Have" Memory Room Carousal Mockup
-*(!!!) This one is ***not*** part of my project goals for submission. It is a "nice to have"
-This is ***not*** an expected output. This mockup was created just in case I find the time after the main project components to add a feature. 
-This is a possible feature to add but ***not*** part of my guidelines for submssion completion.
-Just placing this here for possible future reference.
+*nice to have* feature. *not* part of my guidelines for submssion completion.
 ![](BONUS"NICE-TO-HAVE"RoomCarousel.png)
 
 ### Data
@@ -253,7 +263,7 @@ Response:
 ## Nice-to-haves
 
 POSSIBLY
-- mobile & tablet responsive design
+- tablet & desktop responsive design
 - contact me footer
 - dynamic memory counter & dynamic mood counter in the user toggle side nav bar.
 - unsaved log warning window
