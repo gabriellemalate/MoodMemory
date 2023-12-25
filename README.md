@@ -86,28 +86,29 @@ Mood tracking is a challenging chore to maintain
 *these reminders will be noted by a legend within the mockups as well*
 
 #### Welcome Page
-![](1.WelcomePage.png)
+![](welcome.pdf)
 
 #### Mood Home Page / Log a Mood
-![](2.MoodHome.png)
+![](moodhome.pdf)
 
 #### Mood Logs Page
-![](3.MoodLibrary.png)
+![](moodlogs.pdf)
 
 #### Mood Maps Page
-![](3.MoodLibrary.png)
+![](moodmaps.pdf)
 
 #### Memory Home Page
-*nice to have* **functional** feature. full functionality beyond display are *not* part of my guidelines for submssion completion.
-![](4.MemoryHome.png)
+*nice to have*. 
+if able to display: *it is still a nice to have functional* feature. full functionality beyond display are *not* part of my guidelines for submssion completion. 
+![](extras.pdf)
 
 #### Memory Library Page
 *nice to have* feature. *not* part of my guidelines for submssion completion.
-![](5.MemoryLibrary.png)
+![](extras.pdf)
 
 #### BONUS "Nice To Have" Memory Rooms Carousel Page
 *nice to have* feature. *not* part of my guidelines for submssion completion.
-![](BONUS"NICE-TO-HAVE"RoomCarousel.png)
+![](extras.pdf)
 
 ### Data
 
