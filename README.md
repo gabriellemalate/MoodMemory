@@ -99,7 +99,7 @@ Mood tracking is a challenging chore to maintain
 
 #### Memory Home Page
 *nice to have*. 
-if able to display: *it is still a nice to have functional* feature. full functionality beyond display are *not* part of my guidelines for submssion completion. 
+if able to display: *it is still a nice to have non-functional feature*. full functionality beyond display are *not* part of my guidelines for submssion completion. 
 ![](extras.pdf)
 
 #### Memory Library Page

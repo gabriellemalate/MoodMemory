@@ -4,6 +4,7 @@ import poorsleep from "./assets/poorsleep.png";
 import okaysleep from "./assets/okay sleep.png";
 import goodsleep from "./assets/good sleep.png";
 import awesomesleep from "./assets/awesomesleep.png";
+import emoji from "./assets/satisfied.png"
 
 function App() {
   return (
@@ -216,10 +217,10 @@ function App() {
                   <div className='add-mood-quick__sleep-form-quality'>
                     <label htmlFor="sleep quality" className='add-mood-quick__sleep-form-quality-head'>Hours Slept</label>
                     <article>
-                      <input type="image" src={poorsleep} alt="poor sleep"/>
-                      <input type="image" src={okaysleep} alt="okay sleep"/>
-                      <input type="image" src={goodsleep} alt="good sleep"/>
-                      <input type="image" src={awesomesleep} alt="awesome sleep"/>
+                      <input type="image" src={poorsleep} alt="poor sleep" />
+                      <input type="image" src={okaysleep} alt="okay sleep" />
+                      <input type="image" src={goodsleep} alt="good sleep" />
+                      <input type="image" src={awesomesleep} alt="awesome sleep" />
                     </article>
                   </div>
                 </form>
@@ -235,24 +236,213 @@ function App() {
               </article>
 
               <article className='add-mood-quick__emote'>
-                <form className='add-mood-quick__emote'>
-                  <label className='add-mood-quick__emote-head'>Which best represents how you feel?</label>
-                  {/* <select className='add-mood-quick__emote-menu'>
-                    <optgroup className='add-mood-quick__emote-menugroup'>
-                      <option className='add-mood-quick__emote-menugroup-option add-mood-quick__emote-menugroup-option--tired'>
-                        <div className='add-mood-quick__emote-menugroup-option--tired-eq'>
-                          <img className='add-mood-quick__emote-menugroup-option--tired-emoji' />
-                          <h4 className='add-mood-quick__emote-menugroup-option--tired-title'>tired</h4>
-                        </div>
-                      </option>
-                      <option className='add-mood-quick__emote-menugroup-option add-mood-quick__emote-menugroup-option--content'>
-                        <div className='add-mood-quick__emote-menugroup-option--content-eq'>
-                          <img className='add-mood-quick__emote-menugroup-option--content-emoji' />
-                          <h4 className='add-mood-quick__emote-menugroup-option--content-title'>content</h4>
-                        </div>
-                      </option>
-                    </optgroup>
-                  </select> */}
+                <form className='add-mood-quick__emote-eq'>
+                  <h3 className='add-mood-quick__emote-head'>Which best represents how you feel?</h3>
+                  <article className='add-mood-quick__emote-menu'>
+                    <ul className='add-mood-quick__emote-menu-eq'>
+                      <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--motivated'>
+                        <button className='add-mood-quick__emote-menu-option--motivated-button'>
+                          <div className='add-mood-quick__emote-menu-option--motivated-button-eq'>
+                            <img className='add-mood-quick__emote-menu-option--motivated-emoji' alt="motivated" src={emoji} />
+                            <h4 className='add-mood-quick__emote-menu-option--motivated-title'>motivated</h4>
+                          </div>
+                        </button>
+                      </li>
+                      <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--anxious'>
+                        <button className='add-mood-quick__emote-menu-option--anxious-button'>
+                          <div className='add-mood-quick__emote-menu-option--anxious-button-eq'>
+                            <img className='add-mood-quick__emote-menu-option--anxious-emoji' alt="anxious" src={emoji} />
+                            <h4 className='add-mood-quick__emote-menu-option--anxious-title'>anxious</h4>
+                          </div>
+                        </button>
+                      </li>
+                      <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--relaxed'>
+                        <button className='add-mood-quick__emote-menu-option--relaxed-button'>
+                          <div className='add-mood-quick__emote-menu-option--relaxed-button-eq'>
+                            <img className='add-mood-quick__emote-menu-option--relaxed-emoji' alt="relaxed" src={emoji} />
+                            <h4 className='add-mood-quick__emote-menu-option--relaxed-title'>relaxed</h4>
+                          </div>
+                        </button>
+                      </li>
+                      <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--stressed'>
+                        <button className='add-mood-quick__emote-menu-option--stressed-button'>
+                          <div className='add-mood-quick__emote-menu-option--stressed-button-eq'>
+                            <img className='add-mood-quick__emote-menu-option--stressed-emoji' alt="stressed" src={emoji} />
+                            <h4 className='add-mood-quick__emote-menu-option--stressed-title'>stressed</h4>
+                          </div>
+                        </button>
+                      </li>
+                      <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--unsure'>
+                        <button className='add-mood-quick__emote-menu-option--unsure-button'>
+                          <div className='add-mood-quick__emote-menu-option--unsure-button-eq'>
+                            <img className='add-mood-quick__emote-menu-option--unsure-emoji' alt="unsure" src={emoji} />
+                            <h4 className='add-mood-quick__emote-menu-option--unsure-title'>unsure</h4>
+                          </div>
+                        </button>
+                      </li>
+                      <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--tired'>
+                        <button className='add-mood-quick__emote-menu-option--tired-button'>
+                          <div className='add-mood-quick__emote-menu-option--tired-button-eq'>
+                            <img className='add-mood-quick__emote-menu-option--tired-emoji' alt="tired" src={emoji} />
+                            <h4 className='add-mood-quick__emote-menu-option--tired-title'>tired</h4>
+                          </div>
+                        </button>
+                      </li>
+                      <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--content'>
+                        <button className='add-mood-quick__emote-menu-option--content-button'>
+                          <div className='add-mood-quick__emote-menu-option--content-button-eq'>
+                            <img className='add-mood-quick__emote-menu-option--content-emoji' alt="content" src={emoji} />
+                            <h4 className='add-mood-quick__emote-menu-option--content-title'>content</h4>
+                          </div>
+                        </button>
+                      </li>
+                      <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--grateful'>
+                        <button className='add-mood-quick__emote-menu-option--grateful-button'>
+                          <div className='add-mood-quick__emote-menu-option--grateful-button-eq'>
+                            <img className='add-mood-quick__emote-menu-option--grateful-emoji' alt="grateful" src={emoji} />
+                            <h4 className='add-mood-quick__emote-menu-option--grateful-title'>grateful</h4>
+                          </div>
+                        </button>
+                      </li>
+                      <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--down'>
+                        <button className='add-mood-quick__emote-menu-option--down-button'>
+                          <div className='add-mood-quick__emote-menu-option--down-button-eq'>
+                            <img className='add-mood-quick__emote-menu-option--down-emoji' alt="down" src={emoji} />
+                            <h4 className='add-mood-quick__emote-menu-option--down-title'>down</h4>
+                          </div>
+                        </button>
+                      </li>
+                      <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--sad'>
+                        <button className='add-mood-quick__emote-menu-option--sad-button'>
+                          <div className='add-mood-quick__emote-menu-option--sad-button-eq'>
+                            <img className='add-mood-quick__emote-menu-option--sad-emoji' alt="sad" src={emoji} />
+                            <h4 className='add-mood-quick__emote-menu-option--sad-title'>sad</h4>
+                          </div>
+                        </button>
+                      </li>
+                      <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--proud'>
+                        <button className='add-mood-quick__emote-menu-option--proud-button'>
+                          <div className='add-mood-quick__emote-menu-option--proud-button-eq'>
+                            <img className='add-mood-quick__emote-menu-option--proud-emoji' alt="proud" src={emoji} />
+                            <h4 className='add-mood-quick__emote-menu-option--proud-title'>proud</h4>
+                          </div>
+                        </button>
+                      </li>
+                      <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--unmotivated'>
+                        <button className='add-mood-quick__emote-menu-option--unmotivated-button'>
+                          <div className='add-mood-quick__emote-menu-option--unmotivated-button-eq'>
+                            <img className='add-mood-quick__emote-menu-option--unmotivated-emoji' alt="unmotivated" src={emoji} />
+                            <h4 className='add-mood-quick__emote-menu-option--unmotivated-title'>unmotivated</h4>
+                          </div>
+                        </button>
+                      </li>
+                      <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--annoyed'>
+                        <button className='add-mood-quick__emote-menu-option--annoyed-button'>
+                          <div className='add-mood-quick__emote-menu-option--annoyed-button-eq'>
+                            <img className='add-mood-quick__emote-menu-option--annoyed-emoji' alt="annoyed" src={emoji} />
+                            <h4 className='add-mood-quick__emote-menu-option--annoyed-title'>annoyed</h4>
+                          </div>
+                        </button>
+                      </li>
+                      <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--loving'>
+                        <button className='add-mood-quick__emote-menu-option--loving-button'>
+                          <div className='add-mood-quick__emote-menu-option--loving-button-eq'>
+                            <img className='add-mood-quick__emote-menu-option--loving-emoji' alt="loving" src={emoji} />
+                            <h4 className='add-mood-quick__emote-menu-option--loving-title'>loving</h4>
+                          </div>
+                        </button>
+                      </li>
+                      <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--happy'>
+                        <button className='add-mood-quick__emote-menu-option--happy-button'>
+                          <div className='add-mood-quick__emote-menu-option--happy-button-eq'>
+                            <img className='add-mood-quick__emote-menu-option--happy-emoji' alt="happy" src={emoji} />
+                            <h4 className='add-mood-quick__emote-menu-option--happy-title'>happy</h4>
+                          </div>
+                        </button>
+                      </li>
+                      <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--worried'>
+                        <button className='add-mood-quick__emote-menu-option--worried-button'>
+                          <div className='add-mood-quick__emote-menu-option--worried-button-eq'>
+                            <img className='add-mood-quick__emote-menu-option--worried-emoji' alt="worried" src={emoji} />
+                            <h4 className='add-mood-quick__emote-menu-option--worried-title'>worried</h4>
+                          </div>
+                        </button>
+                      </li>
+                      <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--frustrated'>
+                        <button className='add-mood-quick__emote-menu-option--frustrated-button'>
+                          <div className='add-mood-quick__emote-menu-option--frustrated-button-eq'>
+                            <img className='add-mood-quick__emote-menu-option--frustrated-emoji' alt="frustrated" src={emoji} />
+                            <h4 className='add-mood-quick__emote-menu-option--frustrated-title'>frustrated</h4>
+                          </div>
+                        </button>
+                      </li>
+                      <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--satisfied'>
+                        <button className='add-mood-quick__emote-menu-option--satisfied-button'>
+                          <div className='add-mood-quick__emote-menu-option--satisfied-button-eq'>
+                            <img className='add-mood-quick__emote-menu-option--satisfied-emoji' alt="satisfied" src={emoji} />
+                            <h4 className='add-mood-quick__emote-menu-option--satisfied-title'>satisfied</h4>
+                          </div>
+                        </button>
+                      </li>
+                      <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--energized'>
+                        <button className='add-mood-quick__emote-menu-option--energized-button'>
+                          <div className='add-mood-quick__emote-menu-option--energized-button-eq'>
+                            <img className='add-mood-quick__emote-menu-option--energized-emoji' alt="energized" src={emoji} />
+                            <h4 className='add-mood-quick__emote-menu-option--energized-title'>energized</h4>
+                          </div>
+                        </button>
+                      </li>
+                      <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--excited'>
+                        <button className='add-mood-quick__emote-menu-option--excited-button'>
+                          <div className='add-mood-quick__emote-menu-option--excited-button-eq'>
+                            <img className='add-mood-quick__emote-menu-option--excited-emoji' alt="excited" src={emoji} />
+                            <h4 className='add-mood-quick__emote-menu-option--excited-title'>excited</h4>
+                          </div>
+                        </button>
+                      </li>
+                      <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--angry'>
+                        <button className='add-mood-quick__emote-menu-option--angry-button'>
+                          <div className='add-mood-quick__emote-menu-option--angry-button-eq'>
+                            <img className='add-mood-quick__emote-menu-option--angry-emoji' alt="angry" src={emoji} />
+                            <h4 className='add-mood-quick__emote-menu-option--angry-title'>angry</h4>
+                          </div>
+                        </button>
+                      </li>
+                      <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--hopeless'>
+                        <button className='add-mood-quick__emote-menu-option--hopeless-button'>
+                          <div className='add-mood-quick__emote-menu-option--hopeless-button-eq'>
+                            <img className='add-mood-quick__emote-menu-option--hopeless-emoji' alt="hopeless" src={emoji} />
+                            <h4 className='add-mood-quick__emote-menu-option--hopeless-title'>hopeless</h4>
+                          </div>
+                        </button>
+                      </li>
+                      <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--panicking'>
+                        <button className='add-mood-quick__emote-menu-option--panicking-button'>
+                          <div className='add-mood-quick__emote-menu-option--panicking-button-eq'>
+                            <img className='add-mood-quick__emote-menu-option--panicking-emoji' alt="panicking" src={emoji} />
+                            <h4 className='add-mood-quick__emote-menu-option--panicking-title'>panicking</h4>
+                          </div>
+                        </button>
+                      </li>
+                      <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--exhausted'>
+                        <button className='add-mood-quick__emote-menu-option--exhausted-button'>
+                          <div className='add-mood-quick__emote-menu-option--exhausted-button-eq'>
+                            <img className='add-mood-quick__emote-menu-option--exhausted-emoji' alt="exhausted" src={emoji} />
+                            <h4 className='add-mood-quick__emote-menu-option--exhausted-title'>exhausted</h4>
+                          </div>
+                        </button>
+                      </li>
+                      <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--irritable'>
+                        <button className='add-mood-quick__emote-menu-option--irritable-button'>
+                          <div className='add-mood-quick__emote-menu-option--irritable-button-eq'>
+                            <img className='add-mood-quick__emote-menu-option--irritable-emoji' alt="irritable" src={emoji} />
+                            <h4 className='add-mood-quick__emote-menu-option--irritable-title'>irritable</h4>
+                          </div>
+                        </button>
+                      </li>
+                    </ul>
+                  </article>
+                  <button type="submit">Quick Log</button>
                 </form>
               </article>
             </section>
