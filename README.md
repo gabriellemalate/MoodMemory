@@ -88,13 +88,13 @@ Mood tracking is a challenging chore to maintain
 #### Welcome Page
 ![](1.WelcomePage.png)
 
-#### Mood Home Page
+#### Mood Home Page / Log a Mood
 ![](2.MoodHome.png)
 
 #### Mood Logs Page
 ![](3.MoodLibrary.png)
 
-#### Mood  Page
+#### Mood Maps Page
 ![](3.MoodLibrary.png)
 
 #### Memory Home Page
@@ -105,7 +105,7 @@ Mood tracking is a challenging chore to maintain
 *nice to have* feature. *not* part of my guidelines for submssion completion.
 ![](5.MemoryLibrary.png)
 
-#### BONUS "Nice To Have" Memory Room Carousal Mockup
+#### BONUS "Nice To Have" Memory Rooms Carousel Page
 *nice to have* feature. *not* part of my guidelines for submssion completion.
 ![](BONUS"NICE-TO-HAVE"RoomCarousel.png)
 

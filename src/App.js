@@ -11,7 +11,7 @@ function App() {
       <header className='header'>
         <nav className='mood-nav'>
           <div className='mood-nav__eq'>
-            <a onclick="closeNav()" href="javascript:void(0)" className="mood-nav__close">&times;</a>
+            <a onClick="closeNav()" href="javascript:void(0)" className="mood-nav__close">&times;</a>
             <h2 className='mood-nav__head'>Mood</h2>
 
             <ul className='mood-nav__list'>
@@ -33,7 +33,7 @@ function App() {
         <nav className='home-nav'>
           <div className='home-nav__eq'>
             <ul className='home-nav__left'>
-              <li onclick="openNav()" className='home-nav__left--open'>hover icon for mood nav</li>
+              <li onClick="openNav()" className='home-nav__left--open'>hover icon for mood nav</li>
               <li className='home-nav__left-logo'>
                 <a className='home-nav__left-logo-mood' href="">Mood</a>
                 <a className='home-nav__left-logo-memory' href="">Memory</a>
@@ -228,7 +228,7 @@ function App() {
               <article className='add-mood-quick__notes'>
                 <form className='add-mood-quick__notes-form'>
                   <h3 className='add-mood-quick__notes-form-head add-mood-quick__notes-form-head--title'>Title</h3>
-                  <textarea className="add-mood-quick__notes-form-box add-mood-quick__notes-form-box-title" type="Text" placeholder="Add an entry title or keep this blank" />
+                  <textarea className="add-mood-quick__notes-form-box add-mood-quick__notes-form-box-title" type="Text" placeholder="optional" />
                   <h3 className='add-mood-quick__notes-form-head add-mood-quick__notes-form-head--note'>Notes</h3>
                   <textarea className="add-mood-quick__notes-form-box add-mood-quick__notes-form-box-note" type="Text" placeholder="Add notes and symptoms or keep this blank" />
                 </form>
@@ -237,7 +237,7 @@ function App() {
               <article className='add-mood-quick__emote'>
                 <form className='add-mood-quick__emote'>
                   <label className='add-mood-quick__emote-head'>Which best represents how you feel?</label>
-                  <select className='add-mood-quick__emote-menu'>
+                  {/* <select className='add-mood-quick__emote-menu'>
                     <optgroup className='add-mood-quick__emote-menugroup'>
                       <option className='add-mood-quick__emote-menugroup-option add-mood-quick__emote-menugroup-option--tired'>
                         <div className='add-mood-quick__emote-menugroup-option--tired-eq'>
@@ -252,7 +252,7 @@ function App() {
                         </div>
                       </option>
                     </optgroup>
-                  </select>
+                  </select> */}
                 </form>
               </article>
             </section>
