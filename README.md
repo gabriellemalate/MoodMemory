@@ -99,7 +99,7 @@ Mood tracking is a challenging chore to maintain
 
 #### Memory Home Page
 *nice to have*. 
-if able to display: *it is still a nice to have non-functional feature*. full functionality beyond display are *not* part of my guidelines for submssion completion. 
+if able to display for the sprint: *it is still a nice to have non-functional feature*. full functionality beyond display are *not* part of my guidelines for submssion completion. 
 ![](extras.pdf)
 
 #### Memory Library Page
@@ -276,9 +276,9 @@ PROBABLY NOT SOON
 - loading animation with memory poetry
 - memory rooms page: space to organize memories into user specified compartments. + ability to view them via a "room carousel"
 - log in, create new user, forgot password.
-- mood map
 
 DEFINITELY NOT SOON
+- memory features are functional
 - place to store & manage mood patterns.
 - combine the moodmap with the memory timeline in a joint line graph with adjustable date scopes. This feature is great for people with PTSD, or even PTSD from multiple events, especially when some expereinces may have been mentally blocked from a survival coping mechanism while the resulting fight/flight/fawn/freeze behaviors are still actively affecting the person.
 - mood chart in table form in the all moods page
