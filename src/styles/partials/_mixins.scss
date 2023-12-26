@@ -37,11 +37,29 @@
     justify-content: center;
 }
 
+@mixin button-label {
+    height: 2.1rem;
+    width: 8rem;
+    padding: 0 1rem 0 1rem;
+    border-radius: 0.25rem;
+    border: .1rem solid $periwinkle;
+    background-color: $periwinkle-lite;
+    color: $blue-light;
+    justify-content: center;
+    border-style:outset;
+}
+
 // Text styles
-@mixin mobile-head-page {
+@mixin mobile-head-page-bold {
     font-size: 1.5rem;
     line-height: 2rem;
     font-weight: 600;
+}
+
+@mixin mobile-head-page-lite {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 400;
 }
 
 @mixin mobile-head-section {
@@ -71,7 +89,22 @@
 // Image
 @mixin user {
     border-radius: 50%;
-    width: 12vw;
-    max-width: 2.6rem;
-    background-color: green;
+    width: 8vw;
+    max-width: 2rem;
+    padding: .2rem .4rem .2rem .4rem;
+    background-color: rgb(117, 203, 117);
+}
+
+// Padding 
+@mixin padding-body {
+    padding: .2rem .4rem;
+}
+
+// Shadow 
+@mixin shadow-left {
+    text-shadow: -.2px 1px 3px $glow;
+}
+
+@mixin shadow-right {
+    text-shadow: .3px 1px 3.5px $glow;
 }

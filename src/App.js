@@ -5,96 +5,105 @@ import okaysleep from "./assets/okay sleep.png";
 import goodsleep from "./assets/good sleep.png";
 import awesomesleep from "./assets/awesomesleep.png";
 import emoji from "./assets/satisfied.png";
+import menu from "./assets/menu.png"
 
 function App() {
   return (
     <>
       <header className='header'>
+
+        <input id="moodnav-slider" type="checkbox" role="button" />
+        <label id="moodnav" htmlFor="moodnav-slider">
+          <img className="header__menu" alt="navigation menu" src={menu} />
+        </label>
+
         <nav className='mood-nav'>
           <div className='mood-nav__eq'>
-            <a onClick="closeNav()" href="javascript:void(0)" className="mood-nav__close">&times;</a>
-            <h2 className='mood-nav__head'>Mood</h2>
+            <h2 className='mood-nav__head'>mood</h2>
 
             <ul className='mood-nav__list'>
-              <li className='mood-nav__list-logs'>
+              <li className='mood-nav__list-logs mood-nav__list-item'>
                 <a className='mood-nav__list-logs-link' href="">
                   Mood Logs
                 </a>
               </li>
-              <li className='mood-nav__list-map'>
+              <li className='mood-nav__list-map mood-nav__list-item'>
                 <a className='mood-nav__list-map-link' href="">
                   Mood Map
                 </a>
               </li>
             </ul>
-
           </div>
         </nav>
 
         <nav className='home-nav'>
           <div className='home-nav__eq'>
-            <ul className='home-nav__left'>
-              <li onClick="openNav()" className='home-nav__left--open'>hover icon for mood nav</li>
-              <li className='home-nav__left-logo'>
-                <a className='home-nav__left-logo-mood' href="">mood</a>
-                <a className='home-nav__left-logo-memory' href="">memory</a>
-              </li>
-            </ul>
-
-            <a className='home-nav__right' href="">
-              <img className="home-nav__right-user" alt="You" src={user} />
-            </a>
-
+            <div className='home-nav__logo'>
+              <a className='home-nav__logo-mood' href="">mood</a>
+              <a className='home-nav__logo-memory' href="">memory</a>
+            </div>
           </div>
         </nav>
 
-        <nav className='user-nav'>
-          <div className='user-nav__eq'>
-            <article className='user-nav__all'>
-              <div className='user-nav__top'>
-                <h2 className='user-nav__top-head'>Hello "name interpolated"</h2>
+        <input id="usernav-slider" type="checkbox" role="button" />
+        <label id="usernav" htmlFor="usernav-slider">
+          <img className="user" alt="You" src={user} />
+        </label>
 
-                <ul className='user-nav__top-list'>
-                  <li className='user-nav__top-list-item-moodinfo user-nav__top-list-item'>
-                    <div className='user-nav__top-list-item-moodinfo--eq'>
-                      <p className='user-nav__top-list-item-moodinfo-total'>Total Moods Logged: "total interpolated"</p>
-                      <p className='user-nav__top-list-item-moodinfo-streak'>Consistent Mood Logging: "streak interpolated" Days</p>
-                    </div>
-                  </li>
-                  <li className='user-nav__top-list-item-memoryinfo user-nav__top-list-item'>
-                    Total Memories Secured: "total interpolated"
-                  </li>
-                  <li className='user-nav__top-list-item-add user-nav__top-list-item'>
-                    <a className='user-nav__top-list-item-add--link' href="">+</a>
-                  </li>
-                </ul>
-              </div>
-            </article>
+        <nav className='user-nav' id="user-nav">
+          <div className='user-nav__eq'>
+            <div className='user-nav__top'>
+              <h2 className='user-nav__top-head'>Hello Gabrielle</h2>
+
+              <ul className='user-nav__top-list'>
+                <li className='user-nav__top-list-item-moodinfo user-nav__top-list-item'>
+                  <div className='user-nav__top-list-item-moodinfo--eq'>
+                    <p className='user-nav__top-list-item-moodinfo-total'>Total Moods Logged: "total interpolated"</p>
+                    <p className='user-nav__top-list-item-moodinfo-streak'>Consistent Mood Logging: "streak interpolated" Days</p>
+                  </div>
+                </li>
+                <li className='user-nav__top-list-item-memoryinfo user-nav__top-list-item'>
+                  Total Memories Secured: "total interpolated"
+                </li>
+                <li className='user-nav__top-list-item-add user-nav__top-list-item'>
+                  <a className='user-nav__top-list-item-add--link' href="#add-mood">+ New</a>
+                </li>
+              </ul>
+            </div>
 
             <ul className='user-nav__bottom'>
               <li className='user-nav__bottom-item-faq user-nav__bottom-item'>
-                <a className='user-nav__bottom-item-faq-link' href="#faq">
-                  FAQ
-                </a>
+                <a className='user-nav__bottom-item-faq-link' href="#faq">FAQ</a></li>
+              <li className='user-nav__bottom-item-logout user-nav__bottom-item'>
+                <button className='user-nav__bottom-item-logout-button'>
+                  log out
+                </button>
               </li>
             </ul>
-            <li className='user-nav__bottom-item-logout user-nav__bottom-item'>
-              <button className='user-nav__bottom-item-logout-button'>
-                log out
-              </button>
-            </li>
+
           </div>
         </nav>
       </header>
 
       <main className='main'>
         <div className='main__eq'>
+          <article className='blob-wrap'>
+            <div class="blobs_1 blobs"></div>
+            <div class="blobs_2 blobs"></div>
+            <div class="blobs blobs_3"></div>
+            <div class="blobs blobs_4"></div>
+            <div class="blobs blobs_5"></div>
+            <div class="blobs blobs_6"></div>
+            <div class="blobs blobs_7"></div>
+          </article>
 
-          <section className='add-mood'>
-            {/* includes extended queries with quick add form */}
+          <section className='add-mood' id="add-mood">
             <form className='add-mood-include' id="fullmood">
               <section className='add-mood-quick'>
-                <h1 className='add-mood-quick__head'>How are you feeling today, "Name Interpolated"?</h1>
+                <h1 className='add-mood-quick__head'>
+                  <span className='add-mood-quick__head-crop'>How are you feeling today, Gabrielle?
+                  </span>
+                </h1>
                 <div className='add-mood-quick-only' id="quickmood">
                   <article className='add-mood-quick__level'>
                     <div className='add-mood-quick__level-head'>
