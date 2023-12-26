@@ -32,11 +32,13 @@
     @include row;
     justify-content: center;
     border: 0.1rem inset $periwinkle-lite;
+    letter-spacing: .08rem;
 
     &:hover,
     &:focus {
         outline: 0.26rem dotted $aqua;
-        color: $aqua;
+        // color: $aqua;
+        text-shadow: -0.2px -.5px 1.7px $glow;
     }
 }
 
@@ -51,6 +53,21 @@
     justify-content: center;
 }
 
+@mixin button-choice {
+    height: 1.6rem;
+    width: fit-content;
+    border-radius: 1rem;
+    border: 0.1rem dashed $periwinkle;
+    background-color: $periwinkle-lite;
+    color: $aqua;
+    justify-content: center;
+    padding: .1rem .3rem;
+    &:focus, &:hover {
+        border: 0.1rem solid $periwinkle;
+        font-weight: bold;
+    }
+}
+
 // Text styles
 @mixin mobile-head-page-bold {
     font-size: 1.5rem;
@@ -62,6 +79,13 @@
     font-size: 1.5rem;
     line-height: 2rem;
     font-weight: 400;
+}
+
+@mixin mobile-head-category {
+    font-size: 1.4rem;
+    line-height: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.16rem;
 }
 
 @mixin mobile-head-section {
@@ -83,9 +107,9 @@
 }
 
 @mixin mobile-label {
-    font-size: 0.625rem;
+    font-size: 0.75rem;
     line-height: 1.25rem;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 // Image

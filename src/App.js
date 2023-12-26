@@ -6,6 +6,7 @@ import goodsleep from "./assets/good sleep.png";
 import awesomesleep from "./assets/awesomesleep.png";
 import emoji from "./assets/satisfied.png";
 import menu from "./assets/menu.png"
+import arrow from "./assets/then.png"
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
               </li>
               <li className='mood-nav__list-map mood-nav__list-item'>
                 <a className='mood-nav__list-map-link' href="">
-                  Mood Map
+                  Mood Maps
                 </a>
               </li>
             </ul>
@@ -87,13 +88,13 @@ function App() {
       <main className='main'>
         <div className='main__eq'>
           <article className='blob-wrap'>
-            <div class="blobs_1 blobs"/>
-            <div class="blobs_2 blobs"/>
-            <div class="blobs blobs_3"/>
-            <div class="blobs blobs_4"/>
-            <div class="blobs blobs_5"/>
-            <div class="blobs blobs_6"/>
-            <div class="blobs blobs_7"/>
+            <div className="blobs_1 blobs" />
+            <div className="blobs_2 blobs" />
+            <div className="blobs blobs_3" />
+            <div className="blobs blobs_4" />
+            <div className="blobs blobs_5" />
+            <div className="blobs blobs_6" />
+            <div className="blobs blobs_7" />
           </article>
 
           <section className='add-mood' id="add-mood">
@@ -105,29 +106,49 @@ function App() {
                 </h1>
                 <div className='add-mood-quick-only' id="quickmood">
                   <article className='add-mood-quick__level'>
-                    <div className='add-mood-quick__level-head'>
-                      <h3 className='add-mood-quick__level-head'>Mood State</h3>
-                      <p>think of this as your energy level</p>
-                    </div>
-                    <div className='add-mood-quick__level-state'>
-                      <button className='add-mood-quick__level-state-option add-mood-quick__level-state-option--dep' formTarget="user-moodstate" value="Depressed" name="Depressed" popovertarget="state-severity" popovertargetaction="show" type='submit'>Low/Depressed</button>
-                      <button className='add-mood-quick__level-state-option add-mood-quick__level-state-option--wnl' type='submit' formTarget="user-moodstate" title='"Within Normal Limits" No symptoms of depression or elevation' popovertarget="state-severity" popovertargetaction="hide">WNL</button>
-                      <button className='add-mood-quick__level-state-option add-mood-quick__level-state-option--elev' popovertarget="state-severity" formTarget="user-moodstate" popovertargetaction="show" type='submit'>Elevated/Manic</button>
-                    </div>
-                    <span className='add-mood-quick__level-divider'>{": "}</span>
-                    <div className='add-mood-quick__level-severity' id="state-severity">
-                      <button className='add-mood-quick__level-severity-option add-mood-quick__level-severity-option--mild' type='submit' formTarget="user-moodstate">Mild</button>
-                      <button className='add-mood-quick__level-severity-option add-mood-quick__level-severity-option--mod' type='submit' formTarget="user-moodstate">Moderate</button>
-                      <button className='add-mood-quick__level-severity-option add-mood-quick__level-severity-option--sev' type='submit' formTarget="user-moodstate">Severe</button>
-                    </div>
-                    <iframe name="user-moodstate">
-                      Your mood state:
-                    </iframe>
+                    <h3 className='add-mood-quick__level-head'>Mood State</h3>
+                    <p className='add-mood-quick__level-subhead'>think of this as your energy level</p>
+                    <article className='add-mood-quick__level-state'>
+                      <div className='add-mood-quick__level-state-container'>
+
+                        <input className='add-mood-quick__level-state-opt' value="Depressed" id="depressed" name="Depressed" type='radio' />
+                        <label className='add-mood-quick__level-state-option' htmlFor="depressed">depressed</label>
+
+                      </div>
+                      <div className='add-mood-quick__level-state-container'>
+                        <input className='add-mood-quick__level-state-opt' value="wnl" id="wnl" name="wnl" type='radio' title='"Within Normal Limits" No symptoms of depression or elevation' />
+                        <label className='add-mood-quick__level-state-option' htmlFor="wnl">wnl</label>
+                      </div>
+
+                      <div className='add-mood-quick__level-state-container'>
+                        <input className='add-mood-quick__level-state-opt' value="elevated" id="elevated" name="elevated" type='radio' />
+                        <label className='add-mood-quick__level-state-option' htmlFor="elevated">elevated</label>
+                      </div>
+                    </article>
+
+                    <article className='add-mood-quick__level-severity'>
+                    <img className='add-mood-quick__level-divider' alt="choose severity level" src={arrow}/>
+
+                    <div className='add-mood-quick__level-severity-all'>
+                      <div className='add-mood-quick__level-severity-container'>
+                        <input className='add-mood-quick__level-severity-opt' type='radio' value="mild" id="mild" name="mild" />
+                        <label className='add-mood-quick__level-severity-option' htmlFor="mild">mild</label>
+                      </div>
+                      <div className='add-mood-quick__level-severity-container'>
+                        <input className='add-mood-quick__level-severity-opt' type='radio' value="moderate" id="moderate" name="moderate" />
+                        <label className='add-mood-quick__level-severity-option' htmlFor="moderate">moderate</label>
+                      </div>
+                      <div className='add-mood-quick__level-severity-container'>
+                        <input className='add-mood-quick__level-severity-opt' type='radio' value="severe" id="severe" name="severe" />
+                        <label className='add-mood-quick__level-severity-option' htmlFor="severe">severe</label>
+                      </div>
+                      </div>
+                    </article>
                   </article>
 
                   <article className='add-mood-quick__observations'>
                     <div className='add-mood-quick__observations-all'>
-                      <h3>Self Check in</h3>
+                      <h3 className='add-mood-quick__observations-all-head'>Self Check in</h3>
                       <div className='add-mood-quick__observations-irritability'>
                         <label htmlFor="irritablity" className='add-mood-quick__observations-irritability-head'>Irritability</label>
                         <select className='add-mood-quick__observations-irritability-menu'>
@@ -456,7 +477,7 @@ function App() {
                   </article>
                 </div>
                 <button className="add-mood-quick-only__submit" form="quickmood" type="submit">Quick Log</button>
-                <button popovertarget="more-mood" popovertargetaction="show" className='add-mood__showmore'>show more +</button>
+                <button popovertarget="more-mood" className='add-mood__showmore'>show more +</button>
               </section>
               <section className="add-mood-more" id="more-mood">
                 <ul className='add-mood-more__list'>

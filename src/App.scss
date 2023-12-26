@@ -63,17 +63,17 @@ body {
     padding-left: 0.5rem;
 
     &-item {
-      height: 1.5rem;
+      height: 1.6rem;
+      width: 95%;
+      @include row;
+      justify-content: center;
       @include mobile-subhead;
       border-radius: 1rem;
       background-color: $periwinkle-lite;
       @include padding-body;
       margin-bottom: 0.5rem;
       @include row;
-      &:hover {
-        color: $aqua;
-      }
-
+      &:hover,
       &:focus {
         color: $aqua;
       }
@@ -196,16 +196,16 @@ body {
         border-bottom: 0;
         margin-left: 1rem;
       }
-      
+
       &-list {
         padding: 0;
         margin: 0;
         width: 90%;
-        padding-left: .38rem;
+        padding-left: 0.38rem;
 
         &-item {
           @include choice-divider;
-          margin: .4rem 0;
+          margin: 0.4rem 0;
           font-weight: bold;
           color: $periwinkle;
           @include mobile-subhead;
@@ -214,7 +214,11 @@ body {
           &-add {
             @extend .user-nav__bottom-item-faq;
             margin-top: 1rem;
-            margin-left: .6rem;
+            margin-left: 0.6rem;
+
+            &--link {
+              width: 100%;
+            }
           }
         }
       }
@@ -232,6 +236,10 @@ body {
           @include mobile-head-section;
           background-color: $periwinkle;
           @include button;
+
+          &-link {
+            width: 100%;
+          }
         }
 
         &-logout-button {
@@ -240,8 +248,9 @@ body {
           letter-spacing: 0.18rem;
           margin-top: 3rem;
 
-          &:hover, &:focus {
-            border: .3rem double $periwinkle;
+          &:hover,
+          &:focus {
+            border: 0.3rem double $periwinkle;
             height: 2rem;
           }
         }
@@ -286,61 +295,61 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
 
-  &_1{
-    background:#ff1493;
+  &_1 {
+    background: #ff1493;
     width: 56vh;
     height: 20vh;
-    top:9%;
+    top: 9%;
     left: 50%;
-    }
-  
-    &_2 {
-      background: #ff4500;
-      width: 80px;
-      height: 80px;
-      top: 155px;
-      left: 230px;
-    }
-    
-    &_3 {
-      background: #00ff00;
-      width: 60px;
-      height: 60px;
-      top: 145px;
-      left: 20px;
-    }
-    
-    &_4 {
-      background: #ff0000;
-      width: 100px;
-      height: 100px;
-      top: 115px;
-      left: 100px;
-    }
-    
-    &_5 {
-      background: #ffff00;
-      width: 50px;
-      height: 50px;
-      top: 55px;
-      left: 70px;
-    }
-    
-    &_6 {
-      background: #00ffff;
-      width: 60px;
-      height: 60px;
-      top: 220px;
-      left: 55px;
-    }
-    
-    &_7 {
-      background: #ff8c00;
-      width: 50px;
-      height: 50px;
-      top: 210px;
-      left: 180px;
-    }
+  }
+
+  &_2 {
+    background: #ff4500;
+    width: 80px;
+    height: 80px;
+    top: 155px;
+    left: 230px;
+  }
+
+  &_3 {
+    background: #00ff00;
+    width: 60px;
+    height: 60px;
+    top: 145px;
+    left: 20px;
+  }
+
+  &_4 {
+    background: #ff0000;
+    width: 100px;
+    height: 100px;
+    top: 115px;
+    left: 100px;
+  }
+
+  &_5 {
+    background: #ffff00;
+    width: 50px;
+    height: 50px;
+    top: 55px;
+    left: 70px;
+  }
+
+  &_6 {
+    background: #00ffff;
+    width: 60px;
+    height: 60px;
+    top: 220px;
+    left: 55px;
+  }
+
+  &_7 {
+    background: #ff8c00;
+    width: 50px;
+    height: 50px;
+    top: 210px;
+    left: 180px;
+  }
 }
 @keyframes blobs {
   0% {
@@ -387,11 +396,12 @@ body {
     &__head {
       width: 100%;
       position: relative;
-      font-family: "Titan One", avenir;
+      font-family: "Titan One", avenir, sans-serif;
       font-size: 1.65rem;
+      line-height: 2rem;
       font-weight: 700;
       z-index: -1;
-      margin: 3rem 0 4rem;
+      margin: 3rem 0 3.4rem;
 
       &-crop {
         width: 100%;
@@ -406,8 +416,72 @@ body {
     }
 
     &-only {
-      width: 88%;
       @include column;
+    }
+
+    &__level {
+      @include column;
+      &-head {
+        @include mobile-head-category;
+        margin: 0;
+      }
+      &-subhead {
+        @include mobile-body;
+        margin: 0;
+        margin-bottom: 0.8rem;
+        color: $blue-light;
+      }
+      &-divider {
+        width: 1.2rem;
+        margin: .45rem 0 .8rem;
+      }
+      &-state {
+        @include row;
+        justify-content: space-evenly;
+        width: 100%;
+
+        &-opt {
+          display: none;
+          &:checked + label {
+            border: 0.1rem solid $periwinkle;
+            font-weight: bold;
+          }
+          &:not(:checked) + label {
+            border: 0.1rem dashed $periwinkle;
+            font-weight: 400;
+          }
+          &ion {
+            @include button-choice;
+            @include mobile-label;
+          }
+        }
+      }
+      &-severity {
+        @include column;
+        width: 100%;
+        &-all {
+          @extend .add-mood-quick__level-state;
+        }
+
+        &-opt {
+          @extend .add-mood-quick__level-state-opt;
+
+          &ion {
+            @extend .add-mood-quick__level-state-option;
+          }
+        }
+      }
+    }
+
+    &__observations {
+      @include column;
+      margin-top: 1rem;
+      &-all {
+        &-head {
+          @include mobile-head-category;
+          margin-bottom: .4rem;
+        }
+      }
     }
   }
 }
