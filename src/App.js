@@ -56,17 +56,16 @@ function App() {
               <h2 className='user-nav__top-head'>Hello Gabrielle</h2>
 
               <ul className='user-nav__top-list'>
-                <li className='user-nav__top-list-item-moodinfo user-nav__top-list-item'>
-                  <div className='user-nav__top-list-item-moodinfo--eq'>
-                    <p className='user-nav__top-list-item-moodinfo-total'>Total Moods Logged: "total interpolated"</p>
-                    <p className='user-nav__top-list-item-moodinfo-streak'>Consistent Mood Logging: "streak interpolated" Days</p>
-                  </div>
+                <li className='user-nav__top-list-item-moodtotal user-nav__top-list-item'>
+                  42 moods logged
+                </li>
+                <li className='user-nav__top-list-item-moodstreak user-nav__top-list-item'>12 days in a row
                 </li>
                 <li className='user-nav__top-list-item-memoryinfo user-nav__top-list-item'>
-                  Total Memories Secured: "total interpolated"
+                  87 memories secured
                 </li>
-                <li className='user-nav__top-list-item-add user-nav__top-list-item'>
-                  <a className='user-nav__top-list-item-add--link' href="#add-mood">+ New</a>
+                <li className='user-nav__top-list-item-add'>
+                  <a className='user-nav__top-list-item-add--link' href="#add-mood">+ New Log</a>
                 </li>
               </ul>
             </div>
@@ -88,13 +87,13 @@ function App() {
       <main className='main'>
         <div className='main__eq'>
           <article className='blob-wrap'>
-            <div class="blobs_1 blobs"></div>
-            <div class="blobs_2 blobs"></div>
-            <div class="blobs blobs_3"></div>
-            <div class="blobs blobs_4"></div>
-            <div class="blobs blobs_5"></div>
-            <div class="blobs blobs_6"></div>
-            <div class="blobs blobs_7"></div>
+            <div class="blobs_1 blobs"/>
+            <div class="blobs_2 blobs"/>
+            <div class="blobs blobs_3"/>
+            <div class="blobs blobs_4"/>
+            <div class="blobs blobs_5"/>
+            <div class="blobs blobs_6"/>
+            <div class="blobs blobs_7"/>
           </article>
 
           <section className='add-mood' id="add-mood">
