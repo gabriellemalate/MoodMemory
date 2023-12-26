@@ -1,9 +1,9 @@
 import './App.scss';
 import user from "./assets/user.png";
-import poorsleep from "./assets/poorsleep.png";
-import okaysleep from "./assets/okay sleep.png";
-import goodsleep from "./assets/good sleep.png";
-import awesomesleep from "./assets/awesomesleep.png";
+import poorsleep from "./assets/poor.png";
+import okaysleep from "./assets/okay.png";
+import goodsleep from "./assets/goodsleep.png";
+import awesomesleep from "./assets/awesome.png";
 import emoji from "./assets/satisfied.png";
 import menu from "./assets/menu.png"
 import arrow from "./assets/then.png"
@@ -150,7 +150,7 @@ function App() {
                     <div className='add-mood-quick__observations-all'>
                       <h3 className='add-mood-quick__observations-all-head'>Self Check in</h3>
                       <div className='add-mood-quick__observations-irritability'>
-                        <label htmlFor="irritablity" className='add-mood-quick__observations-irritability-head'>Irritability</label>
+                        <label htmlFor="irritablity" className='add-mood-quick__observations-irritability-head'>irritability</label>
                         <select className='add-mood-quick__observations-irritability-menu'>
                           <optgroup className='add-mood-quick__observations-irritability-menugroup' label="irritability level">
                             <option className='add-mood-quick__observations-irritability-menugroup-option add-mood-quick__observations-irritability-menugroup-option--none'>
@@ -170,7 +170,7 @@ function App() {
                       </div>
 
                       <div className='add-mood-quick__observations-anxiety'>
-                        <label htmlFor="Anxiety" className='add-mood-quick__observations-anxiety-head'>Anxiety</label>
+                        <label htmlFor="Anxiety" className='add-mood-quick__observations-anxiety-head'>anxiety</label>
                         <select className='add-mood-quick__observations-anxiety-menu'>
                           <optgroup className='add-mood-quick__observations-anxiety-menugroup' label="anxiety level">
                             <option className='add-mood-quick__observations-anxiety-menugroup-option add-mood-quick__observations-anxiety-menugroup-option--none'>
@@ -194,7 +194,7 @@ function App() {
                   <article className='add-mood-quick__sleep'>
                     <div className='add-mood-quick__sleep-form'>
                       <div className='add-mood-quick__sleep-form-hours'>
-                        <label htmlFor="hours slept" className='add-mood-quick__sleep-form-hours-head'>Hours Slept</label>
+                        <label htmlFor="hours slept" className='add-mood-quick__sleep-form-hours-head'>hours slept</label>
                         <select className='add-mood-quick__sleep-form-hours-menu'>
                           <optgroup className='add-mood-quick__sleep-form-menugroup' label="number of hours">
                             <option className='add-mood-quick__sleep-form-menugroup-option add-mood-quick__sleep-form-menugroup-option--zero'>
@@ -246,7 +246,7 @@ function App() {
                         </select>
                       </div>
                       <div className='add-mood-quick__sleep-form-quality'>
-                        <label htmlFor="sleep quality" className='add-mood-quick__sleep-form-quality-head'>The Quality of your Sleep</label>
+                        <label htmlFor="sleep quality" className='add-mood-quick__sleep-form-quality-head'>quality of sleep</label>
                         <div className='add-mood-quick__sleep-form-quality-options'>
                           <input className='add-mood-quick__sleep-form-quality-option add-mood-quick__sleep-form-quality-poor' type="image" src={poorsleep} alt="poor sleep" />
                           <input className='add-mood-quick__sleep-form-quality-option add-mood-quick__sleep-form-quality-ok' type="image" src={okaysleep} alt="okay sleep" />
@@ -262,7 +262,7 @@ function App() {
                       <h3 className='add-mood-quick__notes-form-head add-mood-quick__notes-form-head--title'>Title</h3>
                       <textarea className="add-mood-quick__notes-form-box add-mood-quick__notes-form-box-title" type="Text" placeholder="optional" />
                       <h3 className='add-mood-quick__notes-form-head add-mood-quick__notes-form-head--note'>Notes</h3>
-                      <textarea className="add-mood-quick__notes-form-box add-mood-quick__notes-form-box-note" type="Text" placeholder="Add notes and symptoms or keep this blank" />
+                      <textarea className="add-mood-quick__notes-form-box add-mood-quick__notes-form-box-note" type="Text" placeholder="add notes and symptoms or keep this blank" />
                     </div>
                   </article>
 

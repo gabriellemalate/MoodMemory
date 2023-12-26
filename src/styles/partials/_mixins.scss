@@ -59,13 +59,24 @@
     border-radius: 1rem;
     border: 0.1rem dashed $periwinkle;
     background-color: $periwinkle-lite;
-    color: $aqua;
+    color: $white;
     justify-content: center;
-    padding: .1rem .3rem;
+    padding: .2rem .4rem;
     &:focus, &:hover {
         border: 0.1rem solid $periwinkle;
         font-weight: bold;
     }
+}
+
+@mixin dropdown {
+    height: 1.38rem;
+    width: fit-content;
+    border-radius: 1rem;
+    border: 0.08rem solid $periwinkle;
+    background-color: $periwinkle-lite;
+    color: $blue-light;
+    justify-content: center;
+    padding: .1rem .3rem;
 }
 
 // Text styles
@@ -83,7 +94,7 @@
 
 @mixin mobile-head-category {
     font-size: 1.4rem;
-    line-height: 1rem;
+    line-height: 1.6rem;
     font-weight: 700;
     letter-spacing: 0.16rem;
 }
@@ -101,7 +112,7 @@
 }
 
 @mixin mobile-body {
-    font-size: 0.8125rem;
+    font-size: 0.83rem;
     line-height: 1.125rem;
     font-weight: 400;
 }

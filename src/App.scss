@@ -433,7 +433,7 @@ body {
       }
       &-divider {
         width: 1.2rem;
-        margin: .45rem 0 .8rem;
+        margin: 0.6rem 0 0.8rem;
       }
       &-state {
         @include row;
@@ -452,7 +452,7 @@ body {
           }
           &ion {
             @include button-choice;
-            @include mobile-label;
+            @include mobile-body;
           }
         }
       }
@@ -475,11 +475,164 @@ body {
 
     &__observations {
       @include column;
-      margin-top: 1rem;
+      margin-top: 1.4rem;
       &-all {
         &-head {
           @include mobile-head-category;
-          margin-bottom: .4rem;
+          margin-bottom: 0.65rem;
+        }
+      }
+      &-irritability {
+        &-head {
+          @include mobile-subhead;
+          color: $blue-light;
+        }
+        &-menu {
+          @include dropdown;
+          margin-left: 0.6rem;
+          margin-bottom: 0.4rem;
+          @include mobile-body;
+        }
+      }
+
+      &-anxiety {
+        &-head {
+          @extend .add-mood-quick__observations-irritability-head;
+        }
+        &-menu {
+          @extend .add-mood-quick__observations-irritability-menu;
+        }
+      }
+    }
+    &__sleep {
+      &-form {
+        &-hours {
+          @include column;
+          &-head {
+            @extend .add-mood-quick__observations-irritability-head;
+            margin: .6rem 0 .2rem;
+          }
+          &-menu {
+            @extend .add-mood-quick__observations-irritability-menu;
+          }
+        }
+        &-quality {
+          @include column;
+
+          &-head {
+            @extend .add-mood-quick__observations-irritability-head;
+            margin: 0 0 .2rem;
+          }
+          &-options {
+            @include row;
+            justify-content: center;
+            background-color: $periwinkle-lite;
+            width: 40%;
+            padding: 0.5rem 3rem;
+            border-radius: 1rem;
+            border: 0.2rem double $periwinkle;
+          }
+          &-option {
+            width: 2.5rem;
+            margin: 0 0.2rem;
+            transition: 0.3s;
+            &:hover,
+            &:focus {
+              transform: scale(1.3);
+            }
+          }
+        }
+      }
+    }
+    &__notes {
+      width: 100%;
+      @include column;
+      margin-top: 1.2rem;
+      &-form {
+        width: 90%;
+        &-head {
+          @include mobile-head-category;
+          margin-bottom: .6rem;
+          &--note {
+            margin-top: .8rem;
+          }
+        }
+        &-box {
+          resize: none;
+          padding: .5rem 0 0 .5rem;
+          width: 80%;
+          border-radius: 1rem;
+          border: $periwinkle .1rem solid;
+          font-family: avenir, Arial, Helvetica, sans-serif;
+          @include mobile-body;
+          background-color: $periwinkle-lite;
+          color: $white;
+
+          &-title {
+            height: 1.5rem;
+          }
+          &-note {
+            height: 3rem;
+          }
+          &::placeholder {
+            font-family: avenir, Arial, Helvetica, sans-serif;
+            color: $aqua;
+          }
+        }
+      }
+    }
+
+    &__emote {
+      width: 100%;
+      @include column;
+      &-eq {
+        @include column;
+        width: 100%;
+      }
+      &-head {
+        @include mobile-head-category;
+        width: 70%;
+        margin: 1.8rem 0 0rem;
+      }
+      &-menu {
+        @include column;
+        width: 100%;
+
+        &-eq {
+          width: 96%;
+          @include row;
+          flex-wrap: wrap;
+          justify-content: center;
+          padding: .4rem 0;
+          border: dotted aqua .18rem;
+          border-radius: 1rem;
+        }
+        &-option {
+          width: 20%;
+
+          &--buttonpress {
+            background-color: $periwinkle-lite;
+            border-radius: 1rem;
+            width: 3.8rem;
+            margin: .2rem 0;
+            padding: .2rem 0 0;
+            border: inset .08rem $periwinkle;
+
+            & div {
+              @include column;
+              justify-content: center;
+            }
+            & img {
+              width: 2rem;
+            }
+            & h4 {
+              font-size: .5rem;
+              text-wrap: wrap;
+              margin: 0;
+              line-height: 1rem;
+              color: $blue-light;
+            }
+          }
         }
       }
     }
