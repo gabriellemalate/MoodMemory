@@ -1,10 +1,10 @@
-import './App.css';
+import './App.scss';
 import user from "./assets/user.png";
 import poorsleep from "./assets/poorsleep.png";
 import okaysleep from "./assets/okay sleep.png";
 import goodsleep from "./assets/good sleep.png";
 import awesomesleep from "./assets/awesomesleep.png";
-import emoji from "./assets/satisfied.png"
+import emoji from "./assets/satisfied.png";
 
 function App() {
   return (
@@ -36,18 +36,14 @@ function App() {
             <ul className='home-nav__left'>
               <li onClick="openNav()" className='home-nav__left--open'>hover icon for mood nav</li>
               <li className='home-nav__left-logo'>
-                <a className='home-nav__left-logo-mood' href="">Mood</a>
-                <a className='home-nav__left-logo-memory' href="">Memory</a>
+                <a className='home-nav__left-logo-mood' href="">mood</a>
+                <a className='home-nav__left-logo-memory' href="">memory</a>
               </li>
             </ul>
 
-            <ul className='home-nav__right'>
-              <li className='home-nav__right-user'>
-                <a className='home-nav__right-user-link' href="">
-                  <img className="home-nav__right-user-image" alt="You" src={user} />
-                </a>
-              </li>
-            </ul>
+            <a className='home-nav__right' href="">
+              <img className="home-nav__right-user" alt="You" src={user} />
+            </a>
 
           </div>
         </nav>
@@ -99,23 +95,23 @@ function App() {
             <form className='add-mood-include' id="fullmood">
               <section className='add-mood-quick'>
                 <h1 className='add-mood-quick__head'>How are you feeling today, "Name Interpolated"?</h1>
-                <form className='add-mood-quick-only' id="quickmood">
+                <div className='add-mood-quick-only' id="quickmood">
                   <article className='add-mood-quick__level'>
                     <div className='add-mood-quick__level-head'>
                       <h3 className='add-mood-quick__level-head'>Mood State</h3>
                       <p>think of this as your energy level</p>
                     </div>
                     <div className='add-mood-quick__level-state'>
-                      <button className='add-mood-quick__level-state-option add-mood-quick__level-state-option--dep' formtarget="user-moodstate" value="Depressed" name="Depressed" popovertarget="state-severity" popovertargetaction="show" type='submit'>Low/Depressed</button>
-                      <button className='add-mood-quick__level-state-option add-mood-quick__level-state-option--wnl' type='submit' formtarget="user-moodstate" title='"Within Normal Limits" No symptoms of depression or elevation' popovertarget="state-severity" popovertargetaction="hide">WNL</button>
-                      <button className='add-mood-quick__level-state-option add-mood-quick__level-state-option--elev' popovertarget="state-severity" formtarget="user-moodstate" popovertargetaction="show" type='submit'>Elevated/Manic</button>
+                      <button className='add-mood-quick__level-state-option add-mood-quick__level-state-option--dep' formTarget="user-moodstate" value="Depressed" name="Depressed" popovertarget="state-severity" popovertargetaction="show" type='submit'>Low/Depressed</button>
+                      <button className='add-mood-quick__level-state-option add-mood-quick__level-state-option--wnl' type='submit' formTarget="user-moodstate" title='"Within Normal Limits" No symptoms of depression or elevation' popovertarget="state-severity" popovertargetaction="hide">WNL</button>
+                      <button className='add-mood-quick__level-state-option add-mood-quick__level-state-option--elev' popovertarget="state-severity" formTarget="user-moodstate" popovertargetaction="show" type='submit'>Elevated/Manic</button>
                     </div>
                     <span className='add-mood-quick__level-divider'>{": "}</span>
-                    <form className='add-mood-quick__level-severity' id="state-severity">
-                      <button className='add-mood-quick__level-severity-option add-mood-quick__level-severity-option--mild' type='submit' formtarget="user-moodstate">Mild</button>
-                      <button className='add-mood-quick__level-severity-option add-mood-quick__level-severity-option--mod' type='submit' formtarget="user-moodstate">Moderate</button>
-                      <button className='add-mood-quick__level-severity-option add-mood-quick__level-severity-option--sev' type='submit' formtarget="user-moodstate">Severe</button>
-                    </form>
+                    <div className='add-mood-quick__level-severity' id="state-severity">
+                      <button className='add-mood-quick__level-severity-option add-mood-quick__level-severity-option--mild' type='submit' formTarget="user-moodstate">Mild</button>
+                      <button className='add-mood-quick__level-severity-option add-mood-quick__level-severity-option--mod' type='submit' formTarget="user-moodstate">Moderate</button>
+                      <button className='add-mood-quick__level-severity-option add-mood-quick__level-severity-option--sev' type='submit' formTarget="user-moodstate">Severe</button>
+                    </div>
                     <iframe name="user-moodstate">
                       Your mood state:
                     </iframe>
@@ -124,7 +120,7 @@ function App() {
                   <article className='add-mood-quick__observations'>
                     <div className='add-mood-quick__observations-all'>
                       <h3>Self Check in</h3>
-                      <form className='add-mood-quick__observations-irritability'>
+                      <div className='add-mood-quick__observations-irritability'>
                         <label htmlFor="irritablity" className='add-mood-quick__observations-irritability-head'>Irritability</label>
                         <select className='add-mood-quick__observations-irritability-menu'>
                           <optgroup className='add-mood-quick__observations-irritability-menugroup' label="irritability level">
@@ -142,9 +138,9 @@ function App() {
                             </option>
                           </optgroup>
                         </select>
-                      </form>
+                      </div>
 
-                      <form className='add-mood-quick__observations-anxiety'>
+                      <div className='add-mood-quick__observations-anxiety'>
                         <label htmlFor="Anxiety" className='add-mood-quick__observations-anxiety-head'>Anxiety</label>
                         <select className='add-mood-quick__observations-anxiety-menu'>
                           <optgroup className='add-mood-quick__observations-anxiety-menugroup' label="anxiety level">
@@ -162,12 +158,12 @@ function App() {
                             </option>
                           </optgroup>
                         </select>
-                      </form>
+                      </div>
                     </div>
                   </article>
 
                   <article className='add-mood-quick__sleep'>
-                    <form className='add-mood-quick__sleep-form'>
+                    <div className='add-mood-quick__sleep-form'>
                       <div className='add-mood-quick__sleep-form-hours'>
                         <label htmlFor="hours slept" className='add-mood-quick__sleep-form-hours-head'>Hours Slept</label>
                         <select className='add-mood-quick__sleep-form-hours-menu'>
@@ -229,20 +225,20 @@ function App() {
                           <input className='add-mood-quick__sleep-form-quality-option add-mood-quick__sleep-form-quality-awesome' type="image" src={awesomesleep} alt="awesome sleep" />
                         </div>
                       </div>
-                    </form>
+                    </div>
                   </article>
 
                   <article className='add-mood-quick__notes'>
-                    <form className='add-mood-quick__notes-form'>
+                    <div className='add-mood-quick__notes-form'>
                       <h3 className='add-mood-quick__notes-form-head add-mood-quick__notes-form-head--title'>Title</h3>
                       <textarea className="add-mood-quick__notes-form-box add-mood-quick__notes-form-box-title" type="Text" placeholder="optional" />
                       <h3 className='add-mood-quick__notes-form-head add-mood-quick__notes-form-head--note'>Notes</h3>
                       <textarea className="add-mood-quick__notes-form-box add-mood-quick__notes-form-box-note" type="Text" placeholder="Add notes and symptoms or keep this blank" />
-                    </form>
+                    </div>
                   </article>
 
                   <article className='add-mood-quick__emote'>
-                    <form className='add-mood-quick__emote-eq'>
+                    <div className='add-mood-quick__emote-eq'>
                       <h3 className='add-mood-quick__emote-head'>Which best represents how you feel?</h3>
                       <article className='add-mood-quick__emote-menu'>
                         <ul className='add-mood-quick__emote-menu-eq'>
@@ -448,9 +444,9 @@ function App() {
                           </li>
                         </ul>
                       </article>
-                    </form>
+                    </div>
                   </article>
-                </form>
+                </div>
                 <button className="add-mood-quick-only__submit" form="quickmood" type="submit">Quick Log</button>
                 <button popovertarget="more-mood" popovertargetaction="show" className='add-mood__showmore'>show more +</button>
               </section>
@@ -476,7 +472,7 @@ function App() {
 
                           <article className='add-mood-more__medapp-medextend'>
                             <div className='add-mood-more__medapp-medextend-eq'>
-                              <form className='add-mood-more__medapp-medextend-queries'>
+                              <article className='add-mood-more__medapp-medextend-queries'>
                                 <div className='add-mood-more__medapp-medextend-queries-eq'>
                                   <div className='add-mood-more__medapp-medextended-queries-left'>
                                     <textarea className='add-mood-more__medapp-medextend-medname' type="text" placeholder='medicine name' />
@@ -493,8 +489,8 @@ function App() {
                                     <button title="missed" type="button" className='add-mood-more__medapp-medextend-queries-miss'>missed it</button>
                                   </div>
                                 </div>
-                                <button className='add-mood-more__medapp-medextend-print' type='submit' formtarget="meds">add</button>
-                              </form>
+                                <button className='add-mood-more__medapp-medextend-print' type='submit' formTarget="meds">add</button>
+                              </article>
                               <iframe className='add-mood-more__medapp-medextend-printhere' name="meds">
                                 added medications in this area
                               </iframe>
@@ -510,7 +506,7 @@ function App() {
 
                           <article className='add-mood-more__medapp-appextend'>
                             <div className='add-mood-more__medapp-appextend-eq'>
-                              <form className='add-mood-more__medapp-appextend-queries'>
+                              <article className='add-mood-more__medapp-appextend-queries'>
                                 <div className='add-mood-more__medapp-appextend-queries-eq'>
                                   <div className='add-mood-more__medapp-appextended-queries-left'>
                                     <textarea className='add-mood-more__medapp-appextend-type' type="text" placeholder='Appointment Type' />
@@ -521,8 +517,8 @@ function App() {
                                     <button title="missed" type="button" className='add-mood-more__medapp-appextend-queries-miss'>missed</button>
                                   </div>
                                 </div>
-                                <button className='add-mood-more__medapp-appextend-print' formtarget="appts">add</button>
-                              </form>
+                                <button className='add-mood-more__medapp-appextend-print' formTarget="appts">add</button>
+                              </article>
                               <iframe className='add-mood-more__medapp-appextend-printhere' name='appts'>
                                 added appointments in this area
                               </iframe>
@@ -570,8 +566,30 @@ function App() {
                       <article className='add-mood-more__symp-extend'>
                         <div className='add-mood-more__symp-extend-all'>
                           <h4 className='add-mood-more__symp-extend-head'>choose as many that are applicable</h4>
-                          <div className='add-mood-more__symp-extend-wrapper'>
-                            <button></button>
+                          <div className='add-mood-more__symp-extend-wrapper' id="symptoms">
+                            <button className='add-mood-more__symp-extend-option' type="button">isolation</button>
+                            <button className='add-mood-more__symp-extend-option' type="button">panic attacks</button>
+                            <button className='add-mood-more__symp-extend-option' type="button">constant sadness</button>
+                            <button className='add-mood-more__symp-extend-option' type="button">mood swings</button>
+                            <button className='add-mood-more__symp-extend-option' type="button">self harm</button>
+
+                            <button className='add-mood-more__symp-extend-option' type="button">overspending</button>
+                            <button className='add-mood-more__symp-extend-option' type="button">winding rumination</button>
+                            <button className='add-mood-more__symp-extend-option' type="button">very low sex drive</button>
+                            <button className='add-mood-more__symp-extend-option' type="button">notably increased sex drive</button>
+                            <button className='add-mood-more__symp-extend-option' type="button">excessive emotions</button>
+
+                            <button className='add-mood-more__symp-extend-option' type="button">low appetite</button>
+                            <button className='add-mood-more__symp-extend-option' type="button">high appettite</button>
+                            <button className='add-mood-more__symp-extend-option' type="button">procrastination</button>
+                            <button className='add-mood-more__symp-extend-option' type="button">easily distracted</button>
+                            <button className='add-mood-more__symp-extend-option' type="button">anxious thoughts</button>
+
+                            <button className='add-mood-more__symp-extend-option' type="button">nervous teeth grinding</button>
+                            <button className='add-mood-more__symp-extend-option' type="button">talking faster than usual</button>
+                            <button className='add-mood-more__symp-extend-option' type="button">nail biting</button>
+                            <button className='add-mood-more__symp-extend-option' type="button">spent all day in bed</button>
+                            <button className='add-mood-more__symp-extend-option' type="button">dissociation</button>
                           </div>
                         </div>
                       </article>
