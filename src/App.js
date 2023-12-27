@@ -7,6 +7,33 @@ import awesomesleep from "./assets/awesome.png";
 import emoji from "./assets/satisfied.png";
 import menu from "./assets/menu.png"
 import arrow from "./assets/then.png"
+import angry from "./assets/emotes/angry.png";
+import annoyed from "./assets/emotes/annoyed.png";
+import anxious from "./assets/emotes/anxious.png";
+import content from "./assets/emotes/content.png";
+import down from "./assets/emotes/down.png";
+import energized from "./assets/emotes/energized.png";
+import excited from "./assets/emotes/excited.png";
+import exhausted from "./assets/emotes/exhausted.png";
+import frustrated from "./assets/emotes/frustrated.png";
+import grateful from "./assets/emotes/grateful.png";
+import happy from "./assets/emotes/happy.png";
+import irritable from "./assets/emotes/irritable.png";
+import hopeless from "./assets/emotes/hopeless.png";
+import loving from "./assets/emotes/loving.png";
+import motivated from "./assets/emotes/motivated.png";
+import panic from "./assets/emotes/panic.png";
+import proud from "./assets/emotes/proud.png";
+import relaxed from "./assets/emotes/relaxed.png";
+import sad from "./assets/emotes/sad.png";
+import satisfied from "./assets/emotes/satisfied.png";
+import stressed from "./assets/emotes/stressed.png";
+import tired from "./assets/emotes/tired.png";
+import unmotivated from "./assets/emotes/unmotivated.png";
+import unsure from "./assets/emotes/unsure.png";
+import worried from "./assets/emotes/worried.png";
+
+
 
 function App() {
   return (
@@ -274,7 +301,7 @@ function App() {
                           <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--motivated'>
                             <button type="button" className='add-mood-quick__emote-menu-option--motivated-button add-mood-quick__emote-menu-option--buttonpress'>
                               <div className='add-mood-quick__emote-menu-option--motivated-button-eq'>
-                                <img className='add-mood-quick__emote-menu-option--motivated-emoji' alt="motivated" src={emoji} />
+                                <img className='add-mood-quick__emote-menu-option--motivated-emoji' alt="motivated" src={motivated} />
                                 <h4 className='add-mood-quick__emote-menu-option--motivated-title'>motivated</h4>
                               </div>
                             </button>
@@ -282,7 +309,7 @@ function App() {
                           <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--anxious'>
                             <button className='add-mood-quick__emote-menu-option--anxious-button add-mood-quick__emote-menu-option--buttonpress' type="button" >
                               <div className='add-mood-quick__emote-menu-option--anxious-button-eq'>
-                                <img className='add-mood-quick__emote-menu-option--anxious-emoji' alt="anxious" src={emoji} />
+                                <img className='add-mood-quick__emote-menu-option--anxious-emoji' alt="anxious" src={anxious} />
                                 <h4 className='add-mood-quick__emote-menu-option--anxious-title'>anxious</h4>
                               </div>
                             </button>
@@ -290,7 +317,7 @@ function App() {
                           <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--relaxed'>
                             <button className='add-mood-quick__emote-menu-option--relaxed-button add-mood-quick__emote-menu-option--buttonpress' type="button">
                               <div className='add-mood-quick__emote-menu-option--relaxed-button-eq'>
-                                <img className='add-mood-quick__emote-menu-option--relaxed-emoji' alt="relaxed" src={emoji} />
+                                <img className='add-mood-quick__emote-menu-option--relaxed-emoji' alt="relaxed" src={relaxed} />
                                 <h4 className='add-mood-quick__emote-menu-option--relaxed-title'>relaxed</h4>
                               </div>
                             </button>
@@ -298,7 +325,7 @@ function App() {
                           <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--stressed'>
                             <button className='add-mood-quick__emote-menu-option--stressed-button add-mood-quick__emote-menu-option--buttonpress' type="button" >
                               <div className='add-mood-quick__emote-menu-option--stressed-button-eq'>
-                                <img className='add-mood-quick__emote-menu-option--stressed-emoji' alt="stressed" src={emoji} />
+                                <img className='add-mood-quick__emote-menu-option--stressed-emoji' alt="stressed" src={stressed} />
                                 <h4 className='add-mood-quick__emote-menu-option--stressed-title'>stressed</h4>
                               </div>
                             </button>
@@ -306,7 +333,7 @@ function App() {
                           <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--unsure'>
                             <button className='add-mood-quick__emote-menu-option--unsure-button add-mood-quick__emote-menu-option--buttonpress' type="button" >
                               <div className='add-mood-quick__emote-menu-option--unsure-button-eq'>
-                                <img className='add-mood-quick__emote-menu-option--unsure-emoji' alt="unsure" src={emoji} />
+                                <img className='add-mood-quick__emote-menu-option--unsure-emoji' alt="unsure" src={unsure} />
                                 <h4 className='add-mood-quick__emote-menu-option--unsure-title'>unsure</h4>
                               </div>
                             </button>
@@ -314,7 +341,7 @@ function App() {
                           <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--tired'>
                             <button className='add-mood-quick__emote-menu-option--tired-button add-mood-quick__emote-menu-option--buttonpress' type="button" >
                               <div className='add-mood-quick__emote-menu-option--tired-button-eq'>
-                                <img className='add-mood-quick__emote-menu-option--tired-emoji' alt="tired" src={emoji} />
+                                <img className='add-mood-quick__emote-menu-option--tired-emoji' alt="tired" src={tired} />
                                 <h4 className='add-mood-quick__emote-menu-option--tired-title'>tired</h4>
                               </div>
                             </button>
@@ -322,7 +349,7 @@ function App() {
                           <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--content'>
                             <button className='add-mood-quick__emote-menu-option--content-button add-mood-quick__emote-menu-option--buttonpress' type="button" >
                               <div className='add-mood-quick__emote-menu-option--content-button-eq'>
-                                <img className='add-mood-quick__emote-menu-option--content-emoji' alt="content" src={emoji} />
+                                <img className='add-mood-quick__emote-menu-option--content-emoji' alt="content" src={content} />
                                 <h4 className='add-mood-quick__emote-menu-option--content-title'>content</h4>
                               </div>
                             </button>
@@ -330,7 +357,7 @@ function App() {
                           <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--grateful'>
                             <button className='add-mood-quick__emote-menu-option--grateful-button add-mood-quick__emote-menu-option--buttonpress' type="button" >
                               <div className='add-mood-quick__emote-menu-option--grateful-button-eq'>
-                                <img className='add-mood-quick__emote-menu-option--grateful-emoji' alt="grateful" src={emoji} />
+                                <img className='add-mood-quick__emote-menu-option--grateful-emoji' alt="grateful" src={grateful} />
                                 <h4 className='add-mood-quick__emote-menu-option--grateful-title'>grateful</h4>
                               </div>
                             </button>
@@ -338,7 +365,7 @@ function App() {
                           <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--down'>
                             <button className='add-mood-quick__emote-menu-option--down-button add-mood-quick__emote-menu-option--buttonpress' type="button" >
                               <div className='add-mood-quick__emote-menu-option--down-button-eq'>
-                                <img className='add-mood-quick__emote-menu-option--down-emoji' alt="down" src={emoji} />
+                                <img className='add-mood-quick__emote-menu-option--down-emoji' alt="down" src={down} />
                                 <h4 className='add-mood-quick__emote-menu-option--down-title'>down</h4>
                               </div>
                             </button>
@@ -346,7 +373,7 @@ function App() {
                           <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--sad'>
                             <button className='add-mood-quick__emote-menu-option--sad-button add-mood-quick__emote-menu-option--buttonpress' type="button" >
                               <div className='add-mood-quick__emote-menu-option--sad-button-eq'>
-                                <img className='add-mood-quick__emote-menu-option--sad-emoji' alt="sad" src={emoji} />
+                                <img className='add-mood-quick__emote-menu-option--sad-emoji' alt="sad" src={sad} />
                                 <h4 className='add-mood-quick__emote-menu-option--sad-title'>sad</h4>
                               </div>
                             </button>
@@ -354,7 +381,7 @@ function App() {
                           <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--proud'>
                             <button className='add-mood-quick__emote-menu-option--proud-button add-mood-quick__emote-menu-option--buttonpress' type="button" >
                               <div className='add-mood-quick__emote-menu-option--proud-button-eq'>
-                                <img className='add-mood-quick__emote-menu-option--proud-emoji' alt="proud" src={emoji} />
+                                <img className='add-mood-quick__emote-menu-option--proud-emoji' alt="proud" src={proud} />
                                 <h4 className='add-mood-quick__emote-menu-option--proud-title'>proud</h4>
                               </div>
                             </button>
@@ -362,7 +389,7 @@ function App() {
                           <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--unmotivated'>
                             <button className='add-mood-quick__emote-menu-option--unmotivated-button add-mood-quick__emote-menu-option--buttonpress' type="button" >
                               <div className='add-mood-quick__emote-menu-option--unmotivated-button-eq'>
-                                <img className='add-mood-quick__emote-menu-option--unmotivated-emoji' alt="unmotivated" src={emoji} />
+                                <img className='add-mood-quick__emote-menu-option--unmotivated-emoji' alt="unmotivated" src={unmotivated} />
                                 <h4 className='add-mood-quick__emote-menu-option--unmotivated-title'>unmotivated</h4>
                               </div>
                             </button>
@@ -370,7 +397,7 @@ function App() {
                           <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--annoyed'>
                             <button className='add-mood-quick__emote-menu-option--annoyed-button add-mood-quick__emote-menu-option--buttonpress' type="button" >
                               <div className='add-mood-quick__emote-menu-option--annoyed-button-eq'>
-                                <img className='add-mood-quick__emote-menu-option--annoyed-emoji' alt="annoyed" src={emoji} />
+                                <img className='add-mood-quick__emote-menu-option--annoyed-emoji' alt="annoyed" src={annoyed} />
                                 <h4 className='add-mood-quick__emote-menu-option--annoyed-title'>annoyed</h4>
                               </div>
                             </button>
@@ -378,7 +405,7 @@ function App() {
                           <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--loving'>
                             <button className='add-mood-quick__emote-menu-option--loving-button add-mood-quick__emote-menu-option--buttonpress' type="button" >
                               <div className='add-mood-quick__emote-menu-option--loving-button-eq'>
-                                <img className='add-mood-quick__emote-menu-option--loving-emoji' alt="loving" src={emoji} />
+                                <img className='add-mood-quick__emote-menu-option--loving-emoji' alt="loving" src={loving} />
                                 <h4 className='add-mood-quick__emote-menu-option--loving-title'>loving</h4>
                               </div>
                             </button>
@@ -386,7 +413,7 @@ function App() {
                           <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--happy'>
                             <button className='add-mood-quick__emote-menu-option--happy-button add-mood-quick__emote-menu-option--buttonpress' type="button" >
                               <div className='add-mood-quick__emote-menu-option--happy-button-eq'>
-                                <img className='add-mood-quick__emote-menu-option--happy-emoji' alt="happy" src={emoji} />
+                                <img className='add-mood-quick__emote-menu-option--happy-emoji' alt="happy" src={happy} />
                                 <h4 className='add-mood-quick__emote-menu-option--happy-title'>happy</h4>
                               </div>
                             </button>
@@ -394,7 +421,7 @@ function App() {
                           <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--worried'>
                             <button className='add-mood-quick__emote-menu-option--worried-button add-mood-quick__emote-menu-option--buttonpress' type="button" >
                               <div className='add-mood-quick__emote-menu-option--worried-button-eq'>
-                                <img className='add-mood-quick__emote-menu-option--worried-emoji' alt="worried" src={emoji} />
+                                <img className='add-mood-quick__emote-menu-option--worried-emoji' alt="worried" src={worried} />
                                 <h4 className='add-mood-quick__emote-menu-option--worried-title'>worried</h4>
                               </div>
                             </button>
@@ -402,7 +429,7 @@ function App() {
                           <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--frustrated'>
                             <button className='add-mood-quick__emote-menu-option--frustrated-button add-mood-quick__emote-menu-option--buttonpress' type="button" >
                               <div className='add-mood-quick__emote-menu-option--frustrated-button-eq'>
-                                <img className='add-mood-quick__emote-menu-option--frustrated-emoji' alt="frustrated" src={emoji} />
+                                <img className='add-mood-quick__emote-menu-option--frustrated-emoji' alt="frustrated" src={frustrated} />
                                 <h4 className='add-mood-quick__emote-menu-option--frustrated-title'>frustrated</h4>
                               </div>
                             </button>
@@ -410,7 +437,7 @@ function App() {
                           <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--satisfied'>
                             <button className='add-mood-quick__emote-menu-option--satisfied-button add-mood-quick__emote-menu-option--buttonpress' type="button" >
                               <div className='add-mood-quick__emote-menu-option--satisfied-button-eq'>
-                                <img className='add-mood-quick__emote-menu-option--satisfied-emoji' alt="satisfied" src={emoji} />
+                                <img className='add-mood-quick__emote-menu-option--satisfied-emoji' alt="satisfied" src={satisfied} />
                                 <h4 className='add-mood-quick__emote-menu-option--satisfied-title'>satisfied</h4>
                               </div>
                             </button>
@@ -418,7 +445,7 @@ function App() {
                           <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--energized'>
                             <button className='add-mood-quick__emote-menu-option--energized-button add-mood-quick__emote-menu-option--buttonpress' type="button" >
                               <div className='add-mood-quick__emote-menu-option--energized-button-eq'>
-                                <img className='add-mood-quick__emote-menu-option--energized-emoji' alt="energized" src={emoji} />
+                                <img className='add-mood-quick__emote-menu-option--energized-emoji' alt="energized" src={energized} />
                                 <h4 className='add-mood-quick__emote-menu-option--energized-title'>energized</h4>
                               </div>
                             </button>
@@ -426,7 +453,7 @@ function App() {
                           <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--excited'>
                             <button className='add-mood-quick__emote-menu-option--excited-button add-mood-quick__emote-menu-option--buttonpress' type="button" >
                               <div className='add-mood-quick__emote-menu-option--excited-button-eq'>
-                                <img className='add-mood-quick__emote-menu-option--excited-emoji' alt="excited" src={emoji} />
+                                <img className='add-mood-quick__emote-menu-option--excited-emoji' alt="excited" src={excited} />
                                 <h4 className='add-mood-quick__emote-menu-option--excited-title'>excited</h4>
                               </div>
                             </button>
@@ -434,7 +461,7 @@ function App() {
                           <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--angry'>
                             <button className='add-mood-quick__emote-menu-option--angry-button add-mood-quick__emote-menu-option--buttonpress' type="button" >
                               <div className='add-mood-quick__emote-menu-option--angry-button-eq'>
-                                <img className='add-mood-quick__emote-menu-option--angry-emoji' alt="angry" src={emoji} />
+                                <img className='add-mood-quick__emote-menu-option--angry-emoji' alt="angry" src={angry} />
                                 <h4 className='add-mood-quick__emote-menu-option--angry-title'>angry</h4>
                               </div>
                             </button>
@@ -442,7 +469,7 @@ function App() {
                           <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--hopeless'>
                             <button className='add-mood-quick__emote-menu-option--hopeless-button add-mood-quick__emote-menu-option--buttonpress' type="button" >
                               <div className='add-mood-quick__emote-menu-option--hopeless-button-eq'>
-                                <img className='add-mood-quick__emote-menu-option--hopeless-emoji' alt="hopeless" src={emoji} />
+                                <img className='add-mood-quick__emote-menu-option--hopeless-emoji' alt="hopeless" src={hopeless} />
                                 <h4 className='add-mood-quick__emote-menu-option--hopeless-title'>hopeless</h4>
                               </div>
                             </button>
@@ -450,7 +477,7 @@ function App() {
                           <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--panicking'>
                             <button className='add-mood-quick__emote-menu-option--panicking-button add-mood-quick__emote-menu-option--buttonpress' type="button" >
                               <div className='add-mood-quick__emote-menu-option--panicking-button-eq'>
-                                <img className='add-mood-quick__emote-menu-option--panicking-emoji' alt="panicking" src={emoji} />
+                                <img className='add-mood-quick__emote-menu-option--panicking-emoji' alt="panicking" src={panic} />
                                 <h4 className='add-mood-quick__emote-menu-option--panicking-title'>panicking</h4>
                               </div>
                             </button>
@@ -458,7 +485,7 @@ function App() {
                           <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--exhausted'>
                             <button className='add-mood-quick__emote-menu-option--exhausted-button add-mood-quick__emote-menu-option--buttonpress' type="button" >
                               <div className='add-mood-quick__emote-menu-option--exhausted-button-eq'>
-                                <img className='add-mood-quick__emote-menu-option--exhausted-emoji' alt="exhausted" src={emoji} />
+                                <img className='add-mood-quick__emote-menu-option--exhausted-emoji' alt="exhausted" src={exhausted} />
                                 <h4 className='add-mood-quick__emote-menu-option--exhausted-title'>exhausted</h4>
                               </div>
                             </button>
@@ -466,7 +493,7 @@ function App() {
                           <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--irritable'>
                             <button className='add-mood-quick__emote-menu-option--irritable-button add-mood-quick__emote-menu-option--buttonpress' type="button" >
                               <div className='add-mood-quick__emote-menu-option--irritable-button-eq'>
-                                <img className='add-mood-quick__emote-menu-option--irritable-emoji' alt="irritable" src={emoji} />
+                                <img className='add-mood-quick__emote-menu-option--irritable-emoji' alt="irritable" src={irritable} />
                                 <h4 className='add-mood-quick__emote-menu-option--irritable-title'>irritable</h4>
                               </div>
                             </button>

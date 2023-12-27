@@ -510,7 +510,7 @@ body {
           @include column;
           &-head {
             @extend .add-mood-quick__observations-irritability-head;
-            margin: .6rem 0 .2rem;
+            margin: 0.6rem 0 0.2rem;
           }
           &-menu {
             @extend .add-mood-quick__observations-irritability-menu;
@@ -521,7 +521,7 @@ body {
 
           &-head {
             @extend .add-mood-quick__observations-irritability-head;
-            margin: 0 0 .2rem;
+            margin: 0 0 0.2rem;
           }
           &-options {
             @include row;
@@ -537,7 +537,8 @@ body {
             margin: 0 0.2rem;
             transition: 0.3s;
             &:hover,
-            &:focus {
+            &:focus,
+            &:active {
               transform: scale(1.3);
             }
           }
@@ -552,21 +553,22 @@ body {
         width: 90%;
         &-head {
           @include mobile-head-category;
-          margin-bottom: .6rem;
+          margin-bottom: 0.6rem;
           &--note {
-            margin-top: .8rem;
+            margin-top: 0.8rem;
           }
         }
         &-box {
           resize: none;
-          padding: .5rem 0 0 .5rem;
+          padding: 0.5rem 0 0 1rem;
           width: 80%;
           border-radius: 1rem;
-          border: $periwinkle .1rem solid;
+          border: $periwinkle 0.1rem solid;
           font-family: avenir, Arial, Helvetica, sans-serif;
           @include mobile-body;
           background-color: $periwinkle-lite;
           color: $white;
+          font-weight: 600;
 
           &-title {
             height: 1.5rem;
@@ -603,8 +605,8 @@ body {
           @include row;
           flex-wrap: wrap;
           justify-content: center;
-          padding: .4rem 0;
-          border: dotted aqua .18rem;
+          padding: 0.4rem 0;
+          border: dotted aqua 0.18rem;
           border-radius: 1rem;
         }
         &-option {
@@ -614,9 +616,13 @@ body {
             background-color: $periwinkle-lite;
             border-radius: 1rem;
             width: 3.8rem;
-            margin: .2rem 0;
-            padding: .2rem 0 0;
-            border: inset .08rem $periwinkle;
+            margin: 0.2rem 0;
+            padding: 0.2rem 0 0;
+            border: inset 0.1rem $periwinkle;
+
+            &:hover, &:focus, &:active {
+              border: dotted .1rem $aqua;
+            }
 
             & div {
               @include column;
@@ -626,11 +632,14 @@ body {
               width: 2rem;
             }
             & h4 {
-              font-size: .5rem;
+              font-size: 0.5rem;
               text-wrap: wrap;
               margin: 0;
               line-height: 1rem;
               color: $blue-light;
+              &:hover {
+                transform: scale(1.4);
+              }
             }
           }
         }
