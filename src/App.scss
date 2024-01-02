@@ -73,9 +73,12 @@ body {
       @include padding-body;
       margin-bottom: 0.5rem;
       @include row;
+      font-weight: bold;
+
       &:hover,
       &:focus {
         color: $aqua;
+        background-color: $periwinkle;
       }
     }
   }
@@ -172,13 +175,11 @@ body {
   @include user;
 
   &-nav {
-    width: 17rem;
+    width: 16rem;
     position: absolute;
     top: 0;
-    right: -1rem;
+    right: 0rem;
     bottom: 0;
-    transition: right 0.5s ease;
-
     background-color: $mint-bright;
     border-radius: 1rem;
 
@@ -189,19 +190,17 @@ body {
     &__top {
       @include column;
       width: 100%;
-      align-items: flex-start;
 
       &-head {
         color: $blue-light;
         border-bottom: 0;
-        margin-left: 1rem;
       }
 
       &-list {
         padding: 0;
         margin: 0;
         width: 90%;
-        padding-left: 0.38rem;
+        @include column;
 
         &-item {
           @include choice-divider;
@@ -210,11 +209,17 @@ body {
           color: $periwinkle;
           @include mobile-subhead;
           @include padding-body;
+          width: 100%;
+
+          &:hover {
+            background-color: $periwinkle;
+            color: $aqua;
+          }
 
           &-add {
             @extend .user-nav__bottom-item-faq;
             margin-top: 1rem;
-            margin-left: 0.6rem;
+            align-self: center;
 
             &--link {
               width: 100%;
@@ -230,7 +235,6 @@ body {
       width: 90%;
 
       &-item {
-        margin-right: 1rem;
 
         &-faq {
           @include mobile-head-section;
@@ -265,8 +269,6 @@ body {
   top: 0;
   right: 16rem;
   cursor: pointer;
-  -moz-transition: right 0.5s ease;
-  transition: right 0.5s ease;
 
   padding-top: 0.5rem;
   padding-right: 1rem;
@@ -275,7 +277,9 @@ body {
     display: none;
 
     &:checked ~ .user-nav {
-      right: -17rem;
+      display: none;
+      -moz-transition: right 0.5s ease;
+      transition: right 0.5s ease;
     }
 
     &:checked ~ #usernav {
@@ -297,10 +301,10 @@ body {
 
   &_1 {
     background: #ff1493;
-    width: 56vh;
+    width: 30vh;
     height: 20vh;
     top: 9%;
-    left: 50%;
+    left: 20%;
   }
 
   &_2 {
@@ -391,6 +395,12 @@ body {
   // &-include {
 
   // }
+  &__showmore {
+    @include button-submit;
+    width: 3rem;
+    font-size: 2rem;
+  }
+
   &-quick {
     @include column;
     &__head {
@@ -417,28 +427,41 @@ body {
 
     &-only {
       @include column;
+
+      &__buttons {
+        @include row;
+        align-self: flex-end;
+        padding-right: 1rem;
+      }
+
+      &__submit {
+        @include button-submit;
+        width: 8rem;
+        height: 2.3rem;
+        margin-right: .5rem;
+      }
     }
 
     &__level {
       @include column;
+      width: 100%;
       &-head {
         @include mobile-head-category;
         margin: 0;
       }
       &-subhead {
-        @include mobile-body;
-        margin: 0;
-        margin-bottom: 0.8rem;
+        @include mobile-subhead;
+        margin: 0 0 1rem;
         color: $blue-light;
       }
       &-divider {
-        width: 1.2rem;
-        margin: 0.6rem 0 0.8rem;
+        width: 1.4rem;
+        margin: 0.8rem 0 1.5rem;
       }
       &-state {
         @include row;
-        justify-content: space-evenly;
-        width: 100%;
+        justify-content: center;
+        width: 90%;
 
         &-opt {
           display: none;
@@ -452,6 +475,7 @@ body {
           }
           &ion {
             @include button-choice;
+            margin: 0 .4rem;
             @include mobile-body;
           }
         }
@@ -486,6 +510,7 @@ body {
         &-head {
           @include mobile-subhead;
           color: $blue-light;
+          font-weight: bolder;
         }
         &-menu {
           @include dropdown;
@@ -506,14 +531,19 @@ body {
     }
     &__sleep {
       &-form {
+        &-head {
+          @include mobile-head-category;
+        margin: 2rem 0 0;
+        }
         &-hours {
           @include column;
           &-head {
             @extend .add-mood-quick__observations-irritability-head;
-            margin: 0.6rem 0 0.2rem;
+            margin: 0.5rem 0 0.2rem;
           }
           &-menu {
             @extend .add-mood-quick__observations-irritability-menu;
+            height: 1.9rem;
           }
         }
         &-quality {
@@ -521,25 +551,25 @@ body {
 
           &-head {
             @extend .add-mood-quick__observations-irritability-head;
-            margin: 0 0 0.2rem;
+            margin: 0.4rem 0 0.2rem;
           }
           &-options {
             @include row;
             justify-content: center;
             background-color: $periwinkle-lite;
-            width: 40%;
-            padding: 0.5rem 3rem;
+            width: 50%;
+            padding: .8rem 3.2rem;
             border-radius: 1rem;
             border: 0.2rem double $periwinkle;
           }
           &-option {
-            width: 2.5rem;
-            margin: 0 0.2rem;
+            width: 3.5rem;
+            margin: 0 0.36rem;
             transition: 0.3s;
             &:hover,
             &:focus,
             &:active {
-              transform: scale(1.3);
+              transform: scale(1.4);
             }
           }
         }
@@ -560,7 +590,7 @@ body {
         }
         &-box {
           resize: none;
-          padding: 0.5rem 0 0 1rem;
+          padding: 0.5rem .5rem 0 1rem;
           width: 80%;
           border-radius: 1rem;
           border: $periwinkle 0.1rem solid;
@@ -606,7 +636,7 @@ body {
           flex-wrap: wrap;
           justify-content: center;
           padding: 0.4rem 0;
-          border: dotted aqua 0.18rem;
+          border: double $aqua 0.18rem;
           border-radius: 1rem;
         }
         &-option {
@@ -619,9 +649,16 @@ body {
             margin: 0.2rem 0;
             padding: 0.2rem 0 0;
             border: inset 0.1rem $periwinkle;
+            transition: transform .4s;
+            &:focus,
+            &:active {
+              border: dotted 0.1rem $aqua;
+              background-color: $periwinkle;
+            }
 
-            &:hover, &:focus, &:active {
-              border: dotted .1rem $aqua;
+            &:hover {
+              transform: scale(2);
+              font-weight: 900;
             }
 
             & div {
@@ -637,11 +674,109 @@ body {
               margin: 0;
               line-height: 1rem;
               color: $blue-light;
-              &:hover {
-                transform: scale(1.4);
-              }
+              
             }
           }
+        }
+      }
+    }
+  }
+  &-more {
+    &__list {
+      @include column;
+    }
+    &__medapp {
+      width: 100%;
+      @include column;
+      &-eq {
+        @include column;
+        width: 90%;
+      }
+      &-choice {
+        &-eq {
+          @include row;
+        }
+        &-head {
+          @include mobile-head-category;
+          margin: 1rem 0;
+        }
+        &-tick {
+          width: 1rem;
+          margin-left: 1rem;
+        }
+      }
+
+      &-extend {
+        width: 100%;
+        &-all {
+          @include column;
+          width: 100%;
+        }
+      }
+      &-meds {
+        
+        &-eq {
+          @include row;
+          width: 100%;
+        }
+        &-head {
+          color: $blue-light;
+          @include mobile-body;
+          @include mobile-head-category;
+          font-weight: 300;
+        }
+        &-tick {
+          @extend .add-mood-more__medapp-choice-tick;
+        }
+      }
+      &-medextend {
+        width: 100%;
+        &-eq {
+          @include column;
+          width: 100%;
+        }
+        &-medname {
+          resize: none;
+          font-family: avenir, Arial, Helvetica, sans-serif;
+          width: 12rem;
+          border-radius: 1rem;
+          &::placeholder {
+            font-family: avenir, Arial, Helvetica, sans-serif;
+          }
+        }
+        &-queries {
+          width: 100%;
+          border: 1px solid blue;
+          &-eq {
+            @include row;
+            justify-content: space-between;
+            width: 100%;
+            border: 1px solid red;
+          }
+          &-left {
+            @include row;
+          }
+          &-dosage {
+            resize: none;
+            font-family: avenir, Arial, Helvetica, sans-serif;
+            border-radius: 1rem;
+            width: 3rem;
+            &::placeholder {
+              font-family: avenir, Arial, Helvetica, sans-serif;
+            }
+          }
+          &-right {
+            @include row;
+          }
+          &-take {
+            @include button-choice;
+          }
+          &-miss {
+            @include button-choice;
+          }
+        }
+        &-print {
+          @include button-submit;
         }
       }
     }

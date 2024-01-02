@@ -37,7 +37,6 @@
     &:hover,
     &:focus {
         outline: 0.26rem dotted $aqua;
-        // color: $aqua;
         text-shadow: -0.2px -.5px 1.7px $glow;
     }
 }
@@ -57,19 +56,23 @@
     height: 1.6rem;
     width: fit-content;
     border-radius: 1rem;
-    border: 0.1rem dashed $periwinkle;
+    border: .1rem dashed $periwinkle;
     background-color: $periwinkle-lite;
     color: $white;
     justify-content: center;
-    padding: .2rem .4rem;
-    &:focus, &:hover {
-        border: 0.1rem solid $periwinkle;
+    padding: .4rem .8rem;
+    &:hover {
+        background-color: $periwinkle;
+        color: $aqua;
+    }
+    &:focus, &:active {
+        border: .1rem solid $periwinkle;
         font-weight: bold;
     }
 }
 
 @mixin dropdown {
-    height: 1.38rem;
+    height: 1.7rem;
     width: fit-content;
     border-radius: 1rem;
     border: 0.08rem solid $periwinkle;
@@ -77,6 +80,21 @@
     color: $blue-light;
     justify-content: center;
     padding: .1rem .3rem;
+    text-align: center;
+}
+
+@mixin button-submit {
+    height: 2rem;
+    border-radius: 1rem;
+    border: 0.1rem solid $periwinkle-lite;
+    background-color: $blue-light;
+    color: $periwinkle;
+    justify-content: center;
+    font-weight: 600;
+    font-size: .85rem;
+    &:hover {
+        background-color: aqua;
+    }
 }
 
 // Text styles
@@ -93,7 +111,7 @@
 }
 
 @mixin mobile-head-category {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     line-height: 1.6rem;
     font-weight: 700;
     letter-spacing: 0.16rem;
@@ -106,13 +124,13 @@
 }
 
 @mixin mobile-subhead {
-    font-size: 0.9rem;
+    font-size: .92rem;
     line-height: 1.125rem;
     font-weight: 500;
 }
 
 @mixin mobile-body {
-    font-size: 0.83rem;
+    font-size: 1rem;
     line-height: 1.125rem;
     font-weight: 400;
 }

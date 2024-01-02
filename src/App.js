@@ -4,7 +4,6 @@ import poorsleep from "./assets/poor.png";
 import okaysleep from "./assets/okay.png";
 import goodsleep from "./assets/goodsleep.png";
 import awesomesleep from "./assets/awesome.png";
-import emoji from "./assets/satisfied.png";
 import menu from "./assets/menu.png"
 import arrow from "./assets/then.png"
 import angry from "./assets/emotes/angry.png";
@@ -175,7 +174,7 @@ function App() {
 
                   <article className='add-mood-quick__observations'>
                     <div className='add-mood-quick__observations-all'>
-                      <h3 className='add-mood-quick__observations-all-head'>Self Check in</h3>
+                      <h3 className='add-mood-quick__observations-all-head'>Imbalance Levels</h3>
                       <div className='add-mood-quick__observations-irritability'>
                         <label htmlFor="irritablity" className='add-mood-quick__observations-irritability-head'>irritability</label>
                         <select className='add-mood-quick__observations-irritability-menu'>
@@ -220,6 +219,7 @@ function App() {
 
                   <article className='add-mood-quick__sleep'>
                     <div className='add-mood-quick__sleep-form'>
+                    <h3 className='add-mood-quick__sleep-form-head'>Sleep</h3>
                       <div className='add-mood-quick__sleep-form-hours'>
                         <label htmlFor="hours slept" className='add-mood-quick__sleep-form-hours-head'>hours slept</label>
                         <select className='add-mood-quick__sleep-form-hours-menu'>
@@ -503,8 +503,10 @@ function App() {
                     </div>
                   </article>
                 </div>
+                <div className="add-mood-quick-only__buttons">
                 <button className="add-mood-quick-only__submit" form="quickmood" type="submit">Quick Log</button>
-                <button popovertarget="more-mood" className='add-mood__showmore'>show more +</button>
+                <button popovertarget="more-mood" className='add-mood__showmore'>+</button>
+                </div>
               </section>
               <section className="add-mood-more" id="more-mood">
                 <ul className='add-mood-more__list'>
@@ -547,9 +549,6 @@ function App() {
                                 </div>
                                 <button className='add-mood-more__medapp-medextend-print' type='submit' formTarget="meds">add</button>
                               </article>
-                              <iframe className='add-mood-more__medapp-medextend-printhere' name="meds">
-                                added medications in this area
-                              </iframe>
                             </div>
                           </article>
 
@@ -575,9 +574,6 @@ function App() {
                                 </div>
                                 <button className='add-mood-more__medapp-appextend-print' formTarget="appts">add</button>
                               </article>
-                              <iframe className='add-mood-more__medapp-appextend-printhere' name='appts'>
-                                added appointments in this area
-                              </iframe>
                             </div>
                           </article>
                         </div>
