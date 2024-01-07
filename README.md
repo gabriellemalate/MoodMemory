@@ -61,8 +61,9 @@ Mood tracking is a challenging chore to maintain
 - React
 - Client libraries: 
     - react
-    - react-router
+    - react-router-dom
     - axios
+    - sass
     - @mui/x-charts/LineChart
 
 <!-- more will be added -->

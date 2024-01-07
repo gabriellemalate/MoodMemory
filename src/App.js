@@ -32,7 +32,7 @@ import unmotivated from "./assets/emotes/unmotivated.png";
 import unsure from "./assets/emotes/unsure.png";
 import worried from "./assets/emotes/worried.png";
 
-
+import { BrowserRouter, Routes, Route,} from 'react-router-dom';
 
 function App() {
   return (
