@@ -1,0 +1,125 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.header {
+    @include row;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    &__menu {
+        @include user;
+        padding: 0.2rem;
+    }
+}
+
+#moodnav {
+    z-index: 2;
+    position: relative;
+    top: 0;
+    left: 7rem;
+    cursor: pointer;
+    -moz-transition: left 0.5s ease;
+    transition: left 0.5s ease;
+
+    padding-top: 0.7rem;
+    padding-left: 1rem;
+
+    &-slider {
+        display: none;
+
+        &:checked ~ .mood-nav {
+            left: -8rem;
+        }
+
+        &:checked ~ .home-nav {
+            left: 0;
+        }
+
+        &:checked ~ #moodnav {
+            left: 0;
+        }
+    }
+}
+
+.home-nav {
+    width: 100%;
+    @include row;
+    justify-content: space-between;
+
+    position: relative;
+    top: 0;
+    left: 7rem;
+    right: 0;
+    bottom: 0;
+    -moz-transition: left 0.5s ease;
+    transition: left 0.5s ease;
+
+    &__eq {
+        @include row;
+        justify-content: space-between;
+        padding: 0 1rem 0 1rem;
+    }
+
+    &__logo {
+        background-color: $periwinkle;
+        padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+        border-radius: 1rem;
+        border: 0;
+        margin-top: 0.5rem;
+        margin-left: 0.5rem;
+        @include mobile-head-page-bold;
+
+        &-mood {
+            color: $white;
+            transition: 0.3s;
+            @include shadow-left;
+
+            &:hover {
+                color: $aqua;
+            }
+
+            &:focus {
+                color: $aqua;
+            }
+        }
+        &-memory {
+            color: $white;
+            transition: 0.3s;
+            @include shadow-right;
+            font-weight: lighter;
+
+            &:hover {
+                color: $aqua;
+            }
+
+            &:focus {
+                color: $aqua;
+            }
+        }
+    }
+}
+
+#usernav {
+    z-index: 2;
+    position: relative;
+    top: 0;
+    right: 16rem;
+    cursor: pointer;
+
+    padding-top: 0.5rem;
+    padding-right: 1rem;
+
+    &-slider {
+        display: none;
+
+        &:checked ~ .user-nav {
+            display: none;
+            -moz-transition: right 0.5s ease;
+            transition: right 0.5s ease;
+        }
+
+        &:checked ~ #usernav {
+            right: 0;
+        }
+    }
+}

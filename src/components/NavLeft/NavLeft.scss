@@ -1,0 +1,53 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.mood-nav {
+    width: 8rem;
+    position: absolute;
+    top: 0;
+    left: -0.8rem;
+    bottom: 0;
+    transition: left 0.5s ease;
+
+    background-color: $mint-bright;
+    border-radius: 1rem;
+
+    &__eq {
+        @include column;
+    }
+
+    &__head {
+        @include mobile-head-page-bold;
+        margin: 1rem 0 0.5rem;
+        color: $blue-light;
+        font-weight: 700;
+        border-bottom: 0.099rem solid $blue-light;
+        text-shadow: 0px 1px 2px $glow;
+    }
+
+    &__list {
+        padding: 0;
+        color: $white;
+        padding-left: 0.5rem;
+
+        &-item {
+            height: 1.6rem;
+            width: 95%;
+            @include row;
+            justify-content: center;
+            @include mobile-subhead;
+            border-radius: 1rem;
+            background-color: $periwinkle-lite;
+            @include padding-body;
+            margin-bottom: 0.5rem;
+            @include row;
+            font-weight: bold;
+
+            &:hover,
+            &:focus {
+                color: $aqua;
+                background-color: $periwinkle;
+            }
+        }
+    }
+}

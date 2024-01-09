@@ -1,0 +1,104 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.add-mood {
+    &-more {
+        &__list {
+            @include column;
+        }
+        &__medapp {
+            width: 100%;
+            @include column;
+            &-eq {
+                @include column;
+                width: 90%;
+            }
+            &-choice {
+                &-eq {
+                    @include row;
+                }
+                &-head {
+                    @include mobile-head-category;
+                    margin: 1rem 0;
+                }
+                &-tick {
+                    width: 1rem;
+                    margin-left: 1rem;
+                }
+            }
+
+            &-extend {
+                width: 100%;
+                &-all {
+                    @include column;
+                    width: 100%;
+                }
+            }
+            &-meds {
+                &-eq {
+                    @include row;
+                    width: 100%;
+                }
+                &-head {
+                    color: $blue-light;
+                    @include mobile-body;
+                    @include mobile-head-category;
+                    font-weight: 300;
+                }
+                &-tick {
+                    @extend .add-mood-more__medapp-choice-tick;
+                }
+            }
+            &-medextend {
+                width: 100%;
+                &-eq {
+                    @include column;
+                    width: 100%;
+                }
+                &-medname {
+                    resize: none;
+                    font-family: avenir, Arial, Helvetica, sans-serif;
+                    width: 12rem;
+                    border-radius: 1rem;
+                    &::placeholder {
+                        font-family: avenir, Arial, Helvetica, sans-serif;
+                    }
+                }
+                &-queries {
+                    width: 100%;
+                    border: 1px solid blue;
+                    &-eq {
+                        @include row;
+                        justify-content: space-between;
+                        width: 100%;
+                        border: 1px solid red;
+                    }
+                    &-left {
+                        @include row;
+                    }
+                    &-dosage {
+                        resize: none;
+                        font-family: avenir, Arial, Helvetica, sans-serif;
+                        border-radius: 1rem;
+                        width: 3rem;
+                        &::placeholder {
+                            font-family: avenir, Arial, Helvetica, sans-serif;
+                        }
+                    }
+                    &-right {
+                        @include row;
+                    }
+                    &-take {
+                        @include button-choice;
+                    }
+                    &-miss {
+                        @include button-choice;
+                    }
+                }
+                &-print {
+                    @include button-submit;
+                }
+            }
+        }
+    }
+}

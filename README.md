@@ -82,8 +82,8 @@ Mood tracking is a challenging chore to maintain
 - *this is a nice to have display feature for the submission* Memory Library
 
 ### Mockups
-**note** the blocks with ***yellow*** background colors are *not* meant to be functional or fully so for this project submission completion. These components are there purely for display.
-**note** the blocks with ***black*** background colors are *nice to haves*. They are *not* project submission completion goals at all.
+**note** the blocks with ***yellow*** background colors are *not* meant to be functional or fully so for this project submission completion. These components are there for display of what's to come soon after bootcamp.
+**note** the blocks with ***black*** background colors are *nice to haves*. They are *not* project submission completion goals but may be implemented soon or will be implemented in the near future.
 *these reminders will be noted by a legend within the mockups as well*
 
 #### Welcome Page
@@ -100,15 +100,15 @@ Mood tracking is a challenging chore to maintain
 
 #### Memory Home Page
 *nice to have*. 
-if able to display for the sprint: *it is still a nice to have non-functional feature*. full functionality beyond display are *not* part of my guidelines for submssion completion. 
+if able to display for the sprint: it is still a "nice to have" non-functional feature. full functionality beyond display are not part of my guidelines for submssion completion but it is possible it will be accomplished, time-permitting.
 ![](extras.pdf)
 
 #### Memory Library Page
-*nice to have* feature. *not* part of my guidelines for submssion completion.
+*nice to have* feature. not part of my guidelines for submssion completion. may possibly be accomplished, time permitting.
 ![](extras.pdf)
 
 #### BONUS "Nice To Have" Memory Rooms Carousel Page
-*nice to have* feature. *not* part of my guidelines for submssion completion.
+*nice to have* feature. not*part of my guidelines for submssion completion.
 ![](extras.pdf)
 
 ### Data
@@ -272,13 +272,13 @@ POSSIBLY
 - display the chosen emoji-emotion from the form just submitted into the "log successful" pop up.
 - search bar displays all moods in mood library with the typed keyword
 - search bar display all memories in the memory library with the typed keyword.
+- loading animation with memory poetry.
 
 PROBABLY NOT SOON
-- loading animation with memory poetry
 - memory rooms page: space to organize memories into user specified compartments. + ability to view them via a "room carousel"
 - log in, create new user, forgot password.
 
-DEFINITELY NOT SOON
+DEFINITELY NOT DURING THE BOOTCAMP
 - memory features are functional
 - place to store & manage mood patterns.
 - combine the moodmap with the memory timeline in a joint line graph with adjustable date scopes. This feature is great for people with PTSD, or even PTSD from multiple events, especially when some expereinces may have been mentally blocked from a survival coping mechanism while the resulting fight/flight/fawn/freeze behaviors are still actively affecting the person.

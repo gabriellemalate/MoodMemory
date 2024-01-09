@@ -1,0 +1,93 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.user {
+    @include user;
+
+    &-nav {
+        width: 16rem;
+        position: absolute;
+        top: 0;
+        right: 0rem;
+        bottom: 0;
+        background-color: $mint-bright;
+        border-radius: 1rem;
+
+        &__eq {
+            @include column;
+        }
+
+        &__top {
+            @include column;
+            width: 100%;
+
+            &-head {
+                color: $blue-light;
+                border-bottom: 0;
+            }
+
+            &-list {
+                padding: 0;
+                margin: 0;
+                width: 90%;
+                @include column;
+
+                &-item {
+                    @include choice-divider;
+                    margin: 0.4rem 0;
+                    font-weight: bold;
+                    color: $periwinkle;
+                    @include mobile-subhead;
+                    @include padding-body;
+                    width: 100%;
+
+                    &:hover {
+                        background-color: $periwinkle;
+                        color: $aqua;
+                    }
+
+                    &-add {
+                        @extend .user-nav__bottom-item-faq;
+                        margin-top: 1rem;
+                        align-self: center;
+
+                        &--link {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+
+        &__bottom {
+            padding: 0;
+            @include column;
+            width: 90%;
+
+            &-item {
+                &-faq {
+                    @include mobile-head-section;
+                    background-color: $periwinkle;
+                    @include button;
+
+                    &-link {
+                        width: 100%;
+                    }
+                }
+
+                &-logout-button {
+                    @include button-label;
+                    @include mobile-subhead;
+                    letter-spacing: 0.18rem;
+                    margin-top: 3rem;
+
+                    &:hover,
+                    &:focus {
+                        border: 0.3rem double $periwinkle;
+                        height: 2rem;
+                    }
+                }
+            }
+        }
+    }
+}

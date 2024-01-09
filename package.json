@@ -3,6 +3,7 @@
     "@mui/x-charts": "^6.18.4",
     "axios": "^1.6.2",
     "react-router": "^6.21.1",
+    "react-router-dom": "^6.21.1",
     "react-scripts": "^5.0.1",
     "sass": "^1.69.5",
     "web-vitals": "^3.5.0"
