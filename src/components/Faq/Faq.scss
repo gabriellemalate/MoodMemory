@@ -1,0 +1,52 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.faq {
+    background-color: hsla(33, 86%, 54%, 0.3);
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 5rem;
+    width: 94%;
+    height: 150vh;
+
+    &-eq {
+        width: 98%;
+        @include column;
+    }
+    &-head {
+        font-size: 2rem;
+        padding: 1rem 0 .6rem;
+        letter-spacing: .15rem;
+        border-bottom: .2rem $white solid;
+        width: 26vw;
+        color: $white;
+    }
+    &-questions {
+        @include column;
+    }
+    &-query {
+        @include column;
+        width: 90%;
+        padding: .6rem 0;
+
+        &__head {
+            align-self: flex-start;
+            text-align: start;
+            font-size: 1.4rem;
+            margin: 0;
+            padding: 0 0 .5rem;
+            color: $periwinkle;
+        }
+        &__answer {
+            margin: 0;
+            width: 88%;
+            color: $blue-light;
+
+            &-link {
+                margin: 0;
+                color: $blue;
+            }
+        }
+        
+    }
+}

@@ -5,12 +5,11 @@ import { BrowserRouter, Routes, Route,} from 'react-router-dom';
 import Header from './components/Header/Header';
 import NotFound from "./pages/NotFound/NotFound";
 // import Success from "./components/Success/Success"
-import MoodHomePage from "./pages/MoodHomePage/MoodHomePage"
+import MoodHomePage from "./pages/MoodHomePage/MoodHomePage";
 
-import MoodLogsPage from "./pages/MoodLogsPage/MoodLogsPage"
-import MoodMapsPage from "./pages/MoodMapsPage/MoodMapsPage"
-import MemoryHomePage from "./pages/MemoryHomePage/MemoryHomePage"
-
+import MoodLogsPage from "./pages/MoodLogsPage/MoodLogsPage";
+import MoodMapsPage from "./pages/MoodMapsPage/MoodMapsPage";
+import MemoryHomePage from "./pages/MemoryHomePage/MemoryHomePage";
 
 function App() {
   return (

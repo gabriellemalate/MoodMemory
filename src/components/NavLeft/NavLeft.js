@@ -10,16 +10,16 @@ function NavLeft() {
                     <h2 className='mood-nav__head'>mood</h2>
 
                     <ul className='mood-nav__list'>
-                        <li className='mood-nav__list-logs mood-nav__list-item'>
-                            <a className='mood-nav__list-logs-link' href="">
+                        <Link to="/logs">
+                            <li className='mood-nav__list-logs mood-nav__list-item'>
                                 Mood Logs
-                            </a>
-                        </li>
+                            </li>
+                        </Link>
+                        <Link to="/maps">
                         <li className='mood-nav__list-map mood-nav__list-item'>
-                            <a className='mood-nav__list-map-link' href="">
-                                Mood Maps
-                            </a>
+                            Mood Maps
                         </li>
+                        </Link>
                     </ul>
                 </div>
             </nav>

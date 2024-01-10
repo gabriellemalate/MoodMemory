@@ -3,6 +3,7 @@ import './ExtendedForm.scss';
 function ExtendedForm() {
     return (
         <>
+        
             <section className="add-mood-more" id="more-mood">
                 <ul className='add-mood-more__list'>
                     <li className='add-mood-more__medapp'>

@@ -415,8 +415,7 @@ function QuickForm() {
                     </article>
                 </div>
                 <div className="add-mood-quick-only__buttons">
-                    <button className="add-mood-quick-only__submit" form="quickmood" type="submit">Quick Log</button>
-                    <button popovertarget="more-mood" className='add-mood__showmore'>+</button>
+                    <button className="add-mood-quick-only__submit" form="quickmood" type="submit">Log  +</button>
                 </div>
             </section>
         </>

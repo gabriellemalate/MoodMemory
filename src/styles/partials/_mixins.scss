@@ -93,7 +93,9 @@
     font-weight: 600;
     font-size: .85rem;
     &:hover {
-        background-color: aqua;
+        background-color: $cyan;
+        border: 0.3rem dotted $periwinkle-lite;
+        color: blue;
     }
 }
 

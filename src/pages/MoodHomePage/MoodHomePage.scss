@@ -3,6 +3,10 @@
 
 .main {
     width: 100%;
+
+    &__eq {
+        @include column;
+    }
 }
 
 .blobs {
@@ -17,59 +21,82 @@
     background-clip: text;
 
     &_1 {
-        background: #ff1493;
-        width: 30vh;
-        height: 20vh;
-        top: 9%;
-        left: 20%;
+        background: #01f5a0;
+        width: 48vh;
+        height: 15vh;
+        top: 8%;
+        left: 6%;
     }
 
     &_2 {
-        background: #ff4500;
-        width: 80px;
-        height: 80px;
-        top: 155px;
-        left: 230px;
+        background: #00ffff;
+        width: 49vh;
+        height: 24vh;
+        top: 136%;
+        left: 5%;
     }
 
     &_3 {
-        background: #00ff00;
-        width: 60px;
-        height: 60px;
-        top: 145px;
-        left: 20px;
+        background: #9009e3;
+        width: 21vh;
+        height: 70vh;
+        top: 63%;
+        left: 55%;
     }
 
     &_4 {
-        background: #ff0000;
-        width: 100px;
-        height: 100px;
-        top: 115px;
-        left: 100px;
+        background: #1e5aff;
+        width: 40vh;
+        height: 44vh;
+        top: 171%;
+        left: 10%;
     }
 
     &_5 {
-        background: #ffff00;
-        width: 50px;
-        height: 50px;
-        top: 55px;
-        left: 70px;
+        background: #ff00a2;
+        width: 18vh;
+        height: 24vh;
+        top: 26%;
+        left: 60%;
     }
 
     &_6 {
-        background: #00ffff;
-        width: 60px;
-        height: 60px;
-        top: 220px;
-        left: 55px;
+        background: #32c932;
+        width: 30vh;
+        height: 30vh;
+        top: 40%;
+        left: 5%;
     }
 
     &_7 {
         background: #ff8c00;
-        width: 50px;
-        height: 50px;
-        top: 210px;
-        left: 180px;
+        width: 46vh;
+        height: 16vh;
+        top: 92%;
+        left: 8%;
+    }
+
+    &_8 {
+        background: #21c3d8;
+        width: 35vh;
+        height: 60vh;
+        top: 235%;
+        left: 30%;
+    }
+
+    &_9 {
+        background: #ff0000;
+        width: 40vh;
+        height: 19vh;
+        top: 211%;
+        left: 20%;
+    }
+    &_10 {
+        background: #ff00dd;
+        width: 40vh;
+        height: 26vh;
+        top: 289%;
+        left: 6%;
     }
 }
 @keyframes blobs {

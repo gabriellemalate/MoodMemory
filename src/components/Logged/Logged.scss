@@ -1,0 +1,78 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.logged {
+    width: 90%;
+    border-radius: 1rem;
+    @include column;
+    padding: 0;
+    background-color: rgba(54, 190, 249, 0.5);
+
+    &-eq {
+        @include row;
+        justify-content: space-between;
+        width: 94%;
+    }
+    &__frame {
+        margin-right: 1rem;
+        width: 8vh;
+        height: 8vh;
+        border-radius: 1rem;
+        border: .15rem solid rgb(78, 0, 131);
+        @include column;
+        justify-content: center;
+
+        &-emoji {
+            width: 5vh;
+            max-width: 2.5rem;
+        }
+    }
+    &-info {
+        width: 80%;
+        margin: 0;
+
+        &__top {
+            @include row;
+            justify-content: space-between;
+            &-left {
+
+                &-emotion {
+                    margin: 0;
+                }
+                &-title {
+                    margin: 0;
+                }
+            }
+            &-right {
+
+                &-date {
+                    margin: 0;
+                }
+                &-time {
+                    margin: 0;
+                }
+            }
+        }
+        &__bottom {
+            &-eq {
+                
+            }
+            &-state {
+                margin: 0;
+            }
+            &-lower {
+                margin: 0;
+
+                &-irr {
+
+                }
+                &-anx {
+
+                }
+                &-hours {
+
+                }
+            }
+        }
+    }
+}

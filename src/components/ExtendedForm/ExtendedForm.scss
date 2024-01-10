@@ -1,6 +1,7 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
+
 .add-mood {
     &-more {
         &__list {
@@ -84,6 +85,7 @@
                         &::placeholder {
                             font-family: avenir, Arial, Helvetica, sans-serif;
                         }
+
                     }
                     &-right {
                         @include row;
@@ -97,6 +99,16 @@
                 }
                 &-print {
                     @include button-submit;
+                }
+            }
+            &-appts {
+                &-eq {
+                    @include row;
+                    width: 100%;
+                }
+                &-head {
+                    @extend .add-mood-more__medapp-meds-head;
+                    margin: 1.5rem .4rem 1rem 0;
                 }
             }
         }
