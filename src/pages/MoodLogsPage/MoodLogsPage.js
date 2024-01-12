@@ -1,7 +1,7 @@
 import './MoodLogsPage.scss';
 
 import Logged from '../../components/Logged/Logged';
-// import LoggedExpand from "../../components/LoggedExpand/LoggedExpand";
+import LoggedExpand from "../../components/LoggedExpand/LoggedExpand";
 import MagnifyingGlass from "../../assets/search.svg"
 import Header from '../../components/Header/Header';
 
@@ -22,7 +22,8 @@ function MoodLogsPage() {
                     <section className='all-logs__logs'>
                         <Logged/>
                         <Logged/>
-                        {/* <LoggedExpand/> */}
+                        <LoggedExpand/>
+                        <Logged/>
                     </section>
                 </div>
             </main>
