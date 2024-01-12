@@ -14,7 +14,7 @@ function Header() {
             <header className='header'>
                 <input id="moodnav-slider" type="checkbox" role="button" />
                 <label id="moodnav" htmlFor="moodnav-slider">
-                    <img className="header__menu" alt="navigation menu" src={menu} />
+                    <img className="header__menu" alt="navigation menu" src={menu} title='Menu'/>
                 </label>
 
                 <NavLeft/>
@@ -30,7 +30,7 @@ function Header() {
 
                 <input id="usernav-slider" type="checkbox" role="button" />
                 <label id="usernav" htmlFor="usernav-slider">
-                    <img className="user" alt="You" src={user} />
+                    <img className="user" alt="You" title='You' src={user} />
                 </label>
 
                 <NavRight/>

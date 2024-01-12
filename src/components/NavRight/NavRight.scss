@@ -80,10 +80,14 @@
                     letter-spacing: 0.18rem;
                     margin-top: 3rem;
 
-                    &:hover,
-                    &:focus {
+                    &:hover {
                         border: 0.3rem double $periwinkle;
                         height: 2rem;
+                    }
+                    &:active {
+                        background-color: $periwinkle;
+                        border: 0;
+                        outline: .2rem dotted $cyan;
                     }
                 }
             }

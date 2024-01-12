@@ -1,6 +1,7 @@
 import './App.scss';
-
-import { BrowserRouter, Routes, Route,} from 'react-router-dom';
+import { auth } from "./firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import NotFound from "./pages/NotFound/NotFound";
 // import Success from "./components/Success/Success"
 import MoodHomePage from "./pages/MoodHomePage/MoodHomePage";
@@ -10,11 +11,12 @@ import MemoryHomePage from "./pages/MemoryHomePage/MemoryHomePage";
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 
 function App() {
+  const [user] = useAuthState(auth);
   return (
     <>
     <BrowserRouter>
         <Routes>
-          <Route path='/' element={<WelcomePage />} />
+          <Route path='/' element={user ? <Navigate to="/moodhome"/> : <WelcomePage/>} />
           <Route path='/moodhome' element={<MoodHomePage />} />
           <Route path='/logs' element={<MoodLogsPage />} />
           {/* <Route path='/logs/:logId' element={<SelectedVideo />} /> */}

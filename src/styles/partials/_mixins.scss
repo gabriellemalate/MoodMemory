@@ -86,16 +86,23 @@
 @mixin button-submit {
     height: 2rem;
     border-radius: 1rem;
-    border: 0.1rem solid $periwinkle-lite;
+    border: 0.1rem solid green;
     background-color: $blue-light;
-    color: $periwinkle;
+    color: rgb(0, 55, 0);
     justify-content: center;
     font-weight: 600;
     font-size: .85rem;
     &:hover {
         background-color: $cyan;
-        border: 0.3rem dotted $periwinkle-lite;
+        outline: 0.3rem dotted green;
+        border: 0;
         color: blue;
+        font-weight: bold;
+    }
+    &:active {
+        background-color: rgb(40, 175, 40);
+        outline: 0;
+        color: $white;
     }
 }
 
@@ -147,7 +154,7 @@
 @mixin user {
     border-radius: 50%;
     width: 8vw;
-    max-width: 2rem;
+    max-width: 2.2rem;
     padding: 0.2rem 0.4rem 0.2rem 0.4rem;
     background-color: rgb(117, 203, 117);
 }
