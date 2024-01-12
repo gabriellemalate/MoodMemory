@@ -1,8 +1,10 @@
 import './MemoryHomePage.scss';
+import Header from '../../components/Header/Header';
 
 function MemoryHomePage() {
     return (
         <>
+            <Header />
             <main className='add-mem'>
                 <div className='add-mem__eq'>
                     <h1>Welcome to your Memories</h1>
@@ -16,7 +18,7 @@ function MemoryHomePage() {
                         <div className="blobs blobs_6" />
                         <div className="blobs blobs_7" />
                     </article>
-                    
+
                 </div>
             </main>
         </>

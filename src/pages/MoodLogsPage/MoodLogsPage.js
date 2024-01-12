@@ -3,10 +3,12 @@ import './MoodLogsPage.scss';
 import Logged from '../../components/Logged/Logged';
 // import LoggedExpand from "../../components/LoggedExpand/LoggedExpand";
 import MagnifyingGlass from "../../assets/search.svg"
+import Header from '../../components/Header/Header';
 
 function MoodLogsPage() {
     return (
         <>
+        <Header/>
             <main className='all-logs'>
                 <div className='all-logs__eq'>
                     <h1 className='all-logs__head'>Your Logged Moods</h1>

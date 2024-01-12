@@ -22,7 +22,7 @@ function Header() {
                 <nav className='home-nav'>
                     <div className='home-nav__eq'>
                         <div className='home-nav__logo'>
-                            <Link className='home-nav__logo-mood' to="/">mood</Link>
+                            <Link className='home-nav__logo-mood' to="/moodhome">mood</Link>
                             <Link className='home-nav__logo-memory' to="/memoryhome">memory</Link>
                         </div>
                     </div>

@@ -12,8 +12,8 @@ function WelcomePage() {
                 </div>
                 <article className="welcome__logo">
                     <div className="welcome__logo-eq">
-                        <h3 className="welcome__logo-mood">Mood</h3>
-                        <h3 className="welcome__logo-memory">Memory</h3>
+                        <Link to="/moodhome" className="welcome__logo-mood">Mood</Link>
+                        <Link to="" className="welcome__logo-memory">Memory</Link>
                     </div>
                 </article>
                 <button className="welcome__button">

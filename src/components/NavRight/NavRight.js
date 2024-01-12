@@ -20,7 +20,7 @@ function NavRight() {
                                     87 memories secured
                                 </li>
                                 <li className='user-nav__top-list-item-add'>
-                                    <Link className='user-nav__top-list-item-add--link' to="/">+ New Log</Link>
+                                    <Link className='user-nav__top-list-item-add--link' to="/moodhome">+ New Log</Link>
                                 </li>
                             </ul>
                         </div>

@@ -2,10 +2,12 @@ import './MoodHomePage.scss';
 
 import QuickForm from '../../components/QuickForm/QuickForm';
 import Faq from "../../components/Faq/Faq"
+import Header from '../../components/Header/Header';
 
-function Header() {
+function MoodHomePage() {
     return (
         <>
+            <Header/>
             <main className='main'>
                 <div className='main__eq'>
 
@@ -38,4 +40,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default MoodHomePage;
