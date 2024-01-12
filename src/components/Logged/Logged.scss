@@ -4,21 +4,31 @@
 .logged {
     width: 90%;
     border-radius: 1rem;
+    margin: 0.6rem;
     @include column;
     padding: 0;
     background-color: rgba(54, 190, 249, 0.5);
+    color: aliceblue;
+    &:hover {
+        background-color: rgba(68, 187, 239, 0.8);
+    }
+    &:active {
+        background-color: rgb(100, 205, 249);
+    }
 
     &-eq {
         @include row;
         justify-content: space-between;
         width: 94%;
+        padding: 0.8rem 0 0.8rem;
     }
     &__frame {
         margin-right: 1rem;
         width: 8vh;
         height: 8vh;
         border-radius: 1rem;
-        border: .15rem solid rgb(78, 0, 131);
+        border: 0.1rem solid rgb(228, 138, 255);
+        background-color: rgba(127, 206, 240, 0.5);
         @include column;
         justify-content: center;
 
@@ -29,49 +39,57 @@
     }
     &-info {
         width: 80%;
-        margin: 0;
+        padding-right: .1rem;
 
         &__top {
             @include row;
             justify-content: space-between;
-            &-left {
 
+            &-left {
+                text-align: start;
                 &-emotion {
                     margin: 0;
+                    font-size: 1.2rem;
+                    line-height: 1;
+                    font-weight: 500;
                 }
                 &-title {
                     margin: 0;
+                    padding: 0;
+                    font-size: 1rem;
+                    letter-spacing: 0.1rem;
+                    font-weight: 200;
+                    line-height: 1;
                 }
             }
             &-right {
-
+                text-align: end;
                 &-date {
-                    margin: 0;
+                    @extend .logged-info__top-left-emotion;
                 }
                 &-time {
-                    margin: 0;
+                    @extend .logged-info__top-left-title;
                 }
             }
         }
         &__bottom {
             &-eq {
-                
+                @include column;
             }
             &-state {
-                margin: 0;
+                @extend .logged-info__top-left-emotion;
             }
             &-lower {
-                margin: 0;
-
-                &-irr {
-
-                }
-                &-anx {
-
-                }
-                &-hours {
-
-                }
+                @extend .logged-info__top-left-title;
+                @include row;
+                justify-content: space-between;
+                width: 60%;
+                // &-irr {
+                // }
+                // &-anx {
+                // }
+                // &-hours {
+                // }
             }
         }
     }

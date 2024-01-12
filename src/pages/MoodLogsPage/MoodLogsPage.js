@@ -14,10 +14,13 @@ function MoodLogsPage() {
                     <h1 className='all-logs__head'>Your Logged Moods</h1>
 
                     <form className="all-logs__search" action="" method="">
-                        <img className="all-logs__search-magnifying-glass" src={MagnifyingGlass} alt="Search" />
                         <textarea className="all-logs__search-bar" type="search" placeholder="Search" />
+                        <button className="all-logs__search-button">
+                        <img className="all-logs__search-button-magnifying-glass" src={MagnifyingGlass} alt="Search" />
+                        </button>
                     </form>
                     <section className='all-logs__logs'>
+                        <Logged/>
                         <Logged/>
                         {/* <LoggedExpand/> */}
                     </section>

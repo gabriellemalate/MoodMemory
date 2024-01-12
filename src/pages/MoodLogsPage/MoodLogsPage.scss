@@ -11,17 +11,36 @@
     &__head {
         letter-spacing: .16rem;
         border-bottom: .1rem solid $white;
-        width: 80%;
+        width: fit-content;
+        padding-bottom: .8rem;
+        &:hover {
+            @include shadow-left;
+            border-color: $glow;
+        }
     }
     &__search {
-
-        &-magnifying-glass {
-
+        @include row;
+        background-color: rgb(177, 236, 214);
+        border-radius: 1.5rem;
+        padding: .2rem .6rem;
+        &-button {
+            border: 0;
+            margin-left: .3rem;
+            background-color: rgb(177, 236, 214);
+            cursor: pointer;
+            border-radius: 1rem;
+            &:hover {
+                background-color: rgb(208, 241, 229);
+            }
         }
         &-bar {
             border-radius: 1rem;
+            font-family: avenir;
+            padding: .5rem 1rem;
+            height: 2.2rem;
+            resize: none;
             &::placeholder {
-
+                color: rgb(66, 108, 126)
             }
         }
     }

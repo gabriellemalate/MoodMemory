@@ -24,9 +24,9 @@ function Logged() {
                             <div className='logged-info__bottom-eq'>
                                 <h2 className='logged-info__bottom-state'>state</h2>
                                 <div className='logged-info__bottom-lower'>
-                                    <span className='logged-info__bottom-lower-irr'>Irr</span>
-                                    <span className='logged-info__bottom-lower-anx'>Anx</span>
-                                    <span className='logged-info__bottom-lower-hours'>| hours</span>
+                                    <span className='logged-info__bottom-lower-irr'>Irr: </span>
+                                    <span className='logged-info__bottom-lower-anx'>Anx: </span>
+                                    <span className='logged-info__bottom-lower-hours'> Hours: </span>
                                 </div>
                             </div>
                         </div>
