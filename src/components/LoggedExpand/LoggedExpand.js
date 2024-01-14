@@ -13,8 +13,6 @@ function LoggedExpand() {
                                 <img className='open-top-left__frame-emoji' alt='open emotion' src={emote} />
                                 <h2 className='open-top-left__frame-emotion'>emotion</h2>
                             </div>
-
-                            <h3 className='open-top-left__title'>title</h3>
                         </div>
                         <div className='open-top-right'>
                             <div className='open-top-right__stamp'>
@@ -24,12 +22,20 @@ function LoggedExpand() {
                             <h2 className='open-top-right__state'>Low Mild</h2>
                         </div>
                     </div>
+                    <h3 className='open-top-left__title'>title</h3>
                     <div className='open-bottom'>
                         <div className='open-bottom-left'>
 
                             <div className='open-bottom-left__obs'>
-                                <span className='open-bottom-left__obs-irr'>Irr: </span >
-                                <span className='open-bottom-left__obs-anx'>Anx: </span >
+                                <p className='open-bottom-left__obs-level'>
+                                    Irritability
+                                    <span className='open-bottom-left__obs-irr' > 1</span>
+                                </p>
+                                <p className='open-bottom-left__obs-level'>
+                                    Anxiety
+                                    <span className='open-bottom-left__obs-anx'> 1</span>
+                                </p>
+
                             </div>
                         </div>
                         <div className='open-bottom-right'>
@@ -38,12 +44,16 @@ function LoggedExpand() {
                         </div>
                     </div>
                     <p className='open__notes'>
+                        <div className='open__notes-frame'>
                         user notes go here
+                        </div>
                     </p>
                     <form className='open-add'>
-                        <label className="open-add__label">New Message:</label>
-                        <input type="text" id="messageInput" name="messageInput" placeholder="Enter a message" className="open-add__input" />
-                        <button className='open-add__button'>add</button>
+                        <label className="open-add__label">Add insight from hindsite ~</label>
+                        <div className='open-add__enter'>
+                            <input type="text" id="extracomment" name="extracomment" placeholder="What's on your mind?" className="open-add__input" />
+                            <button className='open-add__button'>add</button>
+                        </div>
                     </form>
                     <button className='open__close'>
                         close

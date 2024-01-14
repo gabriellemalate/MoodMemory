@@ -16,6 +16,7 @@
         @include row;
         width: 100%;
         justify-content: space-between;
+        margin: 0;
 
         &-left {
             width: 50%;
@@ -23,27 +24,28 @@
                 @include row;
                 background-color: $periwinkle-lite;
                 border-radius: 1rem;
-                padding: 0 1rem;
+                padding: .5rem 1rem;
                 &-emoji {
-                    width: 2.5rem;
+                    width: 3rem;
                     margin-right: 1rem;
                 }
                 // &-emotion {
                 // }
             }
             &__title {
-                letter-spacing: 0.1rem;
+                letter-spacing: 0.08rem;
                 background-color: rgb(70, 178, 178, 0.6);
                 border-radius: 1rem;
-                margin-top: 0.5rem;
+                margin: 1rem 0 1rem;
                 padding: 0.2rem;
+                font-weight: 500;
+                width: 100%;
             }
         }
         &-right {
             @include column;
             width: 45%;
             align-items: flex-end;
-            align-self: start;
             justify-content: space-between;
 
             &__stamp {
@@ -67,42 +69,122 @@
                 width: 100%;
                 border-radius: 1rem;
                 background-color: $periwinkle-lite;
-                padding: .6rem 1rem;
+                padding: .4rem 1rem;
                 margin: .5rem 0 0;
                 letter-spacing: .1rem;
-                font-weight: 600;
-                font-size: 1.5rem;
+                font-weight: 500;
+                font-size: 1.2rem;
             }
         }
     }
     &-bottom {
+        width: 100%;
+        @include row;
+        justify-content: space-between;
+        margin: 0;
         &-left {
-            &__state {
-            }
+            margin: 0;
+            width: 50%;
             &__obs {
+                margin: 0;
+                width: 100%;
+                background-color: $periwinkle-lite;
+                border-radius: 1rem;
+                @include column;
+                padding: .3rem 1rem;
+                &-level {
+                    margin: 0;
+                    padding: .2rem 0;
+                }
                 &-irr {
+                    font-weight: 700;
                 }
                 &-anx {
+                    @extend .open-bottom-left__obs-irr;
                 }
             }
         }
         &-right {
+            margin: 0;
+            @include row;
+            background-color: $periwinkle-lite;
+            border-radius: 1rem;
+            padding: .4em 1rem;
+            width: 45%;
+            justify-content: center;
             &__hours {
+                padding-right: 1rem;
             }
             &__quality {
+                width: 3.5rem;
             }
         }
     }
     &__notes {
+        background-color: rgb(70, 178, 178, 0.6);
+        border-radius: 1rem;
+        width: 100%;
+        padding: .6rem;
+        &-frame {
+            border: .1rem solid rgb(157, 212, 212);
+            border-radius: 1rem;
+            padding: .7rem;
+        }
     }
     &-add {
+        @include column;
+        width: 100%;
+        margin: 1rem;
+        border-radius: 1rem;
+        background-color: rgba(147, 214, 247, 0.8);
+        padding:.5rem 0 1.8rem;
+        &:hover {
+            background-color: rgba(68, 147, 186, 0.8);
+        }
         &__label {
+            margin: 1rem;
+            background-color: rgb(100, 205, 249, 0.8);
+            border-radius: 1rem;
+            padding: .6rem 1.2rem;
+            letter-spacing: .08rem;
+            color: $white;
+            font-weight: 500;
+        }
+        &__enter {
+            @include row;
+            justify-content: center;
+            width: 100%;
         }
         &__input {
+            border-radius: 1rem;
+            padding: 1rem;
+            width: 75%;
+            margin-left: 1rem;
         }
         &__button {
+            margin: 0 1rem;
+            border-radius: 1rem;
+            border: .1rem solid rgb(121, 251, 121);
+            color: $periwinkle;
+            cursor: pointer;
+            padding: .5rem 1rem;
+            background-color: rgba(9, 212, 134, 0.733);
+            font-weight: 700;
+            font-size: .9rem;
+            &:hover {
+                background-color: rgb(60, 6, 86);
+                border-color: rgb(60, 6, 86);
+                color: $cyan;
+            }
+            &:active {
+                border-color: $periwinkle-lite;
+                background-color: $periwinkle-lite;
+                color: rgb(21, 21, 124);
+            }
         }
     }
     &__close {
+        @extend .open-add__button;
+        margin: 1rem;
     }
 }
