@@ -21,24 +21,24 @@
     background-clip: text;
 
     &_1 {
-        background: #34ffda;
-        width: 62vh;
-        height: 14vh;
+        background: rgba(68, 255, 249, 0.7);
+        width: 60vh;
+        height: 15vh;
         top: 7%;
-        left: 6%;
+        left: 8%;
     }
 
     &_2 {
         background: #b8ff1f;
         width: 49vh;
         height: 24vh;
-        top: 136%;
-        left: 5%;
+        top: 138%;
+        left: 15%;
     }
 
     &_3 {
-        background: rgb(98, 242, 131);
-        width: 21vh;
+        background: rgb(2, 221, 100);
+        width: 22vh;
         height: 70vh;
         top: 63%;
         left: 55%;
@@ -48,24 +48,24 @@
         background: #1e5aff;
         width: 40vh;
         height: 44vh;
-        top: 171%;
+        top: 191%;
         left: 10%;
     }
 
     &_5 {
-        background: #00eeff;
-        width: 24vh;
-        height: 24vh;
+        background: #cbcd41;
+        width: 33vh;
+        height: 26vh;
         top: 26%;
-        left: 55%;
+        left: 43%;
     }
 
     &_6 {
-        background: #32c932;
+        background: #6af447;
         width: 30vh;
         height: 30vh;
-        top: 40%;
-        left: 5%;
+        top: 46%;
+        left: 8%;
     }
 
     &_7 {
@@ -80,23 +80,23 @@
         background: #21c3d8;
         width: 35vh;
         height: 60vh;
-        top: 235%;
+        top: 255%;
         left: 30%;
     }
 
     &_9 {
-        background: #ff0000;
+        background: #cbcd41;
         width: 40vh;
         height: 19vh;
-        top: 211%;
+        top: 230%;
         left: 20%;
     }
     &_10 {
-        background: #ff00dd;
+        background: #6af447;
         width: 40vh;
         height: 26vh;
-        top: 289%;
-        left: 6%;
+        top: 300%;
+        left: 10%;
     }
 }
 @keyframes blobs {

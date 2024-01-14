@@ -33,9 +33,9 @@
 
         &-only {
             @include column;
-            background-color: hsla(33, 86%, 54%, 0.3);
+            background-color: hsla(78, 72%, 64%, 0.3);
             border-radius: 1rem;
-            padding-top: 1.2rem;
+            padding-top: 2rem;
             width: 95%;
 
             &__buttons {

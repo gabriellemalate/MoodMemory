@@ -2,15 +2,16 @@
 @use "../../styles/partials/variables" as *;
 
 .faq {
-    background-color: hsla(33, 86%, 54%, 0.3);
+    background-color: hsla(78, 72%, 64%, 0.3);
     border-radius: 1rem;
     margin-bottom: 1.5rem;
     padding-bottom: 5rem;
     width: 94%;
     height: 150vh;
+    @include column;
 
     &-eq {
-        width: 98%;
+        width: 96%;
         @include column;
     }
     &-head {
