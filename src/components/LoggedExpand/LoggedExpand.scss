@@ -1,3 +1,92 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
+.open {
+    background-color: rgb(100, 205, 249, 0.8);
+    width: 90%;
+    border-radius: 1rem;
+    @include column;
+    color: aliceblue;
+    &-eq {
+        @include column;
+        width: 94%;
+        padding: 1rem 0 1rem;
+    }
+    &-top {
+        @include row;
+        width: 100%;
+        justify-content: space-between;
+
+        &-left {
+            width: 50%;
+            &__frame {
+                @include row;
+                background-color: $periwinkle-lite;
+                border-radius: 1rem;
+                padding: 0 1rem;
+                &-emoji {
+                    width: 2.5rem;
+                    margin-right: 1rem;
+                }
+                // &-emotion {
+                // }
+            }
+            &__title {
+                letter-spacing: 0.1rem;
+                background-color: rgb(70, 178, 178, 0.6);
+                border-radius: 1rem;
+                margin-top: 0.5rem;
+                padding: 0.2rem;
+            }
+        }
+        &-right {
+            @include row;
+            width: 45%;
+            justify-content: flex-end;
+            align-self: start;
+            background-color: rgb(70, 178, 178, 0.6);
+            border-radius: 1rem;
+            padding: .5rem 1rem;
+
+            &__date {
+                font-weight: 200;
+                margin: 0;
+            }
+            &__time {
+                font-weight: 200;
+                margin: 0;
+                margin-left: 1rem;
+            }
+        }
+    }
+    &-bottom {
+        &-left {
+            &__state {
+            }
+            &__obs {
+                &-irr {
+                }
+                &-anx {
+                }
+            }
+        }
+        &-right {
+            &__hours {
+            }
+            &__quality {
+            }
+        }
+    }
+    &__notes {
+    }
+    &-add {
+        &__label {
+        }
+        &__input {
+        }
+        &__button {
+        }
+    }
+    &__close {
+    }
+}

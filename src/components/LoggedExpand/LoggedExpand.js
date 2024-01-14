@@ -34,7 +34,7 @@ function LoggedExpand() {
                             <img className='open-bottom-right__quality' src={okaysleep} alt="sleep quality" title="sleep quality" />
                         </div>
                     </div>
-                    <p className='open-bottom__notes'>
+                    <p className='open__notes'>
                         user notes go here
                     </p>
                     <form className='open-add'>

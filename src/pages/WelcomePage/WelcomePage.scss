@@ -56,7 +56,7 @@
         &:hover {
             background-color: $periwinkle-lite;
             color: rgb(248, 255, 239);
-            outline: .5rem dotted $cyan;
+            outline: .3rem dotted $cyan;
         }
         &:active {
             outline: 0;
@@ -65,5 +65,68 @@
             font-weight: 600;
             border: $cyan .1rem solid;
         }
+    }
+}
+
+.morphs {
+    mix-blend-mode: color;
+    animation: morphs 15s ease-in-out infinite alternate;
+    -webkit-background-clip: text;
+
+    display: block;
+    position: absolute;
+    z-index: -1;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    &_2 {
+        background: #41bac1;
+        width: 49vh;
+        height: 35vh;
+        top: 10%;
+        left: 15%;
+    }
+
+    &_1 {
+        background: #557474;
+        width: 60vh;
+        height: 50vh;
+        left: 9%;
+        top: 5%;
+    }
+}
+@keyframes morphs {
+    0% {
+        border-radius: 26% 74% 61% 39% / 54% 67% 33% 46%;
+    }
+    10% {
+        border-radius: 74% 26% 47% 53% / 68% 46% 54% 32%;
+    }
+    20% {
+        border-radius: 48% 52% 30% 70% / 27% 37% 63% 73%;
+    }
+    30% {
+        border-radius: 73% 27% 57% 43% / 28% 67% 33% 72%;
+    }
+    40% {
+        border-radius: 63% 37% 56% 44% / 25% 28% 72% 75%;
+    }
+    50% {
+        border-radius: 39% 61% 70% 30% / 61% 29% 71% 39%;
+    }
+    60% {
+        border-radius: 27% 73% 29% 71% / 73% 51% 49% 27%;
+    }
+    70% {
+        border-radius: 39% 61% 65% 35% / 74% 65% 35% 26%;
+    }
+    80% {
+        border-radius: 55% 45% 37% 63% / 38% 30% 70% 62%;
+    }
+    90% {
+        border-radius: 25% 75% 70% 30% / 39% 50% 50% 61%;
+    }
+    100% {
+        border-radius: 66% 34% 33% 67% / 65% 73% 27% 35%;
     }
 }

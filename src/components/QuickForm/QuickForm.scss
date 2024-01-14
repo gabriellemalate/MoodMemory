@@ -10,14 +10,14 @@
         @include column;
 
         &__head {
-            width: 100%;
+            width: 90%;
             position: relative;
             font-family: "Titan One", avenir, sans-serif;
             font-size: 1.7rem;
             line-height: 2.4rem;
             font-weight: 700;
             z-index: -1;
-            margin: 3rem 0 3rem;
+            margin: 2rem 0 3rem;
 
             &-crop {
                 width: 100%;

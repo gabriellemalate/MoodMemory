@@ -13,6 +13,12 @@ const WelcomePage = () => {
     return (
         <main className="welcome">
             <div className="welcome-eq">
+
+            <article className='morph-wrap'>
+                        <div className="morphs_1 morphs" />
+                        <div className="morphs_2 morphs" />
+                    </article>
+
                 <div className="welcome__head">
                     <h1 className="welcome__head-welcome">welcome to</h1>
                     {/* <h2 className="welcome__head-user">your</h2> */}
