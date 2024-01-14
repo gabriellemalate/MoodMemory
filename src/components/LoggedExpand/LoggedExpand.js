@@ -17,13 +17,16 @@ function LoggedExpand() {
                             <h3 className='open-top-left__title'>title</h3>
                         </div>
                         <div className='open-top-right'>
-                            <h3 className='open-top-right__date'>date</h3>
-                            <h3 className='open-top-right__time'>time</h3>
+                            <div className='open-top-right__stamp'>
+                                <h3 className='open-top-right__date'>date</h3>
+                                <h3 className='open-top-right__time'>time</h3>
+                            </div>
+                            <h2 className='open-top-right__state'>Low Mild</h2>
                         </div>
                     </div>
                     <div className='open-bottom'>
                         <div className='open-bottom-left'>
-                            <h2 className='open-bottom-left__state'>Low Mild</h2>
+
                             <div className='open-bottom-left__obs'>
                                 <span className='open-bottom-left__obs-irr'>Irr: </span >
                                 <span className='open-bottom-left__obs-anx'>Anx: </span >

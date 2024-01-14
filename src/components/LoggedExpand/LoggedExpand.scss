@@ -40,14 +40,20 @@
             }
         }
         &-right {
-            @include row;
+            @include column;
             width: 45%;
-            justify-content: flex-end;
+            align-items: flex-end;
             align-self: start;
-            background-color: rgb(70, 178, 178, 0.6);
-            border-radius: 1rem;
-            padding: .5rem 1rem;
+            justify-content: space-between;
 
+            &__stamp {
+                background-color: rgb(70, 178, 178, 0.6);
+                border-radius: 1rem;
+                padding: 0.5rem 1rem;
+                @include row;
+                width: 100%;
+                justify-content: flex-end;
+            }
             &__date {
                 font-weight: 200;
                 margin: 0;
@@ -56,6 +62,16 @@
                 font-weight: 200;
                 margin: 0;
                 margin-left: 1rem;
+            }
+            &__state {
+                width: 100%;
+                border-radius: 1rem;
+                background-color: $periwinkle-lite;
+                padding: .6rem 1rem;
+                margin: .5rem 0 0;
+                letter-spacing: .1rem;
+                font-weight: 600;
+                font-size: 1.5rem;
             }
         }
     }
