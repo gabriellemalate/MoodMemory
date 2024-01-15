@@ -12,8 +12,14 @@ function Header() {
     const [isLeftNavVisible, setLeftNavVisible] = useState(false);
     const [isRightNavVisible, setRightNavVisible] = useState(false);
 
-    const toggleLeftNav = () => setLeftNavVisible(!isLeftNavVisible);
-    const toggleRightNav = () => setRightNavVisible(!isRightNavVisible);
+    const toggleLeftNav = () => {
+        setLeftNavVisible(!isLeftNavVisible);
+        setRightNavVisible(false); // close right nav when left is toggled
+    };
+    const toggleRightNav = () => {
+        setRightNavVisible(!isRightNavVisible);
+        setLeftNavVisible(false);
+    };
 
     return (
         <>

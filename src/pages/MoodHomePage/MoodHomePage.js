@@ -1,10 +1,19 @@
 import './MoodHomePage.scss';
+import React, { useEffect, useRef } from "react";
 
 import QuickForm from '../../components/QuickForm/QuickForm';
 import Faq from "../../components/Faq/Faq"
 import Header from '../../components/Header/Header';
 
 function MoodHomePage() {
+    const faqRef = useRef(null);
+
+    useEffect(() => {
+        // scroll to the FAQ section when the component mounts
+        if (faqRef.current) {
+            faqRef.current.scrollIntoView({ behavior: "smooth" });
+        }
+    }, []);
     return (
         <>
             <Header/>
@@ -32,7 +41,7 @@ function MoodHomePage() {
 
                     </section>
 
-                    <Faq/>
+                    <Faq ref={faqRef}/>
                     
                 </div>
             </main>

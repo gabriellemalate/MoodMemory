@@ -1,10 +1,11 @@
+import React from 'react';
 import './Faq.scss';
 
-function Faq() {
+const Faq = React.forwardRef((props, ref) => {
     return (
 
         <>
-            <section className='faq' id="faq">
+            <section className='faq' id="faq" ref={ref}>
                 <div className='faq-eq'>
                     <h2 className='faq-head'>FAQ</h2>
                     <div className='faq-questions'>
@@ -36,6 +37,6 @@ function Faq() {
             </section>
         </>
     );
-}
+});
 
 export default Faq;

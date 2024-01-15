@@ -40,7 +40,7 @@ const NavRight = () => {
 
                     <ul className='user-nav__bottom'>
                         <li className='user-nav__bottom-item-faq user-nav__bottom-item'>
-                            <a className='user-nav__bottom-item-faq-link' href="#faq">FAQ</a></li>
+                            <Link className='user-nav__bottom-item-faq-link' to="/moodhome#faq">FAQ</Link></li>
                         <li className='user-nav__bottom-item-logout user-nav__bottom-item'>
                                 <button onClick={signOut} className="user-nav__bottom-item-logout-button" type="button">
                                     Log Out
