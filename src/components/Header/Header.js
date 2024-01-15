@@ -1,6 +1,6 @@
 import './Header.scss';
 
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import user from "../../assets/user.png";
@@ -9,15 +9,20 @@ import NavLeft from '../NavLeft/NavLeft';
 import NavRight from '../NavRight/NavRight';
 
 function Header() {
+    const [isLeftNavVisible, setLeftNavVisible] = useState(false);
+    const [isRightNavVisible, setRightNavVisible] = useState(false);
+
+    const toggleLeftNav = () => setLeftNavVisible(!isLeftNavVisible);
+    const toggleRightNav = () => setRightNavVisible(!isRightNavVisible);
+
     return (
         <>
             <header className='header'>
-                <input id="moodnav-slider" type="checkbox" role="button" />
-                <label id="moodnav" htmlFor="moodnav-slider">
-                    <img className="header__menu" alt="navigation menu" src={menu} title='Menu'/>
-                </label>
+                <div onClick={toggleLeftNav} role="button" tabIndex={0} className='header__menu-container' id="moodnav-slider">
+                    <img className="header__menu" alt="navigation menu" src={menu} title='Menu' />
+                </div>
 
-                <NavLeft/>
+                {isLeftNavVisible && <NavLeft />}
 
                 <nav className='home-nav'>
                     <div className='home-nav__eq'>
@@ -28,12 +33,11 @@ function Header() {
                     </div>
                 </nav>
 
-                <input id="usernav-slider" type="checkbox" role="button" />
-                <label id="usernav" htmlFor="usernav-slider">
+                <div className="user-container" onClick={toggleRightNav} role="button" tabIndex={0} id="usernav-slider">
                     <img className="user" alt="You" title='You' src={user} />
-                </label>
+                </div>
 
-                <NavRight/>
+                {isRightNavVisible && <NavRight />}
 
             </header>
         </>

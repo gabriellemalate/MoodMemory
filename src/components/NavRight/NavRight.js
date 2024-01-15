@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
+// import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
 
 const NavRight = () => {
-    const [setUser] = useState(false);
+    // const [setUser] = useState(false);
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ const NavRight = () => {
             <nav className='user-nav' id="user-nav">
                 <div className='user-nav__eq'>
                     <div className='user-nav__top'>
-                        <h2 className='user-nav__top-head'>Hello, Gabrielle</h2>
+                        <h2 className='user-nav__top-head'>Hello, {user ? user.displayName : ''}</h2>
 
                         <ul className='user-nav__top-list'>
                             <li className='user-nav__top-list-item-moodtotal user-nav__top-list-item'>
