@@ -17,11 +17,26 @@ const MoodMap = ({ moodData }) => {
             if (moodData && moodData.length > 0) {
                 // Extracts data for labels, state, and level
                 const labels = moodData.map(entry => {
-                    // Converts timestamp to 'Month Day' format using date-fns
-                    return format(new Date(entry.timestamp), 'MMM d');
+                    // Check if the timestamp is a valid number
+                    const timestamp = entry.timestamp;
+                    if (!isNaN(timestamp) && isFinite(timestamp)) {
+                        // Convert timestamp to a Date object
+                        const date = new Date(timestamp);
+                        // Format the date using date-fns
+                        const formattedDate = format(date, 'MM-dd');
+                        return formattedDate;
+                    } else {
+                        console.error('Invalid timestamp:', timestamp);
+                        return null;
+                    }
                 });
-                const stateData = moodData.map(entry => entry.state);
-                // const levelData = moodData.map(entry => entry.level);
+
+                // Combine state and level values for the y-axis
+                const combinedStateData = moodData.map(entry => {
+                    const state = entry.state || '';
+                    const level = entry.level || '';
+                    return `${state} ${level}`;
+                });
 
                 const ctx = chartRef.current.getContext('2d');
 
@@ -33,18 +48,11 @@ const MoodMap = ({ moodData }) => {
                         datasets: [
                             {
                                 label: 'Mood State',
-                                data: stateData,
+                                data: combinedStateData,
                                 borderColor: 'rgba(75, 192, 192, 1)',
                                 borderWidth: 2,
                                 fill: false,
-                            },
-                            // {
-                            //     label: 'Level',
-                            //     data: levelData,
-                            //     borderColor: 'rgba(255, 99, 132, 1)',
-                            //     borderWidth: 2,
-                            //     fill: false,
-                            // },
+                            }
                         ],
                     },
                     options: {
@@ -74,6 +82,16 @@ const MoodMap = ({ moodData }) => {
                                     display: true,
                                     text: 'Mood State',
                                 },
+                                // ticks: {
+                                //     callback: (value, index, values) => {
+                                //         // Check if the value is a string and contains a space
+                                //         if (typeof value === 'string' && value.includes(' ')) {
+                                //             return `${value} ${value.split(' ')[1]}`;
+                                //         }
+                                //         return value;
+                                //     },
+                                // },
+
                             },
                         },
                     },
