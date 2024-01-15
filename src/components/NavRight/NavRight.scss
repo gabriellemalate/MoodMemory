@@ -80,16 +80,16 @@
                     letter-spacing: 0.18rem;
                     margin-top: 3rem;
                     &:hover {
-                        background-color: $periwinkle;
-                        border: 0;
-                        outline: .3rem double $cyan;
-                    }
-                    &:active {
                         border: 0.3rem double $periwinkle;
                         background-color: rgb(95, 213, 213);
                         outline: 0;
                         color: rgb(17, 17, 98);
                         font-weight: 700;
+                    }
+                    &:active {
+                        background-color: $periwinkle;
+                        border: 0;
+                        outline: .3rem double $cyan;
                     }
                 }
             }

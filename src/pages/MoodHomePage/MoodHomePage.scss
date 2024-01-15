@@ -21,59 +21,60 @@
     background-clip: text;
 
     &_1 {
-        background: rgba(68, 255, 249, 0.7);
-        width: 60vh;
-        height: 15vh;
-        top: 7%;
-        left: 8%;
+        background: rgb(1, 255, 238, .7);
+        width: 40vh;
+        height: 40vh;
+        top: 60%;
+        left: 20%;
     }
 
     &_2 {
-        background: #b8ff1f;
+        background: rgb(184, 255, 31, .8);
         width: 49vh;
         height: 24vh;
-        top: 138%;
+        top: 132%;
         left: 15%;
     }
 
     &_3 {
         background: rgb(2, 221, 100);
-        width: 22vh;
+        width: 24vh;
         height: 70vh;
-        top: 63%;
+        top: 78%;
         left: 55%;
     }
 
     &_4 {
+        background: rgba(68, 255, 249, 0.8);
+        width: 46vh;
+        height: 20vh;
+        top: 110%;
+        left: 8%;
+    }
+
+    &_5 {
+        background: #4CAF50;
+        width: 45vh;
+        height: 45vh;
+        top: 25%;
+        left: 8%;
+        
+    }
+
+    &_6 {
+        background: #6aadf1;
+        width: 36vh;
+        height: 26vh;
+        top: 26%;
+        left: 36%;
+    }
+
+    &_7 {
         background: #1e5aff;
         width: 40vh;
         height: 44vh;
         top: 191%;
         left: 10%;
-    }
-
-    &_5 {
-        background: #cbcd41;
-        width: 33vh;
-        height: 26vh;
-        top: 26%;
-        left: 43%;
-    }
-
-    &_6 {
-        background: #6af447;
-        width: 30vh;
-        height: 30vh;
-        top: 46%;
-        left: 8%;
-    }
-
-    &_7 {
-        background: #01ffee;
-        width: 46vh;
-        height: 16vh;
-        top: 92%;
-        left: 8%;
     }
 
     &_8 {
