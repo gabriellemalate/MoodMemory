@@ -1,0 +1,29 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.maps {
+    @include column;
+    &__eq{
+        @include column;
+        width: 96%;
+    }
+    &__head {
+        letter-spacing: .1rem;
+        border-bottom: .1rem solid $blue-light;
+        padding-bottom: 1rem;
+        width: fit-content;
+    }
+    &__mood {
+        margin: 1rem 0 4rem;
+        width: 100%;
+        &-head {
+            letter-spacing: .25rem;
+        }
+    }
+    &__sleep {
+        width: 100%;
+        &-head {
+            letter-spacing: .25rem;
+        }
+    }
+}

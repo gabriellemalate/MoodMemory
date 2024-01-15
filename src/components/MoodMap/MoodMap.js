@@ -33,7 +33,7 @@ const MoodMap = ({ moodData }) => {
 
                 // Combine state and level values for the y-axis
                 const combinedStateData = moodData.map(entry => {
-                    const state = entry.state || '';
+                    const state = entry.moodState || '';
                     const level = entry.level || '';
                     return `${state} ${level}`;
                 });
@@ -48,7 +48,8 @@ const MoodMap = ({ moodData }) => {
                         datasets: [
                             {
                                 label: 'Mood State',
-                                data: combinedStateData,
+                                data: 1,
+                                // combinedStateData,
                                 borderColor: 'rgba(75, 192, 192, 1)',
                                 borderWidth: 2,
                                 fill: false,
