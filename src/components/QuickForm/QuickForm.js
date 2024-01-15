@@ -1,5 +1,4 @@
 import './QuickForm.scss';
-
 import poorsleep from "../../assets/poor.png";
 import okaysleep from "../../assets/okay.png";
 import goodsleep from "../../assets/goodsleep.png";
@@ -33,13 +32,17 @@ import unmotivated from "../../assets/emotes/unmotivated.png";
 import unsure from "../../assets/emotes/unsure.png";
 import worried from "../../assets/emotes/worried.png";
 
+import { auth } from "../../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+
 function QuickForm() {
+    const [user] = useAuthState(auth);
     return (
         <>
             <section className='add-mood-quick'>
                 <h1 className='add-mood-quick__head'>
-                    <span className='add-mood-quick__head-crop'>How are you feeling today, Gabrielle?
-                    </span>
+                    <span className='add-mood-quick__head-crop'>How are you feeling today,</span> <span className='add-mood-quick__head-crop-name'> {user ? user.displayName.split(' ')[0] : ''}?</span>
+                    
                 </h1>
                 <div className='add-mood-quick-only' id="quickmood">
                     <article className='add-mood-quick__level'>

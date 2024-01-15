@@ -28,6 +28,9 @@
                 display: block;
                 content: "";
                 mix-blend-mode: screen;
+                &-name {
+                    @extend .add-mood-quick__head-crop;
+                }
             }
         }
 
