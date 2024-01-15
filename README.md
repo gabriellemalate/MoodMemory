@@ -59,7 +59,6 @@ Mood tracking is a challenging chore to maintain
 ### Tech Stack
 
 - React
-- TypeScript
 - MySQL
 - Express
 - Client libraries: 
@@ -68,15 +67,14 @@ Mood tracking is a challenging chore to maintain
     - axios
     - sass
     - @mui/x-charts/LineChart
+
 - Server libraries:
     - knex
     - express
-    - firebase for user auth login
+    - firebase for user auth
     - nodemon
     - uuid
     - cors
-
-<!-- more will be added -->
 
 ### APIs
 
@@ -85,10 +83,10 @@ Mood tracking is a challenging chore to maintain
 ### Sitemap
 
 - Welcome Page
-- Mood Home Page / New Log -mood
+- Mood Home Page / New Log - mood
 - Mood Logs
 - Mood Maps
-- *this will be for display purpose only for the submission* Memory Home Page / New Log -memory
+- *this will be for display purpose only for the submission* Memory Home Page / New Log - memory
 - *this is a nice to have display feature for the submission* Memory Library
 
 ### Mockups
@@ -213,9 +211,10 @@ Response:
     - Implement mySQL
 
 - Feature: View Logged moods
-    - Implement view café page
+    - Implement view logs previews & view logs expanded which shows the entire complete form
     - Create GET /
     - Create DELETE / endpoint
+    - Implement the search functionality
 
 - Feature: Mood Graph & Sleep Graph
     - POST / request to display state and level, date info
@@ -239,7 +238,7 @@ Response:
 
 POSSIBLY
 - tablet & desktop responsive design
-- contact me footer
+- contact page
 - dynamic memory counter & dynamic mood counter in the user toggle side nav bar.
 - unsaved log warning window
 - display the chosen emoji-emotion from the form just submitted into the "log successful" pop up.
