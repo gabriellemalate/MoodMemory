@@ -3,16 +3,16 @@ MoodMemory
 
 ## Overview
 
-MoodMemory is a place to log, track, and view your moods & mood patterns with ease. 
-MoodMemory will also allow users to keep a log of memories, new and old. MoodMemory provides users a platform to manage their memory and mood with clarity in a painless way.
+MoodMemory is a mood tracking and memory logging application that allows users to log & view mood patterns with ease. 
+MoodMemory provides users a platform to manage their memory and mood with clarity in a painless way.
 
-It is for mobile use in this submission, but *nice to have*: it will be available with responsive design to tablet and  desktop sizes
+It is for mobile use in this submission, but *nice to have*: it will be available with responsive design to tablet and desktop sizes
 
 ### Problem
 
 Mood tracking is a challenging chore to maintain 
 - It is most popularly used by people with mood disorders, such as Bipolar Disorder, to take note of durations of manic states and depressive states. Mood tracking is also used to see patterns of what kind of external circumstances urge either state to halt or spring up, for each indivdual, from what may seem to be coming out of nowhere if tracking was not involved.
-- When in certain states -manic or depressive or a "hypo" sort- it is difficult for persons with mood disorders to make good decisions or to see a bigger picture. The severity can vary from lack of self awareness noticed in speaking volume for example, to no longer seeing other viable options to manage strong emotions other than to unalive one's self.
+- When in certain states -manic or depressive or a "hypo" sort- it is difficult for persons with mood disorders to make good decisions or to see a bigger picture. The severity can vary from lack of self awareness noticed in speaking volume for example, to *Trigger Warning* no longer seeing other viable options to manage strong emotions other than to unalive one's self.
 - Mood tracking keeps us informed about ourselves especially if our mood has been affecting our daily life and means to function, especially when it negatively impacts our ability to take care of our basic needs. 
 - Mood tracking is also highly beneficial for those who menstruate whose symptoms are debilitating their physical and mental mobility.
 
@@ -59,12 +59,22 @@ Mood tracking is a challenging chore to maintain
 ### Tech Stack
 
 - React
+- TypeScript
+- MySQL
+- Express
 - Client libraries: 
     - react
-    - react-router-dom
+    - react-router
     - axios
     - sass
     - @mui/x-charts/LineChart
+- Server libraries:
+    - knex
+    - express
+    - firebase for user auth login
+    - nodemon
+    - uuid
+    - cors
 
 <!-- more will be added -->
 
@@ -75,10 +85,10 @@ Mood tracking is a challenging chore to maintain
 ### Sitemap
 
 - Welcome Page
-- Mood Home Page / Log a Mood
+- Mood Home Page / New Log -mood
 - Mood Logs
 - Mood Maps
-- *this will be for display purpose only for the submission* Memory Home Page / Log a Memory
+- *this will be for display purpose only for the submission* Memory Home Page / New Log -memory
 - *this is a nice to have display feature for the submission* Memory Library
 
 ### Mockups
@@ -118,15 +128,15 @@ if able to display for the sprint: it is still a "nice to have" non-functional f
 
 ### Endpoints
 
-**GET /moods /<etc>**
+**GET/**
 
-- Get logged moods for mood library previews. 
+- Get logged moods in db for mood library viewing. 
 
 Parameters:
 - id: logged mood id as number
-- date: us:en data type date
-- time: time showing hour and minute in us;en standard with lowercase am and pm with no periods
-- state: mood state ("Low", "WNL", "Elevated") + ":" + severity level ("Mild", "Moderate", "Severe")
+- timestamp: date will be shown hour and minute in us;en
+- moodState: mood state 
+- level ("Mild", "Moderate", "Severe")
 - irr: numerical value 0 - 3 in 1 increments.
 - anx: numerical value 0 - 3 in 1 increments.
 - hours: numerical value 0 - 24 in 1 increments indicating hours slept.
@@ -135,132 +145,95 @@ Response:
 ```
 {
     "id": 1,
-    "date": "12/22/23"
-    "time": "11:50pm"
-    "state": "Low:Mild",
-    "irritability": 3,
-    "anxiety": 0,
+    "timestamp": "1234567890",
+    "emoji": "<img url>"
+    "emotion": "motivated"
+    "state": "Elevated",
+    "level": "Moderate",
+    "irritability": 1,
+    "anxiety": 1,
     "hours": 4,
-    "title": "Fight Response",
-        <!-- or " " for empty, -->
-    "symptoms": "Feeling indifferent about most things. Annoyed at every illogical phrase I hear from anyone. Keeping isolated to avoid conflict from my temper.", 
-        <!-- or " " for empty, -->
-    "medication": [
-        {
-            "id": 1,
-            "name": "Lamotrigine",
-            "dosage": "100mg",
-            "recurrent": 1,
-            "taken": false
-        }
-    ],
-    "appointment": [
-        {
-            "type": "CT Scan",
-            "doctor": "Karina Farina",
-            "attended": true
-        }
-        {
-            "type": "Therapy",
-            "doctor": "Gloria Chavez",
-            "attended": true
-        }
-    ],
-    "impact": "Zinzanni",
-    "mensesDay": 1,
-    "flowLvl": "low",
-    "painLvl": "none",
-    "mensesNotes": " ",
+    "quality": "okay"
+    "title": "visiting italy",
+    "notes": "-"
 }
 ```
 
-**GET /moods/:id/ <etc>**
+**GET /:id/ <etc>**
 
-- Get a logged mood by id for the expanded view of a selected mood.
+- Get a logged mood by id for mood library preview.
 
 Parameters:
 - id: logged mood id as number
-- date: us:en data type date
-- time: time showing hour and minute in us;en standard with lowercase am and pm with no periods
-- state: mood state ("Low", "WNL", "Elevated") + ":" + severity level ("Mild", "Moderate", "Severe")
-- irr: numerical value 0 - 3 in 1 increments.
-- anx: numerical value 0 - 3 in 1 increments.
-- hours: numerical value 0 - 24 in 1 increments indicating hours slept.
-- title: user input title string
-- symp: user input detail string
-- medId: logged medication as number
-- medName: medicine name
-- medDose: string type number data plus unit typically mg
-- medX: number value of times medicine is taken.
-- medTake: boolean if medicine was take "true" or not "false"
-- appId: logged appointment as number
-- appType: appointment type name
-- appDr: doctor name
-- appAtt: boolean if attended appointment or not
-- impact: user input string value. impactful event of the day
-- mensesDay: number value in 1 increments indicating series number of days of menstruation
-- flow: low/med/high
-- pain: non/low/med/high
-- mensesNotes: user input string value of menses details
 
 Response:
 ```
 {
     "id": 1,
-    "mood": "Low:Mild",
-    "irritability": 3,
-    "anxiety": 0,
+    "timestamp": "1234567890",
+    "emoji": "<img url>"
+    "emotion": "motivated"
+    "state": "Elevated",
+    "level": "Moderate",
+    "irritability": 1,
+    "anxiety": 1,
     "hours": 4,
-    "title": "Fight Response",
-        <!-- or " " for empty, -->
-    "symptoms": "Feeling indifferent about most things. Annoyed at every illogical phrase I hear from anyone. Keeping isolated to avoid conflict from my temper.", 
-        <!-- or " " for empty, -->
-    "medication": [
-        {
-            "id": 1,
-            "name": "Lamotrigine",
-            "dosage": "100mg",
-            "recurrent": 1,
-            "taken": false
-        }
-    ],
-    "appointment": [
-        {
-            "id": 1,
-            "type": "CT Scan",
-            "doctor": "Karina Farina",
-            "attended": true
-        }
-        {
-            "id": 2,
-            "type": "Therapy",
-            "doctor": "Gloria Chavez",
-            "attended": true
-        }
-    ],
-    "impact": "Zinzanni",
-    "mensesDay": 1,
-    "flowLvl": "low",
-    "painLvl": "none",
-    "mensesNotes": " ",
+    "quality": "okay"
+    "title": "visiting italy",
+    "notes": "-"
+
+    *updated later*
 }
 ```
-<!-- more added later -->
+<!-- updated later -->
 
 ### Auth
+
+- Firebase auth. Google Sign In.
+    - User must log in to a valid google account in order to utilize the app and save logs.
+    - Add states for logged in showing different UI where the user's name is displayed.
 
 ## Roadmap
 
 <!-- Scope your project as a sprint. Break down the tasks that will need to be completed and map out timeframes for implementation. Think about what you can reasonably complete before the due date. The more detail you provide, the easier it will be to build. -->
 
 - Create client
-    - react project with routes and boilerplate pages
+    - react project with routes, boilerplate pages, and CSS animations
 
 - Create server
     - express project with routing
 
-- 
-<!-- more added later -->
+- Deploy client and server projects
+
+- Feature: Login
+    - Firebase
+
+- Feature: Home page
+    - Form submits to Express database
+    - Implement mySQL
+
+- Feature: View Logged moods
+    - Implement view café page
+    - Create GET /
+    - Create DELETE / endpoint
+
+- Feature: Mood Graph & Sleep Graph
+    - POST / request to display state and level, date info
+    - POST / request to display hours slept
+    - States for spans of time. Week, month, yearly views.
+
+- *nicetohave* Feature: Add hindsight comment to log
+    - Form must submit data to my server & post the new comment. 
+    - Create POST /comment endpoint   
+    - Create DELETE /comment endpoint
+
+- *nicetohave* Feature: Create account
+    - Implement new user page if new Gmail signs in. 
+    - Create POST /register endpoint
+
+- Bug fixes
+
+- DEMO DAY
 
 ## Nice-to-haves
 
@@ -272,11 +245,11 @@ POSSIBLY
 - display the chosen emoji-emotion from the form just submitted into the "log successful" pop up.
 - search bar displays all moods in mood library with the typed keyword
 - search bar display all memories in the memory library with the typed keyword.
-- loading animation with memory poetry.
+- loading animation.
+- log in, create new user, forgot password.
 
 PROBABLY NOT SOON
 - memory rooms page: space to organize memories into user specified compartments. + ability to view them via a "room carousel"
-- log in, create new user, forgot password.
 
 DEFINITELY NOT DURING THE BOOTCAMP
 - memory features are functional

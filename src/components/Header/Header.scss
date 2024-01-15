@@ -11,11 +11,11 @@
         @include row;
         position: relative;
         transition: left 0.1s ease;
-        left: 0;
+        left: 1rem;
     }
     &-left-nav-visible {
         .header-left {
-            left: 7rem;
+            left: 8rem;
         }
         .header__menu {
             background-color: rgb(41, 251, 160);
@@ -25,7 +25,7 @@
         .user {
             background-color: rgb(41, 251, 160);
             &-container {
-                right: 16rem;
+                right: 17rem;
             }
         }
     }
@@ -93,6 +93,6 @@
     &-container {
         position: relative;
         transition: right 0.1s ease;
-        right: 0;
+        right: 1rem;
     }
 }
