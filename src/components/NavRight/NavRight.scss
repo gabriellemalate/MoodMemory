@@ -22,7 +22,14 @@
 
             &-head {
                 color: $blue-light;
-                border-bottom: 0;
+                margin: 1.5rem 0 0;
+                letter-spacing: .1rem;
+
+                &-name {
+                    color: $blue-light;
+                    margin: 0 0 1rem;
+                    font-style: italic;
+                }
             }
 
             &-list {

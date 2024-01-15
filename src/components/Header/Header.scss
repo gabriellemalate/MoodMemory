@@ -2,15 +2,38 @@
 @use "../../styles/partials/variables" as *;
 
 .header {
-    @include row;
-    align-items: flex-start;
-    justify-content: space-between;
-
     &__menu {
         @include user;
         padding: 0.2rem;
         cursor: pointer;
     }
+    &-left {
+        @include row;
+        position: relative;
+        transition: left 0.5s ease;
+        left: 0;
+    }
+    &-left-nav-visible {
+        .header-left {
+            left: 7rem;
+        }
+        .header__menu {
+            background-color: rgb(41, 251, 160);
+        }
+    }
+    &-right-nav-visible {
+        .user {
+            background-color: rgb(41, 251, 160);
+            &-container {
+                right: 16rem;
+            }
+        }
+    }
+}
+#header {
+    @include row;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 .home-nav {
@@ -62,10 +85,14 @@
         }
     }
 }
-
 .user {
     @include user;
-    margin-top: .2rem;
+    margin-top: 0.2rem;
     max-width: 2.2rem;
     cursor: pointer;
+    &-container {
+        position: relative;
+        transition: right 0.5s ease;
+        right: 0;
+    }
 }
