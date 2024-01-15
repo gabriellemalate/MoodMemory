@@ -8,7 +8,7 @@ import menu from "../../assets/menu.png";
 import NavLeft from '../NavLeft/NavLeft';
 import NavRight from '../NavRight/NavRight';
 
-function Header() {
+function Header({ setScrollToFAQ }) {
     const [isLeftNavVisible, setLeftNavVisible] = useState(false);
     const [isRightNavVisible, setRightNavVisible] = useState(false);
 
@@ -39,7 +39,7 @@ function Header() {
                     </nav>
                 </div>
                 {isLeftNavVisible && <NavLeft />}
-                {isRightNavVisible && <NavRight />}
+                {isRightNavVisible && <NavRight setScrollToFAQ={setScrollToFAQ}/>}
                 <div className='user-parent'>
                 <div className="user-container" onClick={toggleRightNav} role="button" tabIndex={0}>
                     <img className="user" alt="You" title='You' src={user} />

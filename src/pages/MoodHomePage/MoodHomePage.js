@@ -1,22 +1,25 @@
 import './MoodHomePage.scss';
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import QuickForm from '../../components/QuickForm/QuickForm';
 import Faq from "../../components/Faq/Faq"
 import Header from '../../components/Header/Header';
 
 function MoodHomePage() {
+    const [scrollToFAQ, setScrollToFAQ] = useState(false);
     const faqRef = useRef(null);
 
     useEffect(() => {
         // scroll to the FAQ section when the component mounts
-        if (faqRef.current) {
+        if (scrollToFAQ && faqRef.current) {
             faqRef.current.scrollIntoView({ behavior: "smooth" });
+            setScrollToFAQ(false);
         }
-    }, []);
+    }, [scrollToFAQ]);
+
     return (
         <>
-            <Header/>
+            <Header setScrollToFAQ={setScrollToFAQ} currentPage="moodhome"/>
             <main className='main'>
                 <div className='main__eq'>
 

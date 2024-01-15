@@ -1,12 +1,14 @@
 import './NavRight.scss';
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useRef } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-const NavRight = () => {
+const NavRight = ({ setScrollToFAQ }) => {
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
+    const faqRef = useRef(null);
+    const location = useLocation();
 
     const signOut = () => {
         auth.signOut().then(() => {
@@ -14,6 +16,14 @@ const NavRight = () => {
             navigate("/");
         });
     };
+
+    const handleFAQClick = () => {
+        if (faqRef.current) {
+            faqRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
+    const isMoodHomePage = location.pathname === "/moodhome";
 
     return (
         <>
@@ -39,12 +49,21 @@ const NavRight = () => {
                     </div>
 
                     <ul className='user-nav__bottom'>
-                        <li className='user-nav__bottom-item-faq user-nav__bottom-item'>
-                            <Link className='user-nav__bottom-item-faq-link' to="/moodhome#faq">FAQ</Link></li>
+                        {isMoodHomePage && (
+                            <li className='user-nav__bottom-item-faq user-nav__bottom-item'>
+                                <Link
+                                    className='user-nav__bottom-item-faq-link'
+                                    to="/moodhome#faq"
+                                    onClick={() => setScrollToFAQ(true)}
+                                    ref={faqRef}>
+                                    FAQ
+                                </Link>
+                            </li>
+                        )}
                         <li className='user-nav__bottom-item-logout user-nav__bottom-item'>
-                                <button onClick={signOut} className="user-nav__bottom-item-logout-button" type="button">
-                                    Log Out
-                                </button>
+                            <button onClick={signOut} className="user-nav__bottom-item-logout-button" type="button">
+                                Log Out
+                            </button>
                         </li>
                     </ul>
 

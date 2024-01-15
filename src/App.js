@@ -17,7 +17,7 @@ function App() {
     <>
     <BrowserRouter>
         <Routes>
-          <Route path='/' element={user ? <Navigate to="/logs"/> : <WelcomePage/>} />
+          <Route path='/' element={user ? <Navigate to="/moodhome"/> : <WelcomePage/>} />
           <Route path='/moodhome' element={<MoodHomePage />} />
           <Route path='/logs' element={<MoodLogsPage />} />
           {/* <Route path='/logs/:logId' element={<SelectedVideo />} /> */}
