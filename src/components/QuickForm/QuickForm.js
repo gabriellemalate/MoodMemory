@@ -34,56 +34,110 @@ import worried from "../../assets/emotes/worried.png";
 
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import React, { useState } from 'react';
 
-function QuickForm() {
+const QuickForm = ({ onFormSubmit }) => {
     const [user] = useAuthState(auth);
+    const [formData, setFormData] = useState({
+        moodState: '',
+        level: '',
+        title: '',
+        notes: '',
+        // other form fields
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
+
+    const handleMoodStateChange = (e) => {
+        const { value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            moodState: value,
+        }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // validate form data and make sure all required fields are filled
+        if (!formData.moodState || !formData.severity) {
+            alert('Please select one');
+            return;
+        }
+
+        // send the form input to the parent component or a function passed as a prop
+        onFormSubmit(formData);
+
+        setFormData({
+            moodState: '',
+            severity: '',
+            title: '',
+            notes: '',
+        });
+    };
+
     return (
         <>
             <section className='add-mood-quick'>
                 <h1 className='add-mood-quick__head'>
                     <span className='add-mood-quick__head-crop'>How are you feeling today,</span> <span className='add-mood-quick__head-crop-name'> {user ? user.displayName.split(' ')[0] : ''}?</span>
-                    
+
                 </h1>
-                <div className='add-mood-quick-only' id="quickmood">
+                <form className='add-mood-quick-only' onSubmit={handleSubmit}>
                     <article className='add-mood-quick__level'>
                         <h3 className='add-mood-quick__level-head'>Mood State</h3>
                         <p className='add-mood-quick__level-subhead'>think of this as your energy level</p>
                         <article className='add-mood-quick__level-state'>
                             <div className='add-mood-quick__level-state-container'>
 
-                                <input className='add-mood-quick__level-state-opt' value="Depressed" id="depressed" name="Depressed" type='radio' />
+                                <input className='add-mood-quick__level-state-opt' value="Depressed" id="depressed" type='radio' name="moodState"
+                                    onChange={(e) => {
+                                        handleChange(e);
+                                        handleMoodStateChange(e);
+                                    }} />
                                 <label className='add-mood-quick__level-state-option' htmlFor="depressed">depressed</label>
 
                             </div>
                             <div className='add-mood-quick__level-state-container'>
-                                <input className='add-mood-quick__level-state-opt' value="wnl" id="wnl" name="wnl" type='radio' title='"Within Normal Limits" No symptoms of depression or elevation' />
+                                <input className='add-mood-quick__level-state-opt' value="wnl" id="wnl" type='radio' title='"Within Normal Limits" No symptoms of depression or elevation' name="moodState"
+                                    onChange={(e) => {
+                                        handleChange(e);
+                                        handleMoodStateChange(e);
+                                    }} />
                                 <label className='add-mood-quick__level-state-option' htmlFor="wnl">wnl</label>
                             </div>
 
                             <div className='add-mood-quick__level-state-container'>
-                                <input className='add-mood-quick__level-state-opt' value="elevated" id="elevated" name="elevated" type='radio' />
+                                <input className='add-mood-quick__level-state-opt' value="elevated" id="elevated" name="moodState" onChange={handleChange} type='radio' />
                                 <label className='add-mood-quick__level-state-option' htmlFor="elevated">elevated</label>
                             </div>
                         </article>
 
+                        {formData.moodState === "Depressed" || formData.moodState === "Elevated" ? (
                         <article className='add-mood-quick__level-severity'>
                             <img className='add-mood-quick__level-divider' alt="choose severity level" src={arrow} />
 
                             <div className='add-mood-quick__level-severity-all'>
                                 <div className='add-mood-quick__level-severity-container'>
-                                    <input className='add-mood-quick__level-severity-opt' type='radio' value="mild" id="mild" name="mild" />
+                                    <input className='add-mood-quick__level-severity-opt' type='radio' value="mild" id="mild" name="level" />
                                     <label className='add-mood-quick__level-severity-option' htmlFor="mild">mild</label>
                                 </div>
                                 <div className='add-mood-quick__level-severity-container'>
-                                    <input className='add-mood-quick__level-severity-opt' type='radio' value="moderate" id="moderate" name="moderate" />
+                                    <input className='add-mood-quick__level-severity-opt' type='radio' value="moderate" id="moderate" name="level" />
                                     <label className='add-mood-quick__level-severity-option' htmlFor="moderate">moderate</label>
                                 </div>
                                 <div className='add-mood-quick__level-severity-container'>
-                                    <input className='add-mood-quick__level-severity-opt' type='radio' value="severe" id="severe" name="severe" />
+                                    <input className='add-mood-quick__level-severity-opt' type='radio' value="severe" id="severe" name="level" />
                                     <label className='add-mood-quick__level-severity-option' htmlFor="severe">severe</label>
                                 </div>
                             </div>
                         </article>
+                        ) : null}
                     </article>
 
                     <article className='add-mood-quick__observations'>
@@ -416,9 +470,9 @@ function QuickForm() {
                             </article>
                         </div>
                     </article>
-                </div>
+                </form>
                 <div className="add-mood-quick-only__buttons">
-                    <button className="add-mood-quick-only__submit" form="quickmood" type="submit">Log  +</button>
+                    <button className="add-mood-quick-only__submit" type="submit">Log  +</button>
                 </div>
             </section>
         </>
