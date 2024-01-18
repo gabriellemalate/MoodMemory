@@ -38,9 +38,9 @@ function MoodHomePage() {
 
                     <section className='add-mood' id="add-mood">
 
-                        <form className='add-mood-include' id="fullmood">
+                        <div className='add-mood-include'>
                             <QuickForm/>
-                        </form>
+                        </div>
 
                     </section>
 

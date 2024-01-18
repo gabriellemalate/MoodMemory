@@ -11,13 +11,9 @@ It is for mobile use in this submission, but *nice to have*: it will be availabl
 ### Problem
 
 Mood tracking is a challenging chore to maintain 
-- It is most popularly used by people with mood disorders, such as Bipolar Disorder, to take note of durations of manic states and depressive states. Mood tracking is also used to see patterns of what kind of external circumstances urge either state to halt or spring up, for each indivdual, from what may seem to be coming out of nowhere if tracking was not involved.
-- When in certain states -manic or depressive or a "hypo" sort- it is difficult for persons with mood disorders to make good decisions or to see a bigger picture. The severity can vary from lack of self awareness noticed in speaking volume for example, to *Trigger Warning* no longer seeing other viable options to manage strong emotions other than to unalive one's self.
+- It is most popularly used by people with mood disorders, such as Bipolar Disorder, to take note of durations of manic states and depressive states. Mood tracking is also used to see patterns of what kind of external circumstances urge either state to halt or spring up, for each indivdual, from what may seem to be coming out of nowhere if tracking was not involved.git 
 - Mood tracking keeps us informed about ourselves especially if our mood has been affecting our daily life and means to function, especially when it negatively impacts our ability to take care of our basic needs. 
 - Mood tracking is also highly beneficial for those who menstruate whose symptoms are debilitating their physical and mental mobility.
-
-- Memory logging is the missing tool for persons with dimishing mind flexibility, such as early onset dementia, where saving new memories are no longer easy, and older ones start to get lost.
-- Memory logging is important in this technological age as our capacities to store memories are yielding lower, as technology evolves.
 
 ### User Profile
 
@@ -42,17 +38,11 @@ Mood tracking is a challenging chore to maintain
 ### Features
 
 - I want to log my mood without having to think about what to write. (AddMood Prompts)
-- I want to log if my medications are effective and how it affects my mood. (Medication Log)
 - I want to log my mood with consisent necessary information. (Required Add Inputs)
-- I want to have the options to extend my logs on days I have more time and energy. (Extended AddMood Prompts)
 - I want the ability look at my moods and easily assess patterns. (Mood Maps)
 - I want an easy, succinct way to explain how I feel. ('"Emoji-Emotion Display" Choices' Array)
 - I want a place where I can peruse through all of my past moods. (Mood Logs Tab)
-- I want clarity on what events cause certain moods for me. (Impactful Event Input and Trigger Input)
-- I want to factor in my menstruation cycle into my mood tracking  (Menses Input)
-- I want the ability to look back through years of my logs and see patterns (Scrollable Mood Maps feature)
-- *display only for this submission* I want to store new and old memories that are becoming fleeting. (Memory Add)
-- *nice to have* I want the ability to scroll through all the memories I've logged (Memories Library)
+- I want the ability to look back through years of my logs and see patterns (Toggle Mood Map)
 
 ## Implementation
 
@@ -85,39 +75,23 @@ Mood tracking is a challenging chore to maintain
 - Welcome Page
 - Mood Home Page / New Log - mood
 - Mood Logs
-- Mood Maps
-- *this will be for display purpose only for the submission* Memory Home Page / New Log - memory
-- *this is a nice to have display feature for the submission* Memory Library
+- Mood Maps *the map itself may not be made dynamic by time of submission. i've never done a chart via code before*
 
 ### Mockups
 **note** the blocks with ***yellow*** background colors are *not* meant to be functional or fully so for this project submission completion. These components are there for display of what's to come soon after bootcamp.
-**note** the blocks with ***black*** background colors are *nice to haves*. They are *not* project submission completion goals but may be implemented soon or will be implemented in the near future.
-*these reminders will be noted by a legend within the mockups as well*
+*this reminder will be noted by a legend within the mockups as well*
 
 #### Welcome Page
-![](welcome.pdf)
+![](welcome.png)
 
 #### Mood Home Page / Log a Mood
-![](moodhome.pdf)
+![](moodhome.png)
 
 #### Mood Logs Page
-![](moodlogs.pdf)
+![](moodlogs.png)
 
 #### Mood Maps Page
-![](moodmaps.pdf)
-
-#### Memory Home Page
-*nice to have*. 
-if able to display for the sprint: it is still a "nice to have" non-functional feature. full functionality beyond display are not part of my guidelines for submssion completion but it is possible it will be accomplished, time-permitting.
-![](extras.pdf)
-
-#### Memory Library Page
-*nice to have* feature. not part of my guidelines for submssion completion. may possibly be accomplished, time permitting.
-![](extras.pdf)
-
-#### BONUS "Nice To Have" Memory Rooms Carousel Page
-*nice to have* feature. not*part of my guidelines for submssion completion.
-![](extras.pdf)
+![](moodmaps.png)
 
 ### Data
 
@@ -128,12 +102,30 @@ if able to display for the sprint: it is still a "nice to have" non-functional f
 
 **GET/**
 
-- Get logged moods in db for mood library viewing. 
+- Get logged moods in db for mood library preview
+
+Parameters:
+- id: logged mood id as number
+- date: mo/day/yr
+- moodstate: energy state and state level combined
+
+Response:
+```
+{
+    "id": 1,
+    "date": "01/01/2024",
+    "moodstate": "Elevated Mild",
+}
+```
+
+**GET /:id/ <etc>**
+
+- Get a logged mood by id for mood library viewing when extended.
 
 Parameters:
 - id: logged mood id as number
 - timestamp: date will be shown hour and minute in us;en
-- moodState: mood state 
+- state: mood state 
 - level ("Mild", "Moderate", "Severe")
 - irr: numerical value 0 - 3 in 1 increments.
 - anx: numerical value 0 - 3 in 1 increments.
@@ -152,35 +144,8 @@ Response:
     "anxiety": 1,
     "hours": 4,
     "quality": "okay"
-    "title": "visiting italy",
+    "title": "new year",
     "notes": "-"
-}
-```
-
-**GET /:id/ <etc>**
-
-- Get a logged mood by id for mood library preview.
-
-Parameters:
-- id: logged mood id as number
-
-Response:
-```
-{
-    "id": 1,
-    "timestamp": "1234567890",
-    "emoji": "<img url>"
-    "emotion": "motivated"
-    "state": "Elevated",
-    "level": "Moderate",
-    "irritability": 1,
-    "anxiety": 1,
-    "hours": 4,
-    "quality": "okay"
-    "title": "visiting italy",
-    "notes": "-"
-
-    *updated later*
 }
 ```
 <!-- updated later -->
@@ -200,26 +165,27 @@ Response:
 
 - Create server
     - express project with routing
-
-- Deploy client and server projects
+    - may be extracted out of the plan and use firebase instead if i am not able to make it work within the timeframe
 
 - Feature: Login
     - Firebase
 
 - Feature: Home page
-    - Form submits to Express database
-    - Implement mySQL
+    - Form submits to database
 
 - Feature: View Logged moods
     - Implement view logs previews & view logs expanded which shows the entire complete form
-    - Create GET /
-    - Create DELETE / endpoint
-    - Implement the search functionality
+    - Create GET /moods
+    - Create GET /mood endpoint
 
-- Feature: Mood Graph & Sleep Graph
-    - POST / request to display state and level, date info
-    - POST / request to display hours slept
-    - States for spans of time. Week, month, yearly views.
+- Redirect Pages
+    - Successful Upload
+    - Page not found
+
+- Components for displays 
+    - mood map (a nice to have if made to be dynamic)
+    - Search bar
+    - Comment from hindsite
 
 - *nicetohave* Feature: Add hindsight comment to log
     - Form must submit data to my server & post the new comment. 
@@ -231,6 +197,8 @@ Response:
     - Create POST /register endpoint
 
 - Bug fixes
+
+- (maybe) Deploy client (and server) projects
 
 - DEMO DAY
 
@@ -248,6 +216,7 @@ POSSIBLY
 - log in, create new user, forgot password.
 
 PROBABLY NOT SOON
+- Dynamic Mood Map & Sleep Map
 - memory rooms page: space to organize memories into user specified compartments. + ability to view them via a "room carousel"
 
 DEFINITELY NOT DURING THE BOOTCAMP

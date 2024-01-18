@@ -1,116 +1,75 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
-import { format } from 'date-fns';
+import axios from 'axios';
 import "./MoodMap.scss";
 
-const MoodMap = ({ moodData }) => {
+const MoodMap = () => {
     const chartRef = useRef(null);
+    const [moodData, setMoodData] = useState([]);
 
     useEffect(() => {
-        let myChart = null;
-
-        const updateChart = () => {
-            if (myChart) {
-                myChart.destroy(); // Destroy the existing chart if it exists
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://localhost:8081/states');
+                setMoodData(response.data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
             }
+        };
 
-            if (moodData && moodData.length > 0) {
-                // Extracts data for labels, state, and level
-                const labels = moodData.map(entry => {
-                    // Check if the timestamp is a valid number
-                    const timestamp = entry.timestamp;
-                    if (!isNaN(timestamp) && isFinite(timestamp)) {
-                        // Convert timestamp to a Date object
-                        const date = new Date(timestamp);
-                        // Format the date using date-fns
-                        const formattedDate = format(date, 'MM-dd');
-                        return formattedDate;
-                    } else {
-                        console.error('Invalid timestamp:', timestamp);
-                        return null;
-                    }
-                });
+        fetchData();
+    }, []);
 
-                // Combine state and level values for the y-axis
-                const combinedStateData = moodData.map(entry => {
-                    const state = entry.moodState || '';
-                    const level = entry.level || '';
-                    return `${state} ${level}`;
-                });
+    useEffect(() => {
+        if (moodData && moodData.length > 0) {
+            const ctx = chartRef.current.getContext('2d');
 
-                const ctx = chartRef.current.getContext('2d');
+            const formattedData = moodData.map(({ date, level }) => ({
+                x: new Date(date),
+                y: level,
+            }));
 
-                // The line chart
-                myChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: labels,
-                        datasets: [
-                            {
-                                label: 'Mood State',
-                                data: 1,
-                                // combinedStateData,
-                                borderColor: 'rgba(75, 192, 192, 1)',
-                                borderWidth: 2,
-                                fill: false,
-                            }
-                        ],
-                    },
-                    options: {
-                        scales: {
-                            x: {
-                                type: 'linear',
-                                labels: labels,
-                                position: 'bottom',
-                                title: {
-                                    display: true,
-                                    text: 'Date',
-                                },
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    datasets: [
+                        {
+                            label: 'Mood Levels',
+                            data: formattedData,
+                            borderColor: 'rgb(75, 192, 192)',
+                            tension: 0.1,
+                        },
+                    ],
+                },
+                options: {
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                unit: 'day',
                             },
-                            y: {
-                                type: 'category',
-                                position: 'left',
-                                labels: [
-                                    'Elevated Severe',
-                                    'Elevated Moderate',
-                                    'Elevated Mild',
-                                    'WNL',
-                                    'Depressed Mild',
-                                    'Depressed Moderate',
-                                    'Depressed Severe',
-                                ],
-                                title: {
-                                    display: true,
-                                    text: 'Mood State',
-                                },
-                                // ticks: {
-                                //     callback: (value, index, values) => {
-                                //         // Check if the value is a string and contains a space
-                                //         if (typeof value === 'string' && value.includes(' ')) {
-                                //             return `${value} ${value.split(' ')[1]}`;
-                                //         }
-                                //         return value;
-                                //     },
-                                // },
-
+                            title: {
+                                display: true,
+                                text: 'Date',
+                            },
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Mood Level',
                             },
                         },
                     },
-                });
-            }
-        };
-
-        updateChart();
-
-        return () => {
-            if (myChart) {
-                myChart.destroy(); // cleanup on component unmount
-            }
-        };
-
+                },
+            });
+        }
     }, [moodData]);
 
-    return <canvas ref={chartRef} />;
+    return (
+        <div className="mood-chart">
+            <canvas ref={chartRef}></canvas>
+        </div>
+    );
 };
 
 export default MoodMap;
