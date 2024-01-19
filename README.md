@@ -49,7 +49,6 @@ Mood tracking is a challenging chore to maintain
 ### Tech Stack
 
 - React
-- MySQL
 - Express
 - Client libraries: 
     - react
