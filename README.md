@@ -56,6 +56,7 @@ Mood tracking is a challenging chore to maintain
     - react-router
     - axios
     - sass
+    - chart.js
     - @mui/x-charts/LineChart
 
 - Server libraries:
@@ -78,7 +79,7 @@ Mood tracking is a challenging chore to maintain
 - Mood Maps *the map itself may not be made dynamic by time of submission. i've never done a chart via code before*
 
 ### Mockups
-**note** the blocks with ***yellow*** background colors are *not* meant to be functional or fully so for this project submission completion. These components are there for display of what's to come soon after bootcamp.
+**note** the blocks with ***yellow*** background colors are not meant to be functional or fully so for this project submission completion. These components are there for display of what's to come soon after bootcamp.
 *this reminder will be noted by a legend within the mockups as well*
 
 #### Welcome Page
@@ -93,14 +94,9 @@ Mood tracking is a challenging chore to maintain
 #### Mood Maps Page
 ![](moodmaps.png)
 
-### Data
-
-<!-- Describe your data and the relationships between them. You can show this visually using diagrams, or write it out. 
-![](sql-diagram.png) -->
-
 ### Endpoints
 
-**GET/**
+**GET/moods**
 
 - Get logged moods in db for mood library preview
 
@@ -118,13 +114,13 @@ Response:
 }
 ```
 
-**GET /:id/ <etc>**
+**GET /moods/:id/ <etc>**
 
 - Get a logged mood by id for mood library viewing when extended.
 
 Parameters:
 - id: logged mood id as number
-- timestamp: date will be shown hour and minute in us;en
+- timestamp: date will be shown with time hour and minute in us;en
 - state: mood state 
 - level ("Mild", "Moderate", "Severe")
 - irr: numerical value 0 - 3 in 1 increments.
@@ -181,6 +177,7 @@ Response:
 - Redirect Pages
     - Successful Upload
     - Page not found
+    - Loading animation
 
 - Components for displays 
     - mood map (a nice to have if made to be dynamic)
@@ -209,18 +206,16 @@ POSSIBLY
 - contact page
 - dynamic memory counter & dynamic mood counter in the user toggle side nav bar.
 - unsaved log warning window
-- display the chosen emoji-emotion from the form just submitted into the "log successful" pop up.
 - search bar displays all moods in mood library with the typed keyword
-- search bar display all memories in the memory library with the typed keyword.
-- loading animation.
 - log in, create new user, forgot password.
 
 PROBABLY NOT SOON
 - Dynamic Mood Map & Sleep Map
-- memory rooms page: space to organize memories into user specified compartments. + ability to view them via a "room carousel"
+- display the chosen emoji-emotion from the form just submitted into the "log successful" pop up.
 
 DEFINITELY NOT DURING THE BOOTCAMP
-- memory features are functional
+- memory rooms page: space to organize memories into user specified compartments. + ability to view them via a "room carousel"
+- memory features.
 - place to store & manage mood patterns.
 - combine the moodmap with the memory timeline in a joint line graph with adjustable date scopes. This feature is great for people with PTSD, or even PTSD from multiple events, especially when some expereinces may have been mentally blocked from a survival coping mechanism while the resulting fight/flight/fawn/freeze behaviors are still actively affecting the person.
 - mood chart in table form in the all moods page
