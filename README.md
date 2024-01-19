@@ -210,7 +210,7 @@ POSSIBLY
 - dynamic memory counter & dynamic mood counter in the user toggle side nav bar.
 - unsaved log warning window
 - search bar displays all moods in mood library with the typed keyword
-- log in, create new user, forgot password.
+- create new user.
 
 PROBABLY NOT SOON
 - Dynamic Mood Map & Sleep Map
