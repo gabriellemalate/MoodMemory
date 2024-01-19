@@ -11,7 +11,7 @@ It is for mobile use in this submission, but *nice to have*: it will be availabl
 ### Problem
 
 Mood tracking is a challenging chore to maintain 
-- It is most popularly used by people with mood disorders, such as Bipolar Disorder, to take note of durations of manic states and depressive states. Mood tracking is also used to see patterns of what kind of external circumstances urge either state to halt or spring up, for each indivdual, from what may seem to be coming out of nowhere if tracking was not involved.git 
+- It is most popularly used by people with mood disorders, such as Bipolar Disorder, to take note of durations of manic states and depressive states. Mood tracking is also used to see patterns of what kind of external circumstances urge either state to halt or spring up, for each indivdual, from what may seem to be coming out of nowhere if tracking was not involved.
 - Mood tracking keeps us informed about ourselves especially if our mood has been affecting our daily life and means to function, especially when it negatively impacts our ability to take care of our basic needs. 
 - Mood tracking is also highly beneficial for those who menstruate whose symptoms are debilitating their physical and mental mobility.
 
