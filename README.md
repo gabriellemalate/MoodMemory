@@ -168,11 +168,13 @@ Response:
 
 - Feature: Home page
     - Form submits to database
+    - Create POST /mood endpoint   
 
 - Feature: View Logged moods
-    - Implement view logs previews & view logs expanded which shows the entire complete form
-    - Create GET /moods
     - Create GET /mood endpoint
+    - Create GET /moods
+    - Implement view logs previews
+    - Implement view logs expanded which shows all the input of from that log
 
 - Redirect Pages
     - Successful Upload
@@ -183,6 +185,8 @@ Response:
     - mood map (a nice to have if made to be dynamic)
     - Search bar
     - Comment from hindsite
+ 
+- Page: Maps
 
 - *nicetohave* Feature: Add hindsight comment to log
     - Form must submit data to my server & post the new comment. 
