@@ -3,7 +3,7 @@ MoodMemory
 
 ## Overview
 
-MoodMemory is a mood tracking and memory logging application that allows users to log & view mood patterns with ease. 
+MoodMemory is a mood tracking (and eventually, memory logging) application that allows users to log & view mood patterns with ease. 
 MoodMemory provides users a platform to manage their memory and mood with clarity in a painless way.
 
 It is for mobile use in this submission, but *nice to have*: it will be available with responsive design to tablet and desktop sizes
