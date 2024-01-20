@@ -92,6 +92,7 @@
                         @include button-choice;
                         margin: 0 0.4rem;
                         @include mobile-body;
+                        cursor: pointer;
                     }
                 }
             }
@@ -104,7 +105,10 @@
 
                 &-opt {
                     @extend .add-mood-quick__level-state-opt;
-
+                    &:active {
+                        border: 0.2rem solid $periwinkle;
+                        font-weight: bold;
+                    }
                     &ion {
                         @extend .add-mood-quick__level-state-option;
                     }
@@ -181,10 +185,13 @@
                         width: 3.5rem;
                         margin: 0 0.5rem;
                         transition: 0.3s;
-                        &:hover,
-                        &:focus,
-                        &:active {
+                        cursor: pointer;
+                        &:hover {
                             transform: scale(1.4);
+                        }
+                        &.selected {
+                            outline: rgb(188, 24, 144) .2rem dashed;
+                            border-radius: 2rem;
                         }
                     }
                 }
@@ -232,6 +239,10 @@
         &__emote {
             width: 100%;
             @include column;
+
+            &-option-eq {
+                display: none;
+            }
             &-eq {
                 @include column;
                 width: 100%;
@@ -244,7 +255,6 @@
             &-menu {
                 @include column;
                 width: 100%;
-
                 &-eq {
                     width: 96%;
                     @include row;
@@ -256,7 +266,6 @@
                 }
                 &-option {
                     width: 20%;
-
                     &--buttonpress {
                         background-color: $periwinkle-lite;
                         border-radius: 1rem;
@@ -265,15 +274,15 @@
                         padding: 0.3rem 0 0;
                         border: solid 0.03rem $periwinkle;
                         transition: transform 0.18s;
+                        cursor: pointer;
+                        &:hover {
+                            transform: scale(2);
+                            font-weight: 900;
+                        }
                         &:focus,
                         &:active {
                             border: solid 0.1rem rgb(49, 223, 254);
                             background-color: $periwinkle;
-                        }
-
-                        &:hover {
-                            transform: scale(2);
-                            font-weight: 900;
                         }
 
                         & div {
