@@ -33,10 +33,11 @@ import worried from "../../assets/emotes/worried.png";
 
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect, useRef, } from 'react';
+import { collection, addDoc, Timestamp } from 'firebase/firestore';
+import { db } from '../../firebase';
 
-const QuickForm = ({ onFormSubmit }) => {
+const QuickForm = () => {
     const [user] = useAuthState(auth);
     const [formData, setFormData] = useState({
         state: '',
@@ -53,38 +54,91 @@ const QuickForm = ({ onFormSubmit }) => {
 
     // State update functions
     const handleStateChange = (selectedState) => {
+        console.log('State Changed:', selectedState);
         setFormData((prevData) => ({ ...prevData, state: selectedState }));
     };
 
     const handleLevelChange = (selectedLevel) => {
+        console.log('Level Changed:', selectedLevel);
         setFormData((prevData) => ({ ...prevData, level: selectedLevel }));
     };
 
     const handleNumberChange = (fieldName, selectedNumber) => {
+        console.log('Number Changed:', fieldName, selectedNumber);
         setFormData((prevData) => ({ ...prevData, [fieldName]: selectedNumber }));
     };
 
     const handleQualityChange = (selectedQuality) => {
         console.log('Selected Quality:', selectedQuality);
+        console.log('Selected Quality:', selectedQuality);
         setFormData((prevData) => ({ ...prevData, quality: selectedQuality }));
     };
 
     const handleTitleChange = (title) => {
+        console.log('Title Changed:', title);
         setFormData((prevData) => ({ ...prevData, title }));
     };
 
     const handleNotesChange = (notes) => {
+        console.log('Notes Changed:', notes);
         setFormData((prevData) => ({ ...prevData, notes }));
     };
 
     const handleInputChange = (fieldName, emotion, emojiPath) => {
+        console.log('Input Changed:', fieldName, emotion, emojiPath);
         setFormData((prevData) => ({ ...prevData, [fieldName]: emotion, emoji: emojiPath }));
     };
 
-    const handleSubmit = () => {
-        // Call Firebase function to post data 
-        postFormDataToFirebase(formData);
-        console.log('Form data submitted:', formData);
+    useEffect(() => {
+        const handleFileUpload = async () => {
+            try {
+                if (formData.emojiFile) {
+                    // Upload emoji image to Firebase Storage
+                    const emojiRef = ref(storage, 'emoji/' + formData.emojiName);
+                    await uploadBytes(emojiRef, formData.emojiFile);
+
+                    // Get the download URL
+                    const emojiURL = await getDownloadURL(emojiRef);
+
+                    // Update formData state with the emojiURL
+                    setFormData((prevData) => ({ ...prevData, emoji: emojiURL }));
+                }
+            } catch (error) {
+                console.error('Error uploading file:', error.message);
+            }
+        };
+
+        // Call the handleFileUpload function
+        handleFileUpload();
+    }, [formData.emojiFile, formData.emojiName]);
+
+    const handleSubmit = async () => {
+        try {
+            // Reference to the "moodlogs" collection
+            const moodlogsCollection = collection(db, 'moodlogs');
+
+            // Convert Date.now() to Firestore timestamp
+            const firestoreTimestamp = Timestamp.fromMillis(Date.now());
+
+            // Add a new document to the "moodlogs" collection with form data and timestamp
+            const newMoodLogRef = await addDoc(moodlogsCollection, {
+                anxiety: formData.anxiety,
+                date: firestoreTimestamp,
+                emoji: encodeURIComponent(formData.emoji),
+                emotion: formData.emotion,
+                hours: formData.hours,
+                irritability: formData.irritability,
+                level: formData.level,
+                notes: formData.notes,
+                quality: formData.quality,
+                state: formData.state,
+                title: formData.title,
+            });
+
+            console.log('Form data submitted to moodlogs with ID:', newMoodLogRef.id);
+        } catch (error) {
+            console.error('Error submitting form data:', error.message);
+        }
     };
 
     return (
@@ -107,8 +161,8 @@ const QuickForm = ({ onFormSubmit }) => {
                                     id="depressed"
                                     type='radio'
                                     name="state"
-                                    onClick={() => handleStateChange('depressed')} />
-                                <label className='add-mood-quick__level-state-option' htmlFor="depressed">depressed</label>
+                                    onClick={() => handleStateChange('Depressed')} />
+                                <label className='add-mood-quick__level-state-option' htmlFor="depressed">Depressed</label>
                             </div>
 
                             <div className='add-mood-quick__level-state-container'>
@@ -119,8 +173,8 @@ const QuickForm = ({ onFormSubmit }) => {
                                     type='radio'
                                     name="state"
                                     title='"Within Normal Limits" No symptoms of depression or elevation'
-                                    onClick={() => handleStateChange('wnl')} />
-                                <label className='add-mood-quick__level-state-option' htmlFor="wnl">wnl</label>
+                                    onClick={() => handleStateChange('WNL')} />
+                                <label className='add-mood-quick__level-state-option' htmlFor="wnl">WNL</label>
                             </div>
 
                             <div className='add-mood-quick__level-state-container'>
@@ -130,13 +184,13 @@ const QuickForm = ({ onFormSubmit }) => {
                                     id="elevated"
                                     type='radio'
                                     name="state"
-                                    onClick={() => handleStateChange('elevated')} />
-                                <label className='add-mood-quick__level-state-option' htmlFor="elevated">elevated</label>
+                                    onClick={() => handleStateChange('Elevated')} />
+                                <label className='add-mood-quick__level-state-option' htmlFor="elevated">Elevated</label>
                             </div>
 
                         </article>
 
-                        {formData.state === "depressed" || formData.state === "elevated" ? (
+                        {formData.state === "Depressed" || formData.state === "Elevated" ? (
                             <article className='add-mood-quick__level-level'>
                                 <img className='add-mood-quick__level-divider' alt="choose level level" src={arrow} />
 
@@ -151,7 +205,7 @@ const QuickForm = ({ onFormSubmit }) => {
                                             id="Mild"
                                             onChange={() => handleLevelChange("Mild")}
                                         />
-                                        <label className='add-mood-quick__level-level-option' htmlFor="Mild">mild</label>
+                                        <label className='add-mood-quick__level-level-option' htmlFor="Mild">Mild</label>
                                     </div>
 
                                     <div className='add-mood-quick__level-level-container'>
@@ -163,7 +217,7 @@ const QuickForm = ({ onFormSubmit }) => {
                                             id="Moderate"
                                             onChange={() => handleLevelChange("Moderate")}
                                         />
-                                        <label className='add-mood-quick__level-level-option' htmlFor="Moderate">moderate</label>
+                                        <label className='add-mood-quick__level-level-option' htmlFor="Moderate">Moderate</label>
                                     </div>
 
                                     <div className='add-mood-quick__level-level-container'>
@@ -175,7 +229,7 @@ const QuickForm = ({ onFormSubmit }) => {
                                             id="Severe"
                                             onChange={() => handleLevelChange("Severe")}
                                         />
-                                        <label className='add-mood-quick__level-level-option' htmlFor="Severe">severe</label>
+                                        <label className='add-mood-quick__level-level-option' htmlFor="Severe">Severe</label>
                                     </div>
 
 
@@ -320,19 +374,19 @@ const QuickForm = ({ onFormSubmit }) => {
                                         onClick={() => handleQualityChange('Poor')}
                                     />
                                     <img className={`add-mood-quick__sleep-form-quality-option ${formData.quality === 'Okay' ? 'selected' : ''}`}
-                                    src={okaysleep}
+                                        src={okaysleep}
                                         alt="Okay sleep"
                                         name="quality"
                                         onClick={() => handleQualityChange('Okay')}
                                     />
                                     <img className={`add-mood-quick__sleep-form-quality-option ${formData.quality === 'Good' ? 'selected' : ''}`}
-                                    src={goodsleep}
+                                        src={goodsleep}
                                         alt="Good sleep"
                                         name="quality"
                                         onClick={() => handleQualityChange('Good')}
                                     />
                                     <img className={`add-mood-quick__sleep-form-quality-option ${formData.quality === 'Awesome' ? 'selected' : ''}`}
-                                    src={awesomesleep}
+                                        src={awesomesleep}
                                         alt="Awesome sleep"
                                         name="quality"
                                         onClick={() => handleQualityChange('Awesome')}
@@ -348,7 +402,7 @@ const QuickForm = ({ onFormSubmit }) => {
                             <article className='add-mood-quick__emote-menu'>
                                 <ul className='add-mood-quick__emote-menu-eq'>
                                     <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--motivated'>
-                                        <button type="button" className='add-mood-quick__emote-menu-option--buttonpress'>
+                                        <button type="button" className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === '../../assets/emotes/motivated.png' ? 'selected' : ''}`}>
                                             <input
                                                 name="emotion"
                                                 className='add-mood-quick__emote-option-eq'
@@ -365,7 +419,7 @@ const QuickForm = ({ onFormSubmit }) => {
                                         </button>
                                     </li>
                                     <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--anxious'>
-                                        <button className='add-mood-quick__emote-menu-option--buttonpress' type="button" >
+                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === '../../assets/emotes/anxious.png' ? 'selected' : ''}`} type="button" >
                                             <input
                                                 className='add-mood-quick__emote-option-eq'
                                                 type='radio'

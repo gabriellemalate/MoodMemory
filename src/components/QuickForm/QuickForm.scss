@@ -279,10 +279,9 @@
                             transform: scale(2);
                             font-weight: 900;
                         }
-                        &:focus,
-                        &:active {
-                            border: solid 0.1rem rgb(49, 223, 254);
-                            background-color: $periwinkle;
+                        &.selected {
+                            border: rgb(188, 24, 144) solid .12rem;
+                            background-color: rgb(50, 5, 94);
                         }
 
                         & div {
