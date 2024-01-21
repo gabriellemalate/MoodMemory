@@ -14,10 +14,11 @@ const MoodMap = () => {
     const [currentTitle, setCurrentTitle] = useState('');
 
     const groups = {
-        year: [{ Year, title: 'Year Title' }],
+        year: [Year],
         month: [Feb, Month],
-        week: [Feb, Week1, Week2,  Week3, Week4],
+        week: [Feb, Week1, Week2, Week3, Week4],
     };
+    
 
     const handleChangeGroup = (group) => {
         setCurrentGroup(group);
@@ -27,14 +28,12 @@ const MoodMap = () => {
 
     const handlePrev = () => {
         setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : groups[currentGroup].length - 1));
-        setCurrentIndex(newIndex);
-        setCurrentTitle(groups[currentGroup][newIndex].title); 
+        setCurrentTitle(groups[currentGroup][currentIndex].title);
     };
 
     const handleNext = () => {
         setCurrentIndex((prevIndex) => (prevIndex < groups[currentGroup].length - 1 ? prevIndex + 1 : 0));
-        setCurrentIndex(newIndex);
-        setCurrentTitle(groups[currentGroup][newIndex].title); 
+        setCurrentTitle(groups[currentGroup][currentIndex].title);
     };
 
     return (
@@ -44,20 +43,20 @@ const MoodMap = () => {
                     <img
                         className='map-image'
                         src={groups[currentGroup][currentIndex]}
-                        alt={`Image ${currentIndex + 1}`} />
+                        alt={`Map ${currentIndex + 1}`} />
                 </article>
                 <h2>{currentTitle}</h2>
                 <article className="map-controls">
                     <div className='map-controls-eq'>
-                    <div className='map-groups'>
-                        <button className="map-groups-group" onClick={() => handleChangeGroup('year')}>Year</button>
-                        <button className="map-groups-group" onClick={() => handleChangeGroup('month')}>Month</button>
-                        <button className="map-groups-group" onClick={() => handleChangeGroup('week')}>Week</button>
-                    </div>
-                    <div className='map-arrows'>
-                        <button className='map-arrows-arrow' onClick={handlePrev}>&lt;</button>
-                        <button className='map-arrows-arrow' onClick={handleNext}>&gt;</button>
-                    </div>
+                        <div className='map-groups'>
+                            <button className="map-groups-group" onClick={() => handleChangeGroup('year')}>Year</button>
+                            <button className="map-groups-group" onClick={() => handleChangeGroup('month')}>Month</button>
+                            <button className="map-groups-group" onClick={() => handleChangeGroup('week')}>Week</button>
+                        </div>
+                        <div className='map-arrows'>
+                            <button className='map-arrows-arrow' onClick={handlePrev}>&lt;</button>
+                            <button className='map-arrows-arrow' onClick={handleNext}>&gt;</button>
+                        </div>
                     </div>
                 </article>
             </section>
