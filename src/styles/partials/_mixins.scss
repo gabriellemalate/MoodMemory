@@ -67,21 +67,21 @@
     color: $white;
     justify-content: center;
     padding: .4rem .8rem;
-    &:hover {
+    &:hover, &:focus, &:active {
         background-color: $periwinkle;
         color: $aqua;
     }
-    &:focus, &:active {
-        border: .1rem solid $periwinkle;
-        font-weight: bold;
-    }
+    // &:focus, &:active {
+    //     border: .1rem solid $periwinkle;
+    //     font-weight: bold;
+    // }
 }
 
 @mixin dropdown {
-    height: 1.7rem;
+    height: 2rem;
     width: fit-content;
     border-radius: 1rem;
-    border: 0.08rem solid $periwinkle;
+    border: 0.2rem solid $periwinkle;
     background-color: $periwinkle-lite;
     color: $blue-light;
     justify-content: center;

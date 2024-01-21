@@ -25,7 +25,8 @@ $cycleDuration: 3s;
             position: absolute;
             opacity: .8;
             z-index: 2;
-            top: .5rem;
+            top: 7rem;
+            color: #29746c;
         }
     }
     &__redirect {
@@ -40,6 +41,7 @@ $cycleDuration: 3s;
             opacity: .8;
             bottom: 0;
             margin: 1.5rem;
+            display: none;
         }
 
         &:hover {
@@ -98,9 +100,9 @@ $cycleDuration: 3s;
     animation: DayCycle 3s infinite cubic-bezier(0.41, 0.15, 0.64, 0.91) -1s;
     @include mobile {
         width: 94%;
-        height: 450px;
         position: relative;
-        bottom: 1.5rem;
+        height: 630px;
+        bottom: 0;
     }
 }
 

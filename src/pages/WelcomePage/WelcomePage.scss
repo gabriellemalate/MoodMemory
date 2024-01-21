@@ -45,7 +45,7 @@
         }
     }
     &__button {
-        margin: 1.5rem 0 1rem;
+        margin: 3rem 0 1rem;
         padding: .6rem 2rem;
         border-radius: 1rem;
         border: 0;
@@ -83,16 +83,16 @@
         background: #46afb4;
         width: 80vw;
         height: 35vh;
-        top: 10%;
-        left: 10%;
+        top: 14.5vh;
+        left: 10vw;
     }
 
     &_1 {
         background: rgba(215, 198, 66, 0.8);
         width: 92vw;
-        height: 50vh;
+        height: 60vh;
         left: 4%;
-        top: 5%;
+        top: 7vh;
         outline: dotted 1rem #95123b;
     }
 }

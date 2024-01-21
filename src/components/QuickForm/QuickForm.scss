@@ -17,7 +17,7 @@
             line-height: 2.4rem;
             font-weight: 700;
             z-index: -1;
-            margin: 2rem 0 3rem;
+            margin: 3rem 0 3rem;
 
             &-crop {
                 width: 100%;
@@ -68,7 +68,7 @@
             }
             &-subhead {
                 @include mobile-subhead;
-                margin: .2rem 0 1.2rem;
+                margin: 0.2rem 0 1.2rem;
                 color: $blue-light;
             }
             &-divider {
@@ -83,11 +83,12 @@
                 &-opt {
                     display: none;
                     &:checked + label {
-                        border: 0.2rem solid $periwinkle;
+                        background-color: $periwinkle;
+                        color: $aqua;
                         font-weight: bold;
                     }
                     &:not(:checked) + label {
-                        border: 0.1rem dashed $periwinkle;
+                        border: 0.2rem solid $periwinkle;
                         font-weight: 400;
                     }
                     &ion {
@@ -108,7 +109,7 @@
                 &-opt {
                     @extend .add-mood-quick__level-state-opt;
                     &:active {
-                        border: 0.2rem solid $periwinkle;
+                        border: 2rem solid $periwinkle;
                         font-weight: bold;
                     }
                     &ion {
@@ -151,6 +152,7 @@
             }
         }
         &__sleep {
+            margin: 4rem 0 2rem;
             &-form {
                 &-head {
                     @include mobile-head-category;
@@ -192,7 +194,7 @@
                             transform: scale(1.4);
                         }
                         &.selected {
-                            outline: rgb(188, 24, 144) .2rem dashed;
+                            outline: rgb(188, 24, 144) 0.2rem dashed;
                             border-radius: 2rem;
                         }
                     }
@@ -203,6 +205,7 @@
             width: 100%;
             @include column;
             margin-top: 0.8rem;
+            margin-bottom: 1rem;
             &-form {
                 width: 90%;
                 &-head {
@@ -242,6 +245,7 @@
         &__emote {
             width: 100%;
             @include column;
+            margin: 3rem 0 2rem;
 
             &-option-eq {
                 display: none;
@@ -283,7 +287,7 @@
                             font-weight: 900;
                         }
                         &.selected {
-                            border: rgb(188, 24, 144) solid .12rem;
+                            border: rgb(188, 24, 144) solid 0.12rem;
                             background-color: rgb(50, 5, 94);
                         }
 
@@ -311,8 +315,8 @@
 .error {
     color: #9b0e2a;
 
-    padding: .25rem 1rem;
-    margin: .25rem 0;
+    padding: 0.25rem 1rem;
+    margin: 0.25rem 0;
 
     &-state {
         margin: 1rem 0 0;

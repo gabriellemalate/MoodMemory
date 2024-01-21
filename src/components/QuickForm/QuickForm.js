@@ -495,7 +495,7 @@ const QuickForm = () => {
                                             </label>
                                         </button>
                                     </li>
-                                    <li className='add-mood-quick__emote-menu-option add-mood-quick__emote-menu-option--anxious'>
+                                    <li className='add-mood-quick__emote-menu-option'>
                                         <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === '../../assets/emotes/anxious.png' ? 'selected' : ''}`} type="button" >
                                             <input
                                                 className='add-mood-quick__emote-option-eq'
@@ -512,7 +512,8 @@ const QuickForm = () => {
                                         </button>
                                     </li>
                                     <li className='add-mood-quick__emote-menu-option'>
-                                        <button className='add-mood-quick__emote-menu-option--relaxed-button add-mood-quick__emote-menu-option--buttonpress' type="button">
+                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === '../../assets/emotes/relaxed.png' ? 'selected' : ''}`} 
+                                        type="button">
                                             <input
                                                 name="emotion"
                                                 className='add-mood-quick__emote-option-eq'

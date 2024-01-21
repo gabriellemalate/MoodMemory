@@ -25,14 +25,14 @@
         outline: rgb(47, 251, 176) dotted .4rem;
         width: 60vw;
         height: 22vh;
-        top: 28vh;
+        top: 38vh;
         left: 9%;
     }
     &_4 { //2nd
         background: #2b1cff;
         width: 88vw;
-        height: 47vh;
-        top: 27%;
+        height: 48vh;
+        top: 34vh;
         left: 6%;
     }
     &_7 { //3rd
@@ -40,75 +40,79 @@
         outline: rgb(214, 47, 251) dotted .4rem;
         width: 30vw;
         height: 20vh;
-        top: 40vh;
+        top: 50vh;
         left: 50vw;
     }
     &_5{ //4th
         background: rgb(2, 221, 100, .8);
         width: 80vw;
-        height: 22vh;
-        top: 46.5%;
+        height: 32.6vh;
+        top: 64.5vh;
         left: 9%;
     }
-    &_12 {//intro
-        background: rgb(244, 181, 71, .9);
-        width: 96vw;
-        height: 11vh;
-        top: 9vh;
-        left: 1vw;
+
+    &_2 { //5th - sleep
+        background: rgb(184, 255, 31, .8);
+        width: 91vw;
+        height: 41vh;
+        top: 101vh;
+        left: 4vw;
+        outline: #1eceff dotted .5rem;
     }
-    // &_2 {
-    //     background: rgb(184, 255, 31, .8);
-    //     width: 49vh;
-    //     height: 24vh;
-    //     top: 132%;
-    //     left: 15%;
-    // }
-
-    &_3 {
-        background: rgb(2, 221, 100);
-        width: 88vw;
-        height: 57vh;
-        top: 101%;
-        left: 6%;
+    &_9 { //6th
+        background: rgb(203, 205, 65, .9);
+        width: 40vw;
+        height: 19vh;
+        top: 105vh;
+        left: 20%;
+        outline: rgb(237, 84, 201) dotted .4rem;
+    }
+    &_11 { //7th
+        background: rgba(68, 255, 249, 0.8);
+        width: 46vh;
+        height: 20vh;
+        top: 115vh;
+        left: 10%;
     }
 
-    // &_11 {
-    //     background: rgba(68, 255, 249, 0.8);
-    //     width: 46vh;
-    //     height: 20vh;
-    //     top: 110%;
-    //     left: 8%;
-    // }
+    &_3 { // emotes
+        background: rgb(33, 195, 216, .9);
+        width: 35vh;
+        height: 20vh;
+        top: 138%;
+        left: 10%;
+    }
+    &_10 {
+        background: #f447e6;
+        width: 33vw;
+        height: 26vh;
+        top: 147vh;
+        left: 55vw;
+        outline: rgb(247, 234, 47) dotted .4rem;
+    }
+    &_8 {
+        background: rgb(2, 221, 100, .8);
+        width: 92vw;
+        height: 57.5vh;
+        top: 155vh;
+        left: 4%;
+        outline: rgb(237, 34, 68) dotted .5rem;
+    }
 
+
+    &_12 {
+        background: rgba(253, 145, 50, 0.7);
+        width: 30vw;
+        height: 40vh;
+        top: 220vh;
+        left: 16vw;
+        outline: dotted .5rem blue;
+    }
     &_1 {
         background: #1e5aff;
         width: 80vw;
         height: 44vh;
-        top: 210vh;
-        left: 10%;
-    }
-
-    &_8 {
-        background: #21c3d8;
-        width: 35vh;
-        height: 60vh;
-        top: 255%;
-        left: 10%;
-    }
-
-    &_9 {
-        background: #cbcd41;
-        width: 40vw;
-        height: 19vh;
-        top: 230%;
-        left: 20%;
-    }
-    &_10 {
-        background: #6af447;
-        width: 40vw;
-        height: 26vh;
-        top: 300%;
+        top: 220vh;
         left: 10%;
     }
 }
