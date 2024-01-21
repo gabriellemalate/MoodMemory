@@ -63,7 +63,7 @@ function Success() {
             </div>
 
             <p className="success-details">You'll be redirected to your new log in 5 seconds. Or you can {" "}
-                <Link className="success-details__redirect" to="logs">
+                <Link className="success-details__redirect" to="/logs">
                     click here
                 </Link>
             </p>
