@@ -34,6 +34,7 @@ import worried from "../../assets/emotes/worried.png";
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import React, { useState, useEffect, useRef, } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import { db } from '../../firebase';
 
@@ -51,6 +52,17 @@ const QuickForm = () => {
         title: '',
         notes: '',
     });
+    const [errors, setErrors] = useState({
+        state: '',
+        anxiety: '',
+        irritability: '',
+        quality: '',
+        hours: '',
+        emoji: '',
+        emotion: '',
+    });
+
+    const navigate = useNavigate();
 
     // State update functions
     const handleStateChange = (selectedState) => {
@@ -69,7 +81,6 @@ const QuickForm = () => {
     };
 
     const handleQualityChange = (selectedQuality) => {
-        console.log('Selected Quality:', selectedQuality);
         console.log('Selected Quality:', selectedQuality);
         setFormData((prevData) => ({ ...prevData, quality: selectedQuality }));
     };
@@ -113,6 +124,43 @@ const QuickForm = () => {
     }, [formData.emojiFile, formData.emojiName]);
 
     const handleSubmit = async () => {
+        e.preventDefault(); // Prevent page reload
+
+        // Validation checks
+        let formIsValid = true;
+
+        // Check for state
+        if (!formData.state) {
+            setErrors((prevErrors) => ({ ...prevErrors, state: 'State is required' }));
+            formIsValid = false;
+        } else {
+            setErrors((prevErrors) => ({ ...prevErrors, state: '' }));
+        }
+
+
+
+        // Repeat similar checks for other fields
+
+        // If any validation fails, prevent form submission
+        if (!formIsValid) {
+            return;
+        }
+
+        // // Check if required fields are filled
+        // if (
+        //     !formData.state ||
+        //     formData.anxiety === 0 ||
+        //     formData.irritability === 0 ||
+        //     !formData.quality ||
+        //     formData.hours === 0 ||
+        //     !formData.emoji ||
+        //     !formData.emotion
+        // ) {
+        //     // Show an error message to the user
+        //     alert('Please fill in all required fields.');
+        //     return;
+        // }
+
         try {
             // Reference to the "moodlogs" collection
             const moodlogsCollection = collection(db, 'moodlogs');
@@ -139,6 +187,7 @@ const QuickForm = () => {
         } catch (error) {
             console.error('Error submitting form data:', error.message);
         }
+        navigate('/success');
     };
 
     return (
@@ -188,6 +237,7 @@ const QuickForm = () => {
                                 <label className='add-mood-quick__level-state-option' htmlFor="elevated">Elevated</label>
                             </div>
 
+                            <div className="error">{errors.state}</div>
                         </article>
 
                         {formData.state === "Depressed" || formData.state === "Elevated" ? (
@@ -232,8 +282,6 @@ const QuickForm = () => {
                                         <label className='add-mood-quick__level-level-option' htmlFor="Severe">Severe</label>
                                     </div>
 
-
-
                                 </div>
                             </article>
                         ) : null}
@@ -270,6 +318,8 @@ const QuickForm = () => {
                                         </option>
                                     </optgroup>
                                 </select>
+
+                                <div className="error">{errors.irritability}</div>
                             </div>
 
                             <div className='add-mood-quick__observations-anxiety'>
@@ -300,6 +350,7 @@ const QuickForm = () => {
                                         </option>
                                     </optgroup>
                                 </select>
+                                <div className="error">{errors.anxiety}</div>
                             </div>
                         </div>
                     </article>
@@ -362,6 +413,7 @@ const QuickForm = () => {
                                         </option>
                                     </optgroup>
                                 </select>
+                                <div className="error">{errors.hours}</div>
                             </div>
 
                             <div className='add-mood-quick__sleep-form-quality'>
@@ -392,6 +444,7 @@ const QuickForm = () => {
                                         onClick={() => handleQualityChange('Awesome')}
                                     />
                                 </div>
+                                <div className="error">{errors.quality}</div>
                             </div>
                         </div>
                     </article>

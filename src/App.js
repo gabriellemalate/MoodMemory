@@ -10,6 +10,7 @@ import MoodMapsPage from "./pages/MoodMapsPage/MoodMapsPage";
 import MemoryHomePage from "./pages/MemoryHomePage/MemoryHomePage";
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 import LoadingPage from "./pages/LoadingPage/LoadingPage";
+import Success from "./components/Success/Success";
 
 function App() {
   const [user] = useAuthState(auth);
@@ -22,8 +23,8 @@ function App() {
           <Route path='/logs' element={<MoodLogsPage />} />
           {/* <Route path='/logs/:logId' element={<SelectedVideo />} /> */}
           <Route path='/maps' element={<MoodMapsPage />} />
-
           <Route path='/memoryhome' element={<MemoryHomePage />} />
+          <Route path='/success' element={<Success />} />
           <Route path='/loading' element={<LoadingPage/>}/>
 
           {/* <Route path='/success' element={<Success/>}/> */}
