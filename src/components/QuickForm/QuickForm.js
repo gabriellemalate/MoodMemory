@@ -129,21 +129,21 @@ const QuickForm = () => {
         let formIsValid = true;
 
         if (!formData.state) {
-            setErrors((prevErrors) => ({ ...prevErrors, state: 'Select a Mood State' }));
+            setErrors((prevErrors) => ({ ...prevErrors, state: '*Select a Mood State' }));
             formIsValid = false;
         } else {
             setErrors((prevErrors) => ({ ...prevErrors, state: '' }));
         }
 
         if (!formData.quality) {
-            setErrors((prevErrors) => ({ ...prevErrors, quality: 'Choose a sleep quality option' }));
+            setErrors((prevErrors) => ({ ...prevErrors, quality: '*Choose a sleep quality option' }));
             formIsValid = false;
         } else {
             setErrors((prevErrors) => ({ ...prevErrors, quality: '' }));
         }
 
         if (!formData.emoji) {
-            setErrors((prevErrors) => ({ ...prevErrors, emoji: 'Please choose a mood representation' }));
+            setErrors((prevErrors) => ({ ...prevErrors, emoji: '*Please choose a mood representation' }));
             formIsValid = false;
         } else {
             setErrors((prevErrors) => ({ ...prevErrors, emoji: '' }));

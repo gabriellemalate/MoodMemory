@@ -10,18 +10,24 @@
     &__head {
         letter-spacing: .1rem;
         border-bottom: .1rem solid $blue-light;
-        padding-bottom: 1rem;
+        padding-bottom: .5rem;
         width: fit-content;
     }
     &__mood {
-        margin: 1rem 0 4rem;
+        margin: 0 0 4rem;
         width: 100%;
+        @include column;
+        background-color: rgb(12, 82, 82);
+        border-radius: 2rem;
+
         &-head {
             letter-spacing: .25rem;
+            margin: 1rem 0 .5rem;
         }
     }
     &__sleep {
         width: 100%;
+        display: none;
         &-head {
             letter-spacing: .25rem;
         }

@@ -1,0 +1,39 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.map{
+    @include column;
+    &-controls {
+        padding: 1rem 0;
+        &-eq {
+            @include row;
+            justify-content: space-between;
+        }
+    }
+    &-slide {
+        width: 90%;
+    }
+    &-image {
+        width: 100%;
+        border-radius: 1.2rem;
+    }
+    &-arrows {
+        &-arrow {
+            border-radius: 1rem;
+            border: 0;
+            cursor: pointer;
+            margin-left: .5rem;
+            padding: .5rem 1rem;
+        }
+    }
+    &-groups {
+        background-color: aqua;
+        border-radius: 1rem;
+        padding: .4rem .2rem .4rem .3rem;
+        &-group {
+            @extend .map-arrows-arrow;
+            margin-right: .2rem;
+            margin-left: 0;
+        }
+    }
+}
