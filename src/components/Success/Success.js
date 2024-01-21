@@ -16,7 +16,7 @@ function Success() {
 
     return (
         <article className="success">
-            <h1 className="success-head">Upload Successful</h1>
+            <h1 className="success-head">Great to hear from you</h1>
 
             <div className="flower">
                 <div className="f-wrapper">

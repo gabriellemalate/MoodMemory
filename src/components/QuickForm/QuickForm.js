@@ -35,6 +35,7 @@ import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import React, { useState, useEffect, useRef, } from 'react';
 import { useNavigate } from 'react-router-dom';
+import LoadingPage from '../../pages/LoadingPage/LoadingPage';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import { db } from '../../firebase';
 
@@ -61,7 +62,7 @@ const QuickForm = () => {
         emoji: '',
         emotion: '',
     });
-
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     // State update functions
@@ -123,43 +124,60 @@ const QuickForm = () => {
         handleFileUpload();
     }, [formData.emojiFile, formData.emojiName]);
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent page reload
+
+        setLoading(true);
 
         // Validation checks
         let formIsValid = true;
 
-        // Check for state
         if (!formData.state) {
-            setErrors((prevErrors) => ({ ...prevErrors, state: 'State is required' }));
+            setErrors((prevErrors) => ({ ...prevErrors, state: 'Select a Mood State' }));
             formIsValid = false;
         } else {
             setErrors((prevErrors) => ({ ...prevErrors, state: '' }));
         }
 
+        if (!formData.irritability) {
+            setErrors((prevErrors) => ({ ...prevErrors, irritability: 'Select an irritability level' }));
+            formIsValid = false;
+        } else {
+            setErrors((prevErrors) => ({ ...prevErrors, irritability: '' }));
+        }
 
+        if (!formData.anxiety) {
+            setErrors((prevErrors) => ({ ...prevErrors, anxiety: 'Select an anxiety level' }));
+            formIsValid = false;
+        } else {
+            setErrors((prevErrors) => ({ ...prevErrors, anxiety: '' }));
+        }
 
-        // Repeat similar checks for other fields
+        if (!formData.hours) {
+            setErrors((prevErrors) => ({ ...prevErrors, hours: 'Hours Slept is required' }));
+            formIsValid = false;
+        } else {
+            setErrors((prevErrors) => ({ ...prevErrors, hours: '' }));
+        }
+
+        if (!formData.quality) {
+            setErrors((prevErrors) => ({ ...prevErrors, quality: 'Choose a sleep quality option' }));
+            formIsValid = false;
+        } else {
+            setErrors((prevErrors) => ({ ...prevErrors, quality: '' }));
+        }
+
+        if (!formData.emoji) {
+            setErrors((prevErrors) => ({ ...prevErrors, emoji: 'Please choose a mood representation' }));
+            formIsValid = false;
+        } else {
+            setErrors((prevErrors) => ({ ...prevErrors, emoji: '' }));
+        }
 
         // If any validation fails, prevent form submission
         if (!formIsValid) {
             return;
         }
-
-        // // Check if required fields are filled
-        // if (
-        //     !formData.state ||
-        //     formData.anxiety === 0 ||
-        //     formData.irritability === 0 ||
-        //     !formData.quality ||
-        //     formData.hours === 0 ||
-        //     !formData.emoji ||
-        //     !formData.emotion
-        // ) {
-        //     // Show an error message to the user
-        //     alert('Please fill in all required fields.');
-        //     return;
-        // }
 
         try {
             // Reference to the "moodlogs" collection
@@ -186,12 +204,18 @@ const QuickForm = () => {
             console.log('Form data submitted to moodlogs with ID:', newMoodLogRef.id);
         } catch (error) {
             console.error('Error submitting form data:', error.message);
+        } finally {
+            // Set loading to false after submission (whether successful or not)
+            setLoading(false);
         }
         navigate('/success');
     };
 
     return (
         <>
+        {loading ? (
+                <LoadingPage />
+            ) : (
             <section className='add-mood-quick'>
                 <h1 className='add-mood-quick__head'>
                     <span className='add-mood-quick__head-crop'>How are you feeling today,</span> <span className='add-mood-quick__head-crop-name'> {user ? user.displayName.split(' ')[0] : ''}?</span>
@@ -237,8 +261,8 @@ const QuickForm = () => {
                                 <label className='add-mood-quick__level-state-option' htmlFor="elevated">Elevated</label>
                             </div>
 
-                            <div className="error">{errors.state}</div>
                         </article>
+                        <div className="error error-state">{errors.state}</div>
 
                         {formData.state === "Depressed" || formData.state === "Elevated" ? (
                             <article className='add-mood-quick__level-level'>
@@ -879,6 +903,7 @@ const QuickForm = () => {
                                     </li>
                                 </ul>
                             </article>
+                            <div className="error">{errors.emoji}</div>
                         </div>
                     </article>
 
@@ -911,8 +936,8 @@ const QuickForm = () => {
                             onClick={handleSubmit}>Log  +</button>
                     </div>
                 </form>
-
             </section>
+            )}
         </>
     );
 };

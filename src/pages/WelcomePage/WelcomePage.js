@@ -1,6 +1,6 @@
 import React from "react";
 import "./WelcomePage.scss"
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { auth } from "../../firebase";
 import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
 
@@ -25,8 +25,10 @@ const WelcomePage = () => {
                 </div>
                 <article className="welcome__logo">
                     <div className="welcome__logo-eq">
-                        <Link to="/moodhome" className="welcome__logo-mood">Mood</Link>
-                        <Link to="/memoryhome" className="welcome__logo-memory">Memory</Link>
+                        {/* <Link to="/moodhome" className="welcome__logo-mood">Mood</Link>
+                        <Link to="/memoryhome" className="welcome__logo-memory">Memory</Link> */}
+                        <span className="welcome__logo-mood">Mood</span>
+                        <span className="welcome__logo-memory">Memory</span>
                     </div>
                 </article>
                 <button

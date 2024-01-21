@@ -12,6 +12,12 @@
     }
 }
 
+@mixin mobile {
+    @media (max-width: 400px) {
+        @content;
+    }
+}
+
 // Flex Directions
 @mixin column {
     display: flex;
@@ -153,9 +159,9 @@
 // Image
 @mixin user {
     border-radius: 50%;
-    width: 8vw;
+    width: 9vw;
     max-width: 2.2rem;
-    padding: 0.2rem 0.4rem 0.2rem 0.4rem;
+    padding: 0.2rem 0.4rem;
     background-color: rgb(121, 216, 121);
 }
 

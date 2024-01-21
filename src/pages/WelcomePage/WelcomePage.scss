@@ -32,13 +32,13 @@
         padding: 1.5rem 0 2rem;
         font-size: 3rem;
         &-mood {
-            &:hover {
+            &:hover, &:focus {
                 color: rgb(255, 241, 216);
                 @include shadow-left;
             }
         }
         &-memory {
-            &:hover {
+            &:hover, &:focus {
                 color: rgb(255, 241, 216);
                 @include shadow-right;
             }
@@ -49,7 +49,7 @@
         padding: .6rem 2rem;
         border-radius: 1rem;
         border: 0;
-        background-color: $periwinkle;
+        background-color: rgb(120, 42, 193);
         color: aliceblue;
         font-size: 1rem;
         letter-spacing: .1rem;
@@ -63,7 +63,7 @@
             color: rgb(19, 19, 98);
             background-color: rgb(89, 210, 210);
             font-weight: 600;
-            border: $cyan .1rem solid;
+            border: 0;
         }
     }
 }
@@ -80,19 +80,20 @@
     background-clip: text;
 
     &_2 {
-        background: #41bac1;
-        width: 49vh;
+        background: #46afb4;
+        width: 80vw;
         height: 35vh;
-        top: 8%;
+        top: 10%;
         left: 10%;
     }
 
     &_1 {
-        background: #557474;
-        width: 60vh;
+        background: rgba(215, 198, 66, 0.8);
+        width: 92vw;
         height: 50vh;
-        left: 2%;
+        left: 4%;
         top: 5%;
+        outline: dotted 1rem #95123b;
     }
 }
 @keyframes morphs {
