@@ -21,15 +21,15 @@
     background-clip: text;
 
     &_6 { // 1st
-        background: rgba(208, 41, 197, 0.8);
-        outline: rgb(47, 251, 176) dotted .4rem;
+        background: rgba(248, 168, 243, 0.8);
+        outline: rgb(21, 203, 137) dotted .5rem;
         width: 60vw;
         height: 22vh;
         top: 42vh;
         left: 9%;
     }
     &_4 { //2nd
-        background: #2b1cff;
+        background: rgba(43, 28, 255, 0.935);
         width: 88vw;
         height: 48vh;
         top: 36vh;
@@ -37,7 +37,7 @@
     }
     &_7 { //3rd
         background: rgba(68, 255, 249, 0.78);
-        outline: rgb(214, 47, 251) dotted .4rem;
+        outline: rgb(251, 197, 47) dotted .7rem;
         width: 30vw;
         height: 20vh;
         top: 54vh;
@@ -49,71 +49,88 @@
         height: 22.4vh;
         top: 68.5vh;
         left: 9%;
+        border: 1rem solid rgb(3, 15, 3);
     }
 
     &_2 { //5th - sleep
-        background: rgb(184, 255, 31, .8);
+        background: rgb(184, 255, 31, .6);
         width: 91vw;
-        height: 41vh;
-        top: 101vh;
+        height: 48vh;
+        top: 102vh;
         left: 4vw;
-        outline: #1eceff dotted .5rem;
+        outline: #1eceff dotted .6rem;
     }
     &_9 { //6th
-        background: rgb(203, 205, 65, .9);
+        background: rgba(246, 241, 73, 0.8);
         width: 40vw;
         height: 19vh;
-        top: 105vh;
+        top: 111vh;
         left: 20%;
-        outline: rgb(237, 84, 201) dotted .6rem;
+        outline: rgb(237, 84, 201, .7) solid .3rem;
     }
     &_11 { //7th
-        background: rgba(68, 255, 249, 0.8);
+        background: rgba(68, 255, 249, 0.7);
         width: 46vh;
         height: 20vh;
-        top: 115vh;
+        top: 126vh;
         left: 10%;
     }
 
     &_3 { // emotes
-        background: rgb(33, 195, 216, .9);
+        background: rgb(33, 195, 216, .8);
         width: 35vh;
         height: 20vh;
-        top: 148%;
-        left: 10%;
+        top: 162vh;
+        left: 10vw;
     }
     &_10 {
-        background: #f447e6;
-        width: 33vw;
+        background: rgb(245, 123, 8, .75);
+        width: 41vw;
         height: 26vh;
-        top: 157vh;
+        top: 166vh;
         left: 55vw;
-        outline: rgb(247, 234, 47) dotted .4rem;
+        outline: rgb(47, 247, 217) dotted .4rem;
     }
     &_8 {
-        background: rgb(2, 221, 100, .8);
+        background: rgb(2, 221, 100, .7);
         width: 92vw;
-        height: 57.5vh;
-        top: 165vh;
-        left: 4%;
-        outline: rgb(237, 34, 68) dotted .5rem;
+        height: 48.5vh;
+        top: 178vh;
+        left: 3vw;
+        outline: rgba(194, 132, 142, 0.749) solid .5rem;
+    }
+    &_13 {
+        background: rgba(47, 24, 255, 0.8);
+        width: 48vw;
+        height: 32vh;
+        top: 206vh;
+        left: 9vw;
+        outline: rgba(200, 157, 0, 0.9) dotted 1.8rem;
     }
 
 
     &_12 {
         background: rgba(253, 145, 50, 0.7);
         width: 30vw;
-        height: 40vh;
-        top: 230vh;
-        left: 16vw;
-        outline: dotted .5rem blue;
+        height: 34vh;
+        top: 252vh;
+        left: 12vw;
+        outline: solid .6rem blue;
     }
     &_1 {
-        background: #1e5aff;
+        background: rgb(30, 214, 255, .7);
         width: 80vw;
-        height: 44vh;
-        top: 230vh;
-        left: 10%;
+        height: 42vh;
+        top: 252vh;
+        left: 3vw;
+    }
+    &_14 {
+        background: rgba(253, 212, 50, 0.7);
+        width: 30vw;
+        height: 20vh;
+        top: 265vh;
+        left: 60vw;
+        outline: dotted .6rem rgba(255, 0, 251, 0.8);
     }
 }
 @keyframes blobs {

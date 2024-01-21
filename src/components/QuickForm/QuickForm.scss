@@ -4,7 +4,7 @@
 @import url("https://fonts.googleapis.com/css?family=Titan+One");
 
 .add-mood {
-    margin-bottom: 2.5rem;
+    margin-bottom: 6rem;
 
     &-quick {
         @include column;
@@ -53,7 +53,7 @@
                 @include button-submit;
                 width: 5rem;
                 height: 2.5rem;
-                margin: 0.6rem 1rem 0 0;
+                margin: 3rem 1rem 0 0;
                 font-size: 1rem;
             }
         }
@@ -152,29 +152,32 @@
             }
         }
         &__sleep {
-            margin: 4rem 0 2rem;
+            margin: 6.8rem 0 2rem;
             &-form {
                 &-head {
                     @include mobile-head-category;
-                    margin: 2rem 0 0;
+                    margin: 2rem 0 1rem;
                 }
                 &-hours {
                     @include column;
+                    margin: 0 0 1rem;
                     &-head {
                         @extend .add-mood-quick__observations-irritability-head;
-                        margin: 0.5rem 0 0.2rem;
+                        margin: 0.5rem 0 0.8rem;
+                        font-size: 1rem;
+                        letter-spacing: .1rem;
                     }
                     &-menu {
                         @extend .add-mood-quick__observations-irritability-menu;
-                        height: 1.9rem;
+                        height: 2.3rem;
+                        border-radius: 1.2rem;
                     }
                 }
                 &-quality {
                     @include column;
 
                     &-head {
-                        @extend .add-mood-quick__observations-irritability-head;
-                        margin: 0.4rem 0 0.2rem;
+                        @extend .add-mood-quick__sleep-form-hours-head;
                     }
                     &-options {
                         @include row;
@@ -236,16 +239,15 @@
                     }
                     &::placeholder {
                         font-family: avenir, Arial, Helvetica, sans-serif;
-                        color: $aqua;
+                        color: rgb(69, 19, 116);
                     }
                 }
             }
         }
-
         &__emote {
             width: 100%;
             @include column;
-            margin: 3rem 0 2rem;
+            margin: 4rem 0 3rem;
 
             &-option-eq {
                 display: none;

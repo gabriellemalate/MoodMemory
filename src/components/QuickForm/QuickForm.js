@@ -35,7 +35,6 @@ import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import React, { useState, useEffect, useRef, } from 'react';
 import { useNavigate } from 'react-router-dom';
-import LoadingPage from '../../pages/LoadingPage/LoadingPage';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import { db } from '../../firebase';
 
@@ -44,9 +43,9 @@ const QuickForm = () => {
     const [formData, setFormData] = useState({
         state: '',
         level: '',
-        irritability: 0, // Default value for dropdowns
-        anxiety: 0,     // Default value for dropdowns
-        hours: 0,       // Default value for dropdowns
+        irritability: '0', 
+        anxiety: '0',
+        hours: '0',     
         quality: '',
         emoji: '',
         emotion: '',
@@ -62,7 +61,6 @@ const QuickForm = () => {
         emoji: '',
         emotion: '',
     });
-    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     // State update functions
@@ -127,8 +125,6 @@ const QuickForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent page reload
 
-        setLoading(true);
-
         // Validation checks
         let formIsValid = true;
 
@@ -137,27 +133,6 @@ const QuickForm = () => {
             formIsValid = false;
         } else {
             setErrors((prevErrors) => ({ ...prevErrors, state: '' }));
-        }
-
-        if (!formData.irritability) {
-            setErrors((prevErrors) => ({ ...prevErrors, irritability: 'Select an irritability level' }));
-            formIsValid = false;
-        } else {
-            setErrors((prevErrors) => ({ ...prevErrors, irritability: '' }));
-        }
-
-        if (!formData.anxiety) {
-            setErrors((prevErrors) => ({ ...prevErrors, anxiety: 'Select an anxiety level' }));
-            formIsValid = false;
-        } else {
-            setErrors((prevErrors) => ({ ...prevErrors, anxiety: '' }));
-        }
-
-        if (!formData.hours) {
-            setErrors((prevErrors) => ({ ...prevErrors, hours: 'Hours Slept is required' }));
-            formIsValid = false;
-        } else {
-            setErrors((prevErrors) => ({ ...prevErrors, hours: '' }));
         }
 
         if (!formData.quality) {
@@ -204,18 +179,12 @@ const QuickForm = () => {
             console.log('Form data submitted to moodlogs with ID:', newMoodLogRef.id);
         } catch (error) {
             console.error('Error submitting form data:', error.message);
-        } finally {
-            // Set loading to false after submission (whether successful or not)
-            setLoading(false);
         }
         navigate('/success');
     };
 
     return (
         <>
-        {loading ? (
-                <LoadingPage />
-            ) : (
             <section className='add-mood-quick'>
                 <h1 className='add-mood-quick__head'>
                     <span className='add-mood-quick__head-crop'>How are you feeling today,</span> <span className='add-mood-quick__head-crop-name'> {user ? user.displayName.split(' ')[0] : ''}?</span>
@@ -342,8 +311,6 @@ const QuickForm = () => {
                                         </option>
                                     </optgroup>
                                 </select>
-
-                                <div className="error">{errors.irritability}</div>
                             </div>
 
                             <div className='add-mood-quick__observations-anxiety'>
@@ -374,7 +341,6 @@ const QuickForm = () => {
                                         </option>
                                     </optgroup>
                                 </select>
-                                <div className="error">{errors.anxiety}</div>
                             </div>
                         </div>
                     </article>
@@ -437,7 +403,7 @@ const QuickForm = () => {
                                         </option>
                                     </optgroup>
                                 </select>
-                                <div className="error">{errors.hours}</div>
+
                             </div>
 
                             <div className='add-mood-quick__sleep-form-quality'>
@@ -938,7 +904,6 @@ const QuickForm = () => {
                     </div>
                 </form>
             </section>
-            )}
         </>
     );
 };
