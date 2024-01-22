@@ -9,10 +9,12 @@
         @include column;
     }
     &__head {
-        letter-spacing: .16rem;
-        border-bottom: .1rem solid $white;
+        letter-spacing: .2rem;
+        border-bottom: .4rem dotted purple;
         width: fit-content;
         padding-bottom: .8rem;
+        font-size: 1.5rem;
+        color: rgb(242, 227, 176);
         &:hover {
             @include shadow-left;
             border-color: $glow;

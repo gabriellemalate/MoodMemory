@@ -3,21 +3,25 @@
 
 .success {
     @include column;
-    margin-top: 2rem;
+    margin-top: 4rem;
     &-head {
-        background-color: rgb(255, 255, 255, .5);
-        border-bottom: .2rem solid blue;
+        color: rgb(255, 220, 156);
+        border-bottom: .5rem dotted rgb(84, 23, 175);
         padding-bottom: .5rem;
     }
     
     &-details {
-        color: blue;
+        color: rgb(255, 237, 203);
         width: 80%;
         text-align: center;
-        background-color: rgb(255, 255, 255, .5);
         margin-top: 4rem;
+        position: relative;
+        top: 14rem;
+        font-weight: 500;
+        
         &__redirect {
             font-weight: 700;
+            color: rgb(123, 80, 188);
         }
     }
 }

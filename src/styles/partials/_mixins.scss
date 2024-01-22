@@ -17,6 +17,11 @@
         @content;
     }
 }
+@mixin smallscreen {
+    @media (min-width: 401px) {
+        @content;
+    }
+}
 
 // Flex Directions
 @mixin column {
