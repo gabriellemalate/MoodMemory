@@ -49,9 +49,9 @@ const MoodMap = () => {
                 <article className="map-controls">
                     <div className='map-controls-eq'>
                         <div className='map-groups'>
-                            <button className="map-groups-group" onClick={() => handleChangeGroup('year')}>Year</button>
-                            <button className="map-groups-group" onClick={() => handleChangeGroup('month')}>Month</button>
-                            <button className="map-groups-group" onClick={() => handleChangeGroup('week')}>Week</button>
+                            <button className="map-groups-group" onClick={() => handleChangeGroup('year')}>Yr</button>
+                            <button className="map-groups-group" onClick={() => handleChangeGroup('month')}>Mo</button>
+                            <button className="map-groups-group" onClick={() => handleChangeGroup('week')}>Wk</button>
                         </div>
                         <div className='map-arrows'>
                             <button className='map-arrows-arrow' onClick={handlePrev}>&lt;</button>

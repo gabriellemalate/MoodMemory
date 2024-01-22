@@ -8,21 +8,24 @@
         width: 96%;
     }
     &__head {
-        letter-spacing: .1rem;
-        border-bottom: .1rem solid $blue-light;
-        padding-bottom: .5rem;
+        letter-spacing: .3rem;
+        // border-bottom: .2rem dotted rgb(207, 52, 207);
         width: fit-content;
+        font-size: 1.4rem;
+        color: rgb(212, 242, 249);
+        align-self: start;
     }
     &__mood {
         margin: 0 0 4rem;
         width: 100%;
         @include column;
-        background-color: rgb(12, 82, 82);
+        background-color: rgba(34, 121, 121, 0.9);
         border-radius: 2rem;
 
         &-head {
             letter-spacing: .25rem;
-            margin: 1rem 0 .5rem;
+            margin: .86rem 0 .5rem;
+            font-size: 1.15rem;
         }
     }
     &__sleep {
