@@ -20,10 +20,10 @@ function MoodLogsPage() {
                         </button>
                     </form>
                     <section className='all-logs__logs'>
-                        <Logged/>
-                        <Logged/>
                         <LoggedExpand/>
+                        {/* <Logged/>
                         <Logged/>
+                        <Logged/> */}
                     </section>
                 </div>
             </main>

@@ -34,6 +34,10 @@ function MoodHomePage() {
                         <div className="blobs blobs_8" />
                         <div className="blobs blobs_9" />
                         <div className="blobs blobs_10" />
+                        <div className="blobs blobs_11" />
+                        <div className="blobs blobs_12" />
+                        <div className="blobs blobs_13" />
+                        <div className="blobs blobs_14" />
                     </article>
 
                     <section className='add-mood' id="add-mood">

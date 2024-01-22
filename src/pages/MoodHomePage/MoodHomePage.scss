@@ -20,84 +20,117 @@
     -webkit-background-clip: text;
     background-clip: text;
 
-    &_1 {
-        background: rgb(1, 255, 238, .7);
-        width: 40vh;
-        height: 40vh;
-        top: 60%;
+    &_6 { // 1st
+        background: rgba(248, 168, 243, 0.8);
+        outline: rgb(21, 203, 137) dotted .5rem;
+        width: 60vw;
+        height: 22vh;
+        top: 42vh;
+        left: 9%;
+    }
+    &_4 { //2nd
+        background: rgba(43, 28, 255, 0.935);
+        width: 88vw;
+        height: 48vh;
+        top: 36vh;
+        left: 6%;
+    }
+    &_7 { //3rd
+        background: rgba(68, 255, 249, 0.78);
+        outline: rgb(251, 197, 47) dotted .7rem;
+        width: 30vw;
+        height: 20vh;
+        top: 49vh;
+        left: 61vw;
+    }
+    &_5{ //4th
+        background: rgb(2, 221, 100, .75);
+        width: 80vw;
+        height: 22.4vh;
+        top: 68.5vh;
+        left: 9%;
+        border: 1rem solid rgb(3, 15, 3);
+    }
+
+    &_2 { //5th - sleep
+        background: rgb(184, 255, 31, .6);
+        width: 91vw;
+        height: 48vh;
+        top: 102vh;
+        left: 4vw;
+        outline: #1eceff dotted .6rem;
+    }
+    &_9 { //6th
+        background: rgba(246, 241, 73, 0.8);
+        width: 40vw;
+        height: 19vh;
+        top: 111vh;
         left: 20%;
+        outline: rgb(237, 84, 201, .7) solid .3rem;
     }
-
-    &_2 {
-        background: rgb(184, 255, 31, .8);
-        width: 49vh;
-        height: 24vh;
-        top: 132%;
-        left: 15%;
-    }
-
-    &_3 {
-        background: rgb(2, 221, 100);
-        width: 24vh;
-        height: 70vh;
-        top: 78%;
-        left: 55%;
-    }
-
-    &_4 {
-        background: rgba(68, 255, 249, 0.8);
+    &_11 { //7th
+        background: rgba(68, 255, 249, 0.7);
         width: 46vh;
         height: 20vh;
-        top: 110%;
-        left: 8%;
-    }
-
-    &_5 {
-        background: #4CAF50;
-        width: 45vh;
-        height: 45vh;
-        top: 25%;
-        left: 8%;
-        
-    }
-
-    &_6 {
-        background: #6aadf1;
-        width: 36vh;
-        height: 26vh;
-        top: 26%;
-        left: 36%;
-    }
-
-    &_7 {
-        background: #1e5aff;
-        width: 40vh;
-        height: 44vh;
-        top: 191%;
+        top: 126vh;
         left: 10%;
     }
 
-    &_8 {
-        background: #21c3d8;
+    &_3 { // emotes
+        background: rgb(33, 195, 216, .8);
         width: 35vh;
-        height: 60vh;
-        top: 255%;
-        left: 30%;
-    }
-
-    &_9 {
-        background: #cbcd41;
-        width: 40vh;
-        height: 19vh;
-        top: 230%;
-        left: 20%;
+        height: 20vh;
+        top: 162vh;
+        left: 10vw;
     }
     &_10 {
-        background: #6af447;
-        width: 40vh;
+        background: rgb(245, 123, 8, .75);
+        width: 41vw;
         height: 26vh;
-        top: 300%;
-        left: 10%;
+        top: 166vh;
+        left: 55vw;
+        outline: rgb(47, 247, 217) dotted .4rem;
+    }
+    &_8 {
+        background: rgb(2, 221, 100, .7);
+        width: 92vw;
+        height: 48.5vh;
+        top: 178vh;
+        left: 3vw;
+        outline: rgba(194, 132, 142, 0.749) solid .5rem;
+    }
+    &_13 {
+        background: rgba(47, 24, 255, 0.8);
+        width: 48vw;
+        height: 32vh;
+        top: 206vh;
+        left: 9vw;
+        outline: rgba(200, 157, 0, 0.9) dotted 1.8rem;
+    }
+
+
+    &_12 {
+        background: rgba(253, 145, 50, 0.7);
+        width: 30vw;
+        height: 34vh;
+        top: 252vh;
+        left: 12vw;
+        outline: solid .6rem blue;
+    }
+    &_1 {
+        background: rgb(30, 214, 255, .7);
+        width: 80vw;
+        height: 42vh;
+        top: 252vh;
+        left: 3vw;
+    }
+    &_14 {
+        background: rgba(253, 212, 50, 0.7);
+        width: 30vw;
+        height: 20vh;
+        top: 265vh;
+        left: 60vw;
+        outline: dotted .6rem rgba(255, 0, 251, 0.8);
     }
 }
 @keyframes blobs {

@@ -6,6 +6,7 @@
         @include user;
         padding: 0.2rem;
         cursor: pointer;
+        margin-top: .6rem;
     }
     &-left {
         @include row;
@@ -20,6 +21,10 @@
         .header__menu {
             background-color: rgb(41, 251, 160);
         }
+        .home-nav__logo {
+            position: relative;
+            top:-10rem;
+        }
     }
     &-right-nav-visible {
         .user {
@@ -27,6 +32,10 @@
             &-container {
                 right: 17rem;
             }
+        }
+        .home-nav__logo {
+            position: relative;
+            top:-10rem;
         }
     }
 }
@@ -87,8 +96,8 @@
 }
 .user {
     @include user;
-    margin-top: 0.2rem;
-    max-width: 2.2rem;
+    margin-top: 0.64rem;
+    max-width: 2.4rem;
     cursor: pointer;
     &-container {
         position: relative;

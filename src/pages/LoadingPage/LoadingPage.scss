@@ -16,11 +16,18 @@ $cycleDuration: 3s;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: $penbackground;
+    background-color: $loadbackground;
     &__head {
         letter-spacing: .2rem;
         font-family: avenir;
         margin: 1.2rem;
+        @include mobile {
+            position: absolute;
+            opacity: .8;
+            z-index: 2;
+            top: 7rem;
+            color: #29746c;
+        }
     }
     &__redirect {
         margin: 3rem;
@@ -29,15 +36,24 @@ $cycleDuration: 3s;
         background-color: #5b9791;
         border-radius: 1rem;
         padding: 1rem 1rem 0rem;
+        @include mobile {
+            position: absolute;
+            opacity: .8;
+            bottom: 0;
+            margin: 1.5rem;
+            display: none;
+        }
+
         &:hover {
             background-color: #5e9c95;
         }
+
         &-eq {
             @include row;
             margin: 1rem;
             padding: 0;
             font-size: 1rem;
-
+            @include column;
         }
         &-mood{
             margin: .5rem 1rem;
@@ -48,6 +64,16 @@ $cycleDuration: 3s;
             &:hover {
                 color: $blue-light;
                 @include shadow-left;
+            }
+            @include mobile {
+                font-weight: bold;
+                background-color:  rgb(139, 206, 58, .6);
+                border-radius: 1rem;
+                padding: 0 1rem;
+                margin-bottom: 1rem;
+                &:hover, &:focus {
+                    background-color: #204642;
+                }
             }
         }
         &-sign{
@@ -60,7 +86,7 @@ $cycleDuration: 3s;
 }
 
 .container {
-    // -webkit-mask-image: -webkit-radial-gradient(white, black);
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
     display: flex;
     background-color: $cardBackground;
     position: relative;
@@ -72,6 +98,12 @@ $cycleDuration: 3s;
         0 4px 6px -1px rgba(0, 0, 0, 0.1),
         0 2px 4px -1px rgba(0, 0, 0, 0.06);
     animation: DayCycle 3s infinite cubic-bezier(0.41, 0.15, 0.64, 0.91) -1s;
+    @include mobile {
+        width: 94%;
+        position: relative;
+        height: 630px;
+        bottom: 0;
+    }
 }
 
 /* Custom animations */
