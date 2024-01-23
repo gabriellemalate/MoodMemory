@@ -1,11 +1,18 @@
+import React, { useState } from 'react';
 import './Logged.scss';
 import emote from "../../assets/emotes/irritable.png"
 
 function Logged() {
+    const [expanded, setExpanded] = useState(false);
+
+    const toggleExpand = () => {
+        setExpanded(!expanded);
+    };
+
     return (
         <>
-            <article className='logged'>
-                <div className='logged-eq'>
+            <article className={`logged ${expanded ? 'expanded' : 'compressed'}`}>
+                <div className='logged-eq' onClick={toggleExpand}>
                     <div className='logged__frame'>
                         <img className='logged__frame-emoji' alt='logged emotion' src={emote}/>
                     </div>

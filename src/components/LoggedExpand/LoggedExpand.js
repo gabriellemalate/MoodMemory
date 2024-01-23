@@ -1,11 +1,21 @@
+import React, { useState } from 'react';
 import './LoggedExpand.scss';
 import emote from "../../assets/emotes/irritable.png"
 import okaysleep from "../../assets/okay.png";
+import Logged from '../Logged/Logged'; 
 
 function LoggedExpand() {
+    // const [expanded, setExpanded] = useState(false);
+
+    // const toggleExpand = () => {
+    //     setExpanded(!expanded);
+    // };
+
     return (
         <>
-            <article className='open'>
+        {/* {expanded ? ( */}
+            <article className="open">
+            {/* {`open ${expanded ? 'expanded' : 'compressed'}`} */}
                 <div className='open-eq'>
                     <div className='open-top'>
                         <div className='open-top-left'>
@@ -55,11 +65,19 @@ function LoggedExpand() {
                             <button className='open-add__button'>add</button>
                         </div>
                     </form>
-                    <button className='open__close'>
+                    <button className='open__close' 
+                    // onClick={toggleExpand}
+                    >
                         close
                     </button>
                 </div>
             </article>
+
+            {/* // ) : (
+            //                 <div className='open-top-left'>
+            //                     <Logged /> {/* Render the compressed version (Logged component) */}
+            {/* //                 </div> */}
+            {/* //             )} */} 
         </>
     );
 }
