@@ -1,8 +1,6 @@
 import './Header.scss';
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
 import user from "../../assets/user.png";
 import menu from "../../assets/menu.png";
 import NavLeft from '../NavLeft/NavLeft';

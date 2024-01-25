@@ -1,5 +1,6 @@
 import './MemoryHomePage.scss';
 import Header from '../../components/Header/Header';
+import MobileNav from '../../components/MobileNav/MobileNav';
 
 function MemoryHomePage() {
     return (
@@ -21,6 +22,7 @@ function MemoryHomePage() {
 
                 </div>
             </main>
+            <MobileNav/>
         </>
     );
 }

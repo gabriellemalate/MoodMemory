@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './LoggedExpand.scss';
 import emote from "../../assets/emotes/irritable.png"
 import okaysleep from "../../assets/okay.png";
-import Logged from '../Logged/Logged'; 
+// import Logged from '../Logged/Logged'; 
 
 function LoggedExpand() {
     // const [expanded, setExpanded] = useState(false);

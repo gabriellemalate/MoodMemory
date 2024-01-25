@@ -18,6 +18,12 @@
             font-weight: 700;
             z-index: -1;
             margin: 3rem 0 3rem;
+            @include mobile {
+                margin: 2rem 0 1.5rem;
+                padding: 0 1rem;
+                font-size: 2rem;
+                line-height: 2.5rem;
+            }
 
             &-crop {
                 width: 100%;
@@ -165,7 +171,7 @@
                         @extend .add-mood-quick__observations-irritability-head;
                         margin: 0.5rem 0 0.8rem;
                         font-size: 1rem;
-                        letter-spacing: .1rem;
+                        letter-spacing: 0.1rem;
                     }
                     &-menu {
                         @extend .add-mood-quick__observations-irritability-menu;
@@ -259,7 +265,7 @@
             &-head {
                 @include mobile-head-category;
                 width: 70%;
-                margin: 1.8rem 0 .5rem;
+                margin: 1.8rem 0 0.5rem;
             }
             &-menu {
                 @include column;
@@ -269,7 +275,7 @@
                     @include row;
                     flex-wrap: wrap;
                     justify-content: center;
-                    padding: 0.5rem .2rem;
+                    padding: 0.5rem 0.2rem;
                     border: double rgb(92, 41, 146) 0.2rem;
                     border-radius: 1.2rem;
                 }
