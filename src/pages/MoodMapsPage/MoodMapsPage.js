@@ -2,7 +2,7 @@ import './MoodMapsPage.scss';
 import React, { useState, useEffect } from 'react';
 import MoodMap from "../../components/MoodMap/MoodMap"
 import Header from '../../components/Header/Header';
-
+import MobileNav from "../../components/MobileNav/MobileNav";
 
 const MoodMapsPage = () => {
 
@@ -24,6 +24,7 @@ const MoodMapsPage = () => {
 
                 </div>
             </main>
+            <MobileNav/>
         </>
     );
 }

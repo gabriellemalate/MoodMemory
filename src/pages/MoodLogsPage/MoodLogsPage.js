@@ -4,6 +4,7 @@ import Logged from '../../components/Logged/Logged';
 import LoggedExpand from "../../components/LoggedExpand/LoggedExpand";
 import MagnifyingGlass from "../../assets/search.svg"
 import Header from '../../components/Header/Header';
+import MobileNav from "../../components/MobileNav/MobileNav";
 
 function MoodLogsPage() {
     return (
@@ -27,6 +28,7 @@ function MoodLogsPage() {
                     </section>
                 </div>
             </main>
+            <MobileNav/>
         </>
     );
 }

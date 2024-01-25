@@ -7,25 +7,40 @@
     }
     position: fixed;
     bottom: 0;
-    background-color: goldenrod;
+    background-color: rgb(218, 165, 32, .9);
     width: 100%;
     left: 0;
 
     &-eq {
         @include row;
-        
+        justify-content: space-between;
+        padding: 0;
+        margin: 0;
     }
     &-item {
-        
+        width: 20%;
         &__option {
             @include column;
+            justify-content: center;
+            padding: 0 1rem;
+            height: 3rem;
 
             &-img {
-                
+                width: 1rem;
+                &-plot {
+                    background-color: rgb(151, 196, 162);
+                    width: 1.1rem;
+                    border-radius: 1rem;
+                }
+                &-frog {
+                    width: 1.3rem;
+                }
             }
             &-head {
                 margin: 0;
-                font-size: .8rem;
+                font-size: .7rem;
+                font-weight: 600;
+                letter-spacing: .05rem;
             }
         }
     }

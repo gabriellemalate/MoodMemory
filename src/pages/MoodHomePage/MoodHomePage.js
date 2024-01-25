@@ -20,7 +20,7 @@ function MoodHomePage() {
 
     return (
         <>
-            <Header setScrollToFAQ={setScrollToFAQ} currentPage="moodhome"/>
+            <Header setScrollToFAQ={setScrollToFAQ} currentPage="moodhome" />
             <main className='main'>
                 <div className='main__eq'>
 
@@ -44,16 +44,15 @@ function MoodHomePage() {
                     <section className='add-mood' id="add-mood">
 
                         <div className='add-mood-include'>
-                            <QuickForm/>
+                            <QuickForm />
                         </div>
 
                     </section>
+                        <Faq ref={faqRef} />
 
-                    <Faq ref={faqRef}/>
-                    
                 </div>
             </main>
-            <MobileNav/>
+            <MobileNav />
         </>
     );
 }
