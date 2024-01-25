@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import QuickForm from '../../components/QuickForm/QuickForm';
 import Faq from "../../components/Faq/Faq"
 import Header from '../../components/Header/Header';
+import MobileNav from '../../components/MobileNav/MobileNav';
 
 function MoodHomePage() {
     const [scrollToFAQ, setScrollToFAQ] = useState(false);
@@ -52,6 +53,7 @@ function MoodHomePage() {
                     
                 </div>
             </main>
+            <MobileNav/>
         </>
     );
 }

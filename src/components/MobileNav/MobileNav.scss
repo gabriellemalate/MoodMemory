@@ -5,4 +5,28 @@
     @include smallscreen {
         display: none;
     }
+    position: fixed;
+    bottom: 0;
+    background-color: goldenrod;
+    width: 100%;
+    left: 0;
+
+    &-eq {
+        @include row;
+        
+    }
+    &-item {
+        
+        &__option {
+            @include column;
+
+            &-img {
+                
+            }
+            &-head {
+                margin: 0;
+                font-size: .8rem;
+            }
+        }
+    }
 }
