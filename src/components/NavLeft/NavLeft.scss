@@ -12,6 +12,11 @@
     background-color: $mint-bright;
     border-radius: 1rem;
 
+    @include smallscreen {
+        width: 16rem;
+        left: -.085rem;
+    }
+
     @include tablet {
         width: 16rem;
         left: -.08rem;

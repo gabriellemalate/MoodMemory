@@ -4,7 +4,7 @@ import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 import firebase from 'firebase/app';
 import 'firebase/auth';
 // Your web app's Firebase configuration
@@ -21,8 +21,18 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// initialize services
 const db = getFirestore(app);
-// const analytics = getAnalytics(app);
+
+// collection ref
+const colRef = collection(db, 'books')
+
+// get collection data
+getDocs(colRef)
+.then((snapshot) =>{
+    console.log(snapshot.docs)
+})
 
 const auth = getAuth(app);
 
