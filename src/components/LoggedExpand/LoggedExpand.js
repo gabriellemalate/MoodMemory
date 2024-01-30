@@ -56,7 +56,7 @@ function LoggedExpand() {
                     <p className='open__notes'>
                         <h2 className='open__notes-head'>Your Notes</h2>
                         <div className='open__notes-frame'>
-                        some thoughts
+                            
                         </div>
                     </p>
                     <form className='open-add'>
