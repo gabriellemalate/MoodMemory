@@ -11,7 +11,7 @@
     &-eq {
         @include column;
         width: 94%;
-        padding: 1rem 0 1rem;
+        padding: 1rem 0 0rem;
     }
     &-top {
         @include row;
@@ -22,16 +22,16 @@
         &-left {
             width: 50%;
             &__frame {
-                @include row;
+                @include column;
                 background-color: $periwinkle-lite;
                 border-radius: 1rem;
-                padding: .5rem 1rem;
+                padding: .86rem 1rem .5rem;
                 &-emoji {
-                    width: 3rem;
-                    margin-right: 1rem;
+                    width: 2rem;
                 }
-                // &-emotion {
-                // }
+                &-emotion {
+                    margin: .2rem 0;
+                }
             }
             &__title {
                 letter-spacing: 0.08rem;
@@ -55,7 +55,7 @@
                 padding: 0.5rem 1rem;
                 @include row;
                 width: 100%;
-                justify-content: flex-end;
+                justify-content: center;
             }
             &__date {
                 font-weight: 200;
@@ -92,7 +92,7 @@
                 background-color: $periwinkle-lite;
                 border-radius: 1rem;
                 @include column;
-                padding: .3rem 1rem;
+                padding: .6rem 1rem;
                 &-level {
                     margin: 0;
                     padding: .2rem 0;
@@ -110,14 +110,14 @@
             @include row;
             background-color: $periwinkle-lite;
             border-radius: 1rem;
-            padding: .4em 1rem;
+            padding: 0 1rem;
             width: 45%;
             justify-content: center;
             &__hours {
                 padding-right: 1rem;
             }
             &__quality {
-                width: 3.5rem;
+                width: 3.4rem;
             }
         }
     }
@@ -126,6 +126,11 @@
         border-radius: 1rem;
         width: 100%;
         padding: .6rem;
+        &-head {
+            font-size: .8rem;
+            margin: 0 0 .2rem .5rem;
+            @include row;
+        }
         &-frame {
             border: .1rem solid rgb(157, 212, 212);
             border-radius: 1rem;
@@ -135,7 +140,7 @@
     &-add {
         @include column;
         width: 100%;
-        margin: 1rem;
+        margin: 0 1rem;
         border-radius: 1rem;
         background-color: rgba(147, 214, 247, 0.8);
         padding:.5rem 0 1.8rem;
@@ -146,10 +151,11 @@
             margin: 1rem;
             background-color: rgb(100, 205, 249, 0.8);
             border-radius: 1rem;
-            padding: .6rem 1.2rem;
+            padding: .3rem 1.2rem 0rem;
             letter-spacing: .08rem;
             color: $white;
-            font-weight: 500;
+            font-weight: 600;
+            font-style: italic;
         }
         &__enter {
             @include row;

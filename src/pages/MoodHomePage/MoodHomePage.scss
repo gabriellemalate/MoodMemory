@@ -27,6 +27,10 @@
         height: 22vh;
         top: 42vh;
         left: 9%;
+        @include tablet {
+            top: 36vh;
+            left: 24vw;
+        }
     }
     &_4 { //2nd
         background: rgba(43, 28, 255, 0.935);
@@ -34,6 +38,9 @@
         height: 48vh;
         top: 36vh;
         left: 6%;
+        @include tablet {
+            top: 22vh;
+        }
     }
     &_7 { //3rd
         background: rgba(68, 255, 249, 0.78);
@@ -42,6 +49,10 @@
         height: 20vh;
         top: 49vh;
         left: 61vw;
+        @include tablet {
+            top: 56vh;
+            left: 36vw;
+        }
     }
     &_5{ //4th
         background: rgb(2, 221, 100, .75);
@@ -50,6 +61,9 @@
         top: 68.5vh;
         left: 9%;
         border: 1rem solid rgb(3, 15, 3);
+        @include tablet {
+            top: 70vh;
+        }
     }
 
     &_2 { //5th - sleep

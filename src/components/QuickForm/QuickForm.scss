@@ -24,6 +24,11 @@
                 font-size: 2rem;
                 line-height: 2.5rem;
             }
+            @include tablet {
+                font-size: 2.8rem;
+                line-height: 3.5rem;
+                margin: 3rem 0 4rem;
+            }
 
             &-crop {
                 width: 100%;
@@ -46,7 +51,8 @@
             padding: 4rem 0 2rem;
             width: 95%;
             @include tablet {
-                background-color: hsla(78, 72%, 64%, 0.3);
+                // background-color: rgba(85, 152, 83, 0.3);
+                padding: 2.5rem 0 2rem;
             }
 
             &__buttons {
@@ -71,6 +77,9 @@
             &-head {
                 @include mobile-head-category;
                 margin: 0;
+                @include tablet {
+                    font-size: 2rem;
+                }
             }
             &-subhead {
                 @include mobile-subhead;

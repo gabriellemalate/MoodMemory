@@ -22,9 +22,9 @@ function MoodLogsPage() {
                     </form>
                     <section className='all-logs__logs'>
                         <LoggedExpand/>
-                        {/* <Logged/>
                         <Logged/>
-                        <Logged/> */}
+                        <Logged/>
+                        <Logged/>
                     </section>
                 </div>
             </main>

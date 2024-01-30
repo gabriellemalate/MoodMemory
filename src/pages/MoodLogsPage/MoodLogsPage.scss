@@ -4,6 +4,7 @@
 .all-logs {
     @include column;
     width: 100%;
+    margin: 0 0 3rem;
     &__eq {
         width: 100%;
         @include column;
