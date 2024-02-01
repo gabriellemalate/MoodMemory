@@ -26,7 +26,7 @@
             left: 16.5rem;
             @include smallscreen {
                 left: 34rem;
-                top: .2rem;
+                top: 0rem;
             }
         }
         .header__menu {
@@ -55,7 +55,6 @@
 }
 #header {
     @include row;
-    align-items: flex-start;
     justify-content: space-between;
     @include mobile {
         justify-content: center;
