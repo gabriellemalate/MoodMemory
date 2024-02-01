@@ -15,6 +15,7 @@
     &:active {
         background-color: rgb(100, 205, 249);
     }
+    max-width: 40rem;
 
     &-eq {
         @include row;

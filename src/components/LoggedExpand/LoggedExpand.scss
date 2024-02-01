@@ -8,6 +8,7 @@
     border-radius: 1rem;
     @include column;
     color: aliceblue;
+    max-width: 40rem;
     &-eq {
         @include column;
         width: 94%;
