@@ -30,8 +30,8 @@ const NavRight = ({ setScrollToFAQ }) => {
             <nav className='user-nav' id="user-nav">
                 <div className='user-nav__eq'>
                     <div className='user-nav__top'>
-                        <h2 className='user-nav__top-head'>Hello,</h2>
-                        <h2 className='user-nav__top-head-name'>{user ? user.displayName : ''}</h2>
+                        <p className='user-nav__top-head'>Hello, <span className='user-nav__top-head-name'>{user ? user.displayName : ''}</span></p>
+                        
 
                         <ul className='user-nav__top-list'>
                             <li className='user-nav__top-list-item-moodtotal user-nav__top-list-item'>
@@ -45,11 +45,7 @@ const NavRight = ({ setScrollToFAQ }) => {
                             <li className='user-nav__top-list-item-add'>
                                 <Link className='user-nav__top-list-item-add--link' to="/moodhome">+ New Log</Link>
                             </li>
-                        </ul>
-                    </div>
-
-                    <ul className='user-nav__bottom'>
-                        {isMoodHomePage && (
+                            {isMoodHomePage && (
                             <li className='user-nav__bottom-item-faq user-nav__bottom-item'>
                                 <Link
                                     className='user-nav__bottom-item-faq-link'
@@ -60,6 +56,11 @@ const NavRight = ({ setScrollToFAQ }) => {
                                 </Link>
                             </li>
                         )}
+                        </ul>
+                    </div>
+
+                    <ul className='user-nav__bottom'>
+                        
                         <li className='user-nav__bottom-item-logout user-nav__bottom-item'>
                             <button onClick={signOut} className="user-nav__bottom-item-logout-button" type="button">
                                 Log Out

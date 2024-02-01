@@ -45,7 +45,7 @@ const MoodMap = () => {
                         src={groups[currentGroup][currentIndex]}
                         alt={`Map ${currentIndex + 1}`} />
                 </article>
-                <h2>{currentTitle}</h2>
+                <h2 className='map-title'>{currentTitle}</h2>
                 <article className="map-controls">
                     <div className='map-controls-eq'>
                         <div className='map-groups'>

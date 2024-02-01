@@ -11,6 +11,11 @@
         bottom: 0;
         background-color: $mint-bright;
         border-radius: 1rem;
+        height: fit-screen;
+
+        @include smallscreen {
+            width: 34rem;
+        }
 
         &__eq {
             @include column;
@@ -24,11 +29,21 @@
                 color: $blue-light;
                 margin: 1.5rem 0 0;
                 letter-spacing: .1rem;
+                @include column;
+                font-weight: 500;
+                font-size: 1.6rem;
+                @include smallscreen {
+                    @include row;
+                    margin: 1.5rem 0 .5rem;
+                }
 
                 &-name {
                     color: $blue-light;
                     margin: 0 0 1rem;
                     font-style: italic;
+                    @include smallscreen {
+                        margin: 0 0 0 .5rem;
+                    }
                 }
             }
 
@@ -46,6 +61,10 @@
                     @include mobile-subhead;
                     @include padding-body;
                     width: 100%;
+
+                    @include smallscreen {
+                        width: 80%;
+                    }
 
                     &:hover {
                         background-color: $periwinkle;
@@ -75,6 +94,7 @@
                     @include mobile-head-section;
                     background-color: $periwinkle;
                     @include button;
+                    margin-top: .5rem;
 
                     &-link {
                         width: 100%;
@@ -86,6 +106,10 @@
                     @include mobile-subhead;
                     letter-spacing: 0.18rem;
                     margin-top: 3rem;
+
+                    @include smallscreen {
+                        margin: 2rem 0 1rem;
+                    }
                     &:hover {
                         border: 0.3rem double $periwinkle;
                         background-color: rgb(95, 213, 213);

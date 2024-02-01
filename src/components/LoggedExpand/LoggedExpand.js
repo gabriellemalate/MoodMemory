@@ -26,7 +26,7 @@ function LoggedExpand() {
                         </div>
                         <div className='open-top-right'>
                             <div className='open-top-right__stamp'>
-                                <h3 className='open-top-right__date'>02/02/23</h3>
+                                <h3 className='open-top-right__date'>02/02/24</h3>
                                 {/* <h3 className='open-top-right__time'>time</h3> */}
                             </div>
                             <h2 className='open-top-right__state'>WNL</h2>

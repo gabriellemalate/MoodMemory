@@ -7,19 +7,20 @@
     top: 0;
     left: -0.8rem;
     bottom: 0;
-    transition: left .5s ease;
+    transition: left 0.5s ease;
+    height: fit-content;
 
     background-color: $mint-bright;
     border-radius: 1rem;
 
     @include smallscreen {
-        width: 16rem;
-        left: -.085rem;
+        width: 33.5rem;
+        left: -0.085rem;
     }
 
     @include tablet {
-        width: 16rem;
-        left: -.08rem;
+        width: 33.5rem;
+        left: -0.08rem;
     }
 
     &__eq {
@@ -28,7 +29,7 @@
 
     &__head {
         @include mobile-head-page-bold;
-        margin: 2rem 0 0.6rem;
+        margin: 2.5rem 0 0.6rem;
         color: $blue-light;
         font-weight: 700;
         border-bottom: 0.099rem solid $blue-light;
@@ -42,8 +43,11 @@
         color: $white;
         padding-left: 0.5rem;
         width: 100%;
-        margin: 1.5rem 0;
-
+        margin: 2.5rem 0;
+        @include smallscreen {
+            @include column;
+            margin: 3rem 0;
+        }
         &-item {
             height: 4rem;
             width: 88%;
@@ -52,11 +56,17 @@
             font-size: 1.5rem;
             border-radius: 2rem;
             background-color: $periwinkle-lite;
-            margin-left: .5rem;
+            margin-left: 0.5rem;
 
             margin-bottom: 1.6rem;
             @include row;
             font-weight: bold;
+
+            @include smallscreen {
+                width: 100%;
+                margin-left: 0;
+                padding: 0 4rem;
+            }
 
             &:hover,
             &:focus {

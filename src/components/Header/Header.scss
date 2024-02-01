@@ -24,6 +24,10 @@
     &-left-nav-visible {
         .header-left {
             left: 16.5rem;
+            @include smallscreen {
+                left: 34rem;
+                top: .2rem;
+            }
         }
         .header__menu {
             background-color: rgb(41, 251, 160);
@@ -38,6 +42,9 @@
             background-color: rgb(41, 251, 160);
             &-container {
                 right: 25rem;
+                @include smallscreen {
+                    right: 34.3rem;
+                }
             }
         }
         .home-nav__logo {
@@ -120,4 +127,6 @@
     @include mobile {
         display: none;
     }
+
+    
 }

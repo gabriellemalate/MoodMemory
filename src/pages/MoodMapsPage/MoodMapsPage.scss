@@ -9,11 +9,13 @@
     }
     &__head {
         letter-spacing: .3rem;
-        // border-bottom: .2rem dotted rgb(207, 52, 207);
+        border-bottom: .4rem dotted rgb(135, 29, 135);
         width: fit-content;
         font-size: 1.4rem;
-        color: rgb(212, 242, 249);
-        align-self: start;
+        color: rgb(255, 252, 201);
+        align-self: center;
+        margin: .6rem 0 .8rem;
+        padding-bottom: .2rem;
     }
     &__mood {
         margin: 0 0 4rem;
@@ -21,6 +23,7 @@
         @include column;
         background-color: rgba(34, 121, 121, 0.9);
         border-radius: 2rem;
+        max-width: 42rem;
 
         &-head {
             letter-spacing: .25rem;

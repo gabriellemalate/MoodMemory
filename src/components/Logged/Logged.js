@@ -41,6 +41,7 @@ function Logged() {
                                 <h3 className='logged-info__top-left-title'>{logData.length > 0 ? logData[0].title : ''}</h3>
                             </div>
                             <div className='logged-info__top-right'>
+                            {console.log(logData)}
                                 <h2 className='logged-info__top-right-date'>{logData.date && logData.date.toDate().toLocaleDateString()}</h2>
                                 {/* <h3 className='logged-info__top-right-time'>time</h3> */}
                             </div>

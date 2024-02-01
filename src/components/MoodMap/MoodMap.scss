@@ -3,7 +3,8 @@
 
 .map{
     @include column;
-    padding: 0 0 1rem;
+    padding: 0 0 1.5rem;
+
     &-controls {
         padding: .4rem .6rem;
         width: 90%;
@@ -21,6 +22,10 @@
     &-image {
         width: 100%;
         border-radius: 1.2rem;
+    }
+    &-title {
+        margin: 0;
+        height: 1rem;
     }
     &-arrows {
         background-color: rgb(134, 199, 199);

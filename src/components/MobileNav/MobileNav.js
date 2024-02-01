@@ -32,6 +32,7 @@ function MobileNav() {
                 // Redirect to the home page after successful logout
                 navigate("/");
         });
+    } else {
     }
     };
 
@@ -73,7 +74,14 @@ function MobileNav() {
                         </Link>
                     </li>
                     <li className='mobnav-item'>
-                        <Link className='mobnav-item__option' to="/welcomehome" onClick={handleSignOutClick} >
+                        <Link 
+                        className='mobnav-item__option' 
+                        to="/" 
+                        onClick={(e) => {
+                            e.preventDefault();
+                            handleSignOutClick();
+                        }} 
+                        >
                             <img src={Frog} alt="User Log out" className='mobnav-item__option-img mobnav-item__option-img-frog' />
                             <h3 className='mobnav-item__option-head'>Out</h3>
                         </Link>
