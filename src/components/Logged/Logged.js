@@ -28,37 +28,39 @@ function Logged() {
 
     return (
         <>
-            <article className={`logged ${expanded ? 'expanded' : 'compressed'}`}>
+        {logData.map((entry, index) => (
+            <article key={index} className={`logged ${expanded ? 'expanded' : 'compressed'}`}>
                 <div className='logged-eq' onClick={toggleExpand}>
 
                     <div className='logged__frame'>
-                        <img className='logged__frame-emoji' alt='logged emotion' src={logData.length > 0 ? logData[0].emoji || emote : emote} />
+                        <img className='logged__frame-emoji' alt='logged emotion' src={process.env.PUBLIC_URL + entry.emoji || emote} />
                     </div>
                     <div className='logged-info'>
                         <div className='logged-info__top'>
                             <div className='logged-info__top-left'>
-                                <h2 className='logged-info__top-left-emotion'>{logData.length > 0 ? logData[0].emotion : ''}</h2>
-                                <h3 className='logged-info__top-left-title'>{logData.length > 0 ? logData[0].title : ''}</h3>
+                                <h2 className='logged-info__top-left-emotion'>{entry.emotion}</h2>
+                                <h3 className='logged-info__top-left-title'>{entry.title}</h3>
                             </div>
                             <div className='logged-info__top-right'>
                             {console.log(logData)}
-                                <h2 className='logged-info__top-right-date'>{logData.date && logData.date.toDate().toLocaleDateString()}</h2>
+                                <h2 className='logged-info__top-right-date'>{entry.date && entry.date.toDate().toLocaleDateString()}</h2>
                                 {/* <h3 className='logged-info__top-right-time'>time</h3> */}
                             </div>
                         </div>
                         <div className='logged-info__bottom'>
                             <div className='logged-info__bottom-eq'>
-                                <h2 className='logged-info__bottom-state'>{logData.length > 0 ? logData[0].state : ''}</h2>
+                                <h2 className='logged-info__bottom-state'>{entry.state}</h2>
                                 <div className='logged-info__bottom-lower'>
-                                    <span className='logged-info__bottom-lower-irr'>Irr: {logData.length > 0 ? logData[0].irritability : ''}</span>
-                                    <span className='logged-info__bottom-lower-anx'>Anx: {logData.length > 0 ? logData[0].anxiety : ''}</span>
-                                    <span className='logged-info__bottom-lower-hours'> Hours: {logData.length > 0 ? logData[0].hours : ''}</span>
+                                    <span className='logged-info__bottom-lower-irr'>Irr: {entry.irritability}</span>
+                                    <span className='logged-info__bottom-lower-anx'>Anx: {entry.anxiety}</span>
+                                    <span className='logged-info__bottom-lower-hours'> Hours: {entry.hours}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </article >
+            ))}
         </>
     );
 }
