@@ -15,6 +15,9 @@ function Logged() {
             querySnapshot.forEach((doc) => {
                 data.push({ ...doc.data(), id: doc.id });
             });
+            // Sort logs by date in descending order (most recent first)
+            data.sort((a, b) => b.date.toMillis() - a.date.toMillis());
+            
             setLogData(data);
         });
 
