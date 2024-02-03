@@ -1,5 +1,6 @@
 import React from 'react';
 import './Faq.scss';
+import { Link} from "react-router-dom";
 
 const Faq = React.forwardRef((props, ref) => {
     return (
@@ -29,6 +30,7 @@ const Faq = React.forwardRef((props, ref) => {
                             <p className='faq-query__answer'>Each list of external factors / casues/ triggers / environments that cause mood disrution vary from person to person. Just some examples of logs about impactful events include: <i>"argument with father" "concert. stayed out til 3am" "dog got sick" "pet back from hospital" "partner is rejecting my bids" "friend's wedding" </i> <a className='faq-query__answer-link' href="https://www.betterhealth.vic.gov.au/health/healthyliving/monitoring-your-mood">More about External events.</a> <a className='faq-query__answer-link' href="https://www.nami.org/Blogs/NAMI-Blog/January-2022/Understanding-Mental-Illness-Triggers">More about Triggers. </a>
                             </p>
                         </article>
+                        <Link className='faq-back' to="/">~ Back To Top ~</Link>
                     </div>
                 </div>
             </section>

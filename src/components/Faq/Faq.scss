@@ -13,6 +13,17 @@
         width: 96%;
         @include column;
     }
+    &-back {
+        font-weight: 700;
+        font-size: 1.4rem;
+        letter-spacing: .2rem;
+        color: rgb(193, 13, 85);
+        text-shadow: 2px 2px rgb(224, 179, 197);
+        transition: transform .1s;
+        &:hover {
+            transform: scale(1.5);
+        }
+    }
     &-head {
         font-size: 2rem;
         padding: .5rem 0 .5rem;
