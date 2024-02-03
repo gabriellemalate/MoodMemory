@@ -51,9 +51,9 @@ function Logged() {
                             <div className='logged-info__bottom-eq'>
                                 <h2 className='logged-info__bottom-state'>{entry.state} {entry.level}</h2>
                                 <div className='logged-info__bottom-lower'>
-                                    <span className='logged-info__bottom-lower-irr'>Irr: {entry.irritability}</span>
-                                    <span className='logged-info__bottom-lower-anx'>Anx: {entry.anxiety}</span>
-                                    <span className='logged-info__bottom-lower-hours'> Hours: {entry.hours}</span>
+                                    <span className='logged-info__bottom-lower-item'>Irr:{entry.irritability}</span>
+                                    <span className='logged-info__bottom-lower-item'>Anx:{entry.anxiety}</span>
+                                    <span className='logged-info__bottom-lower-item'> Hours:{entry.hours}</span>
                                 </div>
                             </div>
                         </div>

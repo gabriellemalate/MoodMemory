@@ -53,9 +53,9 @@ function LoggedExpand() {
                             <div className='logged-info__bottom-eq'>
                                 <h2 className='logged-info__bottom-state'>Elevated Mild</h2>
                                 <div className='logged-info__bottom-lower'>
-                                    <span className='logged-info__bottom-lower-irr'>Irr: 1</span>
-                                    <span className='logged-info__bottom-lower-anx'>Anx: 1</span>
-                                    <span className='logged-info__bottom-lower-hours'> Hours: 6</span>
+                                    <span className='logged-info__bottom-lower-item'>Irr:1</span>
+                                    <span className='logged-info__bottom-lower-item'>Anx:1</span>
+                                    <span className='logged-info__bottom-lower-item'> Hours:6</span>
                                 </div>
                             </div>
                         </div>

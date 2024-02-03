@@ -25,8 +25,8 @@
     }
     &__frame {
         margin-right: 1rem;
-        width: 8vh;
-        height: 8vh;
+        width: fit-content;
+        padding: 1rem;
         border-radius: 1rem;
         border: 0.1rem solid rgb(228, 138, 255);
         background-color: rgba(127, 206, 240, 0.5);
@@ -34,7 +34,7 @@
         justify-content: center;
 
         &-emoji {
-            width: 5vh;
+            width: 5vw;
             max-width: 2.5rem;
         }
     }
@@ -45,6 +45,7 @@
         &__top {
             @include row;
             justify-content: space-between;
+            align-items: flex-start;
 
             &-left {
                 text-align: start;
@@ -61,36 +62,37 @@
                     letter-spacing: 0.1rem;
                     font-weight: 200;
                     line-height: 1;
+                    text-wrap: nowrap;
                 }
             }
             &-right {
                 text-align: end;
+                height: fit-content;
                 &-date {
                     @extend .logged-info__top-left-emotion;
-                }
-                &-time {
-                    @extend .logged-info__top-left-title;
                 }
             }
         }
         &__bottom {
+            
             &-eq {
                 @include column;
+                padding: .5rem 0 0;
+                
             }
             &-state {
                 @extend .logged-info__top-left-emotion;
+                padding: 0 0 .2rem;
             }
             &-lower {
                 @extend .logged-info__top-left-title;
                 @include row;
-                justify-content: space-between;
                 width: 60%;
-                // &-irr {
-                // }
-                // &-anx {
-                // }
-                // &-hours {
-                // }
+                align-self: flex-start;
+                
+                &-item {
+                    padding: 0 .5rem;
+                }
             }
         }
     }
