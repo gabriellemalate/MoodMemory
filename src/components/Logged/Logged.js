@@ -49,7 +49,7 @@ function Logged() {
                         </div>
                         <div className='logged-info__bottom'>
                             <div className='logged-info__bottom-eq'>
-                                <h2 className='logged-info__bottom-state'>{entry.state}</h2>
+                                <h2 className='logged-info__bottom-state'>{entry.state} {entry.level}</h2>
                                 <div className='logged-info__bottom-lower'>
                                     <span className='logged-info__bottom-lower-irr'>Irr: {entry.irritability}</span>
                                     <span className='logged-info__bottom-lower-anx'>Anx: {entry.anxiety}</span>
