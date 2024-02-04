@@ -51,11 +51,11 @@ function LoggedExpand() {
                         </div>
                         <div className='logged-info__bottom'>
                             <div className='logged-info__bottom-eq'>
-                                <h2 className='logged-info__bottom-state'>Elevated Mild</h2>
+                                <h2 className='logged-info__bottom-state'>WNL</h2>
                                 <div className='logged-info__bottom-lower'>
-                                    <span className='logged-info__bottom-lower-item'>Irr:1</span>
-                                    <span className='logged-info__bottom-lower-item'>Anx:1</span>
-                                    <span className='logged-info__bottom-lower-item'> Hours:6</span>
+                                    <span className='logged-info__bottom-lower-item'>Irr:<b className='logged-info--bold'>1</b></span>
+                                    <span className='logged-info__bottom-lower-item'>Anx:<b className='logged-info--bold'>1</b></span>
+                                    <span className='logged-info__bottom-lower-item'> Hours:<b className='logged-info--bold'>6</b></span>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +78,7 @@ function LoggedExpand() {
                                 <h3 className='open-top-right__date'>02/07/24</h3>
 
                             </div>
-                            <h2 className='open-top-right__state'>Elevated Mild</h2>
+                            <h2 className='open-top-right__state'>WNL</h2>
                         </div>
                     </div>
                     <h3 className='open-top-left__title'>Demo Day</h3>

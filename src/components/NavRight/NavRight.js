@@ -35,9 +35,9 @@ const NavRight = ({ setScrollToFAQ }) => {
 
                         <ul className='user-nav__top-list'>
                             <li className='user-nav__top-list-item-moodtotal user-nav__top-list-item'>
-                                37 moods logged
+                                38 moods logged
                             </li>
-                            <li className='user-nav__top-list-item-moodstreak user-nav__top-list-item' title="log in streak">8 days in a row
+                            <li className='user-nav__top-list-item-moodstreak user-nav__top-list-item' title="log in streak">38 days in a row
                             </li>
                             <li className='user-nav__top-list-item-memoryinfo user-nav__top-list-item'>
                                 0 memories secured

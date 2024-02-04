@@ -32,10 +32,17 @@
         background-color: rgba(127, 206, 240, 0.5);
         @include column;
         justify-content: center;
+        @include mobile {
+            padding: .5rem;
+            margin-right: .2rem;
+        }
 
         &-emoji {
-            width: 5vw;
+            width: 6.5vw;
             max-width: 2.5rem;
+            @include mobile {
+                width: 2.2rem;
+            }
         }
     }
     &-info {
@@ -57,7 +64,7 @@
                 }
                 &-title {
                     margin: 0;
-                    padding: 0;
+                    padding: .2rem 0 0;
                     font-size: 1rem;
                     letter-spacing: 0.1rem;
                     font-weight: 200;
@@ -73,6 +80,10 @@
                 }
             }
         }
+        &--bold {
+            color: rgb(252, 204, 152);
+            text-shadow: 1.3px 2px rgb(99, 55, 80);
+        }
         &__bottom {
             
             &-eq {
@@ -82,7 +93,12 @@
             }
             &-state {
                 @extend .logged-info__top-left-emotion;
-                padding: 0 0 .2rem;
+                background-color: antiquewhite;
+                border-radius: 1rem;
+                padding: .3rem 1rem;
+                margin: 0 0 .5rem;
+                color: #863983;
+
             }
             &-lower {
                 @extend .logged-info__top-left-title;
