@@ -4,7 +4,7 @@ import { db } from '../../firebase';
 import { query, collection, onSnapshot } from 'firebase/firestore';
 
 
-function Logged() {
+function Logged({ searchTerm }) {
     const [expanded, setExpanded] = useState(false);
     const [logData, setLogData] = useState([]);
 
@@ -28,16 +28,30 @@ function Logged() {
         setExpanded(!expanded);
     };
 
+    const isMatch = (log) => {
+        const lowercaseSearchTerm = searchTerm.toLowerCase();
+        const lowercaseTitle = log.title.toLowerCase();
+        const lowercaseEmotion = log.emotion.toLowerCase();
+
+        // Check if the title or emotion includes the search term
+        return lowercaseTitle.includes(lowercaseSearchTerm) || lowercaseEmotion.includes(lowercaseSearchTerm);
+    };
+
     return (
         <>
             {logData.map((entry, index) => {
-                
+
+                // Filter entries based on the search term
+                if (searchTerm && !isMatch(entry)) {
+                    return null;
+                }
+
                 const selectedEmote = require(`../../assets/emotes/${entry.emoji}.png`);
                 console.log('Selected Emote:', selectedEmote);
                 console.log('Emote Path:', `../../assets/emotes/${entry.emoji.toLowerCase()}.png`);
 
                 return (
-                    <article key={index} className={`logged ${expanded ? 'expanded' : 'compressed'}`}>
+                    <article key={entry.id} className={`logged ${expanded ? 'expanded' : 'compressed'}`}>
                         <div className='logged-eq' onClick={toggleExpand}>
 
                             <div className='logged__frame'>

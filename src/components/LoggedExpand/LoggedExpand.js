@@ -122,6 +122,7 @@ function LoggedExpand() {
                                 placeholder="What's on your mind?"
                                 className="open-add__input"
                                 value={newComment}
+                                autoComplete="off"
                                 onChange={(e) => setNewComment(e.target.value)}
                             />
                             <button className='open-add__button' type="button" onClick={handleAddComment}>add</button>

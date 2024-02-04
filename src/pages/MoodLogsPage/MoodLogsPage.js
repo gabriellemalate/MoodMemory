@@ -34,9 +34,14 @@ function MoodLogsPage() {
     };
 
     useEffect(() => {
-        const logsMatchingSearch = logData.filter((log) =>
-            log.title.toLowerCase().includes(searchTerm.toLowerCase())
-        );
+        const logsMatchingSearch = logData.filter((log) => {
+            const lowercaseSearchTerm = searchTerm.toLowerCase();
+            const lowercaseTitle = log.title.toLowerCase();
+            const lowercaseEmotion = log.emotion.toLowerCase();
+    
+            // Check if the title or emotion includes the search term
+            return lowercaseTitle.includes(lowercaseSearchTerm) || lowercaseEmotion.includes(lowercaseSearchTerm);
+        });
 
         setFilteredLogs(logsMatchingSearch);
     }, [logData, searchTerm]);
@@ -64,7 +69,7 @@ function MoodLogsPage() {
                     <section className='all-logs__logs'>
                         <LoggedExpand />
                         {logData.map((log) => (
-                            <Logged key={log.id} logData={log} />
+                            <Logged key={log.id} logData={log} searchTerm={searchTerm}/>
                         ))}
                     </section>
                 </div>

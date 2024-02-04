@@ -37,15 +37,17 @@ import React, { useState, useEffect, useRef, } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import { db } from '../../firebase';
+import { v4 as uuidv4 } from 'uuid';
+
 
 const QuickForm = () => {
     const [user] = useAuthState(auth);
     const [formData, setFormData] = useState({
         state: '',
         level: '',
-        irritability: '0', 
+        irritability: '0',
         anxiety: '0',
-        hours: '0',     
+        hours: '0',
         quality: '',
         emoji: '',
         emotion: '',
@@ -157,11 +159,15 @@ const QuickForm = () => {
             // Reference to the "moodlogs" collection
             const moodlogsCollection = collection(db, 'moodlogs');
 
+            // Generate a unique ID using uuid
+            const logId = uuidv4();
+
             // Convert Date.now() to Firestore timestamp
             const firestoreTimestamp = Timestamp.fromMillis(Date.now());
 
             // Add a new document to the "moodlogs" collection with form data and timestamp
             const newMoodLogRef = await addDoc(moodlogsCollection, {
+                id: logId,
                 anxiety: formData.anxiety,
                 date: firestoreTimestamp,
                 emoji: encodeURIComponent(formData.emoji),
@@ -206,7 +212,7 @@ const QuickForm = () => {
                                 <label className='add-mood-quick__level-state-option' htmlFor="depressed">Depressed</label>
                             </div>
 
-                            <div className='add-mood-quick__level-state-container'>
+                            <div className='add-mood-quick__level-state-container' title='"Within Normal Limits" No symptoms of depression or elevation'>
                                 <input
                                     className='add-mood-quick__level-state-opt'
                                     value="WNL"
@@ -215,7 +221,7 @@ const QuickForm = () => {
                                     name="state"
                                     title='"Within Normal Limits" No symptoms of depression or elevation'
                                     onClick={() => handleStateChange('WNL')} />
-                                <label className='add-mood-quick__level-state-option' htmlFor="wnl">WNL</label>
+                                <label className='add-mood-quick__level-state-option' htmlFor="wnl" title='"Within Normal Limits" No symptoms of depression or elevation'>WNL</label>
                             </div>
 
                             <div className='add-mood-quick__level-state-container'>
@@ -477,8 +483,8 @@ const QuickForm = () => {
                                         </button>
                                     </li>
                                     <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'relaxed' ? 'selected' : ''}`} 
-                                        type="button">
+                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'relaxed' ? 'selected' : ''}`}
+                                            type="button">
                                             <input
                                                 name="emotion"
                                                 className='add-mood-quick__emote-option-eq'
