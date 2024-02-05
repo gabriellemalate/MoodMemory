@@ -18,13 +18,19 @@ const MoodMapsPage = () => {
                         <MoodMap />
                     </section>
                     <section className='maps__sleep'>
-                    <h2 className='maps__sleep-head'>Sleep</h2>
+                        <h2 className='maps__sleep-head'>Sleep</h2>
 
                     </section>
 
                 </div>
+                <section className='contact-eq'>
+                    <h3 className='contact' onClick={() => window.location = 'mailto:yourmail@domain.com'}>
+                        CONTACT 
+                        <i className='contact-name'>HelloMoodMemory</i>
+                    </h3>
+                </section>
             </main>
-            <MobileNav/>
+            <MobileNav />
         </>
     );
 }

@@ -63,8 +63,8 @@
                     font-weight: 500;
                 }
                 &-title {
-                    margin: 0;
-                    padding: .2rem 0 0;
+                    margin: .2rem 0 0;
+                    padding: 0;
                     font-size: 1rem;
                     letter-spacing: 0.1rem;
                     font-weight: 200;
@@ -85,27 +85,36 @@
             text-shadow: 1.3px 2px rgb(99, 55, 80);
         }
         &__bottom {
-            
+            @include tablet {
+                margin: 0 0 .5rem;
+            }
             &-eq {
                 @include column;
                 padding: .5rem 0 0;
-                
+                @include tablet {
+                    @include row;
+                    justify-content: space-between;
+                }
             }
             &-state {
                 @extend .logged-info__top-left-emotion;
                 background-color: antiquewhite;
-                border-radius: 1rem;
+                border-radius: 1.5rem;
                 padding: .3rem 1rem;
                 margin: 0 0 .5rem;
                 color: #863983;
-
+                @include tablet {
+                    margin: 0;
+                }
             }
             &-lower {
                 @extend .logged-info__top-left-title;
                 @include row;
                 width: 60%;
                 align-self: flex-start;
-                
+                @include tablet {
+                    align-self: center;
+                }
                 &-item {
                     padding: 0 .5rem;
                 }

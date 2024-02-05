@@ -66,6 +66,10 @@ const NavRight = ({ setScrollToFAQ }) => {
                                 Log Out
                             </button>
                         </li>
+
+                        <li className='user-nav__bottom-item user-nav__bottom-item-contact' onClick={() => window.location = 'mailto:yourmail@domain.com'}>
+                                CONTACT <i className='user-nav__bottom-item-contact-name'>HelloMoodMemory</i>
+                        </li>
                     </ul>
 
                 </div>

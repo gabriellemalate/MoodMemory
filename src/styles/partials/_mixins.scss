@@ -38,7 +38,7 @@
 // Buttons
 @mixin button {
     width: 90%;
-    border-radius: 1rem;
+    border-radius: 1.5rem;
     height: 2.2rem;
     @include row;
     justify-content: center;
@@ -76,10 +76,6 @@
         background-color: $periwinkle;
         color: $aqua;
     }
-    // &:focus, &:active {
-    //     border: .1rem solid $periwinkle;
-    //     font-weight: bold;
-    // }
 }
 
 @mixin dropdown {

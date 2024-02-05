@@ -3,19 +3,19 @@
 
 .maps {
     @include column;
-    &__eq{
+    &__eq {
         @include column;
         width: 96%;
     }
     &__head {
-        letter-spacing: .3rem;
-        border-bottom: .4rem dotted rgb(135, 29, 135);
+        letter-spacing: 0.3rem;
+        border-bottom: 0.4rem dotted rgb(135, 29, 135);
         width: fit-content;
         font-size: 1.4rem;
         color: rgb(255, 252, 201);
         align-self: center;
-        margin: .6rem 0 .8rem;
-        padding-bottom: .2rem;
+        margin: 0.6rem 0 0.8rem;
+        padding-bottom: 0.2rem;
     }
     &__mood {
         margin: 0 0 4rem;
@@ -26,8 +26,8 @@
         max-width: 42rem;
 
         &-head {
-            letter-spacing: .25rem;
-            margin: .86rem 0 .5rem;
+            letter-spacing: 0.25rem;
+            margin: 0.86rem 0 0.5rem;
             font-size: 1.15rem;
         }
     }
@@ -35,7 +35,27 @@
         width: 100%;
         display: none;
         &-head {
-            letter-spacing: .25rem;
+            letter-spacing: 0.25rem;
         }
+    }
+}
+
+.contact {
+    background-color: rgb(238, 92, 168);
+    width: fit-content;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    cursor: pointer;
+    margin: 2rem 0;
+
+    &:hover {
+        outline: .6rem dotted rgb(151, 233, 255);
+        background-color: rgb(225, 24, 128);
+    }
+    &:active {
+        outline: .5rem dashed rgb(151, 233, 255);
+    }
+    &-eq {
+        @include column;
     }
 }

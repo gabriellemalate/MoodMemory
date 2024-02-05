@@ -38,9 +38,10 @@ function MoodLogsPage() {
             const lowercaseSearchTerm = searchTerm.toLowerCase();
             const lowercaseTitle = log.title.toLowerCase();
             const lowercaseEmotion = log.emotion.toLowerCase();
+            const lowercaseLevel = log.level.toLowerCase();
     
             // Check if the title or emotion includes the search term
-            return lowercaseTitle.includes(lowercaseSearchTerm) || lowercaseEmotion.includes(lowercaseSearchTerm);
+            return lowercaseTitle.includes(lowercaseSearchTerm) || lowercaseEmotion.includes(lowercaseSearchTerm) || lowercaseLevel.includes(lowercaseSearchTerm);
         });
 
         setFilteredLogs(logsMatchingSearch);

@@ -42,7 +42,7 @@ function LoggedExpand() {
                         <div className='logged-info__top'>
                             <div className='logged-info__top-left'>
                                 <h2 className='logged-info__top-left-emotion'>excited</h2>
-                                <h3 className='logged-info__top-left-title'>Demo Day</h3>
+                                <h3 className='logged-info__top-left-title'>We're using a title</h3>
                             </div>
                             <div className='logged-info__top-right'>
                                 <h2 className='logged-info__top-right-date'>02/07/24</h2>

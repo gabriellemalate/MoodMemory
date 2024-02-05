@@ -11,7 +11,7 @@
         bottom: 0;
         background-color: $mint-bright;
         border-radius: 1rem;
-        height: fit-screen;
+        height: 60rem;
 
         @include smallscreen {
             width: 34rem;
@@ -98,6 +98,32 @@
 
                     &-link {
                         width: 100%;
+                    }
+                }
+                &-contact {
+                    background-color: rgb(238, 92, 168);
+                    border-radius: 3rem;
+                    color: #fff9e1;
+                    font-weight: 700;
+                    padding: .5rem 2rem;
+                    cursor: pointer;
+                    margin-top: 1rem;
+                    font-size: 1.3rem;
+                    @include mobile {
+                        font-size: 1rem;
+                        padding: .5rem 1rem;
+                    }
+                    &:hover {
+                        outline: .6rem dotted rgb(151, 233, 255);
+                        background-color: rgb(225, 24, 128);
+                    }
+                    &:active {
+                        outline: .5rem dashed rgb(151, 233, 255);
+                        background-color: rgb(251, 39, 170);
+                    }
+                    &-name {
+                        letter-spacing: .1rem;
+                        font-weight: 500;
                     }
                 }
 
