@@ -29,6 +29,11 @@
                 line-height: 3.5rem;
                 margin: 3rem 0 4rem;
             }
+            @include desktop {
+                font-size: 3.5rem;
+                line-height: 5rem;
+                margin: 5rem 0 3rem;
+            }
 
             &-crop {
                 width: 100%;
@@ -44,15 +49,19 @@
                 }
             }
         }
-
         &-only {
             @include column;
             border-radius: 1rem;
             padding: 4rem 0 2rem;
             width: 95%;
             @include tablet {
-                // background-color: rgba(85, 152, 83, 0.3);
                 padding: 2.5rem 0 2rem;
+            }
+            @include desktop {
+                @include row;
+                flex-wrap: wrap;
+                padding: 0;
+                justify-content: space-between;
             }
 
             &__buttons {
@@ -73,7 +82,13 @@
         &__level {
             @include column;
             width: 100%;
-
+            @include desktop {
+                width: fit-content;
+                background-color: rgba(237, 156, 250, 0.683);
+                margin: 0 1.4rem 0 0;
+                padding: 2rem 1rem 1rem;
+                border-radius: 1.5rem;
+            }
             &-head {
                 @include mobile-head-category;
                 margin: 0;
@@ -117,8 +132,12 @@
             &-level {
                 @include column;
                 width: 100%;
+                
                 &-all {
                     @extend .add-mood-quick__level-state;
+                    @include desktop {
+                        padding-bottom: 1.4rem;
+                    }
                 }
 
                 &-opt {
@@ -141,6 +160,9 @@
                 &-head {
                     @include mobile-head-category;
                     margin-bottom: 0.65rem;
+                    @include tablet {
+                        font-size: 2rem;
+                    }
                 }
             }
             &-irritability {
@@ -172,6 +194,9 @@
                 &-head {
                     @include mobile-head-category;
                     margin: 2rem 0 1rem;
+                    @include tablet {
+                        font-size: 2rem;
+                    }
                 }
                 &-hours {
                     @include column;
@@ -229,6 +254,9 @@
                 &-head {
                     @include mobile-head-category;
                     margin-bottom: 0.5rem;
+                    @include tablet {
+                        font-size: 2rem;
+                    }
                     &--note {
                         margin-top: 0.8rem;
                     }
@@ -275,6 +303,9 @@
                 @include mobile-head-category;
                 width: 70%;
                 margin: 1.8rem 0 0.5rem;
+                @include tablet {
+                    font-size: 2rem;
+                }
             }
             &-menu {
                 @include column;

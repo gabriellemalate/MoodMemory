@@ -9,6 +9,9 @@
     @include column;
     color: aliceblue;
     max-width: 40rem;
+    @include desktop {
+        margin: 0;
+    }
     &-eq {
         @include column;
         width: 94%;

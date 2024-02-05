@@ -47,10 +47,15 @@
             }
         }
     }
-
     &__logs {
         @include column;
         margin-top: 2rem;
         width: 100%;
+        @include desktop {
+            @include row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+        }
     }
 }
