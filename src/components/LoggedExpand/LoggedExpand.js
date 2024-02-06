@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './LoggedExpand.scss';
 import emote from "../../assets/emotes/excited.png"
+import emoji from "../../assets/emotes/energized.png"
 import okaysleep from "../../assets/okay.png";
-// import goodsleep from "../../assets/goodsleep.png";
+import goodsleep from "../../assets/goodsleep.png";
 import tired from "../../assets/emotes/tired.png";
 
 function LoggedExpand() {
@@ -36,16 +37,16 @@ function LoggedExpand() {
                 <div className='logged-eq' onClick={toggleExpand}>
 
                     <div className='logged__frame'>
-                        <img className='logged__frame-emoji' alt='logged emotion' src={emote} />
+                        <img className='logged__frame-emoji' alt='logged emotion' src={emoji} />
                     </div>
                     <div className='logged-info'>
                         <div className='logged-info__top'>
                             <div className='logged-info__top-left'>
-                                <h2 className='logged-info__top-left-emotion'>excited</h2>
-                                <h3 className='logged-info__top-left-title'>We're using a title</h3>
+                                <h2 className='logged-info__top-left-emotion'>energized</h2>
+                                <h3 className='logged-info__top-left-title'>test</h3>
                             </div>
                             <div className='logged-info__top-right'>
-                                <h2 className='logged-info__top-right-date'>02/07/24</h2>
+                                <h2 className='logged-info__top-right-date'>02/06/24</h2>
 
                             </div>
                         </div>
@@ -55,7 +56,7 @@ function LoggedExpand() {
                                 <div className='logged-info__bottom-lower'>
                                     <span className='logged-info__bottom-lower-item'>Irr:<b className='logged-info--bold'>1</b></span>
                                     <span className='logged-info__bottom-lower-item'>Anx:<b className='logged-info--bold'>1</b></span>
-                                    <span className='logged-info__bottom-lower-item'> Hours:<b className='logged-info--bold'>6</b></span>
+                                    <span className='logged-info__bottom-lower-item'> Hours:<b className='logged-info--bold'>2</b></span>
                                 </div>
                             </div>
                         </div>
@@ -69,19 +70,19 @@ function LoggedExpand() {
                     <div className='open-top'>
                         <div className='open-top-left'>
                             <div className='open-top-left__frame'>
-                                <img className='open-top-left__frame-emoji' alt='open emotion' src={emote} />
-                                <h2 className='open-top-left__frame-emotion'>Excited</h2>
+                                <img className='open-top-left__frame-emoji' alt='open emotion' src={emoji} />
+                                <h2 className='open-top-left__frame-emotion'>energized</h2>
                             </div>
                         </div>
                         <div className='open-top-right'>
                             <div className='open-top-right__stamp'>
-                                <h3 className='open-top-right__date'>02/07/24</h3>
+                                <h3 className='open-top-right__date'>02/06/24</h3>
 
                             </div>
                             <h2 className='open-top-right__state'>WNL</h2>
                         </div>
                     </div>
-                    <h3 className='open-top-left__title'>Demo Day</h3>
+                    <h3 className='open-top-left__title'>test</h3>
                     <div className='open-bottom'>
                         <div className='open-bottom-left'>
 
@@ -98,8 +99,8 @@ function LoggedExpand() {
                             </div>
                         </div>
                         <div className='open-bottom-right'>
-                            <p className='open-bottom-right__hours'>6 hours</p>
-                            <img className='open-bottom-right__quality' src={okaysleep} alt="sleep quality" title="sleep quality" />
+                            <p className='open-bottom-right__hours'>2 hours</p>
+                            <img className='open-bottom-right__quality' src={goodsleep} alt="sleep quality" title="sleep quality" />
                         </div>
                     </div>
                     <p className='open__notes'>

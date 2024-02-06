@@ -31,6 +31,9 @@
             top: 36vh;
             left: 24vw;
         }
+        @include desktop {
+            display: none;
+        }
     }
     &_4 { //2nd
         background: rgba(43, 28, 255, 0.935);
@@ -40,6 +43,9 @@
         left: 6%;
         @include tablet {
             top: 22vh;
+        }
+        @include desktop {
+            display: none;
         }
     }
     &_7 { //3rd
@@ -53,6 +59,14 @@
             top: 56vh;
             left: 36vw;
         }
+        @include desktop {
+            top: 10rem;
+            width: 72vw;
+            left: 14vw;
+            height: 25vw;
+            max-height: 20rem;
+            outline: rgb(251, 197, 47) dotted 3rem;
+        }
     }
     &_5{ //4th
         background: rgb(2, 221, 100, .75);
@@ -63,6 +77,9 @@
         border: 1rem solid rgb(3, 15, 3);
         @include tablet {
             top: 70vh;
+        }
+        @include desktop {
+            display: none;
         }
     }
 
@@ -137,6 +154,9 @@
         height: 42vh;
         top: 252vh;
         left: 3vw;
+        @include desktop {
+            outline: rgba(200, 157, 0, 0.9) dotted 1.8rem;
+        }
     }
     &_14 {
         background: rgba(253, 212, 50, 0.7);
@@ -145,6 +165,9 @@
         top: 265vh;
         left: 60vw;
         outline: dotted .6rem rgba(255, 0, 251, 0.8);
+        @include desktop {
+            display: none;
+        }
     }
 }
 @keyframes blobs {

@@ -34,7 +34,7 @@ import worried from "../../assets/emotes/worried.png";
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import React, { useState, useEffect, useRef, } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { v4 as uuidv4 } from 'uuid';
@@ -100,93 +100,103 @@ const QuickForm = () => {
         setFormData((prevData) => ({ ...prevData, [fieldName]: emotion, emoji: emojiPath }));
     };
 
-    useEffect(() => {
-        const handleFileUpload = async () => {
-            try {
-                if (formData.emojiFile) {
-                    // Upload emoji image to Firebase Storage
-                    const emojiRef = ref(storage, 'emoji/' + formData.emojiName);
-                    await uploadBytes(emojiRef, formData.emojiFile);
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault(); // Prevent page reload
 
-                    // Get the download URL
-                    const emojiURL = await getDownloadURL(emojiRef);
+    //     // Validation checks
+    //     let formIsValid = true;
 
-                    // Update formData state with the emojiURL
-                    setFormData((prevData) => ({ ...prevData, emoji: emojiURL }));
-                }
-            } catch (error) {
-                console.error('Error uploading file:', error.message);
-            }
-        };
+    //     if (!formData.state) {
+    //         setErrors((prevErrors) => ({ ...prevErrors, state: '*Select a Mood State' }));
+    //         formIsValid = false;
+    //     } else {
+    //         setErrors((prevErrors) => ({ ...prevErrors, state: '' }));
+    //     }
 
-        // Call the handleFileUpload function
-        handleFileUpload();
-    }, [formData.emojiFile, formData.emojiName]);
+    //     if (!formData.quality) {
+    //         setErrors((prevErrors) => ({ ...prevErrors, quality: '*Choose a sleep quality option' }));
+    //         formIsValid = false;
+    //     } else {
+    //         setErrors((prevErrors) => ({ ...prevErrors, quality: '' }));
+    //     }
 
-    const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent page reload
+    //     if (!formData.emoji) {
+    //         setErrors((prevErrors) => ({ ...prevErrors, emoji: '*Please choose a mood representation' }));
+    //         formIsValid = false;
+    //     } else {
+    //         setErrors((prevErrors) => ({ ...prevErrors, emoji: '' }));
+    //     }
 
-        // Validation checks
-        let formIsValid = true;
+    //     // If any validation fails, prevent form submission
+    //     if (!formIsValid) {
+    //         return;
+    //     }
 
-        if (!formData.state) {
-            setErrors((prevErrors) => ({ ...prevErrors, state: '*Select a Mood State' }));
-            formIsValid = false;
-        } else {
-            setErrors((prevErrors) => ({ ...prevErrors, state: '' }));
-        }
+    //     try {
+    //         // Reference to the "moodlogs" collection
+    //         const moodlogsCollection = collection(db, 'moodlogs');
 
-        if (!formData.quality) {
-            setErrors((prevErrors) => ({ ...prevErrors, quality: '*Choose a sleep quality option' }));
-            formIsValid = false;
-        } else {
-            setErrors((prevErrors) => ({ ...prevErrors, quality: '' }));
-        }
+    //         // Generate a unique ID using uuid
+    //         const logId = uuidv4();
 
-        if (!formData.emoji) {
-            setErrors((prevErrors) => ({ ...prevErrors, emoji: '*Please choose a mood representation' }));
-            formIsValid = false;
-        } else {
-            setErrors((prevErrors) => ({ ...prevErrors, emoji: '' }));
-        }
+    //         // Convert Date.now() to Firestore timestamp
+    //         const firestoreTimestamp = Timestamp.fromMillis(Date.now());
 
-        // If any validation fails, prevent form submission
-        if (!formIsValid) {
-            return;
-        }
+    //         // Add a new document to the "moodlogs" collection with form data and timestamp
+    //         const newMoodLogRef = await addDoc(moodlogsCollection, {
+    //             id: logId,
+    //             anxiety: formData.anxiety,
+    //             date: firestoreTimestamp,
+    //             emoji: encodeURIComponent(formData.emoji),
+    //             emotion: formData.emotion,
+    //             hours: formData.hours,
+    //             irritability: formData.irritability,
+    //             level: formData.level,
+    //             notes: formData.notes,
+    //             quality: formData.quality,
+    //             state: formData.state,
+    //             title: formData.title,
+    //         });
+    //     } catch (error) {
+    //         console.error('Error submitting form data:', error.message);
+    //     }
+    //     navigate('/success');
+    // };
 
-        try {
-            // Reference to the "moodlogs" collection
-            const moodlogsCollection = collection(db, 'moodlogs');
+    const demoSubmit = async (e) => {
 
-            // Generate a unique ID using uuid
-            const logId = uuidv4();
+    e.preventDefault(); // Prevent page reload
 
-            // Convert Date.now() to Firestore timestamp
-            const firestoreTimestamp = Timestamp.fromMillis(Date.now());
+    // Validation checks
+    let formIsValid = true;
 
-            // Add a new document to the "moodlogs" collection with form data and timestamp
-            const newMoodLogRef = await addDoc(moodlogsCollection, {
-                id: logId,
-                anxiety: formData.anxiety,
-                date: firestoreTimestamp,
-                emoji: encodeURIComponent(formData.emoji),
-                emotion: formData.emotion,
-                hours: formData.hours,
-                irritability: formData.irritability,
-                level: formData.level,
-                notes: formData.notes,
-                quality: formData.quality,
-                state: formData.state,
-                title: formData.title,
-            });
+    if (!formData.state) {
+        setErrors((prevErrors) => ({ ...prevErrors, state: '*Select a Mood State' }));
+        formIsValid = false;
+    } else {
+        setErrors((prevErrors) => ({ ...prevErrors, state: '' }));
+    }
 
-            console.log('Form data submitted to moodlogs with ID:', newMoodLogRef.id);
-        } catch (error) {
-            console.error('Error submitting form data:', error.message);
-        }
-        navigate('/success');
-    };
+    if (!formData.quality) {
+        setErrors((prevErrors) => ({ ...prevErrors, quality: '*Choose a sleep quality option' }));
+        formIsValid = false;
+    } else {
+        setErrors((prevErrors) => ({ ...prevErrors, quality: '' }));
+    }
+
+    if (!formData.emoji) {
+        setErrors((prevErrors) => ({ ...prevErrors, emoji: '*Please choose a mood representation' }));
+        formIsValid = false;
+    } else {
+        setErrors((prevErrors) => ({ ...prevErrors, emoji: '' }));
+    }
+
+    // If any validation fails, prevent form submission
+    if (!formIsValid) {
+        return;
+    }
+    navigate('/success');
+};
 
     return (
         <>
@@ -195,7 +205,9 @@ const QuickForm = () => {
                     <span className='add-mood-quick__head-crop'>How are you feeling today,</span> <span className='add-mood-quick__head-crop-name'> {user ? user.displayName.split(' ')[0] : ''}?</span>
 
                 </h1>
-                <form className='add-mood-quick-only' onSubmit={handleSubmit}>
+                <form className='add-mood-quick-only' 
+                // onSubmit={handleSubmit}
+                >
                     <article className='add-mood-quick__level'>
                         <h3 className='add-mood-quick__level-head'>Mood State</h3>
                         <p className='add-mood-quick__level-subhead'>think of this as your energy level</p>
@@ -829,7 +841,7 @@ const QuickForm = () => {
                                                 className='add-mood-quick__emote-option-eq'
                                                 type='radio'
                                                 id='panicking'
-                                                value='panicking'
+                                                value='panic'
                                                 checked={formData.emoji === 'panicking'}
                                                 onChange={() => handleInputChange('emotion', 'panicking', 'panicking')}
                                             />
@@ -900,13 +912,17 @@ const QuickForm = () => {
                                 onChange={(e) => handleNotesChange(e.target.value)}
                             />
                         </div>
-                    </article>
-
-
-                    <div className="add-mood-quick-only__buttons">
-                        <button className="add-mood-quick-only__submit" type="submit"
-                            onClick={handleSubmit}>Log  +</button>
+                        <div className="add-mood-quick-only__buttons">
+                        {/* <Link to="/success"> */}
+                        <button
+                            className="add-mood-quick-only__submit"
+                            // type="submit"
+                            // onClick={handleSubmit}
+                            onClick={demoSubmit}
+                        >Log  +</button>
+                        {/* </Link> */}
                     </div>
+                    </article>
                 </form>
             </section>
         </>
