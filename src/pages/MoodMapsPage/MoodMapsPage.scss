@@ -16,6 +16,12 @@
         align-self: center;
         margin: 0.6rem 0 0.8rem;
         padding-bottom: 0.2rem;
+        @include desktop {
+            font-size: 2.2rem;
+            border-bottom: 0.3rem solid rgb(135, 29, 135);
+            width: 20rem;
+            margin-bottom: 1rem;
+        }
     }
     &__mood {
         margin: 0 0 4rem;
@@ -49,13 +55,43 @@
     margin: 3rem 0 3.6rem;
 
     &:hover {
-        outline: .6rem dotted rgb(151, 233, 255);
+        outline: 0.6rem dotted rgb(151, 233, 255);
         background-color: rgb(225, 24, 128);
     }
     &:active {
-        outline: .5rem dashed rgb(151, 233, 255);
+        outline: 0.5rem dashed rgb(151, 233, 255);
     }
     &-eq {
         @include column;
+    }
+}
+.blobs {
+    &_map {
+        &-1 {
+            @include mobile {
+                display: none;
+            }
+            @include desktop {
+                outline: rgba(190, 0, 200, 0.9) dotted 1.8rem;
+                top: 6rem;
+                width: 40vw;
+                left: 56vw;
+                height: 35rem;
+                background: rgb(30, 214, 255, 0.7);
+            }
+        }
+        &-2 {
+            @include mobile {
+                display: none;
+            }
+            @include desktop {
+                top: 42rem;
+                outline: solid 6rem blue;
+                left: 9vw;
+                background: rgba(253, 145, 50, 0.7);
+                width: 30vw;
+                height: 34vh;
+            }
+        }
     }
 }

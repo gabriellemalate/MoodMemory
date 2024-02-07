@@ -56,7 +56,7 @@ function LoggedExpand() {
                                 <div className='logged-info__bottom-lower'>
                                     <span className='logged-info__bottom-lower-item'>Irr:<b className='logged-info--bold'>0</b></span>
                                     <span className='logged-info__bottom-lower-item'>Anx:<b className='logged-info--bold'>0</b></span>
-                                    <span className='logged-info__bottom-lower-item'> Hours:<b className='logged-info--bold'>0</b></span>
+                                    <span className='logged-info__bottom-lower-item'> Hours:<b className='logged-info--bold'>1</b></span>
                                 </div>
                             </div>
                         </div>
@@ -99,7 +99,7 @@ function LoggedExpand() {
                             </div>
                         </div>
                         <div className='open-bottom-right'>
-                            <p className='open-bottom-right__hours'>0 hours</p>
+                            <p className='open-bottom-right__hours'>1 hour</p>
                             <img className='open-bottom-right__quality' src={goodsleep} alt="sleep quality" title="sleep quality" />
                         </div>
                     </div>

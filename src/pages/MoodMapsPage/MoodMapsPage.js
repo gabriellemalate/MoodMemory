@@ -13,6 +13,13 @@ const MoodMapsPage = () => {
                 <div className='maps__eq'>
                     <h1 className='maps__head'>Your Maps</h1>
 
+                    <article className='blob-wrap'>
+                        <div className="blobs blobs_map-1" />
+                        <div className="blobs blobs_map-2" />
+                        <div className="blobs blobs_map-3" />
+
+                    </article>
+
                     <section className='maps__mood'>
                         <h2 className='maps__mood-head'>Mood State</h2>
                         <MoodMap />
