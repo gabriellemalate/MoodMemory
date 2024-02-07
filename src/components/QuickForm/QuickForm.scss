@@ -32,7 +32,7 @@
             @include desktop {
                 font-size: 3.5rem;
                 line-height: 5rem;
-                margin: 12rem 0 5rem;
+                margin: 12rem 0 15rem;
             }
 
             &-crop {
@@ -62,6 +62,8 @@
                 flex-wrap: wrap;
                 padding: 0;
                 justify-content: space-between;
+                width: 86%;
+                max-width: 95rem;
             }
 
             &__buttons {
@@ -79,6 +81,18 @@
                 height: 2.5rem;
                 margin: 3rem 1rem 0 0;
                 font-size: 1rem;
+                @include desktop {
+                    border-radius: 4rem;
+                    width: 8rem;
+                    height: 3rem;
+                    &:hover {
+                        outline: darkgreen .6rem dotted;
+                    }
+                    &:active {
+                        background-color: rgb(123, 221, 241);
+                        color: black;
+                    }
+                }
             }
         }
 
@@ -88,7 +102,7 @@
             @include desktop {
                 width: fit-content;
                 background-color: rgba(237, 156, 250, 0.683);
-                margin: 0 1.4rem 0 0;
+                margin: 0;
                 padding: 2rem 1rem 1rem;
                 border-radius: 1.5rem;
             }
@@ -103,6 +117,10 @@
                 @include mobile-subhead;
                 margin: 0.2rem 0 1.2rem;
                 color: $blue-light;
+                @include desktop {
+                    font-size: 1.2rem;
+                    margin: 0.6rem 0 1.5rem;
+                }
             }
             &-divider {
                 width: 1.4rem;
@@ -135,7 +153,7 @@
             &-level {
                 @include column;
                 width: 100%;
-                
+
                 &-all {
                     @extend .add-mood-quick__level-state;
                     @include desktop {
@@ -159,12 +177,24 @@
         &__observations {
             @include column;
             margin-top: 1.4rem;
+            @include desktop {
+                width: 16.4rem;
+                background-color: rgba(237, 156, 250, 0.683);
+                padding: 0 1.4rem 1.6rem;
+                border-radius: 1.5rem;
+                margin-top: 0;
+            }
             &-all {
                 &-head {
                     @include mobile-head-category;
                     margin-bottom: 0.65rem;
                     @include tablet {
                         font-size: 2rem;
+                    }
+                    @include desktop {
+                        text-wrap: wrap;
+                        line-height: 2.2rem;
+                        margin-bottom: 1rem;
                     }
                 }
             }
@@ -173,12 +203,21 @@
                     @include mobile-subhead;
                     color: $blue-light;
                     font-weight: bolder;
+                    @include desktop {
+                        font-size: 1.2rem;
+                        color: white;
+                        text-shadow: 2px 2px black;
+                        margin-right: 0.5rem;
+                    }
                 }
                 &-menu {
                     @include dropdown;
                     margin-left: 0.6rem;
                     margin-bottom: 0.4rem;
                     @include mobile-body;
+                    @include desktop {
+                        max-width: 6rem;
+                    }
                 }
             }
 
@@ -193,12 +232,28 @@
         }
         &__sleep {
             margin: 6.8rem 0 2rem;
+            @include desktop {
+                width: fit-content;
+                background-color: rgba(237, 156, 250, 0.683);
+                padding: 0 0 1.4rem 1rem;
+                border-radius: 1.5rem;
+                margin: 0;
+                max-width: 28rem;
+            }
             &-form {
+                &-eq {
+                    @include desktop {
+                        @include row;
+                    }
+                }
                 &-head {
                     @include mobile-head-category;
                     margin: 2rem 0 1rem;
                     @include tablet {
                         font-size: 2rem;
+                    }
+                    @include desktop {
+                        margin: 1.4rem 0 1rem;
                     }
                 }
                 &-hours {
@@ -221,6 +276,7 @@
 
                     &-head {
                         @extend .add-mood-quick__sleep-form-hours-head;
+                        margin: 0 0 0.8rem;
                     }
                     &-options {
                         @include row;
@@ -230,12 +286,21 @@
                         padding: 0.8rem 1.5rem;
                         border-radius: 1rem;
                         border: 0.2rem double $periwinkle;
+                        @include desktop {
+                            width: 64%;
+                            flex-wrap: wrap;
+                            padding: 0;
+                            height: 9rem;
+                        }
                     }
                     &-option {
                         width: 3.5rem;
                         margin: 0 0.5rem;
                         transition: 0.3s;
                         cursor: pointer;
+                        @include desktop {
+                            margin: 0.4rem 0.6rem;
+                        }
                         &:hover {
                             transform: scale(1.4);
                         }
@@ -259,6 +324,13 @@
             }
             &-form {
                 width: 90%;
+                &-eq {
+                    @include desktop {
+                        background-color: #e45cfcb8;
+                        border-radius: 2rem;
+                        padding: 0.8rem 0 0;
+                    }
+                }
                 &-head {
                     @include mobile-head-category;
                     margin-bottom: 0.5rem;
@@ -302,7 +374,7 @@
             margin: 4rem 0 3rem;
             @include desktop {
                 width: 40rem;
-                background-color: #fc5c7cb8;
+                background-color: #e45cfcb8;
                 border-radius: 2rem;
             }
 
@@ -339,7 +411,7 @@
                     @include desktop {
                         background-color: rgba(103, 17, 141, 0.754);
                         border-color: rgb(10, 131, 41);
-                        padding: 1.5rem .5rem;
+                        padding: 1.5rem 0.5rem;
                         width: 95%;
                     }
                 }
@@ -384,7 +456,7 @@
                             line-height: 1rem;
                             color: $blue-light;
                             @include desktop {
-                                font-size: .8rem;
+                                font-size: 0.8rem;
                             }
                         }
                     }

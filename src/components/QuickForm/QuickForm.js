@@ -165,38 +165,38 @@ const QuickForm = () => {
 
     const demoSubmit = async (e) => {
 
-    e.preventDefault(); // Prevent page reload
+        e.preventDefault(); // Prevent page reload
 
-    // Validation checks
-    let formIsValid = true;
+        // Validation checks
+        let formIsValid = true;
 
-    if (!formData.state) {
-        setErrors((prevErrors) => ({ ...prevErrors, state: '*Select a Mood State' }));
-        formIsValid = false;
-    } else {
-        setErrors((prevErrors) => ({ ...prevErrors, state: '' }));
-    }
+        if (!formData.state) {
+            setErrors((prevErrors) => ({ ...prevErrors, state: '*Select a Mood State' }));
+            formIsValid = false;
+        } else {
+            setErrors((prevErrors) => ({ ...prevErrors, state: '' }));
+        }
 
-    if (!formData.quality) {
-        setErrors((prevErrors) => ({ ...prevErrors, quality: '*Choose a sleep quality option' }));
-        formIsValid = false;
-    } else {
-        setErrors((prevErrors) => ({ ...prevErrors, quality: '' }));
-    }
+        if (!formData.quality) {
+            setErrors((prevErrors) => ({ ...prevErrors, quality: '*Choose a sleep quality option' }));
+            formIsValid = false;
+        } else {
+            setErrors((prevErrors) => ({ ...prevErrors, quality: '' }));
+        }
 
-    if (!formData.emoji) {
-        setErrors((prevErrors) => ({ ...prevErrors, emoji: '*Please choose a mood representation' }));
-        formIsValid = false;
-    } else {
-        setErrors((prevErrors) => ({ ...prevErrors, emoji: '' }));
-    }
+        if (!formData.emoji) {
+            setErrors((prevErrors) => ({ ...prevErrors, emoji: '*Please choose a mood representation' }));
+            formIsValid = false;
+        } else {
+            setErrors((prevErrors) => ({ ...prevErrors, emoji: '' }));
+        }
 
-    // If any validation fails, prevent form submission
-    if (!formIsValid) {
-        return;
-    }
-    navigate('/success');
-};
+        // If any validation fails, prevent form submission
+        if (!formIsValid) {
+            return;
+        }
+        navigate('/success');
+    };
 
     return (
         <>
@@ -205,7 +205,7 @@ const QuickForm = () => {
                     <span className='add-mood-quick__head-crop'>How are you feeling today,</span> <span className='add-mood-quick__head-crop-name'> {user ? user.displayName.split(' ')[0] : ''}?</span>
 
                 </h1>
-                <form className='add-mood-quick-only' 
+                <form className='add-mood-quick-only'
                 // onSubmit={handleSubmit}
                 >
                     <article className='add-mood-quick__level'>
@@ -365,93 +365,94 @@ const QuickForm = () => {
                     <article className='add-mood-quick__sleep'>
                         <div className='add-mood-quick__sleep-form'>
                             <h3 className='add-mood-quick__sleep-form-head'>Sleep</h3>
+                            <div className='add-mood-quick__sleep-form-eq'>
+                                <div className='add-mood-quick__sleep-form-hours'>
+                                    <label htmlFor="hours slept" className='add-mood-quick__sleep-form-hours-head'>hours slept</label>
+                                    <select
+                                        className='add-mood-quick__sleep-form-hours-menu'
+                                        onChange={(e) => handleNumberChange('hours', parseInt(e.target.value))}
+                                    >
+                                        <optgroup className='add-mood-quick__sleep-form-menugroup' label="number of hours">
+                                            <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="zero">
+                                                0
+                                            </option>
+                                            <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="0">
+                                                under 1 hour
+                                            </option>
+                                            <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="1">
+                                                1 hour
+                                            </option>
+                                            <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="2">
+                                                2 hours
+                                            </option>
+                                            <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="3">
+                                                3 hours
+                                            </option>
+                                            <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="4">
+                                                4 hours
+                                            </option>
+                                            <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="5">
+                                                5 hours
+                                            </option>
+                                            <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="6">
+                                                6 hours
+                                            </option>
+                                            <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="7">
+                                                7 hours
+                                            </option>
+                                            <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="8">
+                                                8 hours
+                                            </option>
+                                            <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="9">
+                                                9 hours
+                                            </option>
+                                            <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="10">
+                                                10 hours
+                                            </option>
+                                            <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="11">
+                                                11 hours
+                                            </option>
+                                            <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="12">
+                                                12 hours
+                                            </option>
+                                            <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="12">
+                                                over 12
+                                            </option>
+                                        </optgroup>
+                                    </select>
 
-                            <div className='add-mood-quick__sleep-form-hours'>
-                                <label htmlFor="hours slept" className='add-mood-quick__sleep-form-hours-head'>hours slept</label>
-                                <select
-                                    className='add-mood-quick__sleep-form-hours-menu'
-                                    onChange={(e) => handleNumberChange('hours', parseInt(e.target.value))}
-                                >
-                                    <optgroup className='add-mood-quick__sleep-form-menugroup' label="number of hours">
-                                        <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="zero">
-                                            0
-                                        </option>
-                                        <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="0">
-                                            under 1 hour
-                                        </option>
-                                        <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="1">
-                                            1 hour
-                                        </option>
-                                        <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="2">
-                                            2 hours
-                                        </option>
-                                        <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="3">
-                                            3 hours
-                                        </option>
-                                        <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="4">
-                                            4 hours
-                                        </option>
-                                        <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="5">
-                                            5 hours
-                                        </option>
-                                        <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="6">
-                                            6 hours
-                                        </option>
-                                        <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="7">
-                                            7 hours
-                                        </option>
-                                        <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="8">
-                                            8 hours
-                                        </option>
-                                        <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="9">
-                                            9 hours
-                                        </option>
-                                        <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="10">
-                                            10 hours
-                                        </option>
-                                        <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="11">
-                                            11 hours
-                                        </option>
-                                        <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="12">
-                                            12 hours
-                                        </option>
-                                        <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="12">
-                                            over 12
-                                        </option>
-                                    </optgroup>
-                                </select>
-
-                            </div>
-
-                            <div className='add-mood-quick__sleep-form-quality'>
-                                <h3 className='add-mood-quick__sleep-form-quality-head'>quality of sleep</h3>
-                                <div className='add-mood-quick__sleep-form-quality-options'>
-                                    <img className={`add-mood-quick__sleep-form-quality-option ${formData.quality === 'Poor' ? 'selected' : ''}`}
-                                        src={poorsleep}
-                                        alt="Poor sleep"
-                                        name="quality"
-                                        onClick={() => handleQualityChange('Poor')}
-                                    />
-                                    <img className={`add-mood-quick__sleep-form-quality-option ${formData.quality === 'Okay' ? 'selected' : ''}`}
-                                        src={okaysleep}
-                                        alt="Okay sleep"
-                                        name="quality"
-                                        onClick={() => handleQualityChange('Okay')}
-                                    />
-                                    <img className={`add-mood-quick__sleep-form-quality-option ${formData.quality === 'Good' ? 'selected' : ''}`}
-                                        src={goodsleep}
-                                        alt="Good sleep"
-                                        name="quality"
-                                        onClick={() => handleQualityChange('Good')}
-                                    />
-                                    <img className={`add-mood-quick__sleep-form-quality-option ${formData.quality === 'Awesome' ? 'selected' : ''}`}
-                                        src={awesomesleep}
-                                        alt="Awesome sleep"
-                                        name="quality"
-                                        onClick={() => handleQualityChange('Awesome')}
-                                    />
                                 </div>
-                                <div className="error">{errors.quality}</div>
+
+                                <div className='add-mood-quick__sleep-form-quality'>
+                                    <h3 className='add-mood-quick__sleep-form-quality-head'>quality of sleep</h3>
+                                    <div className='add-mood-quick__sleep-form-quality-options'>
+                                        <img className={`add-mood-quick__sleep-form-quality-option ${formData.quality === 'Poor' ? 'selected' : ''}`}
+                                            src={poorsleep}
+                                            alt="Poor sleep"
+                                            name="quality"
+                                            onClick={() => handleQualityChange('Poor')}
+                                        />
+                                        <img className={`add-mood-quick__sleep-form-quality-option ${formData.quality === 'Okay' ? 'selected' : ''}`}
+                                            src={okaysleep}
+                                            alt="Okay sleep"
+                                            name="quality"
+                                            onClick={() => handleQualityChange('Okay')}
+                                        />
+                                        <img className={`add-mood-quick__sleep-form-quality-option ${formData.quality === 'Good' ? 'selected' : ''}`}
+                                            src={goodsleep}
+                                            alt="Good sleep"
+                                            name="quality"
+                                            onClick={() => handleQualityChange('Good')}
+                                        />
+                                        <img className={`add-mood-quick__sleep-form-quality-option ${formData.quality === 'Awesome' ? 'selected' : ''}`}
+                                            src={awesomesleep}
+                                            alt="Awesome sleep"
+                                            name="quality"
+                                            onClick={() => handleQualityChange('Awesome')}
+                                        />
+                                    </div>
+                                    <div className="error">{errors.quality}</div>
+                                </div>
                             </div>
                         </div>
                     </article>
@@ -893,6 +894,7 @@ const QuickForm = () => {
 
                     <article className='add-mood-quick__notes'>
                         <div className='add-mood-quick__notes-form'>
+                            <div className='add-mood-quick__notes-form-eq'>
                             <h3 className='add-mood-quick__notes-form-head add-mood-quick__notes-form-head--title'>Title</h3>
                             <textarea
                                 className="add-mood-quick__notes-form-box add-mood-quick__notes-form-box-title"
@@ -911,17 +913,18 @@ const QuickForm = () => {
                                 value={formData.notes}
                                 onChange={(e) => handleNotesChange(e.target.value)}
                             />
+                            </div>
                         </div>
                         <div className="add-mood-quick-only__buttons">
-                        {/* <Link to="/success"> */}
-                        <button
-                            className="add-mood-quick-only__submit"
-                            // type="submit"
-                            // onClick={handleSubmit}
-                            onClick={demoSubmit}
-                        >Log  +</button>
-                        {/* </Link> */}
-                    </div>
+                            {/* <Link to="/success"> */}
+                            <button
+                                className="add-mood-quick-only__submit"
+                                // type="submit"
+                                // onClick={handleSubmit}
+                                onClick={demoSubmit}
+                            >Log  +</button>
+                            {/* </Link> */}
+                        </div>
                     </article>
                 </form>
             </section>

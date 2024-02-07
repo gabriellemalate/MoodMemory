@@ -2,12 +2,11 @@
 @use "../../styles/partials/variables" as *;
 
 .header {
-
     &__menu {
         @include user;
         padding: 0.2rem;
         cursor: pointer;
-        margin-top: .6rem;
+        margin-top: 0.6rem;
         @include mobile {
             display: none;
         }
@@ -34,7 +33,7 @@
         }
         .home-nav__logo {
             position: relative;
-            top:-10rem;
+            top: -10rem;
         }
     }
     &-right-nav-visible {
@@ -49,7 +48,7 @@
         }
         .home-nav__logo {
             position: relative;
-            top:-10rem;
+            top: -10rem;
         }
     }
 }
@@ -126,6 +125,4 @@
     @include mobile {
         display: none;
     }
-
-    
 }

@@ -37,16 +37,16 @@ function LoggedExpand() {
                 <div className='logged-eq' onClick={toggleExpand}>
 
                     <div className='logged__frame'>
-                        <img className='logged__frame-emoji' alt='logged emotion' src={emoji} />
+                        <img className='logged__frame-emoji' alt='logged emotion' src={emote} />
                     </div>
                     <div className='logged-info'>
                         <div className='logged-info__top'>
                             <div className='logged-info__top-left'>
-                                <h2 className='logged-info__top-left-emotion'>energized</h2>
-                                <h3 className='logged-info__top-left-title'>test</h3>
+                                <h2 className='logged-info__top-left-emotion'>excited</h2>
+                                <h3 className='logged-info__top-left-title'>we're using a title</h3>
                             </div>
                             <div className='logged-info__top-right'>
-                                <h2 className='logged-info__top-right-date'>02/06/24</h2>
+                                <h2 className='logged-info__top-right-date'>02/07/24</h2>
 
                             </div>
                         </div>
@@ -54,9 +54,9 @@ function LoggedExpand() {
                             <div className='logged-info__bottom-eq'>
                                 <h2 className='logged-info__bottom-state'>WNL</h2>
                                 <div className='logged-info__bottom-lower'>
-                                    <span className='logged-info__bottom-lower-item'>Irr:<b className='logged-info--bold'>1</b></span>
-                                    <span className='logged-info__bottom-lower-item'>Anx:<b className='logged-info--bold'>1</b></span>
-                                    <span className='logged-info__bottom-lower-item'> Hours:<b className='logged-info--bold'>2</b></span>
+                                    <span className='logged-info__bottom-lower-item'>Irr:<b className='logged-info--bold'>0</b></span>
+                                    <span className='logged-info__bottom-lower-item'>Anx:<b className='logged-info--bold'>0</b></span>
+                                    <span className='logged-info__bottom-lower-item'> Hours:<b className='logged-info--bold'>0</b></span>
                                 </div>
                             </div>
                         </div>
@@ -70,36 +70,36 @@ function LoggedExpand() {
                     <div className='open-top'>
                         <div className='open-top-left'>
                             <div className='open-top-left__frame'>
-                                <img className='open-top-left__frame-emoji' alt='open emotion' src={emoji} />
-                                <h2 className='open-top-left__frame-emotion'>energized</h2>
+                                <img className='open-top-left__frame-emoji' alt='open emotion' src={emote} />
+                                <h2 className='open-top-left__frame-emotion'>excited</h2>
                             </div>
                         </div>
                         <div className='open-top-right'>
                             <div className='open-top-right__stamp'>
-                                <h3 className='open-top-right__date'>02/06/24</h3>
+                                <h3 className='open-top-right__date'>02/07/24</h3>
 
                             </div>
                             <h2 className='open-top-right__state'>WNL</h2>
                         </div>
                     </div>
-                    <h3 className='open-top-left__title'>test</h3>
+                    <h3 className='open-top-left__title'>we're using a title</h3>
                     <div className='open-bottom'>
                         <div className='open-bottom-left'>
 
                             <div className='open-bottom-left__obs'>
                                 <p className='open-bottom-left__obs-level'>
                                     Irritability
-                                    <span className='open-bottom-left__obs-irr' > 1</span>
+                                    <span className='open-bottom-left__obs-irr' > 0</span>
                                 </p>
                                 <p className='open-bottom-left__obs-level'>
                                     Anxiety
-                                    <span className='open-bottom-left__obs-anx'> 1</span>
+                                    <span className='open-bottom-left__obs-anx'> 0</span>
                                 </p>
 
                             </div>
                         </div>
                         <div className='open-bottom-right'>
-                            <p className='open-bottom-right__hours'>2 hours</p>
+                            <p className='open-bottom-right__hours'>0 hours</p>
                             <img className='open-bottom-right__quality' src={goodsleep} alt="sleep quality" title="sleep quality" />
                         </div>
                     </div>
@@ -114,7 +114,7 @@ function LoggedExpand() {
                         </div>
                     </p>
                     <form className='open-add'>
-                        <label className="open-add__label">Add insight from hindsite ~</label>
+                        <label className="open-add__label">Add insight from hindsight ~</label>
                         <div className='open-add__enter'>
                             <input
                                 type="text"

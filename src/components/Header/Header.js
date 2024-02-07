@@ -37,13 +37,13 @@ function Header({ setScrollToFAQ }) {
                     </nav>
                 </div>
                 {isLeftNavVisible && <NavLeft />}
-                {isRightNavVisible && <NavRight setScrollToFAQ={setScrollToFAQ}/>}
+                {isRightNavVisible && <NavRight setScrollToFAQ={setScrollToFAQ} />}
                 <div className='user-parent'>
-                <div className="user-container" onClick={toggleRightNav} role="button" tabIndex={0}>
-                    <img className="user" alt="You" title='You' src={user} />
+                    <div className="user-container" onClick={toggleRightNav} role="button" tabIndex={0}>
+                        <img className="user" alt="You" title='You' src={user} />
+                    </div>
                 </div>
-                </div>
-                
+
 
             </header>
         </>

@@ -90,6 +90,10 @@
         top: 102vh;
         left: 4vw;
         outline: #1eceff dotted .6rem;
+        @include desktop {
+            height: 75rem;
+            top: 38rem;
+        }
     }
     &_9 { //6th
         background: rgba(246, 241, 73, 0.8);
@@ -98,6 +102,9 @@
         top: 111vh;
         left: 20%;
         outline: rgb(237, 84, 201, .7) solid .3rem;
+        @include desktop {
+            display: none;
+        }
     }
     &_11 { //7th
         background: rgba(68, 255, 249, 0.7);
@@ -105,6 +112,9 @@
         height: 20vh;
         top: 126vh;
         left: 10%;
+        @include desktop {
+            display: none;
+        }
     }
 
     &_3 { // emotes
@@ -113,6 +123,9 @@
         height: 20vh;
         top: 162vh;
         left: 10vw;
+        @include desktop {
+            display: none;
+        }
     }
     &_10 {
         background: rgb(245, 123, 8, .75);
@@ -121,6 +134,9 @@
         top: 166vh;
         left: 55vw;
         outline: rgb(47, 247, 217) dotted .4rem;
+        @include desktop {
+            display: none;
+        }
     }
     &_8 {
         background: rgb(2, 221, 100, .7);
@@ -129,6 +145,7 @@
         top: 178vh;
         left: 3vw;
         outline: rgba(194, 132, 142, 0.749) solid .5rem;
+        
     }
     &_13 {
         background: rgba(47, 24, 255, 0.8);
@@ -137,6 +154,9 @@
         top: 206vh;
         left: 9vw;
         outline: rgba(200, 157, 0, 0.9) dotted 1.8rem;
+        @include desktop {
+            display: none;
+        }
     }
 
 
@@ -147,6 +167,9 @@
         top: 252vh;
         left: 12vw;
         outline: solid .6rem blue;
+        @include desktop {
+            display: none;
+        }
     }
     &_1 {
         background: rgb(30, 214, 255, .7);
@@ -155,7 +178,7 @@
         top: 252vh;
         left: 3vw;
         @include desktop {
-            outline: rgba(200, 157, 0, 0.9) dotted 1.8rem;
+            outline: rgba(190, 0, 200, 0.9) dotted 1.8rem;
         }
     }
     &_14 {

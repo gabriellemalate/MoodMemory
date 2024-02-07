@@ -36,6 +36,10 @@
                     @include row;
                     margin: 1.5rem 0 .5rem;
                 }
+                @include desktop {
+                    margin: 1.5rem 0;
+                    font-size: 2rem;
+                }
 
                 &-name {
                     color: $blue-light;
@@ -64,6 +68,12 @@
 
                     @include smallscreen {
                         width: 80%;
+                    }
+                    @include desktop {
+                        font-size: 1.2rem;
+                        height: 2.4rem;
+                        padding: .5rem 0;
+                        font-weight: 600;
                     }
 
                     &:hover {
@@ -95,7 +105,14 @@
                     background-color: $periwinkle;
                     @include button;
                     margin-top: .5rem;
-
+                    &:active {
+                        background-color: rgb(95, 3, 201);
+                    }
+                    @include desktop {
+                        max-width: 59%;
+                        height: 2.5rem;
+                        border-radius: 4rem;
+                    }
                     &-link {
                         width: 100%;
                     }
@@ -132,9 +149,11 @@
                     @include mobile-subhead;
                     letter-spacing: 0.18rem;
                     margin-top: 3rem;
-
                     @include smallscreen {
                         margin: 2rem 0 1rem;
+                    }
+                    @include desktop {
+                        background-color: rgb(95, 3, 201);
                     }
                     &:hover {
                         border: 0.3rem double $periwinkle;
