@@ -33,7 +33,7 @@ const MoodMapsPage = () => {
                 <section className='contact-eq'>
                     <h3 className='contact' onClick={() => window.location = 'mailto:yourmail@domain.com'}>
                         CONTACT 
-                        <i className='contact-name'>HelloMoodMemory</i>
+                        <i className='contact-name'> HelloMoodMemory</i>
                     </h3>
                 </section>
             </main>

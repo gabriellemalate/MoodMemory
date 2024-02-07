@@ -112,6 +112,10 @@
                         max-width: 59%;
                         height: 2.5rem;
                         border-radius: 4rem;
+                        margin-top: 1rem;
+                        &:hover {
+                            outline: aqua solid .2rem;
+                        }
                     }
                     &-link {
                         width: 100%;
@@ -154,6 +158,8 @@
                     }
                     @include desktop {
                         background-color: rgb(95, 3, 201);
+                        height: 2.4rem;
+                        border-radius: 3rem;
                     }
                     &:hover {
                         border: 0.3rem double $periwinkle;

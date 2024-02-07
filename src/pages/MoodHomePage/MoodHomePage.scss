@@ -174,7 +174,7 @@
             outline: rgba(159, 15, 178, 0.9) solid 6rem;
             top: 184rem;
             width: 31vw;
-            left: 56vw;
+            left: 54vw;
             height: 23rem;
             background: rgba(45, 255, 248, 0.8);
         }
@@ -194,7 +194,7 @@
             left: 9vw;
         }
     }
-    &_1 {
+    &_1 { //DESK4
         background: rgb(30, 214, 255, 0.7);
         width: 80vw;
         height: 42vh;
@@ -202,10 +202,10 @@
         left: 3vw;
         @include desktop {
             outline: rgba(190, 0, 200, 0.9) dotted 1.8rem;
-            top: 92rem;
-            width: 40vw;
-            left: 57vw;
-            height: 30rem;
+            top: 109rem;
+            width: 54vw;
+            left: 10.4vw;
+            height: 40rem;
         }
     }
     &_14 {
