@@ -30,7 +30,6 @@ Mood tracking is a challenging chore to maintain
     - looking to track their triggers.
     - tracking the effectiveness of their therapy
 - People in therapy 
-    - looking to trac their progress.
 - People with memory problems / declining mind flexibility
     - needing to remember important life events.
     - looking to stay reminded of their individuality.
