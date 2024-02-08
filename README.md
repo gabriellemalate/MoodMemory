@@ -94,33 +94,15 @@ Mood tracking is a challenging chore to maintain
 
 ### Endpoints
 
-**GET/moods**
+**GET /moodlogs <etc>**
 
-- Get logged moods in db for mood library preview
-
-Parameters:
-- id: logged mood id as number
-- date: mo/day/yr
-- moodstate: energy state and state level combined
-
-Response:
-```
-{
-    "id": 1,
-    "date": "01/01/2024",
-    "moodstate": "Elevated Mild",
-}
-```
-
-**GET /moods/:id/ <etc>**
-
-- Get a logged mood by id for mood library viewing when extended.
+- Get a logged mood by index for mood library viewing when compressed & extended.
 
 Parameters:
-- id: logged mood id as number
-- timestamp: date will be shown with time hour and minute in us;en
+- id: logged mood id as number assigned automatically via uuid
+- timestamp: date will be in us;en
 - state: mood state 
-- level ("Mild", "Moderate", "Severe")
+- level: ("Mild", "Moderate", "Severe")
 - irr: numerical value 0 - 3 in 1 increments.
 - anx: numerical value 0 - 3 in 1 increments.
 - hours: numerical value 0 - 24 in 1 increments indicating hours slept.
@@ -130,7 +112,7 @@ Response:
 {
     "id": 1,
     "timestamp": "1234567890",
-    "emoji": "<img url>"
+    "emoji": "motivated" _string_
     "emotion": "motivated"
     "state": "Elevated",
     "level": "Moderate",
@@ -138,8 +120,9 @@ Response:
     "anxiety": 1,
     "hours": 4,
     "quality": "okay"
-    "title": "new year",
-    "notes": "-"
+    "title": "optional",
+    "notes": "-",
+    "comments": "-"
 }
 ```
 <!-- updated later -->
@@ -204,11 +187,11 @@ Response:
 ## Nice-to-haves
 
 POSSIBLY
-- tablet & desktop responsive design
-- contact page
+- tablet & desktop responsive design **accomplished**
+- contact footer **accomplished**
 - dynamic memory counter & dynamic mood counter in the user toggle side nav bar.
 - unsaved log warning window
-- search bar displays all moods in mood library with the typed keyword
+- search bar displays all moods in mood library with the typed keyword **accomplished**
 - create new user.
 
 PROBABLY NOT SOON
