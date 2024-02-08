@@ -3,6 +3,7 @@
 
 .maps {
     @include column;
+    width: 100%;
     &__eq {
         @include column;
         width: 96%;

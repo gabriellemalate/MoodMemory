@@ -2,13 +2,9 @@
 @use "../../styles/partials/variables" as *;
 
 .contact {
-    background-color: rgb(238, 92, 168);
-    width: fit-content;
-    padding: 1rem 2rem;
     border-radius: 3rem;
     cursor: pointer;
-    margin: 3rem 0 4rem;
-
+    background-color: rgb(238, 92, 168);
     &:hover {
         outline: 0.6rem dotted rgb(151, 233, 255);
         background-color: rgb(225, 24, 128);
@@ -16,7 +12,39 @@
     &:active {
         outline: 0.5rem dashed rgb(151, 233, 255);
     }
+    @include smallscreen {
+        width: fit-content;
+        padding: 1rem 2rem;
+    }
+    @include mobile {
+        font-size: 1.1rem;
+        margin: 0;
+        padding: 0.5rem 1rem;
+    }
     &-eq {
-        @include column;
+        width: 100%;
+        @include row;
+        margin: 2rem 0 0;
+        padding: 1.5rem 1rem 4.5rem;
+        justify-content: space-between;
+        border-top: .2rem dashed aqua;
+        @include smallscreen {
+            margin: 2rem 0 0;
+            padding: 1.5rem 1rem 1.5rem;
+        }
+        @include desktop {
+            max-width: 90%;
+        }
+    }
+    &__socials {
+        &-social {
+            &-icon {
+                width: 2rem;
+
+                @include mobile {
+                    margin: 0;
+                }
+            }
+        }
     }
 }
