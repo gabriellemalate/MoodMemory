@@ -1,4 +1,5 @@
 import './Footer.scss';
+import LinkedIn from "../../assets/social-icons/LinkedIn.png"
 
 function Footer() {
     return (
@@ -13,7 +14,10 @@ function Footer() {
                     className='contact__socials-social'
                     href="https://www.linkedin.com/in/gabriellemalate/"
                     >
-                        <img src="" alt="LinkedIn" />
+                        <img
+                        src={LinkedIn} 
+                        alt="LinkedIn" 
+                        className='contact__socials-social-icon'/>
                     </a>
                 </article>
             </section>
