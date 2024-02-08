@@ -5,6 +5,7 @@ import QuickForm from '../../components/QuickForm/QuickForm';
 import Faq from "../../components/Faq/Faq"
 import Header from '../../components/Header/Header';
 import MobileNav from '../../components/MobileNav/MobileNav';
+import Footer from '../../components/Footer/Footer';
 
 function MoodHomePage() {
     const [scrollToFAQ, setScrollToFAQ] = useState(false);
@@ -51,11 +52,7 @@ function MoodHomePage() {
                         <Faq ref={faqRef} />
 
                 </div>
-                <section className='contact-eq'>
-                    <h3 className='contact' onClick={() => window.location = 'mailto:yourmail@domain.com'}>
-                        CONTACT <i className='contact-name'>HelloMoodMemory</i>
-                    </h3>
-                </section>
+                <Footer/>
             </main>
             <MobileNav />
         </>

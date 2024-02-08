@@ -135,13 +135,10 @@ const QuickForm = () => {
     //     try {
     //         // Reference to the "moodlogs" collection
     //         const moodlogsCollection = collection(db, 'moodlogs');
-
     //         // Generate a unique ID using uuid
     //         const logId = uuidv4();
-
     //         // Convert Date.now() to Firestore timestamp
     //         const firestoreTimestamp = Timestamp.fromMillis(Date.now());
-
     //         // Add a new document to the "moodlogs" collection with form data and timestamp
     //         const newMoodLogRef = await addDoc(moodlogsCollection, {
     //             id: logId,

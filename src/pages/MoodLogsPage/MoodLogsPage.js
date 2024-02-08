@@ -43,7 +43,7 @@ function MoodLogsPage() {
             // Check if the title or emotion includes the search term
             return lowercaseTitle.includes(lowercaseSearchTerm) || lowercaseEmotion.includes(lowercaseSearchTerm) || lowercaseLevel.includes(lowercaseSearchTerm);
         });
-
+        
         setFilteredLogs(logsMatchingSearch);
     }, [logData, searchTerm]);
 

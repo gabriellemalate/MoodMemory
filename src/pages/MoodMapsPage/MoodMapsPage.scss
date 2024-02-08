@@ -46,25 +46,6 @@
     }
 }
 
-.contact {
-    background-color: rgb(238, 92, 168);
-    width: fit-content;
-    padding: 1rem 2rem;
-    border-radius: 3rem;
-    cursor: pointer;
-    margin: 3rem 0 3.6rem;
-
-    &:hover {
-        outline: 0.6rem dotted rgb(151, 233, 255);
-        background-color: rgb(225, 24, 128);
-    }
-    &:active {
-        outline: 0.5rem dashed rgb(151, 233, 255);
-    }
-    &-eq {
-        @include column;
-    }
-}
 .blobs {
     &_map {
         &-1 {
