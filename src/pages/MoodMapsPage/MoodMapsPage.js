@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import MoodMap from "../../components/MoodMap/MoodMap"
 import Header from '../../components/Header/Header';
 import MobileNav from "../../components/MobileNav/MobileNav";
+import Footer from "../../components/Footer/Footer";
 
 const MoodMapsPage = () => {
 
@@ -30,12 +31,7 @@ const MoodMapsPage = () => {
                     </section>
 
                 </div>
-                <section className='contact-eq'>
-                    <h3 className='contact' onClick={() => window.location = 'mailto:yourmail@domain.com'}>
-                        CONTACT 
-                        <i className='contact-name'> HelloMoodMemory</i>
-                    </h3>
-                </section>
+                <Footer />
             </main>
             <MobileNav />
         </>

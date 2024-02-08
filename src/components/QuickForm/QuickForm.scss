@@ -19,7 +19,7 @@
             z-index: -1;
             margin: 3rem 0 3rem;
             @include mobile {
-                margin: 1.8rem 0 1.6rem;
+                margin: 1.5rem 0 0;
                 padding: 0 1rem;
                 font-size: 2rem;
                 line-height: 2.5rem;
@@ -52,7 +52,7 @@
         &-only {
             @include column;
             border-radius: 1rem;
-            padding: 4rem 0 2rem;
+            padding: 2.5rem 0 2rem;
             width: 95%;
             @include tablet {
                 padding: 2.5rem 0 2rem;
@@ -283,9 +283,10 @@
                         justify-content: center;
                         background-color: $periwinkle-lite;
                         width: fit-content;
-                        padding: 0.8rem 1.5rem;
+                        padding: 0.8rem .5rem;
                         border-radius: 1rem;
                         border: 0.2rem double $periwinkle;
+                        
                         @include desktop {
                             width: 64%;
                             flex-wrap: wrap;
