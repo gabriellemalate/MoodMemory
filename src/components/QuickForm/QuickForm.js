@@ -100,68 +100,7 @@ const QuickForm = () => {
         setFormData((prevData) => ({ ...prevData, [fieldName]: emotion, emoji: emojiPath }));
     };
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault(); // Prevent page reload
-
-    //     // Validation checks
-    //     let formIsValid = true;
-
-    //     if (!formData.state) {
-    //         setErrors((prevErrors) => ({ ...prevErrors, state: '*Select a Mood State' }));
-    //         formIsValid = false;
-    //     } else {
-    //         setErrors((prevErrors) => ({ ...prevErrors, state: '' }));
-    //     }
-
-    //     if (!formData.quality) {
-    //         setErrors((prevErrors) => ({ ...prevErrors, quality: '*Choose a sleep quality option' }));
-    //         formIsValid = false;
-    //     } else {
-    //         setErrors((prevErrors) => ({ ...prevErrors, quality: '' }));
-    //     }
-
-    //     if (!formData.emoji) {
-    //         setErrors((prevErrors) => ({ ...prevErrors, emoji: '*Please choose a mood representation' }));
-    //         formIsValid = false;
-    //     } else {
-    //         setErrors((prevErrors) => ({ ...prevErrors, emoji: '' }));
-    //     }
-
-    //     // If any validation fails, prevent form submission
-    //     if (!formIsValid) {
-    //         return;
-    //     }
-
-    //     try {
-    //         // Reference to the "moodlogs" collection
-    //         const moodlogsCollection = collection(db, 'moodlogs');
-    //         // Generate a unique ID using uuid
-    //         const logId = uuidv4();
-    //         // Convert Date.now() to Firestore timestamp
-    //         const firestoreTimestamp = Timestamp.fromMillis(Date.now());
-    //         // Add a new document to the "moodlogs" collection with form data and timestamp
-    //         const newMoodLogRef = await addDoc(moodlogsCollection, {
-    //             id: logId,
-    //             anxiety: formData.anxiety,
-    //             date: firestoreTimestamp,
-    //             emoji: encodeURIComponent(formData.emoji),
-    //             emotion: formData.emotion,
-    //             hours: formData.hours,
-    //             irritability: formData.irritability,
-    //             level: formData.level,
-    //             notes: formData.notes,
-    //             quality: formData.quality,
-    //             state: formData.state,
-    //             title: formData.title,
-    //         });
-    //     } catch (error) {
-    //         console.error('Error submitting form data:', error.message);
-    //     }
-    //     navigate('/success');
-    // };
-
-    const demoSubmit = async (e) => {
-
+    const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent page reload
 
         // Validation checks
@@ -192,8 +131,69 @@ const QuickForm = () => {
         if (!formIsValid) {
             return;
         }
+
+        try {
+            // Reference to the "moodlogs" collection
+            const moodlogsCollection = collection(db, 'moodlogs');
+            // Generate a unique ID using uuid
+            const logId = uuidv4();
+            // Convert Date.now() to Firestore timestamp
+            const firestoreTimestamp = Timestamp.fromMillis(Date.now());
+            // Add a new document to the "moodlogs" collection with form data and timestamp
+            const newMoodLogRef = await addDoc(moodlogsCollection, {
+                id: logId,
+                anxiety: formData.anxiety,
+                date: firestoreTimestamp,
+                emoji: encodeURIComponent(formData.emoji),
+                emotion: formData.emotion,
+                hours: formData.hours,
+                irritability: formData.irritability,
+                level: formData.level,
+                notes: formData.notes,
+                quality: formData.quality,
+                state: formData.state,
+                title: formData.title,
+            });
+        } catch (error) {
+            console.error('Error submitting form data:', error.message);
+        }
         navigate('/success');
     };
+
+    // const demoSubmit = async (e) => {
+
+    //     e.preventDefault(); // Prevent page reload
+
+    //     // Validation checks
+    //     let formIsValid = true;
+
+    //     if (!formData.state) {
+    //         setErrors((prevErrors) => ({ ...prevErrors, state: '*Select a Mood State' }));
+    //         formIsValid = false;
+    //     } else {
+    //         setErrors((prevErrors) => ({ ...prevErrors, state: '' }));
+    //     }
+
+    //     if (!formData.quality) {
+    //         setErrors((prevErrors) => ({ ...prevErrors, quality: '*Choose a sleep quality option' }));
+    //         formIsValid = false;
+    //     } else {
+    //         setErrors((prevErrors) => ({ ...prevErrors, quality: '' }));
+    //     }
+
+    //     if (!formData.emoji) {
+    //         setErrors((prevErrors) => ({ ...prevErrors, emoji: '*Please choose a mood representation' }));
+    //         formIsValid = false;
+    //     } else {
+    //         setErrors((prevErrors) => ({ ...prevErrors, emoji: '' }));
+    //     }
+
+    //     // If any validation fails, prevent form submission
+    //     if (!formIsValid) {
+    //         return;
+    //     }
+    //     navigate('/success');
+    // };
 
     return (
         <>
@@ -203,7 +203,7 @@ const QuickForm = () => {
 
                 </h1>
                 <form className='add-mood-quick-only'
-                // onSubmit={handleSubmit}
+                onSubmit={handleSubmit}
                 >
                     <article className='add-mood-quick__level'>
                         <h3 className='add-mood-quick__level-head'>Mood State</h3>
@@ -913,14 +913,12 @@ const QuickForm = () => {
                             </div>
                         </div>
                         <div className="add-mood-quick-only__buttons">
-                            {/* <Link to="/success"> */}
                             <button
                                 className="add-mood-quick-only__submit"
-                                // type="submit"
-                                // onClick={handleSubmit}
-                                onClick={demoSubmit}
+                                type="submit"
+                                onClick={handleSubmit}
+                                // onClick={demoSubmit}
                             >Log  +</button>
-                            {/* </Link> */}
                         </div>
                     </article>
                 </form>

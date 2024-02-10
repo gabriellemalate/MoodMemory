@@ -48,8 +48,6 @@ function Logged({ searchTerm }) {
                 }
 
                 const selectedEmote = require(`../../assets/emotes/${entry.emoji}.png`);
-                console.log('Selected Emote:', selectedEmote);
-                console.log('Emote Path:', `../../assets/emotes/${entry.emoji.toLowerCase()}.png`);
 
                 return (
                     <article key={entry.id} className={`logged ${expanded ? 'expanded' : 'compressed'}`}>

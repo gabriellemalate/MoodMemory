@@ -25,8 +25,8 @@
         background: rgba(248, 168, 243, 0.8);
         outline: rgb(21, 203, 137) dotted 0.5rem;
         width: 60vw;
-        height: 22vh;
-        top: 42vh;
+        height: 9rem;
+        top: 18rem;
         left: 9%;
         @include tablet {
             top: 36vh;
@@ -40,8 +40,8 @@
         //2nd
         background: rgba(43, 28, 255, 0.935);
         width: 88vw;
-        height: 48vh;
-        top: 36vh;
+        height: 20rem;
+        top: 14rem;
         left: 6%;
         @include tablet {
             top: 22vh;

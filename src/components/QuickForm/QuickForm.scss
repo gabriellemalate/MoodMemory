@@ -99,6 +99,9 @@
         &__level {
             @include column;
             width: 100%;
+            @include mobile {
+                
+            }
             @include desktop {
                 width: fit-content;
                 background-color: rgba(237, 156, 250, 0.683);
@@ -124,7 +127,7 @@
             }
             &-divider {
                 width: 1.4rem;
-                margin: 0.8rem 0 1.5rem;
+                margin: 0 0 1.5rem;
             }
             &-state {
                 @include row;
@@ -137,6 +140,7 @@
                         background-color: $periwinkle;
                         color: $aqua;
                         font-weight: bold;
+
                     }
                     &:not(:checked) + label {
                         border: 0.2rem solid $periwinkle;
