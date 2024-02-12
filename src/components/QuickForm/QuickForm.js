@@ -120,12 +120,9 @@ const QuickForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent page reload
 
-<<<<<<< HEAD
-=======
         // Calculate graphValue based on state and level
         const graphValue = getGraphValue(formData.state, formData.level);
 
->>>>>>> dev5
         // Validation checks
         let formIsValid = true;
 
@@ -136,13 +133,8 @@ const QuickForm = () => {
             setErrors((prevErrors) => ({ ...prevErrors, state: '' }));
         }
 
-<<<<<<< HEAD
-        if (!formData.quality) {
-            setErrors((prevErrors) => ({ ...prevErrors, quality: '*Choose a sleep quality option' }));
-=======
         if (formData.hours !== 0 && !formData.quality) {
             setErrors((prevErrors) => ({ ...prevErrors, quality: '*If you slept at all, choose a sleep quality option' }));
->>>>>>> dev5
             formIsValid = false;
         } else {
             setErrors((prevErrors) => ({ ...prevErrors, quality: '' }));
@@ -181,10 +173,7 @@ const QuickForm = () => {
                 quality: formData.quality,
                 state: formData.state,
                 title: formData.title,
-<<<<<<< HEAD
-=======
                 graphValue: graphValue,
->>>>>>> dev5
             });
         } catch (error) {
             console.error('Error submitting form data:', error.message);
@@ -234,11 +223,7 @@ const QuickForm = () => {
                     <span className='add-mood-quick__head-crop'>How are you feeling today,</span> <span className='add-mood-quick__head-crop-name'> {user ? user.displayName.split(' ')[0] : ''}?</span>
                 </h1>
                 <form className='add-mood-quick-only'
-<<<<<<< HEAD
-                onSubmit={handleSubmit}
-=======
                     onSubmit={handleSubmit}
->>>>>>> dev5
                 >
                     <article className='add-mood-quick__level'>
                         <h3 className='add-mood-quick__level-head'>Mood State</h3>
@@ -952,11 +937,7 @@ const QuickForm = () => {
                                 className="add-mood-quick-only__submit"
                                 type="submit"
                                 onClick={handleSubmit}
-<<<<<<< HEAD
-                                // onClick={demoSubmit}
-=======
                             // onClick={demoSubmit}
->>>>>>> dev5
                             >Log  +</button>
                         </div>
                     </article>
