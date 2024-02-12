@@ -67,16 +67,16 @@ const QuickForm = () => {
     const navigate = useNavigate();
 
     const getGraphValue = (state, level) => {
-        if (state === 'depressed') {
-            if (level === 'severe') return 0;
-            if (level === 'moderate') return 1;
-            if (level === 'mild') return 2;
+        if (state === 'Depressed') {
+            if (level === 'Severe') return 0;
+            if (level === 'Moderate') return 1;
+            if (level === 'Mild') return 2;
         } else if (state === 'WNL') {
             return 3;
-        } else if (state === 'elevated') {
-            if (level === 'mild') return 4;
-            if (level === 'moderate') return 5;
-            if (level === 'severe') return 6;
+        } else if (state === 'Elevated') {
+            if (level === 'Mild') return 4;
+            if (level === 'Moderate') return 5;
+            if (level === 'Severe') return 6;
         }
         return null; // Default case if state or level is invalid
     };
