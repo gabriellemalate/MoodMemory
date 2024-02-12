@@ -33,7 +33,7 @@ import worried from "../../assets/emotes/worried.png";
 
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import React, { useState, useEffect, useRef, } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import { db } from '../../firebase';
@@ -53,6 +53,7 @@ const QuickForm = () => {
         emotion: '',
         title: '',
         notes: '',
+        graphValue: '',
     });
     const [errors, setErrors] = useState({
         state: '',
@@ -64,6 +65,21 @@ const QuickForm = () => {
         emotion: '',
     });
     const navigate = useNavigate();
+
+    const getGraphValue = (state, level) => {
+        if (state === 'Depressed') {
+            if (level === 'Severe') return 0;
+            if (level === 'Moderate') return 1;
+            if (level === 'Mild') return 2;
+        } else if (state === 'WNL') {
+            return 3;
+        } else if (state === 'Elevated') {
+            if (level === 'Mild') return 4;
+            if (level === 'Moderate') return 5;
+            if (level === 'Severe') return 6;
+        }
+        return null; // Default case if state or level is invalid
+    };
 
     // State update functions
     const handleStateChange = (selectedState) => {
@@ -78,7 +94,8 @@ const QuickForm = () => {
 
     const handleNumberChange = (fieldName, selectedNumber) => {
         console.log('Number Changed:', fieldName, selectedNumber);
-        setFormData((prevData) => ({ ...prevData, [fieldName]: selectedNumber }));
+        const numberValue = selectedNumber === 'zero' ? '0' : selectedNumber;
+        setFormData((prevData) => ({ ...prevData, [fieldName]: numberValue }));
     };
 
     const handleQualityChange = (selectedQuality) => {
@@ -103,6 +120,12 @@ const QuickForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent page reload
 
+<<<<<<< HEAD
+=======
+        // Calculate graphValue based on state and level
+        const graphValue = getGraphValue(formData.state, formData.level);
+
+>>>>>>> dev5
         // Validation checks
         let formIsValid = true;
 
@@ -113,8 +136,13 @@ const QuickForm = () => {
             setErrors((prevErrors) => ({ ...prevErrors, state: '' }));
         }
 
+<<<<<<< HEAD
         if (!formData.quality) {
             setErrors((prevErrors) => ({ ...prevErrors, quality: '*Choose a sleep quality option' }));
+=======
+        if (formData.hours !== 0 && !formData.quality) {
+            setErrors((prevErrors) => ({ ...prevErrors, quality: '*If you slept at all, choose a sleep quality option' }));
+>>>>>>> dev5
             formIsValid = false;
         } else {
             setErrors((prevErrors) => ({ ...prevErrors, quality: '' }));
@@ -153,6 +181,10 @@ const QuickForm = () => {
                 quality: formData.quality,
                 state: formData.state,
                 title: formData.title,
+<<<<<<< HEAD
+=======
+                graphValue: graphValue,
+>>>>>>> dev5
             });
         } catch (error) {
             console.error('Error submitting form data:', error.message);
@@ -200,10 +232,13 @@ const QuickForm = () => {
             <section className='add-mood-quick'>
                 <h1 className='add-mood-quick__head'>
                     <span className='add-mood-quick__head-crop'>How are you feeling today,</span> <span className='add-mood-quick__head-crop-name'> {user ? user.displayName.split(' ')[0] : ''}?</span>
-
                 </h1>
                 <form className='add-mood-quick-only'
+<<<<<<< HEAD
                 onSubmit={handleSubmit}
+=======
+                    onSubmit={handleSubmit}
+>>>>>>> dev5
                 >
                     <article className='add-mood-quick__level'>
                         <h3 className='add-mood-quick__level-head'>Mood State</h3>
@@ -370,10 +405,10 @@ const QuickForm = () => {
                                         onChange={(e) => handleNumberChange('hours', parseInt(e.target.value))}
                                     >
                                         <optgroup className='add-mood-quick__sleep-form-menugroup' label="number of hours">
-                                            <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="zero">
+                                            <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="0">
                                                 0
                                             </option>
-                                            <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="0">
+                                            <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="1">
                                                 under 1 hour
                                             </option>
                                             <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="1">
@@ -448,7 +483,7 @@ const QuickForm = () => {
                                             onClick={() => handleQualityChange('Awesome')}
                                         />
                                     </div>
-                                    <div className="error">{errors.quality}</div>
+                                    {formData.hours !== '0' && formData.quality !== '' && <div className="error">{errors.quality}</div>}
                                 </div>
                             </div>
                         </div>
@@ -840,7 +875,7 @@ const QuickForm = () => {
                                                 type='radio'
                                                 id='panicking'
                                                 value='panic'
-                                                checked={formData.emoji === 'panicking'}
+                                                checked={formData.emoji === 'panic'}
                                                 onChange={() => handleInputChange('emotion', 'panicking', 'panicking')}
                                             />
                                             <label htmlFor='panicking'>
@@ -892,24 +927,24 @@ const QuickForm = () => {
                     <article className='add-mood-quick__notes'>
                         <div className='add-mood-quick__notes-form'>
                             <div className='add-mood-quick__notes-form-eq'>
-                            <h3 className='add-mood-quick__notes-form-head add-mood-quick__notes-form-head--title'>Title</h3>
-                            <textarea
-                                className="add-mood-quick__notes-form-box add-mood-quick__notes-form-box-title"
-                                type="Text"
-                                placeholder="optional"
-                                name="title"
-                                value={formData.title}
-                                onChange={(e) => handleTitleChange(e.target.value)}
-                            />
-                            <h3 className='add-mood-quick__notes-form-head add-mood-quick__notes-form-head--note'>Notes</h3>
-                            <textarea
-                                className="add-mood-quick__notes-form-box add-mood-quick__notes-form-box-note"
-                                type="Text"
-                                placeholder="add notes and symptoms or keep this blank"
-                                name="notes"
-                                value={formData.notes}
-                                onChange={(e) => handleNotesChange(e.target.value)}
-                            />
+                                <h3 className='add-mood-quick__notes-form-head add-mood-quick__notes-form-head--title'>Title</h3>
+                                <textarea
+                                    className="add-mood-quick__notes-form-box add-mood-quick__notes-form-box-title"
+                                    type="Text"
+                                    placeholder="optional"
+                                    name="title"
+                                    value={formData.title}
+                                    onChange={(e) => handleTitleChange(e.target.value)}
+                                />
+                                <h3 className='add-mood-quick__notes-form-head add-mood-quick__notes-form-head--note'>Notes</h3>
+                                <textarea
+                                    className="add-mood-quick__notes-form-box add-mood-quick__notes-form-box-note"
+                                    type="Text"
+                                    placeholder="add notes and symptoms or keep this blank"
+                                    name="notes"
+                                    value={formData.notes}
+                                    onChange={(e) => handleNotesChange(e.target.value)}
+                                />
                             </div>
                         </div>
                         <div className="add-mood-quick-only__buttons">
@@ -917,7 +952,11 @@ const QuickForm = () => {
                                 className="add-mood-quick-only__submit"
                                 type="submit"
                                 onClick={handleSubmit}
+<<<<<<< HEAD
                                 // onClick={demoSubmit}
+=======
+                            // onClick={demoSubmit}
+>>>>>>> dev5
                             >Log  +</button>
                         </div>
                     </article>
