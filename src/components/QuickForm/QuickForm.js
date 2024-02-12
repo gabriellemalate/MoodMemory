@@ -393,7 +393,7 @@ const QuickForm = () => {
                                             <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="0">
                                                 0
                                             </option>
-                                            <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="">
+                                            <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="1">
                                                 under 1 hour
                                             </option>
                                             <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="1">
@@ -468,7 +468,7 @@ const QuickForm = () => {
                                             onClick={() => handleQualityChange('Awesome')}
                                         />
                                     </div>
-                                    {formData.hours !== '0' && <div className="error">{errors.quality}</div>}
+                                    {formData.hours !== '0' && formData.quality !== '' && <div className="error">{errors.quality}</div>}
                                 </div>
                             </div>
                         </div>
@@ -860,7 +860,7 @@ const QuickForm = () => {
                                                 type='radio'
                                                 id='panicking'
                                                 value='panic'
-                                                checked={formData.emoji === 'panicking'}
+                                                checked={formData.emoji === 'panic'}
                                                 onChange={() => handleInputChange('emotion', 'panicking', 'panicking')}
                                             />
                                             <label htmlFor='panicking'>
