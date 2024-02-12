@@ -115,7 +115,7 @@ const QuickForm = () => {
         }
 
         if (formData.hours !== 0 && !formData.quality) {
-            setErrors((prevErrors) => ({ ...prevErrors, quality: '*Choose a sleep quality option' }));
+            setErrors((prevErrors) => ({ ...prevErrors, quality: '*If you slept at all, choose a sleep quality option' }));
             formIsValid = false;
         } else {
             setErrors((prevErrors) => ({ ...prevErrors, quality: '' }));
