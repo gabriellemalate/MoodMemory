@@ -78,7 +78,8 @@ const QuickForm = () => {
 
     const handleNumberChange = (fieldName, selectedNumber) => {
         console.log('Number Changed:', fieldName, selectedNumber);
-        setFormData((prevData) => ({ ...prevData, [fieldName]: selectedNumber }));
+        const numberValue = selectedNumber === 'zero' ? '0' : selectedNumber;
+        setFormData((prevData) => ({ ...prevData, [fieldName]: numberValue }));
     };
 
     const handleQualityChange = (selectedQuality) => {
@@ -113,7 +114,7 @@ const QuickForm = () => {
             setErrors((prevErrors) => ({ ...prevErrors, state: '' }));
         }
 
-        if (!formData.quality) {
+        if (formData.hours !== 0 && !formData.quality) {
             setErrors((prevErrors) => ({ ...prevErrors, quality: '*Choose a sleep quality option' }));
             formIsValid = false;
         } else {
@@ -369,10 +370,10 @@ const QuickForm = () => {
                                         onChange={(e) => handleNumberChange('hours', parseInt(e.target.value))}
                                     >
                                         <optgroup className='add-mood-quick__sleep-form-menugroup' label="number of hours">
-                                            <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="zero">
+                                            <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="0">
                                                 0
                                             </option>
-                                            <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="0">
+                                            <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="">
                                                 under 1 hour
                                             </option>
                                             <option className='add-mood-quick__sleep-form-menugroup-option' name="hours" value="1">
@@ -447,7 +448,7 @@ const QuickForm = () => {
                                             onClick={() => handleQualityChange('Awesome')}
                                         />
                                     </div>
-                                    <div className="error">{errors.quality}</div>
+                                    {formData.hours !== '0' && <div className="error">{errors.quality}</div>}
                                 </div>
                             </div>
                         </div>
