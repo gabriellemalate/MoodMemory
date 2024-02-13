@@ -2,8 +2,8 @@ import React from "react";
 import "./WelcomePage.scss";
 import { auth } from "../../firebase";
 import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
-// import { getFirestore, doc, setDoc } from "firebase/firestore";
-// import { functions} from "firebase/functions";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { functions} from "firebase/functions";
 
 const WelcomePage = () => {
     const googleSignIn = () => {
@@ -11,21 +11,20 @@ const WelcomePage = () => {
         signInWithRedirect(auth, provider);
     };
 
+    const db = getFirestore();
 
-    // const db = getFirestore();
+    const createUserData = functions.auth.user().onCreate(async (user) => {
+        const uid = user.uid;
 
-    // const createUserData = functions.auth.user().onCreate(async (user) => {
-    //     const uid = user.uid;
+        // Create a new collection for the user in Firestore
+        const userCollectionRef = doc(db, "users", uid);
+        await setDoc(userCollectionRef, {
+            // Initialize user-specific data here
+            displayName: user.displayName,
+            email: user.email,
 
-    //     // Create a new collection for the user in Firestore
-    //     const userCollectionRef = doc(db, "users", uid);
-    //     await setDoc(userCollectionRef, {
-    //         // Initialize user-specific data here
-    //         displayName: user.displayName,
-    //         email: user.email,
-
-    //     });
-    // });
+        });
+    });
 
     return (
         <main className="welcome">
@@ -35,8 +34,6 @@ const WelcomePage = () => {
             </article>
 
             <div className="welcome-eq">
-
-
 
                 <div className="welcome__head">
                     <h1 className="welcome__head-welcome">welcome to</h1>
