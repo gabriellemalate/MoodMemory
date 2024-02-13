@@ -13,18 +13,42 @@ const WelcomePage = () => {
 
     const db = getFirestore();
 
-    const createUserData = functions.auth.user().onCreate(async (user) => {
-        const uid = user.uid;
+    // const createUserData = functions.auth.user().onCreate(async (user) => {
+    //     const uid = user.uid;
 
-        // Create a new collection for the user in Firestore
-        const userCollectionRef = doc(db, "users", uid);
-        await setDoc(userCollectionRef, {
-            // Initialize user-specific data here
-            displayName: user.displayName,
-            email: user.email,
+    //     // Create a new collection for the user in Firestore
+    //     const userCollectionRef = doc(db, "users", uid);
+    //     await setDoc(userCollectionRef, {
+    //         // Initialize user-specific data here
+    //         displayName: user.displayName,
+    //         email: user.email,
 
+    //     });
+    // });
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                const uid = user.uid;
+
+                // Check if the user data already exists
+                const userDocRef = doc(db, "users", uid);
+                const docSnap = await getDoc(userDocRef);
+
+                if (!docSnap.exists()) {
+                    // If user data doesn't exist, create a new document
+                    await setDoc(userDocRef, {
+                        displayName: user.displayName,
+                        email: user.email,
+                        // any other initial user-specific data
+                    });
+                }
+            }
         });
-    });
+
+        // Cleanup function
+        return () => unsubscribe();
+    }, [db]);
 
     return (
         <main className="welcome">
