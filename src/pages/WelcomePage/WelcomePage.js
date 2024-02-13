@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./WelcomePage.scss";
 import { auth } from "../../firebase";
-import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
-// import { getFirestore, doc, setDoc } from "firebase/firestore";
-// import { functions} from "firebase/functions";
+import { GoogleAuthProvider, signInWithRedirect, onAuthStateChanged } from "firebase/auth";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { functions} from "firebase/functions";
 
 const WelcomePage = () => {
     const googleSignIn = () => {
@@ -11,8 +11,7 @@ const WelcomePage = () => {
         signInWithRedirect(auth, provider);
     };
 
-
-    // const db = getFirestore();
+    const db = getFirestore();
 
     // const createUserData = functions.auth.user().onCreate(async (user) => {
     //     const uid = user.uid;
@@ -27,6 +26,30 @@ const WelcomePage = () => {
     //     });
     // });
 
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                const uid = user.uid;
+
+                // Check if the user data already exists
+                const userDocRef = doc(db, "users", uid);
+                const docSnap = await getDoc(userDocRef);
+
+                if (!docSnap.exists()) {
+                    // If user data doesn't exist, create a new document
+                    await setDoc(userDocRef, {
+                        displayName: user.displayName,
+                        email: user.email,
+                        // any other initial user-specific data
+                    });
+                }
+            }
+        });
+
+        // Cleanup function
+        return () => unsubscribe();
+    }, [db]);
+
     return (
         <main className="welcome">
             <article className='morph-wrap'>
@@ -35,8 +58,6 @@ const WelcomePage = () => {
             </article>
 
             <div className="welcome-eq">
-
-
 
                 <div className="welcome__head">
                     <h1 className="welcome__head-welcome">welcome to</h1>
