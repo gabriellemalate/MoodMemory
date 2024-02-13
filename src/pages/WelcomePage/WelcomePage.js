@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./WelcomePage.scss";
 import { auth } from "../../firebase";
 import { GoogleAuthProvider, signInWithRedirect, onAuthStateChanged } from "firebase/auth";
-import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { getFirestore, doc, setDoc, collection, addDoc } from "firebase/firestore";
 import { functions} from "firebase/functions";
 
 const WelcomePage = () => {
@@ -42,6 +42,9 @@ const WelcomePage = () => {
                         email: user.email,
                         // any other initial user-specific data
                     });
+
+                    // Create a subcollection for logs under the user document
+                    const logsCollectionRef = collection(userDocRef, "moodlogs");
                 }
             }
         });
