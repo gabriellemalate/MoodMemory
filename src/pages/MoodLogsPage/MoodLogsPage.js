@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './MoodLogsPage.scss';
-
 import Logged from '../../components/Logged/Logged';
 import LoggedExpand from "../../components/LoggedExpand/LoggedExpand";
 import MagnifyingGlass from "../../assets/search.svg"
 import Header from '../../components/Header/Header';
 import MobileNav from "../../components/MobileNav/MobileNav";
-import { db } from '../../firebase';
-import { query, collection, onSnapshot } from 'firebase/firestore';
+import { db, auth  } from '../../firebase';
+import { query, collection, onSnapshot, where } from 'firebase/firestore';
+// "where" function to add a filter to the query, ensuring that only mood logs with a userId matching the current user's UID are fetched.
 
 function MoodLogsPage() {
     const [logData, setLogData] = useState([]);
@@ -15,6 +15,10 @@ function MoodLogsPage() {
     const [filteredLogs, setFilteredLogs] = useState([]);
 
     useEffect(() => {
+        const user = auth.currentUser;
+        if (!user) return;
+
+
         const q = query(collection(db, 'moodlogs'));
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             const data = [];
