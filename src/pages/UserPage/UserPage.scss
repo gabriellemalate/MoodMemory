@@ -1,0 +1,90 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.userpage {
+    &__head {
+        &-name {
+
+        }
+    }
+    &__counters {
+
+    }
+    &__faq {
+        background-color: hsla(189, 89%, 72%, 0.3);
+        border-radius: 1rem;
+        margin-bottom: 3rem;
+        padding-bottom: 1rem;
+        width: 94%;
+        @include column;
+    
+        &-eq {
+            width: 96%;
+            @include column;
+        }
+        
+        &-head {
+            font-size: 2rem;
+            padding: .5rem 0 .5rem;
+            letter-spacing: .15rem;
+            border-bottom: .2rem $white solid;
+            width: 26vw;
+            color: $white;
+            @include desktop {
+                color: rgb(88, 8, 104);
+                border-bottom: .6rem rgb(17, 81, 64) dotted;
+                max-width: 10rem;
+                margin: 2rem 0 3rem;
+            }
+        }
+        &-questions {
+            @include column;
+        }
+        &-query {
+            @include column;
+            width: 90%;
+            padding: .6rem 0;
+            @include desktop {
+                padding: 1.4rem 0;
+            }
+    
+            &__head {
+                align-self: flex-start;
+                text-align: start;
+                font-size: 1.2rem;
+                margin: 0;
+                padding: 0 0 .5rem;
+                color: rgb(180, 66, 193);
+                text-shadow: 2px 2px rgb(231, 199, 212);
+                @include desktop {
+                    font-size: 1.75rem;
+                    margin: .8rem 0 1.4rem;
+                }
+            }
+            &__answer {
+                margin: 0;
+                width: 100%;
+                color: rgb(23, 23, 65);
+                padding: .4rem 0 1rem;
+                text-align: end;
+                @include desktop {
+                    font-size: 1.08rem;
+                    width: 86%;
+                    align-self: flex-end;
+                    font-weight: 400;
+                    background-color: rgba(243, 224, 102, 0.572);
+                    padding: 1rem;
+                    border-radius: 2rem;
+                }
+                &-link {
+                    margin: 0;
+                    color: $white;
+                    @include desktop {
+                        color:rgb(10, 131, 63);
+                    }
+                }
+            }
+            
+        }
+    }
+}

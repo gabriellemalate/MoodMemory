@@ -68,7 +68,7 @@ function MobileNav() {
                         </Link>
                     </li>
                     <li className='mobnav-item'>
-                        <Link className='mobnav-item__option' to="/moodhome#faq" onClick={() => setScrollToFAQ(true)} ref={faqRef}>
+                        <Link className='mobnav-item__option' to="/userpage">
                             <img src={Question} alt="FAQ" className='mobnav-item__option-img' />
                             <h3 className='mobnav-item__option-head'>FAQ</h3>
                         </Link>
