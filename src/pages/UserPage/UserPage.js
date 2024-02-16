@@ -1,10 +1,10 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "./UserPage.scss"
 import Header from '../../components/Header/Header';
 import MobileNav from "../../components/MobileNav/MobileNav";
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { getFirestore, doc, collection, query, getDocs } from "firebase/firestore";
+import { getFirestore, doc, collection, query, orderBy, getDocs } from "firebase/firestore";
 
 function UserPage() {
     const [user] = useAuthState(auth);
@@ -19,13 +19,14 @@ function UserPage() {
 
                 // Fetch total logs
                 const userDocRef = doc(db, "users", uid);
-                const moodLogsQuery = query(collection(userDocRef, "moodlogs"));
+                const moodLogsQuery = query(collection(userDocRef, "moodlogs"), orderBy("date"));
                 const moodLogsSnapshot = await getDocs(moodLogsQuery);
                 const totalLogsCount = moodLogsSnapshot.docs.length;
                 setTotalLogs(totalLogsCount);
 
                 // Calculate streak
-                const sortedLogsQuery = query(collection(userDocRef, "moodlogs").orderBy("date"));
+                
+                const sortedLogsQuery = query(collection(userDocRef, "moodlogs"), orderBy("date"));
                 const sortedLogsSnapshot = await getDocs(sortedLogsQuery);
                 let currentStreak = 0;
                 let previousDate = null;
