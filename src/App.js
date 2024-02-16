@@ -11,6 +11,7 @@ import MemoryHomePage from "./pages/MemoryHomePage/MemoryHomePage";
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 import LoadingPage from "./pages/LoadingPage/LoadingPage";
 import Success from "./components/Success/Success";
+import UserPage from './pages/UserPage/UserPage';
 import LoadingWrapper from "./components/LoadingWrapper/LoadingWrapoer";
 
 function App() {
@@ -28,8 +29,7 @@ function App() {
             <Route path='/memoryhome' element={<MemoryHomePage />} />
             <Route path='/success' element={<Success />} />
             <Route path='/loading' element={<LoadingPage />} />
-
-            {/* <Route path='/success' element={<Success/>}/> */}
+            <Route path='/userpage' element={<UserPage/>}/>
             <Route path='*' element={<NotFound />} />
           </Routes>
         </LoadingWrapper>
