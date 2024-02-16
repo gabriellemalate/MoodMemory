@@ -16,13 +16,17 @@ function UserPage() {
             if (user) {
                 const db = getFirestore();
                 const uid = user.uid;
-
-                // Fetch total logs
                 const userDocRef = doc(db, "users", uid);
-                const moodLogsQuery = query(collection(userDocRef, "moodlogs"), orderBy("date"));
-                const moodLogsSnapshot = await getDocs(moodLogsQuery);
-                const totalLogsCount = moodLogsSnapshot.docs.length;
+                const moodLogsQuerySnapshot = await getDocs(collection(userDocRef, "moodlogs"));
+                const totalLogsCount = moodLogsQuerySnapshot.size;
                 setTotalLogs(totalLogsCount);
+
+                // // Fetch total logs
+                // const userDocRef = doc(db, "users", uid);
+                // const moodLogsQuery = query(collection(userDocRef, "moodlogs"), orderBy("date"));
+                // const moodLogsSnapshot = await getDocs(moodLogsQuery);
+                // const totalLogsCount = moodLogsSnapshot.docs.length;
+                // setTotalLogs(totalLogsCount);
 
                 // Calculate streak
                 
