@@ -4,19 +4,68 @@ import Header from '../../components/Header/Header';
 import MobileNav from "../../components/MobileNav/MobileNav";
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { getFirestore, doc, collection, query, getDocs } from "firebase/firestore";
 
 function UserPage() {
     const [user] = useAuthState(auth);
+    const [totalLogs, setTotalLogs] = useState(0);
+    const [streak, setStreak] = useState(0);
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            if (user) {
+                const db = getFirestore();
+                const uid = user.uid;
+
+                // Fetch total logs
+                const userDocRef = doc(db, "users", uid);
+                const moodLogsQuery = query(collection(userDocRef, "moodlogs"));
+                const moodLogsSnapshot = await getDocs(moodLogsQuery);
+                const totalLogsCount = moodLogsSnapshot.docs.length;
+                setTotalLogs(totalLogsCount);
+
+                // Calculate streak
+                const sortedLogsQuery = query(collection(userDocRef, "moodlogs").orderBy("date"));
+                const sortedLogsSnapshot = await getDocs(sortedLogsQuery);
+                let currentStreak = 0;
+                let previousDate = null;
+                sortedLogsSnapshot.forEach((doc) => {
+                    const currentDate = doc.data().date.toDate().toDateString();
+                    if (currentDate === previousDate || !previousDate) {
+                        currentStreak++;
+                    } else {
+                        setStreak((prevStreak) => Math.max(prevStreak, currentStreak));
+                        currentStreak = 1;
+                    }
+                    previousDate = currentDate;
+                });
+                setStreak((prevStreak) => Math.max(prevStreak, currentStreak));
+            }
+        };
+
+        fetchUserData();
+    }, [user]);
 
     return (
         <>
             <Header />
             <main className="userpage">
-                <p className="userpage__head">Hello,
-                    <span className='user-nav__top-head-name'>
-                        {user ? user.displayName : ''}
-                    </span>
-                </p>
+                <h2 className="userpage__head">Hello,</h2>
+                <h1 className='userpage__head-name'>
+                    {user ? user.displayName : ''}
+                </h1>
+
+                <section className="userpage__counters">
+                <ul className='userpage__counters-eq'>
+                            <li className='userpage__counters-counter'>
+                                Total Logs : {totalLogs}
+                            </li>
+                            <li className='userpage__counters-counter'>
+                                Streak : {streak}
+                            </li>
+                        </ul>
+                </section>
+
 
                 <section className='userpage__faq'>
                     <div className='userpage__faq-eq'>
