@@ -6,7 +6,7 @@ MoodMemory
 MoodMemory is a mood tracking (and eventually, memory logging) application that allows users to log & view mood patterns with ease. 
 MoodMemory provides users a platform to manage their memory and mood with clarity in a painless way.
 
-It is for mobile use in this submission, but *nice to have*: it will be available with responsive design to tablet and desktop sizes
+It is available in all screen sizes with responsive design.
 
 ### Problem
 
@@ -36,8 +36,8 @@ Mood tracking is a challenging chore to maintain
 
 ### Features
 
-- I want to log my mood without having to think about what to write. (AddMood Prompts)
-- I want to log my mood with consisent necessary information. (Required Add Inputs)
+- I want to log my mood without having to think about what to write. (Prompts)
+- I want to log my mood with consisent necessary information. (Required Input)
 - I want the ability look at my moods and easily assess patterns. (Mood Maps)
 - I want an easy, succinct way to explain how I feel. ('"Emoji-Emotion Display" Choices' Array)
 - I want a place where I can peruse through all of my past moods. (Mood Logs Tab)
@@ -61,6 +61,7 @@ Mood tracking is a challenging chore to maintain
     - knex
     - express
     - firebase for user auth
+    - cloud firestore
     - nodemon
     - uuid
     - cors
@@ -74,11 +75,10 @@ Mood tracking is a challenging chore to maintain
 - Welcome Page
 - Mood Home Page / New Log - mood
 - Mood Logs
-- Mood Maps *the map itself may not be made dynamic by time of submission. i've never done a chart via code before*
+- Mood Maps
 
 ### Mockups
-**note** the blocks with ***yellow*** background colors are not meant to be functional or fully so for this project submission completion. These components are there for display of what's to come soon after bootcamp.
-*this reminder will be noted by a legend within the mockups as well*
+**note** the blocks with ***yellow*** background colors were not meant to be functional for the prototype demo but are gradually becoming functional for deployment!
 
 #### Welcome Page
 ![](welcome.png)
@@ -162,45 +162,38 @@ Response:
     - Page not found
     - Loading animation
 
-- Components for displays 
-    - mood map (a nice to have if made to be dynamic)
+- Components
+    - mood map
     - Search bar
     - Comment from hindsite
  
 - Page: Maps
 
-- *nicetohave* Feature: Add hindsight comment to log
+- Feature: Add hindsight comment to log
     - Form must submit data to my server & post the new comment. 
     - Create POST /comment endpoint   
     - Create DELETE /comment endpoint
 
-- *nicetohave* Feature: Create account
+- Feature: Create account
     - Implement new user page if new Gmail signs in. 
     - Create POST /register endpoint
 
 - Bug fixes
 
-- (maybe) Deploy client (and server) projects
+- Deploy client (and server) projects
 
-- DEMO DAY
+## Coming Soon
 
-## Nice-to-haves
-
-POSSIBLY
-- tablet & desktop responsive design **accomplished**
-- contact footer **accomplished**
+1
 - dynamic memory counter & dynamic mood counter in the user toggle side nav bar.
 - unsaved log warning window
-- search bar displays all moods in mood library with the typed keyword **accomplished**
-- create new user.
-
-PROBABLY NOT SOON
-- Dynamic Mood Map & Sleep Map
+- Debugged Mood Map 
 - display the chosen emoji-emotion from the form just submitted into the "log successful" pop up.
 
-DEFINITELY NOT DURING THE BOOTCAMP
+2
 - memory rooms page: space to organize memories into user specified compartments. + ability to view them via a "room carousel"
 - memory features.
+- Sleep Map
 - place to store & manage mood patterns.
 - combine the moodmap with the memory timeline in a joint line graph with adjustable date scopes. This feature is great for people with PTSD, or even PTSD from multiple events, especially when some expereinces may have been mentally blocked from a survival coping mechanism while the resulting fight/flight/fawn/freeze behaviors are still actively affecting the person.
 - mood chart in table form in the all moods page
