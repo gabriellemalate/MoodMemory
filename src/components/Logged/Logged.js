@@ -39,21 +39,10 @@ function Logged({ logData, searchTerm }) {
 
     return (
         <>
-            {/* {logData.map((entry, index) => {
-
-                // Filter entries based on the search term
-                if (searchTerm && !isMatch(entry)) {
-                    return null;
-                }
-
-                const selectedEmote = require(`../../assets/emotes/${entry.emoji}.png`);
-                console.log('Selected Emote:', selectedEmote);
-                console.log('Emote Path:', `../../assets/emotes/${entry.emoji.toLowerCase()}.png`);
-
-                return ( */}
-            {isMatch(logData) && (
+            {sortedLogData.map((entry) => (
+                isMatch(entry) && (
                 <article
-                    // key={entry.id} 
+                    key={entry.id} 
                     className={`logged ${expanded ? 'expanded' : 'compressed'}`}>
                     <div className='logged-eq' onClick={toggleExpand}>
 
@@ -84,7 +73,8 @@ function Logged({ logData, searchTerm }) {
                     </div>
                     {expanded && <LoggedExpand logData={logData} />}
                 </article >
-            )}
+            )
+            ))}
         </>
     );
 }
