@@ -1,17 +1,12 @@
 import React, { useState, useEffect  } from 'react';
 import './LoggedExpand.scss';
-import { db } from '../../firebase';
-import { query, collection, onSnapshot } from 'firebase/firestore';
+// import { db } from '../../firebase';
+// import { query, collection, onSnapshot } from 'firebase/firestore';
 
 function LoggedExpand({ logData }) {
-    // const [expanded, setExpanded] = useState(false);
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState('');
-    // const [logData, setLogData] = useState([]);
 
-    // const toggleExpand = () => {
-    //     setExpanded(!expanded);
-    // };
 
     const handleAddComment = () => {
         if (newComment.trim() !== '') {
@@ -29,27 +24,12 @@ function LoggedExpand({ logData }) {
         }
     };
 
-    useEffect(() => {
-        const q = query(collection(db, 'moodlogs'));
-        const unsubscribe = onSnapshot(q, (querySnapshot) => {
-            const data = [];
-            querySnapshot.forEach((doc) => {
-                data.push({ ...doc.data(), id: doc.id });
-            });
-            // Sort logs by date in descending order (most recent first)
-            data.sort((a, b) => b.date.toMillis() - a.date.toMillis());
-
-            setLogData(data);
-        });
-
-        return () => unsubscribe();
-    }, []);
-
     return (
         <>
-            <article key={entry.id} className="open">
+            <article className="open">
                 
-                <div className='open-eq' onClick={toggleExpand}>
+                <div className='open-eq' 
+                >
                     <div className='open-top'>
                         <div className='open-top-left'>
                             <div className='open-top-left__frame'>

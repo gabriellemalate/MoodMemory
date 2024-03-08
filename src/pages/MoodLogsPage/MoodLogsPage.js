@@ -12,8 +12,8 @@ function MoodLogsPage() {
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
-        const user = auth.currentUser;
-        if (!user) return;
+        // const user = auth.currentUser;
+        // if (!user) return;
 
         const q = query(collection(db, 'moodlogs'));
         const unsubscribe = onSnapshot(q, (querySnapshot) => {

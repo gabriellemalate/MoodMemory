@@ -1,10 +1,10 @@
 import './QuickForm.scss';
 import arrow from "../../assets/then.png"
 
-import poorsleep from "../../assets/poor.png";
-import okaysleep from "../../assets/okay.png";
-import goodsleep from "../../assets/goodsleep.png";
-import awesomesleep from "../../assets/awesome.png";
+import poorsleep from "../../assets/Poor.png";
+import okaysleep from "../../assets/Okay.png";
+import goodsleep from "../../assets/Good.png";
+import awesomesleep from "../../assets/Awesome.png";
 import angry from "../../assets/emotes/angry.png";
 import annoyed from "../../assets/emotes/annoyed.png";
 import anxious from "../../assets/emotes/anxious.png";
@@ -465,7 +465,7 @@ const QuickForm = () => {
                                             src={awesomesleep}
                                             alt="Awesome sleep"
                                             name="quality"
-                                            onClick={() => handleQualityChange('Awesome')}
+                                            onClick={() => handleQualityChange('awesome')}
                                         />
                                     </div>
                                     {formData.hours !== '0' && formData.quality !== '' && <div className="error">{errors.quality}</div>}
