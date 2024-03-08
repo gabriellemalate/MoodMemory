@@ -179,7 +179,7 @@ const QuickForm = () => {
                 state: formData.state,
                 title: formData.title,
                 graphValue: graphValue,
-                comments: '',
+                comments: comments,
             });
         } catch (error) {
             console.error('Error submitting form data:', error.message);

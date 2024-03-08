@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './LoggedExpand.scss';
-import { deleteDoc, doc } from 'firebase/firestore';
+import { deleteDoc, updateDoc, doc } from 'firebase/firestore';
 import { db } from '../../firebase';
 
 function LoggedExpand({ logData }) {
@@ -16,15 +16,17 @@ function LoggedExpand({ logData }) {
                 text: newComment,
             };
 
-            // Update the comments state with the new comment
-            setComments((prevComments) => [...prevComments, commentObj]);
+            // Append the new comment to the existing array of comments
+            const updatedComments = [...comments, commentObj];
+
+            // Update the local state with the updated array of comments
+            setComments(updatedComments);
 
             try {
                 // Save the new comment to Firestore
                 const logRef = doc(db, 'moodlogs', logData.id);
-                await updateDoc(logRef, {
-                    comments: arrayUnion(commentObj.text) // Assuming 'comments' is the field in Firestore where comments are stored
-                });
+                // Update the document in Firestore with the updated array of comments
+                await updateDoc(logRef, { comments: updatedComments });
                 console.log('Comment successfully added to Firestore!');
             } catch (error) {
                 console.error('Error adding comment to Firestore: ', error);
@@ -43,7 +45,7 @@ function LoggedExpand({ logData }) {
                 await deleteDoc(doc(db, 'moodlogs', logData.id));
                 console.log('Document successfully deleted!');
                 // Show the confirmation window only if the deletion is confirmed
-            setShowConfirmation(true);
+                setShowConfirmation(true);
             } catch (error) {
                 console.error('Error deleting document: ', error);
             }
@@ -114,8 +116,12 @@ function LoggedExpand({ logData }) {
                     <p className='open__notes'>
                         <h2 className='open__notes-head'>Your Notes</h2>
                         <div className='open__notes-frame'>
-                           <p className='open__notes-frame-initial'> {logData.notes} </p>
-                            {logData.comments}
+                            <p className='open__notes-frame-initial'> {logData.notes} </p>
+                            {logData.comments.map((comment) => (
+                                <div key={comment.id} className='comment'>
+                                    {comment.text}
+                                </div>
+                            ))}
                             {comments.map((comment) => (
                                 <div key={comment.id} className='comment'>
                                     {comment.text}
