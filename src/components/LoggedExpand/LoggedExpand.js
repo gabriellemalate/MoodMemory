@@ -6,9 +6,9 @@ import { db } from '../../firebase';
 function LoggedExpand({ logData }) {
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState('');
+    const [showConfirmation, setShowConfirmation] = useState(false);
 
-
-    const handleAddComment = () => {
+    const handleAddComment = async () => {
         if (newComment.trim() !== '') {
             // Create a new comment object
             const commentObj = {
@@ -18,6 +18,8 @@ function LoggedExpand({ logData }) {
 
             // Update the comments state with the new comment
             setComments((prevComments) => [...prevComments, commentObj]);
+
+            
 
             // Clear the input field
             setNewComment('');
@@ -31,16 +33,31 @@ function LoggedExpand({ logData }) {
             try {
                 await deleteDoc(doc(db, 'moodlogs', logData.id));
                 console.log('Document successfully deleted!');
+                // Show the confirmation window only if the deletion is confirmed
+            setShowConfirmation(true);
             } catch (error) {
                 console.error('Error deleting document: ', error);
             }
         }
+    };
+
+    const handleConfirmDelete = async () => {
+        // Hide the confirmation window
+        setShowConfirmation(false);
+        // Perform the deletion
         try {
-            await deleteDoc(doc(db, 'moodlogs', logData.id));
-            console.log('Document successfully deleted!');
+            // Your deletion logic here
+            // After successful deletion, show the success message
+            alert('Successfully Deleted');
         } catch (error) {
             console.error('Error deleting document: ', error);
         }
+    };
+
+    const handleCancelDelete = () => {
+        // Hide the confirmation window
+        setShowConfirmation(false);
+        // Optionally, navigate back to the homepage or perform any other action
     };
 
     return (
@@ -88,6 +105,7 @@ function LoggedExpand({ logData }) {
                     <p className='open__notes'>
                         <h2 className='open__notes-head'>Your Notes</h2>
                         <div className='open__notes-frame'>
+                            {logData.comments}
                             {comments.map((comment) => (
                                 <div key={comment.id} className='comment'>
                                     {comment.text}
@@ -119,7 +137,16 @@ function LoggedExpand({ logData }) {
                     </button>
                 </div>
             </article>
-
+            {/* Deletion confirmation window */}
+            {showConfirmation && (
+                <div className="confirmation-window">
+                    <p>Are you sure you want to delete this entry?</p>
+                    {/* Button to confirm deletion */}
+                    <button onClick={handleConfirmDelete}>OK</button>
+                    {/* Button to cancel deletion */}
+                    <button onClick={handleCancelDelete}>Cancel</button>
+                </div>
+            )}
         </>
     );
 }

@@ -5,7 +5,7 @@ import MagnifyingGlass from "../../assets/search.svg"
 import Header from '../../components/Header/Header';
 import MobileNav from "../../components/MobileNav/MobileNav";
 import { db, auth } from '../../firebase';
-import { query, collection, orderBy, deleteDoc, onSnapshot } from 'firebase/firestore';
+import { query, collection, orderBy, onSnapshot } from 'firebase/firestore';
 
 function MoodLogsPage() {
     const [logData, setLogData] = useState([]);
@@ -30,15 +30,6 @@ function MoodLogsPage() {
     const handleSearch = (event) => {
         setSearchTerm(event.target.value);
     };
-
-    // const handleDelete = async (id) => {
-    //     try {
-    //         await deleteDoc(doc(db, 'moodlogs', id));
-    //         console.log('Document successfully deleted!');
-    //     } catch (error) {
-    //         console.error('Error deleting document: ', error);
-    //     }
-    // };
 
     return (
         <>
