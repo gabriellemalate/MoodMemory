@@ -82,7 +82,7 @@ function LoggedExpand({ logData }) {
                             </div>
                         </div>
                         <div className='open-bottom-right'>
-                            <p className='open-bottom-right__hours'>{logData.hours} hour</p>
+                            <p className='open-bottom-right__hours'>{logData.hours} hour{logData.hours !== 1 ? 's' : ''}</p>
                             <img className='open-bottom-right__quality' src={require(`../../assets/${logData.quality}.png`)} alt="sleep quality" title="sleep quality" />
                         </div>
                     </div>
