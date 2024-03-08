@@ -4,6 +4,7 @@
 .map{
     @include column;
     padding: 0 0 1.5rem;
+    width: 100%;
 
     &-controls {
         padding: .4rem .6rem;
@@ -16,12 +17,15 @@
             justify-content: space-between;
         }
     }
-    &-slide {
+    &-slides {
         width: 90%;
-    }
-    &-image {
-        width: 100%;
-        border-radius: 1.2rem;
+        @include column;
+        height: 40vh;
+
+        &__slide {
+            width: 100%;
+            background-color: rgb(118, 118, 230);
+        }
     }
     &-title {
         margin: 0;

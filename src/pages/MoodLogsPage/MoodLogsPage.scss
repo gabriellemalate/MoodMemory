@@ -21,6 +21,10 @@
             border-color: $glow;
         }
     }
+    &__top {
+        @include row;
+        justify-content: space-between;
+    }
     &__search {
         @include row;
         background-color: rgb(177, 236, 214);
@@ -49,21 +53,23 @@
     }
     &__sort-button {
         border: 0;
-        margin-top: .5rem;
         border-radius: 4rem;
         background-color: rgb(73, 23, 154);
         font-size: 1rem;
         cursor: pointer;
-        color: rgb(237, 141, 7);
+        color: rgb(255, 161, 29);
         font-weight: 500;
+        letter-spacing: .06rem;
         padding: .5rem 1rem;
+        margin-left: 1rem;
         &:hover {
             background-color: rgb(71, 4, 171);
-            outline: dotted rgb(180, 237, 237) .2rem;
+            outline: solid rgb(180, 237, 237) .15rem;
+            color: rgb(239, 166, 63);
         }
         &:active {
-            background-color: rgb(237, 141, 7);
-            color: rgb(71, 4, 171);
+            background-color: rgb(102, 21, 223);
+            outline: solid rgb(114, 225, 225) .15rem;
         }
     }
     &__logs {

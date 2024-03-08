@@ -163,7 +163,19 @@ const QuickForm = () => {
             // Generate a unique ID using uuid
             const logId = uuidv4();
             // Convert Date.now() to Firestore timestamp
-            const firestoreTimestamp = Timestamp.fromMillis(Date.now());
+            let firestoreTimestamp = Timestamp.fromMillis(Date.now());
+
+            // Check if the custom date is provided
+            if (formData.customDate) {
+                // Convert the custom date to a JavaScript Date object
+                const customDate = new Date(formData.customDate);
+                // Convert the JavaScript Date object to Firestore timestamp
+                firestoreTimestamp = Timestamp.fromDate(customDate);
+            } else {
+                // If no custom date is provided, use the current timestamp
+                firestoreTimestamp = Timestamp.now();
+            }
+
             // Add a new document to the "moodlogs" collection with form data and timestamp
             const newMoodLogRef = await addDoc(moodlogsCollection, {
                 id: logId,
@@ -180,47 +192,13 @@ const QuickForm = () => {
                 title: formData.title,
                 graphValue: graphValue,
                 comments: comments,
+                customDate: '',
             });
         } catch (error) {
             console.error('Error submitting form data:', error.message);
         }
         navigate('/success');
     };
-
-    // const demoSubmit = async (e) => {
-
-    //     e.preventDefault(); // Prevent page reload
-
-    //     // Validation checks
-    //     let formIsValid = true;
-
-    //     if (!formData.state) {
-    //         setErrors((prevErrors) => ({ ...prevErrors, state: '*Select a Mood State' }));
-    //         formIsValid = false;
-    //     } else {
-    //         setErrors((prevErrors) => ({ ...prevErrors, state: '' }));
-    //     }
-
-    //     if (!formData.quality) {
-    //         setErrors((prevErrors) => ({ ...prevErrors, quality: '*Choose a sleep quality option' }));
-    //         formIsValid = false;
-    //     } else {
-    //         setErrors((prevErrors) => ({ ...prevErrors, quality: '' }));
-    //     }
-
-    //     if (!formData.emoji) {
-    //         setErrors((prevErrors) => ({ ...prevErrors, emoji: '*Please choose a mood representation' }));
-    //         formIsValid = false;
-    //     } else {
-    //         setErrors((prevErrors) => ({ ...prevErrors, emoji: '' }));
-    //     }
-
-    //     // If any validation fails, prevent form submission
-    //     if (!formIsValid) {
-    //         return;
-    //     }
-    //     navigate('/success');
-    // };
 
     return (
         <>
@@ -939,6 +917,17 @@ const QuickForm = () => {
                             </div>
                         </div>
                         <div className="add-mood-quick-only__buttons">
+                        <div className="form-group">
+                        <label htmlFor="customDate">Custom Date (Optional)</label>
+                        <input
+                            type="date"
+                            id="customDate"
+                            name="customDate"
+                            value={formData.customDate}
+                            onChange={(e) => setFormData({ ...formData, customDate: e.target.value })}
+                        />
+                        <span className="error-message">{errors.customDate}</span>
+                    </div>
                             <button
                                 className="add-mood-quick-only__submit"
                                 type="submit"

@@ -42,6 +42,7 @@ function MoodLogsPage() {
             <main className='all-logs'>
                 <div className='all-logs__eq'>
                     <h1 className='all-logs__head'>Your Logged Moods</h1>
+                    <div className='all-logs__top'>
                     <form className="all-logs__search" action="" method="">
                         <textarea
                             className="all-logs__search-bar"
@@ -55,8 +56,9 @@ function MoodLogsPage() {
                         </button>
                     </form>
                     <button className="all-logs__sort-button" onClick={toggleSortOrder}>
-                        Sort by Date: {sortByDateAscending ? 'Ascending' : 'Descending'}
+                        Sort by: {sortByDateAscending ? 'Oldest First' : 'Newest First'}
                     </button>
+                    </div>
                     <section className='all-logs__logs'>
                         {logData.map((log) => (
                             <Logged key={log.id} logData={log} searchTerm={searchTerm} />
