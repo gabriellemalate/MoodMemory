@@ -70,7 +70,7 @@ function MobileNav() {
                     <li className='mobnav-item'>
                         <Link className='mobnav-item__option' to="/userpage">
                             <img src={Question} alt="FAQ" className='mobnav-item__option-img' />
-                            <h3 className='mobnav-item__option-head'>FAQ</h3>
+                            <h3 className='mobnav-item__option-head'>Info</h3>
                         </Link>
                     </li>
                     <li className='mobnav-item'>
