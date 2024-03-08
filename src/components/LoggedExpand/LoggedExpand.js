@@ -1,7 +1,7 @@
-import React, { useState, useEffect  } from 'react';
+import React, { useState, useEffect } from 'react';
 import './LoggedExpand.scss';
-// import { db } from '../../firebase';
-// import { query, collection, onSnapshot } from 'firebase/firestore';
+import { deleteDoc, doc } from 'firebase/firestore';
+import { db } from '../../firebase';
 
 function LoggedExpand({ logData }) {
     const [comments, setComments] = useState([]);
@@ -12,7 +12,7 @@ function LoggedExpand({ logData }) {
         if (newComment.trim() !== '') {
             // Create a new comment object
             const commentObj = {
-                id: Date.now(), 
+                id: Date.now(),
                 text: newComment,
             };
 
@@ -24,11 +24,30 @@ function LoggedExpand({ logData }) {
         }
     };
 
+    const handleDelete = async () => {
+        const confirmDelete = window.confirm('Are you sure you want to delete this entry?');
+
+        if (confirmDelete) {
+            try {
+                await deleteDoc(doc(db, 'moodlogs', logData.id));
+                console.log('Document successfully deleted!');
+            } catch (error) {
+                console.error('Error deleting document: ', error);
+            }
+        }
+        try {
+            await deleteDoc(doc(db, 'moodlogs', logData.id));
+            console.log('Document successfully deleted!');
+        } catch (error) {
+            console.error('Error deleting document: ', error);
+        }
+    };
+
     return (
         <>
             <article className="open">
-                
-                <div className='open-eq' 
+
+                <div className='open-eq'
                 >
                     <div className='open-top'>
                         <div className='open-top-left'>
@@ -95,6 +114,9 @@ function LoggedExpand({ logData }) {
                     {/* <button className='open__close' onClick={toggleExpand}>
                         close
                     </button> */}
+                    <button className='open__close' onClick={handleDelete}>
+                        delete
+                    </button>
                 </div>
             </article>
 
