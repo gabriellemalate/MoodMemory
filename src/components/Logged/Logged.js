@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Logged.scss';
 import { db } from '../../firebase';
 import { query, collection, onSnapshot } from 'firebase/firestore';
+import LoggedExpand from '../LoggedExpand/LoggedExpand';
 
 
 function Logged({ searchTerm }) {

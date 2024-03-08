@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import './LoggedExpand.scss';
 import emote from "../../assets/emotes/excited.png"
-import emoji from "../../assets/emotes/energized.png"
-import okaysleep from "../../assets/okay.png";
+import { db } from '../../firebase';
+import { query, collection, onSnapshot } from 'firebase/firestore';
 import goodsleep from "../../assets/goodsleep.png";
-import tired from "../../assets/emotes/tired.png";
+
 
 function LoggedExpand() {
     const [expanded, setExpanded] = useState(false);
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState('');
+    const [logData, setLogData] = useState([]);
 
     const toggleExpand = () => {
         setExpanded(!expanded);
@@ -31,42 +32,27 @@ function LoggedExpand() {
         }
     };
 
+    useEffect(() => {
+        const q = query(collection(db, 'moodlogs'));
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+            const data = [];
+            querySnapshot.forEach((doc) => {
+                data.push({ ...doc.data(), id: doc.id });
+            });
+            // Sort logs by date in descending order (most recent first)
+            data.sort((a, b) => b.date.toMillis() - a.date.toMillis());
+
+            setLogData(data);
+        });
+
+        return () => unsubscribe();
+    }, []);
+
     return (
         <>
-            <article className={`logged ${expanded ? 'expanded' : 'compressed'}`}>
-                <div className='logged-eq' onClick={toggleExpand}>
-
-                    <div className='logged__frame'>
-                        <img className='logged__frame-emoji' alt='logged emotion' src={emote} />
-                    </div>
-                    <div className='logged-info'>
-                        <div className='logged-info__top'>
-                            <div className='logged-info__top-left'>
-                                <h2 className='logged-info__top-left-emotion'>excited</h2>
-                                <h3 className='logged-info__top-left-title'>we're using a title</h3>
-                            </div>
-                            <div className='logged-info__top-right'>
-                                <h2 className='logged-info__top-right-date'>02/07/24</h2>
-
-                            </div>
-                        </div>
-                        <div className='logged-info__bottom'>
-                            <div className='logged-info__bottom-eq'>
-                                <h2 className='logged-info__bottom-state'>WNL</h2>
-                                <div className='logged-info__bottom-lower'>
-                                    <span className='logged-info__bottom-lower-item'>Irr:<b className='logged-info--bold'>0</b></span>
-                                    <span className='logged-info__bottom-lower-item'>Anx:<b className='logged-info--bold'>0</b></span>
-                                    <span className='logged-info__bottom-lower-item'> Hours:<b className='logged-info--bold'>1</b></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article >
-            {expanded && (
-            <article className="open">
+            <article key={entry.id} className="open">
                 
-                <div className='open-eq'>
+                <div className='open-eq' onClick={toggleExpand}>
                     <div className='open-top'>
                         <div className='open-top-left'>
                             <div className='open-top-left__frame'>
@@ -136,8 +122,7 @@ function LoggedExpand() {
                     </button>
                 </div>
             </article>
-            
-            )}
+
         </>
     );
 }
