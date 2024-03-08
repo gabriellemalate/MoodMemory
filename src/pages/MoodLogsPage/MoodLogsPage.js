@@ -10,12 +10,13 @@ import { query, collection, orderBy, onSnapshot } from 'firebase/firestore';
 function MoodLogsPage() {
     const [logData, setLogData] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const [sortByDateAscending, setSortByDateAscending] = useState(false);
 
     useEffect(() => {
         // const user = auth.currentUser;
         // if (!user) return;
 
-        const q = query(collection(db, 'moodlogs'), orderBy('date', 'desc')); // Order logs by date in descending order
+        const q = query(collection(db, 'moodlogs'), orderBy('date', sortByDateAscending ? 'asc' : 'desc')); // Order logs by date
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             const data = [];
             querySnapshot.forEach((doc) => {
@@ -25,10 +26,14 @@ function MoodLogsPage() {
         });
 
         return () => unsubscribe();
-    }, []);
+    }, [sortByDateAscending]);
 
     const handleSearch = (event) => {
         setSearchTerm(event.target.value);
+    };
+
+    const toggleSortOrder = () => {
+        setSortByDateAscending(!sortByDateAscending);
     };
 
     return (
@@ -49,9 +54,12 @@ function MoodLogsPage() {
                             <img className="all-logs__search-button-magnifying-glass" src={MagnifyingGlass} alt="Search" />
                         </button>
                     </form>
+                    <button className="all-logs__sort-button" onClick={toggleSortOrder}>
+                        Sort by Date: {sortByDateAscending ? 'Ascending' : 'Descending'}
+                    </button>
                     <section className='all-logs__logs'>
                         {logData.map((log) => (
-                            <Logged key={log.id} logData={log} searchTerm={searchTerm}/>
+                            <Logged key={log.id} logData={log} searchTerm={searchTerm} />
                         ))}
                     </section>
                 </div>
