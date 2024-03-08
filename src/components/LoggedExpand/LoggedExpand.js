@@ -114,6 +114,7 @@ function LoggedExpand({ logData }) {
                     <p className='open__notes'>
                         <h2 className='open__notes-head'>Your Notes</h2>
                         <div className='open__notes-frame'>
+                           <p className='open__notes-frame-initial'> {logData.notes} </p>
                             {logData.comments}
                             {comments.map((comment) => (
                                 <div key={comment.id} className='comment'>

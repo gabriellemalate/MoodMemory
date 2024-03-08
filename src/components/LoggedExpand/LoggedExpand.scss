@@ -139,6 +139,10 @@
             border: .1rem solid rgb(157, 212, 212);
             border-radius: 1rem;
             padding: .7rem;
+            &-initial {
+                background-color: rgb(42, 145, 110);
+                border-radius: 4rem;
+            }
         }
     }
     &-add {

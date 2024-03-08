@@ -54,6 +54,7 @@ const QuickForm = () => {
         title: '',
         notes: '',
         graphValue: '',
+        comments: '',
     });
     const [errors, setErrors] = useState({
         state: '',
@@ -123,6 +124,10 @@ const QuickForm = () => {
         // Calculate graphValue based on state and level
         const graphValue = getGraphValue(formData.state, formData.level);
 
+        // Initialize comments field as an empty array
+        const comments = [];
+
+
         // Validation checks
         let formIsValid = true;
 
@@ -174,6 +179,7 @@ const QuickForm = () => {
                 state: formData.state,
                 title: formData.title,
                 graphValue: graphValue,
+                comments: '',
             });
         } catch (error) {
             console.error('Error submitting form data:', error.message);
@@ -937,7 +943,6 @@ const QuickForm = () => {
                                 className="add-mood-quick-only__submit"
                                 type="submit"
                                 onClick={handleSubmit}
-                            // onClick={demoSubmit}
                             >Log  +</button>
                         </div>
                     </article>
