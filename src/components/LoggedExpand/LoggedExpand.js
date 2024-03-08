@@ -40,6 +40,9 @@ function LoggedExpand({ logData }) {
     };
 
     const handleDeleteComment = async (commentId) => {
+        const confirmDelete = window.confirm('Are you sure you want to delete this comment?');
+
+    if (confirmDelete) {
         try {
             // Filter out the comment to be deleted
             const updatedComments = comments.filter(comment => comment.id !== commentId);
@@ -54,7 +57,8 @@ function LoggedExpand({ logData }) {
         } catch (error) {
             console.error('Error deleting comment from Firestore: ', error);
         }
-    };
+    }
+};
 
     const handleDelete = async () => {
         const confirmDelete = window.confirm('Are you sure you want to delete this entry?');
@@ -147,11 +151,6 @@ function LoggedExpand({ logData }) {
                                     ))}
                                 </>
                             )}
-                            {/* {comments.map((comment) => (
-                                <div key={comment.id} className='comment'>
-                                    {comment.text}
-                                </div>
-                            ))} */}
                         </div>
                     </p>
                     <form className='open-add'>
