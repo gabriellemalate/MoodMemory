@@ -136,7 +136,6 @@ function LoggedExpand() {
                     </button>
                 </div>
             </article>
-
             
             )}
         </>
