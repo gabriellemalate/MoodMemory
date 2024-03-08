@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './LoggedExpand.scss';
 import { deleteDoc, updateDoc, doc } from 'firebase/firestore';
 import { db } from '../../firebase';
+import { v4 as uuidv4 } from 'uuid';
 
 function LoggedExpand({ logData }) {
     const [comments, setComments] = useState([]);
@@ -12,7 +13,7 @@ function LoggedExpand({ logData }) {
         if (newComment.trim() !== '') {
             // Create a new comment object
             const commentObj = {
-                id: Date.now(),
+                id: uuidv4(),
                 text: newComment,
             };
 
@@ -31,6 +32,27 @@ function LoggedExpand({ logData }) {
             } catch (error) {
                 console.error('Error adding comment to Firestore: ', error);
             }
+
+            // try {
+            //     // Save the new comment to Firestore
+            //     const logRef = doc(db, 'moodlogs', logData.id);
+            //     // Get the existing comments from Firestore
+            //     const logSnapshot = await getDoc(logRef);
+            //     const existingComments = logSnapshot.data().comments || [];
+
+            //     // Append the new comment to the existing array of comments
+            //     const updatedComments = [...existingComments, commentObj];
+
+            //     // Update the document in Firestore with the updated array of comments
+            //     await updateDoc(logRef, { comments: updatedComments });
+            //     console.log('Comment successfully added to Firestore!');
+
+            //     // Update the local state with the updated array of comments
+            //     setComments(updatedComments);
+            // } catch (error) {
+            //     console.error('Error adding comment to Firestore: ', error);
+            // }
+
 
             // Clear the input field
             setNewComment('');
@@ -122,11 +144,11 @@ function LoggedExpand({ logData }) {
                                     {comment.text}
                                 </div>
                             ))}
-                            {comments.map((comment) => (
+                            {/* {comments.map((comment) => (
                                 <div key={comment.id} className='comment'>
                                     {comment.text}
                                 </div>
-                            ))}
+                            ))} */}
                         </div>
                     </p>
                     <form className='open-add'>
