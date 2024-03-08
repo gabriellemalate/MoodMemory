@@ -1,10 +1,7 @@
 import React, { useState, useEffect  } from 'react';
 import './LoggedExpand.scss';
-import emote from "../../assets/emotes/excited.png"
 import { db } from '../../firebase';
 import { query, collection, onSnapshot } from 'firebase/firestore';
-import goodsleep from "../../assets/goodsleep.png";
-
 
 function LoggedExpand({ logData }) {
     // const [expanded, setExpanded] = useState(false);
@@ -56,37 +53,37 @@ function LoggedExpand({ logData }) {
                     <div className='open-top'>
                         <div className='open-top-left'>
                             <div className='open-top-left__frame'>
-                                <img className='open-top-left__frame-emoji' alt='open emotion' src={emote} />
-                                <h2 className='open-top-left__frame-emotion'>excited</h2>
+                                <img className='open-top-left__frame-emoji' alt='open emotion' src={require(`../../assets/emotes/${logData.emoji}.png`)} />
+                                <h2 className='open-top-left__frame-emotion'>{logData.emotion}</h2>
                             </div>
                         </div>
                         <div className='open-top-right'>
                             <div className='open-top-right__stamp'>
-                                <h3 className='open-top-right__date'>02/07/24</h3>
+                                <h3 className='open-top-right__date'>{logData.date && logData.date.toDate().toLocaleDateString()}</h3>
 
                             </div>
-                            <h2 className='open-top-right__state'>WNL</h2>
+                            <h2 className='open-top-right__state'>{logData.state} {logData.level}</h2>
                         </div>
                     </div>
-                    <h3 className='open-top-left__title'>we're using a title</h3>
+                    <h3 className='open-top-left__title'>{logData.title}</h3>
                     <div className='open-bottom'>
                         <div className='open-bottom-left'>
 
                             <div className='open-bottom-left__obs'>
                                 <p className='open-bottom-left__obs-level'>
                                     Irritability
-                                    <span className='open-bottom-left__obs-irr' > 0</span>
+                                    <span className='open-bottom-left__obs-irr' > {logData.irritability}</span>
                                 </p>
                                 <p className='open-bottom-left__obs-level'>
                                     Anxiety
-                                    <span className='open-bottom-left__obs-anx'> 0</span>
+                                    <span className='open-bottom-left__obs-anx'> {logData.anxiety}</span>
                                 </p>
 
                             </div>
                         </div>
                         <div className='open-bottom-right'>
-                            <p className='open-bottom-right__hours'>1 hour</p>
-                            <img className='open-bottom-right__quality' src={goodsleep} alt="sleep quality" title="sleep quality" />
+                            <p className='open-bottom-right__hours'>{logData.hours} hour</p>
+                            <img className='open-bottom-right__quality' src={require(`../../assets/${logData.quality}.png`)} alt="sleep quality" title="sleep quality" />
                         </div>
                     </div>
                     <p className='open__notes'>
@@ -115,11 +112,9 @@ function LoggedExpand({ logData }) {
                             <button className='open-add__button' type="button" onClick={handleAddComment}>add</button>
                         </div>
                     </form>
-                    <button className='open__close'
-                        onClick={toggleExpand}
-                    >
+                    {/* <button className='open__close' onClick={toggleExpand}>
                         close
-                    </button>
+                    </button> */}
                 </div>
             </article>
 
