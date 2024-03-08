@@ -19,7 +19,16 @@ function LoggedExpand({ logData }) {
             // Update the comments state with the new comment
             setComments((prevComments) => [...prevComments, commentObj]);
 
-            
+            try {
+                // Save the new comment to Firestore
+                const logRef = doc(db, 'moodlogs', logData.id);
+                await updateDoc(logRef, {
+                    comments: arrayUnion(commentObj.text) // Assuming 'comments' is the field in Firestore where comments are stored
+                });
+                console.log('Comment successfully added to Firestore!');
+            } catch (error) {
+                console.error('Error adding comment to Firestore: ', error);
+            }
 
             // Clear the input field
             setNewComment('');
