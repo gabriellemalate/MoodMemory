@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './LoggedExpand.scss';
-import { deleteDoc, updateDoc, doc } from 'firebase/firestore';
+import { deleteDoc, updateDoc, doc, getDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -17,44 +17,28 @@ function LoggedExpand({ logData }) {
                 text: newComment,
             };
 
-            // Append the new comment to the existing array of comments
-            const updatedComments = [...comments, commentObj];
+            
 
-            // Update the local state with the updated array of comments
-            setComments(updatedComments);
+            
 
             try {
                 // Save the new comment to Firestore
                 const logRef = doc(db, 'moodlogs', logData.id);
+                // Get the existing comments from Firestore
+            const logSnapshot = await getDoc(logRef);
+            const existingComments = logSnapshot.data().comments || [];
+
+            // Append the new comment to the existing array of comments
+            const updatedComments = [...existingComments, commentObj];
                 // Update the document in Firestore with the updated array of comments
                 await updateDoc(logRef, { comments: updatedComments });
                 console.log('Comment successfully added to Firestore!');
+                // Update the local state with the updated array of comments
+            setComments(updatedComments);
             } catch (error) {
                 console.error('Error adding comment to Firestore: ', error);
             }
 
-            // try {
-            //     // Save the new comment to Firestore
-            //     const logRef = doc(db, 'moodlogs', logData.id);
-            //     // Get the existing comments from Firestore
-            //     const logSnapshot = await getDoc(logRef);
-            //     const existingComments = logSnapshot.data().comments || [];
-
-            //     // Append the new comment to the existing array of comments
-            //     const updatedComments = [...existingComments, commentObj];
-
-            //     // Update the document in Firestore with the updated array of comments
-            //     await updateDoc(logRef, { comments: updatedComments });
-            //     console.log('Comment successfully added to Firestore!');
-
-            //     // Update the local state with the updated array of comments
-            //     setComments(updatedComments);
-            // } catch (error) {
-            //     console.error('Error adding comment to Firestore: ', error);
-            // }
-
-
-            // Clear the input field
             setNewComment('');
         }
     };
@@ -139,11 +123,16 @@ function LoggedExpand({ logData }) {
                         <h2 className='open__notes-head'>Your Notes</h2>
                         <div className='open__notes-frame'>
                             <p className='open__notes-frame-initial'> {logData.notes} </p>
-                            {logData.comments.map((comment) => (
-                                <div key={comment.id} className='comment'>
-                                    {comment.text}
-                                </div>
-                            ))}
+                            {logData.comments && logData.comments.length > 0 && (
+                                <>
+                                    <h5 className='open__notes-pophead' >Comments:</h5>
+                                    {logData.comments.map((comment) => (
+                                        <div key={comment.id} className='comment'>
+                                            {comment.text}
+                                        </div>
+                                    ))}
+                                </>
+                            )}
                             {/* {comments.map((comment) => (
                                 <div key={comment.id} className='comment'>
                                     {comment.text}
