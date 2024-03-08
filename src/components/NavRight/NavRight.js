@@ -1,14 +1,17 @@
 import './NavRight.scss';
-import React, { useRef } from "react";
+import React, { useState, useEffect, useRef }  from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 const NavRight = ({ setScrollToFAQ }) => {
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
     const faqRef = useRef(null);
     const location = useLocation();
+    const [totalLogs, setTotalLogs] = useState(0);
+    const [streak, setStreak] = useState(0);
 
     const signOut = () => {
         auth.signOut().then(() => {
@@ -25,6 +28,25 @@ const NavRight = ({ setScrollToFAQ }) => {
 
     const isMoodHomePage = location.pathname === "/moodhome";
 
+    useEffect(() => {
+        // Fetch total logs
+        const fetchTotalLogs = async () => {
+            const db = getFirestore();
+            const logsCollection = collection(db, 'moodlogs');
+            const logsSnapshot = await getDocs(logsCollection);
+            const logsCount = logsSnapshot.size;
+            setTotalLogs(logsCount);
+        };
+
+        // Calculate streak (Assuming each log has a date field)
+        const calculateStreak = async () => {
+
+        };
+
+        fetchTotalLogs();
+        calculateStreak();
+    }, []);
+
     return (
         <>
             <nav className='user-nav' id="user-nav">
@@ -34,14 +56,14 @@ const NavRight = ({ setScrollToFAQ }) => {
                         
 
                         <ul className='user-nav__top-list'>
-                            <li className='user-nav__top-list-item-moodtotal user-nav__top-list-item'>
-                                38 moods logged
+                            <li className='user-nav__top-list-item-moodtotal user-nav__top-list-item'> <b>Total Entries= 
+                            {totalLogs}</b>
                             </li>
-                            <li className='user-nav__top-list-item-moodstreak user-nav__top-list-item' title="log in streak">38 days in a row
+                            <li className='user-nav__top-list-item-moodstreak user-nav__top-list-item' title="log in streak"><b>Log Streak={streak}</b>
                             </li>
-                            <li className='user-nav__top-list-item-memoryinfo user-nav__top-list-item'>
+                            {/* <li className='user-nav__top-list-item-memoryinfo user-nav__top-list-item'>
                                 0 memories secured
-                            </li>
+                            </li> */}
                             <li className='user-nav__top-list-item-add'>
                                 <Link className='user-nav__top-list-item-add--link' to="/moodhome">+ New Log</Link>
                             </li>

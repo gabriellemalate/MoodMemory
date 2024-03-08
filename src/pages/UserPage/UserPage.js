@@ -4,12 +4,21 @@ import Header from '../../components/Header/Header';
 import MobileNav from "../../components/MobileNav/MobileNav";
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { getFirestore, doc, collection, query, orderBy, getDocs } from "firebase/firestore";
+import { getFirestore, where, collection, query, orderBy, getDocs } from "firebase/firestore";
 
 function UserPage() {
     const [user] = useAuthState(auth);
     const [totalLogs, setTotalLogs] = useState(0);
-    const [streak, setStreak] = useState(0);
+    const [streak, setStreak] = useState(1);
+
+    // useEffect(() => {
+    //     const fetchUserData = async () => {
+    //         await fetchTotalLogs(); // Fetch total logs first
+    //         calculateStreak(); // Then calculate streak
+    //     };
+    
+    //     fetchUserData();
+    // }, []);
 
     useEffect(() => {
         // Fetch total logs
@@ -23,16 +32,54 @@ function UserPage() {
 
         // Calculate streak (Assuming each log has a date field)
         const calculateStreak = async () => {
-            // Here, you would need to implement the logic to calculate the streak
-            // based on the logged-in user's log entries. This would involve querying
-            // the Firestore collection for the user's logs and analyzing the date
-            // data to determine the streak.
-            // For simplicity, I'll leave this part for you to implement.
+
         };
 
         fetchTotalLogs();
         calculateStreak();
     }, []);
+
+    // // Calculate streak (Assuming each log has a date field)
+    // const calculateStreak = async () => {
+    //     const db = getFirestore();
+    //     const user = auth.currentUser;
+
+    //     if (!user) {
+    //         // User not logged in, do nothing
+    //         return;
+    //     }
+
+    //     const logsCollection = collection(db, 'moodlogs');
+    //     const userLogsQuery = query(logsCollection, where('userId', '==', user.uid), orderBy('date', 'asc'));
+    //     const userLogsSnapshot = await getDocs(userLogsQuery);
+
+    //     let streakCount = 0;
+    //     let previousDate = null;
+
+    //     userLogsSnapshot.forEach(doc => {
+    //         const logDate = doc.data().date.toDate(); // assumes date is stored as a Firestore Timestamp
+
+    //         if (previousDate === null || isConsecutiveDays(previousDate, logDate)) {
+    //             // If previousDate is null or the current log date is consecutive to the previous one
+    //             streakCount++;
+    //         } else {
+    //             // Streak broken, reset streak count
+    //             streakCount = 1; // Start streak count from 1 for the current log
+    //         }
+
+    //         previousDate = logDate;
+    //     });
+
+    //     setStreak(streakCount);
+    // };
+
+    // // Helper function to check if two dates are consecutive days
+    // const isConsecutiveDays = (date1, date2) => {
+    //     const oneDay = 24 * 60 * 60 * 1000; // 1 day in milliseconds
+    //     const diffDays = Math.round(Math.abs((date1 - date2) / oneDay));
+    //     return diffDays === 1;
+    // };
+    
 
     return (
         <>
@@ -49,7 +96,7 @@ function UserPage() {
                             Total Logs : {totalLogs}
                         </li>
                         <li className='userpage__counters-counter'>
-                            Streak : {streak}
+                            Streak : {streak} -IN DEVELOPMENT
                         </li>
                     </ul>
                 </section>
