@@ -85,18 +85,20 @@ function UserPage() {
         <>
             <Header />
             <main className="userpage">
-                <h2 className="userpage__head">Hello,</h2>
+                <div className="userpage__head">
+                {/* <h2 className="userpage__head-greet">Hello,</h2> */}
                 <h1 className='userpage__head-name'>
                     {user ? user.displayName : ''}
                 </h1>
+                </div>
 
                 <section className="userpage__counters">
                     <ul className='userpage__counters-eq'>
                         <li className='userpage__counters-counter'>
-                            Total Logs : {totalLogs}
+                            TOTAL ENTRIES : {totalLogs}
                         </li>
                         <li className='userpage__counters-counter'>
-                            Streak : {streak} -IN DEVELOPMENT
+                        *in development* LOG STREAK : {streak}
                         </li>
                     </ul>
                 </section>

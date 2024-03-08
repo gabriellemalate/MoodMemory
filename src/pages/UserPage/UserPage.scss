@@ -2,13 +2,32 @@
 @use "../../styles/partials/variables" as *;
 
 .userpage {
+    @include column;
     &__head {
-        &-name {
+        @include row;
+        // &-greet {
 
+        // }
+        &-name {
+            font-size: 2.2rem;
+            width: 20rem;
+            padding-bottom: .4rem;
+            border-bottom: .2rem dodgerblue solid;
         }
     }
     &__counters {
+        @include column;
 
+        &-counter {
+            margin: 0 1rem 1rem 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: purple;
+            background-color: rgb(150, 240, 244);
+            padding: .5rem 1rem;
+            border-radius: 4rem;
+            width: max-content;
+        }
     }
     &__faq {
         background-color: hsla(189, 89%, 72%, 0.3);
@@ -17,22 +36,22 @@
         padding-bottom: 1rem;
         width: 94%;
         @include column;
-    
+
         &-eq {
             width: 96%;
             @include column;
         }
-        
+
         &-head {
             font-size: 2rem;
-            padding: .5rem 0 .5rem;
-            letter-spacing: .15rem;
-            border-bottom: .2rem $white solid;
+            padding: 0.5rem 0 0.5rem;
+            letter-spacing: 0.15rem;
+            border-bottom: 0.2rem $white solid;
             width: 26vw;
             color: $white;
             @include desktop {
                 color: rgb(88, 8, 104);
-                border-bottom: .6rem rgb(17, 81, 64) dotted;
+                border-bottom: 0.6rem rgb(17, 81, 64) dotted;
                 max-width: 10rem;
                 margin: 2rem 0 3rem;
             }
@@ -43,29 +62,29 @@
         &-query {
             @include column;
             width: 90%;
-            padding: .6rem 0;
+            padding: 0.6rem 0;
             @include desktop {
                 padding: 1.4rem 0;
             }
-    
+
             &__head {
                 align-self: flex-start;
                 text-align: start;
                 font-size: 1.2rem;
                 margin: 0;
-                padding: 0 0 .5rem;
+                padding: 0 0 0.5rem;
                 color: rgb(180, 66, 193);
                 text-shadow: 2px 2px rgb(231, 199, 212);
                 @include desktop {
                     font-size: 1.75rem;
-                    margin: .8rem 0 1.4rem;
+                    margin: 0.8rem 0 1.4rem;
                 }
             }
             &__answer {
                 margin: 0;
                 width: 100%;
                 color: rgb(23, 23, 65);
-                padding: .4rem 0 1rem;
+                padding: 0.4rem 0 1rem;
                 text-align: end;
                 @include desktop {
                     font-size: 1.08rem;
@@ -80,11 +99,10 @@
                     margin: 0;
                     color: $white;
                     @include desktop {
-                        color:rgb(10, 131, 63);
+                        color: rgb(10, 131, 63);
                     }
                 }
             }
-            
         }
     }
 }
