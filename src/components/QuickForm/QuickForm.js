@@ -449,7 +449,7 @@ const QuickForm = () => {
                                             src={awesomesleep}
                                             alt="Awesome sleep"
                                             name="quality"
-                                            onClick={() => handleQualityChange('awesome')}
+                                            onClick={() => handleQualityChange('Awesome')}
                                         />
                                     </div>
                                     {formData.hours !== '0' && formData.quality !== '' && <div className="error">{errors.quality}</div>}
@@ -916,18 +916,17 @@ const QuickForm = () => {
                                 />
                             </div>
                         </div>
-                        <div className="add-mood-quick-only__buttons">
-                        <div className="form-group">
-                        <label htmlFor="customDate">Custom Date (Optional)</label>
-                        <input
-                            type="date"
-                            id="customDate"
-                            name="customDate"
-                            value={formData.customDate}
-                            onChange={(e) => setFormData({ ...formData, customDate: e.target.value })}
-                        />
-                        <span className="error-message">{errors.customDate}</span>
-                    </div>
+                        <div className="add-mood-quick-only__buttons form-group">
+                            <div className="form-group-custom">
+                                <label className="form-group-custom-title" htmlFor="customDate">Custom Date (Optional)</label>
+                                <input className="form-group-custom-calendar"
+                                    type="date"
+                                    id="customDate"
+                                    name="customDate"
+                                    value={formData.customDate}
+                                    onChange={(e) => setFormData({ ...formData, customDate: e.target.value })}
+                                />
+                            </div>
                             <button
                                 className="add-mood-quick-only__submit"
                                 type="submit"

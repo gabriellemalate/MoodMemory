@@ -6,7 +6,7 @@
     cursor: pointer;
     background-color: rgb(238, 92, 168);
     &:hover {
-        outline: 0.6rem dotted rgb(151, 233, 255);
+        outline: 0.54rem dotted rgb(151, 233, 255);
         background-color: rgb(225, 24, 128);
     }
     &:active {
@@ -14,7 +14,7 @@
     }
     @include smallscreen {
         width: fit-content;
-        padding: 1rem 2rem;
+        padding: .6rem 1rem;
     }
     @include mobile {
         font-size: 1.1rem;
@@ -37,7 +37,11 @@
         }
     }
     &__socials {
+        @include row;
+        
         &-social {
+            margin: 0 .6rem;
+            
             &-icon {
                 width: 2rem;
 

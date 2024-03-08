@@ -3,6 +3,20 @@
 
 @import url("https://fonts.googleapis.com/css?family=Titan+One");
 
+.form-group {
+    @include row;
+    &-custom {
+        @include column;
+        margin: 2rem 1.6rem 0 0;
+        &-title {
+            color: aliceblue;
+            padding-bottom: .2rem;
+        }
+        &-calendar {
+            font-family: avenir;
+        }
+    }
+}
 .add-mood {
     margin-bottom: 6rem;
 
