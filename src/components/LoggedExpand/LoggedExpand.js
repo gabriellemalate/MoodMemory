@@ -17,29 +17,42 @@ function LoggedExpand({ logData }) {
                 text: newComment,
             };
 
-            
-
-            
-
             try {
                 // Save the new comment to Firestore
                 const logRef = doc(db, 'moodlogs', logData.id);
                 // Get the existing comments from Firestore
-            const logSnapshot = await getDoc(logRef);
-            const existingComments = logSnapshot.data().comments || [];
+                const logSnapshot = await getDoc(logRef);
+                const existingComments = logSnapshot.data().comments || [];
 
-            // Append the new comment to the existing array of comments
-            const updatedComments = [...existingComments, commentObj];
+                // Append the new comment to the existing array of comments
+                const updatedComments = [...existingComments, commentObj];
                 // Update the document in Firestore with the updated array of comments
                 await updateDoc(logRef, { comments: updatedComments });
                 console.log('Comment successfully added to Firestore!');
                 // Update the local state with the updated array of comments
-            setComments(updatedComments);
+                setComments(updatedComments);
             } catch (error) {
                 console.error('Error adding comment to Firestore: ', error);
             }
 
             setNewComment('');
+        }
+    };
+
+    const handleDeleteComment = async (commentId) => {
+        try {
+            // Filter out the comment to be deleted
+            const updatedComments = comments.filter(comment => comment.id !== commentId);
+
+            // Update Firestore with the updated comments
+            const logRef = doc(db, 'moodlogs', logData.id);
+            await updateDoc(logRef, { comments: updatedComments });
+
+            // Update local state
+            setComments(updatedComments);
+            console.log('Comment successfully deleted from Firestore!');
+        } catch (error) {
+            console.error('Error deleting comment from Firestore: ', error);
         }
     };
 
@@ -122,13 +135,14 @@ function LoggedExpand({ logData }) {
                     <p className='open__notes'>
                         <h2 className='open__notes-head'>Your Notes</h2>
                         <div className='open__notes-frame'>
-                            <p className='open__notes-frame-initial'> {logData.notes} </p>
+                            <p className='open__notes-initial'> {logData.notes} </p>
                             {logData.comments && logData.comments.length > 0 && (
                                 <>
                                     <h5 className='open__notes-pophead' >Comments:</h5>
                                     {logData.comments.map((comment) => (
-                                        <div key={comment.id} className='comment'>
+                                        <div key={comment.id} className='open__notes-comment'>
                                             {comment.text}
+                                            <button className='open__notes-comment--button' onClick={() => handleDeleteComment(comment.id)}>X</button>
                                         </div>
                                     ))}
                                 </>
