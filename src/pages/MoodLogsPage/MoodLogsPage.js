@@ -5,7 +5,7 @@ import MagnifyingGlass from "../../assets/search.svg"
 import Header from '../../components/Header/Header';
 import MobileNav from "../../components/MobileNav/MobileNav";
 import { db, auth } from '../../firebase';
-import { query, collection, onSnapshot } from 'firebase/firestore';
+import { query, collection, orderBy, onSnapshot } from 'firebase/firestore';
 
 function MoodLogsPage() {
     const [logData, setLogData] = useState([]);
@@ -15,7 +15,7 @@ function MoodLogsPage() {
         // const user = auth.currentUser;
         // if (!user) return;
 
-        const q = query(collection(db, 'moodlogs'));
+        const q = query(collection(db, 'moodlogs'), orderBy('date', 'desc')); // Order logs by date in descending order
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             const data = [];
             querySnapshot.forEach((doc) => {
