@@ -9,6 +9,10 @@ function Logged({ searchTerm }) {
     const [expanded, setExpanded] = useState(false);
     const [logData, setLogData] = useState([]);
 
+    const toggleExpand = () => {
+        setExpanded(!expanded);
+    };
+
     useEffect(() => {
         const q = query(collection(db, 'moodlogs'));
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -24,10 +28,6 @@ function Logged({ searchTerm }) {
 
         return () => unsubscribe();
     }, []);
-
-    const toggleExpand = () => {
-        setExpanded(!expanded);
-    };
 
     const isMatch = (log) => {
         const lowercaseSearchTerm = searchTerm.toLowerCase();
@@ -81,6 +81,10 @@ function Logged({ searchTerm }) {
                             </div>
                         </div>
                     </article >
+                    {expanded && (
+                        
+                        <LoggedExpand/>
+                        )}
                 );
             })}
         </>
