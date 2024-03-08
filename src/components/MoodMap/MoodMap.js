@@ -45,12 +45,12 @@ const MoodMap = () => {
 
             try {
                 const querySnapshot = await getDocs(q);
-                const data = [];
+                const moodData = [];
                 querySnapshot.forEach((doc) => {
-                    data.push({ id: doc.id, ...doc.data() });
+                    moodData.push({ id: doc.id, ...doc.data() });
                 });
                 setMoodData(moodData);
-                setData(moodData); // 
+                setData(moodData);
             } catch (error) {
                 console.error('Error fetching mood data:', error);
             }
@@ -103,6 +103,8 @@ const MoodMap = () => {
                             display: true,
                             text: 'Graph Value',
                         },
+                        min: 0, // Set minimum y-axis value to 0
+                        max: 6, // Set maximum y-axis value to 6
                     },
                 },
             },
