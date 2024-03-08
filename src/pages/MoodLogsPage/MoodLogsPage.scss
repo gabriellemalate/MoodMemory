@@ -47,6 +47,25 @@
             }
         }
     }
+    &__sort-button {
+        border: 0;
+        margin-top: .5rem;
+        border-radius: 4rem;
+        background-color: rgb(73, 23, 154);
+        font-size: 1rem;
+        cursor: pointer;
+        color: rgb(237, 141, 7);
+        font-weight: 500;
+        padding: .5rem 1rem;
+        &:hover {
+            background-color: rgb(71, 4, 171);
+            outline: dotted rgb(180, 237, 237) .2rem;
+        }
+        &:active {
+            background-color: rgb(237, 141, 7);
+            color: rgb(71, 4, 171);
+        }
+    }
     &__logs {
         @include column;
         margin-top: 2rem;
