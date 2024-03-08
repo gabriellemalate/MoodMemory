@@ -6,15 +6,15 @@ import { query, collection, onSnapshot } from 'firebase/firestore';
 import goodsleep from "../../assets/goodsleep.png";
 
 
-function LoggedExpand() {
-    const [expanded, setExpanded] = useState(false);
+function LoggedExpand({ logData }) {
+    // const [expanded, setExpanded] = useState(false);
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState('');
-    const [logData, setLogData] = useState([]);
+    // const [logData, setLogData] = useState([]);
 
-    const toggleExpand = () => {
-        setExpanded(!expanded);
-    };
+    // const toggleExpand = () => {
+    //     setExpanded(!expanded);
+    // };
 
     const handleAddComment = () => {
         if (newComment.trim() !== '') {
