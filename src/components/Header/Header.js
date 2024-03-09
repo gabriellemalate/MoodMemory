@@ -31,7 +31,7 @@ function Header({ setScrollToFAQ }) {
                         <div className='home-nav__eq'>
                             <div className='home-nav__logo'>
                                 <Link className='home-nav__logo-mood' to="/moodhome">mood</Link>
-                                <Link className='home-nav__logo-memory' to="/memoryhome">memory</Link>
+                                <Link className='home-nav__logo-memory' to="">memory</Link>
                             </div>
                         </div>
                     </nav>

@@ -24,7 +24,6 @@ function App() {
             <Route path='/' element={user ? <Navigate to="/moodhome" /> : <WelcomePage />} />
             <Route path='/moodhome' element={<MoodHomePage />} />
             <Route path='/logs' element={<MoodLogsPage />} />
-            {/* <Route path='/logs/:logId' element={<SelectedVideo />} /> */}
             <Route path='/maps' element={<MoodMapsPage />} />
             <Route path='/memoryhome' element={<MemoryHomePage />} />
             <Route path='/success' element={<Success />} />
