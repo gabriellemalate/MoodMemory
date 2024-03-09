@@ -179,6 +179,7 @@ const QuickForm = () => {
             // Add a new document to the "moodlogs" collection with form data and timestamp
             const newMoodLogRef = await addDoc(moodlogsCollection, {
                 id: logId,
+                uid: user.uid,
                 anxiety: formData.anxiety,
                 date: firestoreTimestamp,
                 emoji: encodeURIComponent(formData.emoji),
