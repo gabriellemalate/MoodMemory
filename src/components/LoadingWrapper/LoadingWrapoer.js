@@ -5,7 +5,7 @@ import { auth } from "../../firebase";
 
 const LoadingWrapper = ({ children }) => {
     const [loading, setLoading] = useState(true);
-
+    console.log(children)
     useEffect(() => {
         const handleRedirect = async () => {
             try {
@@ -23,6 +23,7 @@ const LoadingWrapper = ({ children }) => {
     }, []);
 
     return loading ? <LoadingPage /> : children;
+    
 };
 
 export default LoadingWrapper;
