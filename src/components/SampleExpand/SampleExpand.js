@@ -109,7 +109,7 @@ function SampleExpand() {
                         </div>
                         <div className='open-top-right'>
                             <div className='open-top-right__stamp'>
-                                <h3 className='open-top-right__date'>1/1/2024</h3>
+                                <h3 className='open-top-right__date'>∞</h3>
 
                             </div>
                             <h2 className='open-top-right__state'>Elevated <b>Mild</b></h2>
@@ -121,12 +121,12 @@ function SampleExpand() {
 
                             <div className='open-bottom-left__obs'>
                                 <p className='open-bottom-left__obs-level'>
-                                    Irritability
-                                    <span className='open-bottom-left__obs-irr' >0</span>
+                                    Irritability 
+                                    <span className='open-bottom-left__obs-irr' > 0</span>
                                 </p>
                                 <p className='open-bottom-left__obs-level'>
-                                    Anxiety
-                                    <span className='open-bottom-left__obs-anx'>1</span>
+                                    Anxiety 
+                                    <span className='open-bottom-left__obs-anx'> 1</span>
                                 </p>
 
                             </div>
@@ -145,7 +145,7 @@ function SampleExpand() {
                                     <h5 className='open__notes-pophead' >Comments:</h5>
                                     
                                         <div className='open__notes-comment'>
-                                            This log won't affect your total count and you can use it as a space for drafts.
+                                            This log won't affect your total count or sort, nor display on your maps. You can use this as a space for drafts.
                                             <button className='open__notes-comment--button' onClick={() => handleDeleteComment}>X</button>
                                         </div>
                                 </>

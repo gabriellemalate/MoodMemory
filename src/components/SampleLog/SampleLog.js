@@ -23,16 +23,16 @@ function SampleLog({ logData, searchTerm }) {
                     <div className='logged-info'>
                         <div className='logged-info__top'>
                             <div className='logged-info__top-left'>
-                                <h2 className='logged-info__top-left-emotion'>energized</h2>
+                                <h2 className='logged-info__top-left-emotion'>welcome</h2>
                                 <h3 className='logged-info__top-left-title'>This is a sample log</h3>
                             </div>
                             <div className='logged-info__top-right'>
-                                <h2 className='logged-info__top-right-date'>1/1/2024</h2>
+                                <h2 className='logged-info__top-right-date'>∞</h2>
                             </div>
                         </div>
                         <div className='logged-info__bottom'>
                             <div className='logged-info__bottom-eq'>
-                                <h2 className='logged-info__bottom-state'>Elevated Mild</h2>
+                                <h2 className='logged-info__bottom-state'>Mood Label</h2>
                                 <div className='logged-info__bottom-lower'>
                                     <span className='logged-info__bottom-lower-item'>Irr:<b className='logged-info--bold'>0</b></span>
                                     <span className='logged-info__bottom-lower-item'>Anx:<b className='logged-info--bold'>1</b></span>
