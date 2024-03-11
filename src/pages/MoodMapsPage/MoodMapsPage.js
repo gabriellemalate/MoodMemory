@@ -4,7 +4,7 @@ import MoodMap from "../../components/MoodMap/MoodMap"
 import Header from '../../components/Header/Header';
 import MobileNav from "../../components/MobileNav/MobileNav";
 import Footer from "../../components/Footer/Footer";
-
+import SleepMap from '../../components/SleepMap/SleepMap';
 
 const MoodMapsPage = () => {
 
@@ -28,7 +28,7 @@ const MoodMapsPage = () => {
                     </section>
                     <section className='maps__sleep'>
                         <h2 className='maps__sleep-head'>Sleep</h2>
-                        
+                        <SleepMap />
                     </section>
 
                 </div>

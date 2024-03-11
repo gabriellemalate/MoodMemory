@@ -38,7 +38,7 @@
 
         @include mobile {
             border-radius: .4rem;
-            margin: 0;
+            margin: 0 0 1rem;
         }
 
         &-head {
@@ -48,9 +48,9 @@
         }
     }
     &__sleep {
-        
+        @extend .maps__mood;
         &-head {
-            letter-spacing: 0.25rem;
+            @extend .maps__mood-head;
         }
     }
 }
