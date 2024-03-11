@@ -5,6 +5,7 @@ import Header from '../../components/Header/Header';
 import MobileNav from "../../components/MobileNav/MobileNav";
 import Footer from "../../components/Footer/Footer";
 
+
 const MoodMapsPage = () => {
 
     return (
@@ -27,6 +28,7 @@ const MoodMapsPage = () => {
                     </section>
                     <section className='maps__sleep'>
                         <h2 className='maps__sleep-head'>Sleep</h2>
+                        
                     </section>
 
                 </div>
