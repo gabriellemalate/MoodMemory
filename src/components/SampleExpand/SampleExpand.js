@@ -3,6 +3,7 @@ import './SampleExpand.scss';
 import LoggedExpand from '../LoggedExpand/LoggedExpand';
 import Energized from '../../assets/emotes/energized.png';
 import Good from '../../assets/Good.png';
+import { v4 as uuidv4 } from 'uuid';
 
 function SampleExpand() {
     const [comments, setComments] = useState([]);
@@ -146,6 +147,10 @@ function SampleExpand() {
                                     
                                         <div className='open__notes-comment'>
                                             This log won't affect your total count or sort, nor display on your maps. You can use this as a space for drafts.
+                                            <button className='open__notes-comment--button' onClick={() => handleDeleteComment}>X</button>
+                                        </div>
+                                        <div className='open__notes-comment'>
+                                            You can add and delete comments to the entries in your library, except for this one.
                                             <button className='open__notes-comment--button' onClick={() => handleDeleteComment}>X</button>
                                         </div>
                                 </>
