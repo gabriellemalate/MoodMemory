@@ -14,246 +14,290 @@ const MoodMap = () => {
     const [currentTitle, setCurrentTitle] = useState('');
 
     Chart.register(...registerables);
-//         const fetchData = async () => {
-//             const moodlogsCollection = collection(db, 'moodlogs');
-//             const q = query(moodlogsCollection, orderBy('date'));
+    //         const fetchData = async () => {
+    //             const moodlogsCollection = collection(db, 'moodlogs');
+    //             const q = query(moodlogsCollection, orderBy('date'));
 
-//             try {
-//                 const querySnapshot = await getDocs(q);
-//                 const moodData = [];
-//                 querySnapshot.forEach((doc) => {
-//                     moodData.push({ id: doc.id, ...doc.data() });
-//                 });
-//                 setMoodData(moodData);
-//                 setData(moodData);
-//             } catch (error) {
-//                 console.error('Error fetching mood data:', error);
-//             }
-//         };
+    //             try {
+    //                 const querySnapshot = await getDocs(q);
+    //                 const moodData = [];
+    //                 querySnapshot.forEach((doc) => {
+    //                     moodData.push({ id: doc.id, ...doc.data() });
+    //                 });
+    //                 setMoodData(moodData);
+    //                 setData(moodData);
+    //             } catch (error) {
+    //                 console.error('Error fetching mood data:', error);
+    //             }
+    //         };
 
-//         fetchData();
-//     }, []);
+    //         fetchData();
+    //     }, []);
 
-//     useEffect(() => {
-//         const createOrUpdateChart = () => {
-//             const dates = moodData.map((entry) => entry.date.toDate());
-//             const graphValues = moodData.map((entry) => entry.graphValue);
+    //     useEffect(() => {
+    //         const createOrUpdateChart = () => {
+    //             const dates = moodData.map((entry) => entry.date.toDate());
+    //             const graphValues = moodData.map((entry) => entry.graphValue);
 
-//             const ctx = document.getElementById('scatterChart');
-//             if (!ctx) return;
+    //             const ctx = document.getElementById('scatterChart');
+    //             if (!ctx) return;
 
-//             const existingChart = window.myScatterChart;
-//             if (existingChart) {
-//                 existingChart.destroy();
-//             }
+    //             const existingChart = window.myScatterChart;
+    //             if (existingChart) {
+    //                 existingChart.destroy();
+    //             }
 
-//         window.myScatterChart = new Chart(ctx, {
-//             type: 'scatter',
-//             data: {
-//                 labels: dates,
-//                 datasets: [
-//                     {
-//                         label: 'Graph Values',
-//                         data: dates.map((date, index) => ({ x: date, y: graphValues[index] })),
-//                         backgroundColor: 'rgb(75, 192, 192)',
-//                         pointRadius: 10,
-//                     },
-//                 ],
-//             },
-//             options: {
-//                 scales: {
-//                     x: {
-//                         type: 'time',
-//                         time: {
-//                             unit: currentGroup === 'year' ? 'year' : (currentGroup === 'month' ? 'month' : 'day'),
-//                         },
-//                         title: {
-//                             display: true,
-//                             text: 'Date',
-//                         },
-//                     },
-//                     y: {
-//                         title: {
-//                             display: true,
-//                             text: 'Graph Value',
-//                         },
-//                         min: 0, 
-//                         max: 6, 
-//                     },
-//                 },
-//             },
-//         });
-//     };
+    //         window.myScatterChart = new Chart(ctx, {
+    //             type: 'scatter',
+    //             data: {
+    //                 labels: dates,
+    //                 datasets: [
+    //                     {
+    //                         label: 'Graph Values',
+    //                         data: dates.map((date, index) => ({ x: date, y: graphValues[index] })),
+    //                         backgroundColor: 'rgb(75, 192, 192)',
+    //                         pointRadius: 10,
+    //                     },
+    //                 ],
+    //             },
+    //             options: {
+    //                 scales: {
+    //                     x: {
+    //                         type: 'time',
+    //                         time: {
+    //                             unit: currentGroup === 'year' ? 'year' : (currentGroup === 'month' ? 'month' : 'day'),
+    //                         },
+    //                         title: {
+    //                             display: true,
+    //                             text: 'Date',
+    //                         },
+    //                     },
+    //                     y: {
+    //                         title: {
+    //                             display: true,
+    //                             text: 'Graph Value',
+    //                         },
+    //                         min: 0, 
+    //                         max: 6, 
+    //                     },
+    //                 },
+    //             },
+    //         });
+    //     };
 
-//     const getGraphData = () => {
-//         if (currentGroup === 'year') {
-//             // Get data for the current year
-//             const currentDate = new Date();
-//             const year = currentDate.getFullYear();
-//             return moodData.filter(entry => entry.date.toDate().getFullYear() === year).map(entry => ({ x: entry.date.toDate(), y: entry.graphValue }));
-//         } else if (currentGroup === 'month') {
-//             // Get data for the current month
-//             const currentDate = new Date();
-//             const year = currentDate.getFullYear();
-//             const month = currentDate.getMonth();
-//             return moodData.filter(entry => entry.date.toDate().getFullYear() === year && entry.date.toDate().getMonth() === month).map(entry => ({ x: entry.date.toDate(), y: entry.graphValue }));
-//         } else if (currentGroup === 'week') {
-//             // Get data for the current week
-//             const currentDate = new Date();
-//             const currentWeek = getWeekNumber(currentDate);
-//             return moodData.filter(entry => getWeekNumber(entry.date.toDate()) === currentWeek).map(entry => ({ x: entry.date.toDate(), y: entry.graphValue }));
-//         }
-//         return [];
-//     };
+    //     const getGraphData = () => {
+    //         if (currentGroup === 'year') {
+    //             // Get data for the current year
+    //             const currentDate = new Date();
+    //             const year = currentDate.getFullYear();
+    //             return moodData.filter(entry => entry.date.toDate().getFullYear() === year).map(entry => ({ x: entry.date.toDate(), y: entry.graphValue }));
+    //         } else if (currentGroup === 'month') {
+    //             // Get data for the current month
+    //             const currentDate = new Date();
+    //             const year = currentDate.getFullYear();
+    //             const month = currentDate.getMonth();
+    //             return moodData.filter(entry => entry.date.toDate().getFullYear() === year && entry.date.toDate().getMonth() === month).map(entry => ({ x: entry.date.toDate(), y: entry.graphValue }));
+    //         } else if (currentGroup === 'week') {
+    //             // Get data for the current week
+    //             const currentDate = new Date();
+    //             const currentWeek = getWeekNumber(currentDate);
+    //             return moodData.filter(entry => getWeekNumber(entry.date.toDate()) === currentWeek).map(entry => ({ x: entry.date.toDate(), y: entry.graphValue }));
+    //         }
+    //         return [];
+    //     };
 
-//     const getWeekNumber = (date) => {
-//         const d = new Date(date);
-//         d.setHours(0, 0, 0, 0);
-//         d.setDate(d.getDate() + 3 - (d.getDay() + 6) % 7);
-//         const week1 = new Date(d.getFullYear(), 0, 4);
-//         return 1 + Math.round(((d.getTime() - week1.getTime()) / 86400000 - 3 + (week1.getDay() + 6) % 7) / 7);
-//     };
+    //     const getWeekNumber = (date) => {
+    //         const d = new Date(date);
+    //         d.setHours(0, 0, 0, 0);
+    //         d.setDate(d.getDate() + 3 - (d.getDay() + 6) % 7);
+    //         const week1 = new Date(d.getFullYear(), 0, 4);
+    //         return 1 + Math.round(((d.getTime() - week1.getTime()) / 86400000 - 3 + (week1.getDay() + 6) % 7) / 7);
+    //     };
 
-//     createOrUpdateChart();
-// }, [moodData, currentGroup]);
+    //     createOrUpdateChart();
+    // }, [moodData, currentGroup]);
 
-useEffect(() => {
-    fetchData();
-}, []);
+    useEffect(() => {
+        fetchData();
+    }, []);
 
-useEffect(() => {
-    createOrUpdateChart();
-}, [moodData, currentGroup, currentIndex]);
+    useEffect(() => {
+        createOrUpdateChart();
+    }, [moodData, currentGroup, currentIndex]);
 
-const fetchData = async () => {
-    const moodlogsCollection = collection(db, 'moodlogs');
-    const q = query(moodlogsCollection, orderBy('date'));
+    const fetchData = async () => {
+        const moodlogsCollection = collection(db, 'moodlogs');
+        const q = query(moodlogsCollection, orderBy('date'));
 
-    try {
-        const querySnapshot = await getDocs(q);
-        const moodData = [];
-        querySnapshot.forEach((doc) => {
-            moodData.push({ id: doc.id, ...doc.data() });
-        });
-        setMoodData(moodData);
-    } catch (error) {
-        console.error('Error fetching mood data:', error);
-    }
-};
+        try {
+            const querySnapshot = await getDocs(q);
+            const moodData = [];
+            querySnapshot.forEach((doc) => {
+                moodData.push({ id: doc.id, ...doc.data() });
+            });
+            setMoodData(moodData);
+        } catch (error) {
+            console.error('Error fetching mood data:', error);
+        }
+    };
 
-const createOrUpdateChart = () => {
-    const ctx = document.getElementById('scatterChart');
-    if (!ctx) return;
+    const createOrUpdateChart = () => {
+        const ctx = document.getElementById('scatterChart');
+        if (!ctx) return;
 
-    const existingChart = window.myScatterChart;
-    if (existingChart) {
-        existingChart.destroy();
-    }
+        const existingChart = window.myScatterChart;
+        if (existingChart) {
+            existingChart.destroy();
+        }
 
-    const graphData = getGraphData();
-    window.myScatterChart = new Chart(ctx, {
-        type: 'scatter',
-        data: {
-            datasets: [
-                {
-                    label: 'Mood State',
-                    data: graphData,
-                    backgroundColor: 'rgb(75, 192, 192)',
-                    pointRadius: 5,
-                },
-            ],
-        },
-        options: {
-            scales: {
-                x: {
-                    type: 'time',
-                    time: {
-                        unit: currentGroup === 'year' ? 'year' : (currentGroup === 'month' ? 'day' : 'day'),
-                        tooltipFormat: 'MMM dd, yyyy', // Format for tooltip
-                        displayFormats: {
-                            day: 'MMM dd, yyyy', // Format for displaying day labels
-                            month: 'MMM yyyy',   // Format for displaying month labels
-                            year: 'yyyy'         // Format for displaying year labels
+        const graphData = getGraphData();
+        window.myScatterChart = new Chart(ctx, {
+            type: 'scatter',
+            data: {
+                datasets: [
+                    {
+                        label: 'Mood State',
+                        data: graphData,
+                        backgroundColor: 'rgb(75, 192, 192)',
+                        pointRadius: 5,
+                    },
+                ],
+            },
+            options: {
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            unit: currentGroup === 'year' ? 'year' : (currentGroup === 'month' ? 'day' : 'day'),
+                            tooltipFormat: 'MMM dd, yyyy', // Format for tooltip
+                            displayFormats: {
+                                day: 'MMM dd, yyyy', // Format for displaying day labels
+                                month: 'MMM yyyy',   // Format for displaying month labels
+                                year: 'yyyy'         // Format for displaying year labels
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Date',
+                        },
+                        ticks: {
+                            autoSkip: false,
                         }
                     },
-                    title: {
-                        display: true,
-                        text: 'Date',
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Mood State',
+                        },
+                        min: 0,
+                        max: 6,
+                        ticks: {
+                            autoSkip: false,
+                            callback: function (value, index, values) {
+                                switch (value) {
+                                    case 0:
+                                        return 'D-Sev';
+                                    case 1:
+                                        return 'D-Mod';
+                                    case 2:
+                                        return 'D-Mil';
+                                    case 3:
+                                        return 'WNL';
+                                    case 4:
+                                        return 'E-Mil';
+                                    case 5:
+                                        return 'E-Mod';
+                                    case 6:
+                                        return 'E-Sev';
+                                    default:
+                                        return '';
+                                }
+                            }
+                        }
                     },
-                    ticks: {
-                        autoSkip: false,
-                    }
                 },
-                y: {
-                    title: {
-                        display: true,
-                        text: 'Mood State',
-                    },
-                    min: 0, 
-                    max: 6, 
-                    ticks: {
-                        autoSkip: false,
-                        callback: function(value, index, values) {
-                            switch(value) {
-                                case 0:
-                                    return 'D-Sev';
-                                case 1:
-                                    return 'D-Mod';
-                                case 2:
-                                    return 'D-Mil';
-                                case 3:
-                                    return 'WNL';
-                                case 4:
-                                    return 'E-Mil';
-                                case 5:
-                                    return 'E-Mod';
-                                case 6:
-                                    return 'E-Sev';
-                                default:
-                                    return '';
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                const date = new Date(context.parsed.x);
+                                const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                                    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                                const monthIndex = date.getMonth();
+                                const monthName = monthNames[monthIndex];
+                                const day = date.getDate();
+                                const year = date.getFullYear();
+                                const moodState = context.parsed.y;
+                                let moodLabel = '';
+                                switch (moodState) {
+                                    case 0:
+                                        moodLabel = 'Severely Depressed';
+                                        break;
+                                    case 1:
+                                        moodLabel = 'Moderately Depressed';
+                                        break;
+                                    case 2:
+                                        moodLabel = 'Mildly Depressed';
+                                        break;
+                                    case 3:
+                                        moodLabel = 'WNL';
+                                        break;
+                                    case 4:
+                                        moodLabel = 'Mildly Elevated';
+                                        break;
+                                    case 5:
+                                        moodLabel = 'Moderately Elevated';
+                                        break;
+                                    case 6:
+                                        moodLabel = 'Severely Elevated';
+                                        break;
+                                    default:
+                                        moodLabel = '';
+                                        break;
+                                }
+                                return `${monthName} ${day}, ${year}: ${moodLabel}`;
                             }
                         }
                     }
-                },
+                }
             },
-        },
-    });
-};
+        });
+    };
 
-const getGraphData = () => {
-    if (currentGroup === 'year') {
-        return moodData.map((entry) => ({ x: entry.date.toDate(), y: entry.graphValue }));
-    } else if (currentGroup === 'month') {
-        const currentDate = new Date();
-        const year = currentDate.getFullYear();
-        const month = currentDate.getMonth();
-        return moodData.filter(entry => entry.date.toDate().getFullYear() === year && entry.date.toDate().getMonth() === month).map(entry => ({ x: entry.date.toDate(), y: entry.graphValue }));
-    } else if (currentGroup === 'week') {
-        const currentDate = new Date();
-        const currentWeek = getWeekNumber(currentDate);
-        return moodData.filter(entry => getWeekNumber(entry.date.toDate()) === currentWeek).map(entry => ({ x: entry.date.toDate(), y: entry.graphValue }));
-    }
-    return [];
-};
+    const getGraphData = () => {
+        if (currentGroup === 'year') {
+            return moodData.map((entry) => ({ x: entry.date.toDate(), y: entry.graphValue }));
+        } else if (currentGroup === 'month') {
+            const currentDate = new Date();
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            return moodData.filter(entry => entry.date.toDate().getFullYear() === year && entry.date.toDate().getMonth() === month).map(entry => ({ x: entry.date.toDate(), y: entry.graphValue }));
+        } else if (currentGroup === 'week') {
+            const currentDate = new Date();
+            const currentWeek = getWeekNumber(currentDate);
+            return moodData.filter(entry => getWeekNumber(entry.date.toDate()) === currentWeek).map(entry => ({ x: entry.date.toDate(), y: entry.graphValue }));
+        }
+        return [];
+    };
 
-const getWeekNumber = (date) => {
-    const d = new Date(date);
-    d.setHours(0, 0, 0, 0);
-    d.setDate(d.getDate() + 3 - (d.getDay() + 6) % 7);
-    const week1 = new Date(d.getFullYear(), 0, 4);
-    return 1 + Math.round(((d.getTime() - week1.getTime()) / 86400000 - 3 + (week1.getDay() + 6) % 7) / 7);
-};
+    const getWeekNumber = (date) => {
+        const d = new Date(date);
+        d.setHours(0, 0, 0, 0);
+        d.setDate(d.getDate() + 3 - (d.getDay() + 6) % 7);
+        const week1 = new Date(d.getFullYear(), 0, 4);
+        return 1 + Math.round(((d.getTime() - week1.getTime()) / 86400000 - 3 + (week1.getDay() + 6) % 7) / 7);
+    };
 
-const handleChangeGroup = (group) => {
-    setCurrentGroup(group);
-    if (group === 'year') {
-        setCurrentTitle('Year');
-    } else if (group === 'month') {
-        setCurrentTitle('Month');
-    } else if (group === 'week') {
-        setCurrentTitle('Week');
-    }
-};
+    const handleChangeGroup = (group) => {
+        setCurrentGroup(group);
+        if (group === 'year') {
+            setCurrentTitle('Year');
+        } else if (group === 'month') {
+            setCurrentTitle('Month');
+        } else if (group === 'week') {
+            setCurrentTitle('Week');
+        }
+    };
 
     const handlePrev = () => {
         setCurrentIndex((prevIndex) => {
