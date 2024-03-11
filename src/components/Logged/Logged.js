@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Logged.scss';
 import LoggedExpand from '../LoggedExpand/LoggedExpand';
-import Energized from '../../assets/emotes/energized.png'
 
 function Logged({ logData, searchTerm }) {
     const [expanded, setExpanded] = useState(false);

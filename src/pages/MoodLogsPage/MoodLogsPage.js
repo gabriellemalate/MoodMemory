@@ -6,6 +6,7 @@ import Header from '../../components/Header/Header';
 import MobileNav from "../../components/MobileNav/MobileNav";
 import { db, auth } from '../../firebase';
 import { query, collection, orderBy, onSnapshot } from 'firebase/firestore';
+import SampleLog from '../../components/SampleLog/SampleLog';
 
 function MoodLogsPage() {
     const [logData, setLogData] = useState([]);
@@ -43,24 +44,24 @@ function MoodLogsPage() {
                 <div className='all-logs__eq'>
                     <h1 className='all-logs__head'>Your Logged Moods</h1>
                     <div className='all-logs__top'>
-                    <form className="all-logs__search" action="" method="">
-                        <textarea
-                            className="all-logs__search-bar"
-                            type="search"
-                            placeholder="Search"
-                            value={searchTerm}
-                            onChange={handleSearch}
-                        />
-                        <button type="button" className="all-logs__search-button">
-                            <img className="all-logs__search-button-magnifying-glass" src={MagnifyingGlass} alt="Search" />
+                        <form className="all-logs__search" action="" method="">
+                            <textarea
+                                className="all-logs__search-bar"
+                                type="search"
+                                placeholder="Search"
+                                value={searchTerm}
+                                onChange={handleSearch}
+                            />
+                            <button type="button" className="all-logs__search-button">
+                                <img className="all-logs__search-button-magnifying-glass" src={MagnifyingGlass} alt="Search" />
+                            </button>
+                        </form>
+                        <button className="all-logs__sort-button" onClick={toggleSortOrder}>
+                            Sort by: {sortByDateAscending ? 'Oldest First' : 'Newest First'}
                         </button>
-                    </form>
-                    <button className="all-logs__sort-button" onClick={toggleSortOrder}>
-                        Sort by: {sortByDateAscending ? 'Oldest First' : 'Newest First'}
-                    </button>
                     </div>
                     <section className='all-logs__logs'>
-
+                        <SampleLog />
                         {logData.map((log) => (
                             <Logged key={log.id} logData={log} searchTerm={searchTerm} />
                         ))}
