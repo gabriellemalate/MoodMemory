@@ -18,13 +18,13 @@
         }
     }
     &-slides {
-        width: 90%;
+        width: 100%;
         @include column;
         height: 36vh;
 
         &__slide {
             width: 100%;
-            background-color: rgb(118, 118, 230);
+            background-color: rgb(150, 150, 242);
         }
     }
     &-title {

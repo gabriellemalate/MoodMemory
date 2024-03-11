@@ -7,6 +7,10 @@
     &__eq {
         @include column;
         width: 96%;
+
+        @include mobile {
+            width: 100%;
+        }
     }
     &__head {
         letter-spacing: 0.3rem;
@@ -31,6 +35,10 @@
         background-color: rgba(34, 121, 121, 0.9);
         border-radius: 2rem;
         max-width: 42rem;
+
+        @include mobile {
+            margin: 0;
+        }
 
         &-head {
             letter-spacing: 0.25rem;

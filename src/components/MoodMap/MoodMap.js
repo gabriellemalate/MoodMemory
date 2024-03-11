@@ -156,7 +156,7 @@ const createOrUpdateChart = () => {
         data: {
             datasets: [
                 {
-                    label: 'Graph Values',
+                    label: 'Mood State',
                     data: graphData,
                     backgroundColor: 'rgb(75, 192, 192)',
                     pointRadius: 5,
@@ -169,9 +169,9 @@ const createOrUpdateChart = () => {
                     type: 'time',
                     time: {
                         unit: currentGroup === 'year' ? 'year' : (currentGroup === 'month' ? 'day' : 'day'),
-                        tooltipFormat: 'MMM DD, yyyy', // Format for tooltip
+                        tooltipFormat: 'MMM dd, yyyy', // Format for tooltip
                         displayFormats: {
-                            day: 'MMM DD, yyyy', // Format for displaying day labels
+                            day: 'MMM dd, yyyy', // Format for displaying day labels
                             month: 'MMM yyyy',   // Format for displaying month labels
                             year: 'yyyy'         // Format for displaying year labels
                         }
@@ -180,6 +180,9 @@ const createOrUpdateChart = () => {
                         display: true,
                         text: 'Date',
                     },
+                    ticks: {
+                        autoSkip: false,
+                    }
                 },
                 y: {
                     title: {
@@ -189,6 +192,7 @@ const createOrUpdateChart = () => {
                     min: 0, 
                     max: 6, 
                     ticks: {
+                        autoSkip: false,
                         callback: function(value, index, values) {
                             switch(value) {
                                 case 0:
