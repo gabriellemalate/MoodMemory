@@ -17,8 +17,10 @@
     }
     &__counters {
         @include column;
+        margin: 0;
 
         &-counter {
+            align-self: flex-start;
             margin: 0 1rem 1rem 1rem;
             font-size: 1.2rem;
             font-weight: 600;
@@ -27,6 +29,9 @@
             padding: .5rem 1rem;
             border-radius: 4rem;
             width: max-content;
+        }
+        &-streak {
+            display: none;
         }
     }
     &__faq {
