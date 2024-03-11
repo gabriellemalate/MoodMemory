@@ -184,7 +184,7 @@ const createOrUpdateChart = () => {
                 y: {
                     title: {
                         display: true,
-                        text: 'Graph Value',
+                        text: 'Mood State',
                     },
                     min: 0, 
                     max: 6, 
