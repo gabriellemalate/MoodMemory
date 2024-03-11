@@ -14,8 +14,6 @@ const MoodMap = () => {
     const [currentTitle, setCurrentTitle] = useState('');
 
     Chart.register(...registerables);
-
-//     useEffect(() => {
 //         const fetchData = async () => {
 //             const moodlogsCollection = collection(db, 'moodlogs');
 //             const q = query(moodlogsCollection, orderBy('date'));
@@ -171,7 +169,6 @@ const createOrUpdateChart = () => {
                     type: 'time',
                     time: {
                         unit: currentGroup === 'year' ? 'year' : (currentGroup === 'month' ? 'day' : 'day'),
-                        // tooltipFormat: 'MMM DD, YYYY', // Format for tooltip
                         tooltipFormat: 'MMM DD, yyyy', // Format for tooltip
                         displayFormats: {
                             day: 'MMM DD, yyyy', // Format for displaying day labels
@@ -191,6 +188,28 @@ const createOrUpdateChart = () => {
                     },
                     min: 0, 
                     max: 6, 
+                    ticks: {
+                        callback: function(value, index, values) {
+                            switch(value) {
+                                case 0:
+                                    return 'D-Sev';
+                                case 1:
+                                    return 'D-Mod';
+                                case 2:
+                                    return 'D-Mil';
+                                case 3:
+                                    return 'WNL';
+                                case 4:
+                                    return 'E-Mil';
+                                case 5:
+                                    return 'E-Mod';
+                                case 6:
+                                    return 'E-Sev';
+                                default:
+                                    return '';
+                            }
+                        }
+                    }
                 },
             },
         },
