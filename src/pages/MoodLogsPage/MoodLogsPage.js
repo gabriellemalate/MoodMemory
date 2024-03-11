@@ -60,6 +60,7 @@ function MoodLogsPage() {
                     </button>
                     </div>
                     <section className='all-logs__logs'>
+
                         {logData.map((log) => (
                             <Logged key={log.id} logData={log} searchTerm={searchTerm} />
                         ))}
