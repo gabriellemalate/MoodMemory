@@ -13,7 +13,7 @@ const MoodMapsPage = () => {
             <Header />
             <main className='maps'>
                 <div className='maps__eq'>
-                    <h1 className='maps__head'>Your Maps</h1>
+                    <h1 className='maps__head'>your maps</h1>
 
                     <article className='blob-wrap'>
                         <div className="blobs blobs_map-1" />
@@ -23,11 +23,11 @@ const MoodMapsPage = () => {
                     </article>
 
                     <section className='maps__mood'>
-                        <h2 className='maps__mood-head'>Mood State</h2>
+                        <h2 className='maps__mood-head'>mood</h2>
                         <MoodMap />
                     </section>
                     <section className='maps__sleep'>
-                        <h2 className='maps__sleep-head'>Sleep</h2>
+                        <h2 className='maps__sleep-head'>sleep</h2>
                         <SleepMap />
                     </section>
 

@@ -5,6 +5,7 @@ import { collection, query, orderBy, getDocs } from 'firebase/firestore';
 import Chart from 'chart.js/auto';
 import { registerables } from 'chart.js';
 import 'chartjs-adapter-date-fns';
+import { auth } from "./firebase";
 
 const MoodMap = () => {
     const [moodData, setMoodData] = useState([]);
@@ -126,6 +127,12 @@ const MoodMap = () => {
     }, [moodData, currentGroup, currentIndex]);
 
     const fetchData = async () => {
+        if (!auth.currentUser) {
+            // If no user is logged in, set mood data to an empty array
+            setMoodData([]);
+            return;
+        }
+
         const moodlogsCollection = collection(db, 'moodlogs');
         const q = query(moodlogsCollection, orderBy('date'));
 
@@ -186,7 +193,7 @@ const MoodMap = () => {
                     },
                     y: {
                         title: {
-                            display: true,
+                            display: false,
                             text: 'Mood State',
                         },
                         min: 0,

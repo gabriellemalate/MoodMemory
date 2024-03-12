@@ -13,11 +13,11 @@
         }
     }
     &__head {
-        letter-spacing: 0.2rem;
+        letter-spacing: 0.12rem;
         border-bottom: 0.2rem solid rgb(135, 29, 135);
         width: fit-content;
         font-size: 1.4rem;
-        color: rgb(255, 252, 201);
+        color: rgb(235, 249, 242);
         align-self: flex-start;
         margin: 0.8rem 1rem 1.4rem;
         padding-bottom: 0rem;
@@ -26,6 +26,12 @@
             border-bottom: 0.3rem solid rgb(135, 29, 135);
             width: 20rem;
             margin-bottom: 1rem;
+            align-self: center;
+        }
+        @include mobile {
+            border-bottom: .16rem solid rgb(135, 29, 135);
+            font-size: 1.2rem;
+            margin: 1rem;
         }
     }
     &__mood {
@@ -42,7 +48,7 @@
         }
 
         &-head {
-            letter-spacing: 0.1rem;
+            letter-spacing: 0.08rem;
             margin: 0.86rem 0 0.5rem;
             font-size: 1.15rem;
         }
