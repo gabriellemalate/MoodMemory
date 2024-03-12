@@ -11,6 +11,9 @@
         width: 90%;
         background-color: rgba(0, 243, 146, 0.424);
         border-radius: 1rem;
+        @include mobile {
+            border-radius: .4rem;
+        }
         &-eq {
             width: 100%;
             @include row;
@@ -42,7 +45,7 @@
         }
     }
     &-arrows {
-        background-color: rgb(134, 199, 199);
+        background-color: rgb(141, 207, 207);
         border-radius: 1rem;
         padding: .2rem .5rem;
 

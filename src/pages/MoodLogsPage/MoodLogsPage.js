@@ -20,11 +20,12 @@ function MoodLogsPage() {
             setUserUid(currentUser.uid);
         }
 
+        
         const q = query(
             collection(db, 'moodlogs'), 
             where('uid', '==', currentUser.uid),
             orderBy('date', sortByDateAscending ? 'asc' : 'desc')); // Order logs by date
-
+console.log(currentUser.uid)
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             const data = [];
             querySnapshot.forEach((doc) => {
