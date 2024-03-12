@@ -37,7 +37,6 @@ function MobileNav() {
     };
 
     useEffect(() => {
-        console.log("Scrolling to FAQ:", scrollToFAQ);
         if (scrollToFAQ && faqRef.current) {
             console.log("FAQ Ref:", faqRef.current);
             faqRef.current.scrollIntoView({ behavior: "smooth" });

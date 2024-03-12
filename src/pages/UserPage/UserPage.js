@@ -4,7 +4,7 @@ import Header from '../../components/Header/Header';
 import MobileNav from "../../components/MobileNav/MobileNav";
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { getFirestore, where, collection, query, orderBy, getDocs,doc, setDoc, getDoc } from "firebase/firestore";
+import { getFirestore, where, collection, query, orderBy, getDocs, doc, setDoc, getDoc } from "firebase/firestore";
 
 function UserPage() {
     const [user] = useAuthState(auth);
@@ -64,15 +64,15 @@ function UserPage() {
         "hobbies"
     ];
     const handleTriggerSelection = (trigger) => {
-        setSelectedTriggers((prevTriggers) => {
-            // Check if the trigger already exists in the array
-            if (!prevTriggers.includes(trigger)) {
+        if (selectedTriggers.length < 8 && !selectedTriggers.includes(trigger)) {
+            setSelectedTriggers((prevTriggers) => {
                 const updatedTriggers = [...prevTriggers, trigger];
                 saveUserTriggers(updatedTriggers);
                 return updatedTriggers;
-            }
-            return prevTriggers; // Return the previous state if the trigger already exists
-        });
+            });
+        } else {
+            alert("Maximum 8 reached");
+        }
     };
 
     const handleCustomTriggerChange = (event) => {
@@ -80,14 +80,22 @@ function UserPage() {
     };
 
     const handleCustomTriggerAdd = async () => {
-        if (customTrigger.trim() !== "" && !selectedTriggers.includes(customTrigger.trim())) {
-            const updatedTriggers = [...selectedTriggers, customTrigger.trim()];
-            setSelectedTriggers(updatedTriggers);
-            setCustomTrigger("");
-        // Save the updated triggers to the database
-        await saveUserTriggers(updatedTriggers);
-    }
-};
+        if (selectedTriggers.length < 8) {
+            if (customTrigger.trim() !== "" && !selectedTriggers.includes(customTrigger.trim())) {
+                const updatedTriggers = [...selectedTriggers, customTrigger.trim()];
+                setSelectedTriggers(updatedTriggers);
+                setCustomTrigger("");
+                // Save the updated triggers to the database
+                await saveUserTriggers(updatedTriggers);
+            }
+        } else {
+            // Disable the input field or button to prevent adding more triggers
+            document.querySelector('.userpage__triggers-add-input').disabled = true;
+            document.querySelector('.userpage__triggers-add-press').disabled = true;
+            // Show a warning message when the maximum number of triggers is reached
+            alert("Maximum 8 triggers reached");
+        }
+    };
 
     const handleTriggerRemoval = (trigger) => {
         setSelectedTriggers((prevTriggers) => {
@@ -98,15 +106,15 @@ function UserPage() {
     };
 
     const saveUserTriggers = async (triggers) => {
-    if (user) {
-        try {
-            const userDocRef = doc(getFirestore(), "userTriggers", user.uid);
-            await setDoc(userDocRef, { uid: user.uid, triggers});
-        } catch (error) {
-            console.error("Error saving user triggers:", error);
+        if (user) {
+            try {
+                const userDocRef = doc(getFirestore(), "userTriggers", user.uid);
+                await setDoc(userDocRef, { uid: user.uid, triggers });
+            } catch (error) {
+                console.error("Error saving user triggers:", error);
+            }
         }
-    }
-};
+    };
 
 
     return (
@@ -137,11 +145,11 @@ function UserPage() {
                         <div className="userpage__triggers-options">
                             <ul className="userpage__triggers-list">
                                 {triggerOptions.map((trigger, index) => (
-                                    <li 
-                                    key={index} 
-                                    className={`userpage__triggers-list-item ${selectedTriggers.includes(trigger) ? 'selected' : ''}`}
-                                    onClick={() => handleTriggerSelection(trigger)}>
-                                    {trigger}
+                                    <li
+                                        key={index}
+                                        className={`userpage__triggers-list-item ${selectedTriggers.includes(trigger) ? 'selected' : ''}`}
+                                        onClick={() => handleTriggerSelection(trigger)}>
+                                        {trigger}
                                     </li>
                                 ))}
                             </ul>
@@ -151,10 +159,12 @@ function UserPage() {
                                     placeholder="custom trigger"
                                     value={customTrigger}
                                     onChange={handleCustomTriggerChange}
+                                    disabled={selectedTriggers.length >= 8} // Disable the input when maximum limit is reached
                                 />
                                 <button
                                     className="userpage__triggers-add-press"
                                     onClick={handleCustomTriggerAdd}
+                                    disabled={selectedTriggers.length >= 8} // Disable the button when maximum limit is reached
                                 >
                                     +
                                 </button>
@@ -162,10 +172,10 @@ function UserPage() {
                         </div>
                         <div className="userpage__triggers-user">
                             {selectedTriggers.map((trigger, index) => (
-                                <p 
-                                key={index} className="userpage__triggers-user-item"
-                                onClick={() => handleTriggerRemoval(trigger)}>
-                                {trigger}
+                                <p
+                                    key={index} className="userpage__triggers-user-item"
+                                    onClick={() => handleTriggerRemoval(trigger)}>
+                                    {trigger}
                                 </p>
                             ))}
                         </div>
