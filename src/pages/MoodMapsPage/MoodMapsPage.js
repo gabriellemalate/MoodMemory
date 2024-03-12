@@ -27,7 +27,7 @@ const MoodMapsPage = () => {
                         <MoodMap />
                     </section>
                     <section className='maps__sleep'>
-                        <h2 className='maps__sleep-head'>sleep</h2>
+                        <h2 className='maps__sleep-head'>*in dev* sleep</h2>
                         <SleepMap />
                     </section>
 
