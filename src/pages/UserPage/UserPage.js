@@ -129,7 +129,7 @@ function UserPage() {
                                 {triggerOptions.map((trigger, index) => (
                                     <li 
                                     key={index} 
-                                    className="userpage__triggers-list-item"
+                                    className={`userpage__triggers-list-item ${selectedTriggers.includes(trigger) ? 'selected' : ''}`}
                                     onClick={() => handleTriggerSelection(trigger)}>
                                     {trigger}
                                     </li>

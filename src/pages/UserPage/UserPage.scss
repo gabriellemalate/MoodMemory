@@ -65,11 +65,14 @@
 
             &-item {
                 width: 48%;
-                background-color: rgb(32, 198, 134);
+                background-color: rgb(120, 10, 113);
                 margin-bottom: .34rem;
                 border-radius: .4rem;
-                &:hover {
+                &:active {
                     background-color: rgb(102, 226, 178);
+                }
+                &.selected {
+                    background-color: rgb(48, 150, 111);
                 }
             }
         }
@@ -87,7 +90,7 @@
             // }
         }
         &-user {
-            border: .1rem double rgb(144, 14, 144);
+            border: .1rem double rgb(224, 27, 174);
             background-color: rgba(65, 230, 128, 0.307);
             width: 42%;
             height: 13rem;
