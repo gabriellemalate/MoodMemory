@@ -10,15 +10,8 @@ function UserPage() {
     const [user] = useAuthState(auth);
     const [totalLogs, setTotalLogs] = useState(0);
     const [streak, setStreak] = useState(1);
-
-    // useEffect(() => {
-    //     const fetchUserData = async () => {
-    //         await fetchTotalLogs(); // Fetch total logs first
-    //         calculateStreak(); // Then calculate streak
-    //     };
-    
-    //     fetchUserData();
-    // }, []);
+    const [selectedTriggers, setSelectedTriggers] = useState([]);
+    const [customTrigger, setCustomTrigger] = useState("");
 
     useEffect(() => {
         // Fetch total logs
@@ -39,57 +32,51 @@ function UserPage() {
         calculateStreak();
     }, []);
 
-    // // Calculate streak (Assuming each log has a date field)
-    // const calculateStreak = async () => {
-    //     const db = getFirestore();
-    //     const user = auth.currentUser;
+    const triggerOptions = [
+        "myself",
+        "work",
+        "partner",
+        "family",
+        "friends",
+        "sleep",
+        "health",
+        "food",
+        "exercise",
+        "finance",
+        "home",
+        "hobbies"
+    ];
 
-    //     if (!user) {
-    //         // User not logged in, do nothing
-    //         return;
-    //     }
+    const handleTriggerSelection = (trigger) => {
+        setSelectedTriggers([...selectedTriggers, trigger]);
+    };
 
-    //     const logsCollection = collection(db, 'moodlogs');
-    //     const userLogsQuery = query(logsCollection, where('userId', '==', user.uid), orderBy('date', 'asc'));
-    //     const userLogsSnapshot = await getDocs(userLogsQuery);
+    const handleCustomTriggerChange = (event) => {
+        setCustomTrigger(event.target.value);
+    };
 
-    //     let streakCount = 0;
-    //     let previousDate = null;
+    const handleCustomTriggerAdd = () => {
+        if (customTrigger.trim() !== "") {
+            setSelectedTriggers([...selectedTriggers, customTrigger.trim()]);
+            setCustomTrigger("");
+        }
+    };
 
-    //     userLogsSnapshot.forEach(doc => {
-    //         const logDate = doc.data().date.toDate(); // assumes date is stored as a Firestore Timestamp
+    const handleTriggerRemoval = (trigger) => {
+        const updatedTriggers = selectedTriggers.filter((item) => item !== trigger);
+        setSelectedTriggers(updatedTriggers);
+    };
 
-    //         if (previousDate === null || isConsecutiveDays(previousDate, logDate)) {
-    //             // If previousDate is null or the current log date is consecutive to the previous one
-    //             streakCount++;
-    //         } else {
-    //             // Streak broken, reset streak count
-    //             streakCount = 1; // Start streak count from 1 for the current log
-    //         }
-
-    //         previousDate = logDate;
-    //     });
-
-    //     setStreak(streakCount);
-    // };
-
-    // // Helper function to check if two dates are consecutive days
-    // const isConsecutiveDays = (date1, date2) => {
-    //     const oneDay = 24 * 60 * 60 * 1000; // 1 day in milliseconds
-    //     const diffDays = Math.round(Math.abs((date1 - date2) / oneDay));
-    //     return diffDays === 1;
-    // };
-    
 
     return (
         <>
             <Header />
             <main className="userpage">
                 <div className="userpage__head">
-                {/* <h2 className="userpage__head-greet">Hello,</h2> */}
-                <h1 className='userpage__head-name'>
-                    {user ? user.displayName : ''}
-                </h1>
+                    {/* <h2 className="userpage__head-greet">Hello,</h2> */}
+                    <h1 className='userpage__head-name'>
+                        {user ? user.displayName : ''}
+                    </h1>
                 </div>
 
                 <section className="userpage__counters">
@@ -98,11 +85,50 @@ function UserPage() {
                             TOTAL ENTRIES : {totalLogs}
                         </li>
                         <li className='userpage__counters-counter userpage__counters-streak'>
-                        *in development* LOG STREAK : {streak}
+                            *in development* LOG STREAK : {streak}
                         </li>
                     </ul>
                 </section>
 
+                <section className="userpage__triggers">
+                    <h3 className="userpage__triggers-head">Active Triggers</h3>
+                    <div className="userpage__triggers-eq">
+                        <div className="userpage__triggers-options">
+                            <ul className="userpage__triggers-list">
+                                {triggerOptions.map((trigger, index) => (
+                                    <li 
+                                    key={index} 
+                                    className="userpage__triggers-list-item"
+                                    onClick={() => handleTriggerSelection(trigger)}>
+                                    {trigger}
+                                    </li>
+                                ))}
+                            </ul>
+                            <article className="userpage__triggers-add">
+                                <textarea
+                                    className="userpage__triggers-add-input"
+                                    placeholder="add a custom trigger"
+                                    value={customTrigger}
+                                    onChange={handleCustomTriggerChange}
+                                />
+                                <button
+                                    className="userpage__triggers-add-press"
+                                    onClick={handleCustomTriggerAdd}
+                                >
+                                    +
+                                </button>
+                            </article>
+                        </div>
+                        <div className="userpage__triggers-user">
+                            {selectedTriggers.map((trigger, index) => (
+                                <div key={index} className="userpage__triggers-user-item">
+                                    <span>{trigger}</span>
+                                    <button className="userpage__triggers-user-x" onClick={() => handleTriggerRemoval(trigger)}>x</button>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
 
                 <section className='userpage__faq'>
                     <div className='userpage__faq-eq'>

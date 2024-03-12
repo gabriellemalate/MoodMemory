@@ -19,6 +19,10 @@
         @include column;
         margin: 0;
 
+        &-eq {
+            padding: 0;
+        }
+
         &-counter {
             align-self: flex-start;
             margin: 0 1rem 1rem 1rem;
@@ -27,20 +31,74 @@
             color: purple;
             background-color: rgb(150, 240, 244);
             padding: .5rem 1rem;
-            border-radius: 4rem;
+            border-radius: 1rem;
             width: max-content;
         }
         &-streak {
             display: none;
         }
     }
+    &__triggers {
+        @include column;
+
+        &-head {
+            width: 90%;
+            background-color: dodgerblue;
+            border-radius: .2rem;
+            margin-bottom: 0;
+        }
+        &-eq {
+            @include row;
+            justify-content: space-between;
+            width: 97%;
+        }
+
+        &-options{
+            width: 54%;
+        }
+
+        &-list {
+            padding: 0;
+            @include row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            &-item {
+                width: 48%;
+                background-color: rgb(32, 198, 134);
+                margin-bottom: .34rem;
+                border-radius: .4rem;
+                &:hover {
+                    background-color: rgb(102, 226, 178);
+                }
+            }
+        }
+        &-add {
+            margin: 0;
+            @include row;
+            &-input {
+                resize: none;
+            }
+            // &-press {
+
+            // }
+        }
+        &-user {
+            border: .1rem double rgb(144, 14, 144);
+            background-color: rgba(65, 230, 128, 0.613);
+            width: 42%;
+            height: 13rem;
+            border-radius: .4rem;
+        }
+    }
     &__faq {
         background-color: hsla(189, 89%, 72%, 0.3);
-        border-radius: 1rem;
         margin-bottom: 3rem;
         padding-bottom: 1rem;
         width: 94%;
         @include column;
+        margin-top: 2rem;
+        border-top: .2rem dodgerblue solid;
 
         &-eq {
             width: 96%;
