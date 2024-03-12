@@ -65,7 +65,7 @@
 
             &-item {
                 width: 48%;
-                background-color: rgb(120, 10, 113);
+                background-color: rgba(120, 10, 113, 0.926);
                 margin-bottom: .34rem;
                 border-radius: .4rem;
                 &:active {
@@ -90,7 +90,7 @@
             // }
         }
         &-user {
-            border: .1rem double rgb(224, 27, 174);
+            border: .1rem double rgb(11, 107, 20);
             background-color: rgba(65, 230, 128, 0.307);
             width: 42%;
             height: 13rem;
@@ -104,11 +104,7 @@
                 }
             }
         }
-        &-save {
-            margin-top: .4rem;
-            align-self: flex-end;
-            margin-right: .6rem;
-        }
+        
     }
 
     &__faq {

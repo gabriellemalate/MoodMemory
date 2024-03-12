@@ -49,18 +49,6 @@ function UserPage() {
         }
     };
 
-    const saveUserTriggers = async () => {
-        if (user) {
-            try {
-                const userDocRef = doc(getFirestore(), "userTriggers", user.uid);
-                await setDoc(userDocRef, { uid: user.uid, triggers: selectedTriggers });
-                setSelectedTriggers(selectedTriggers);
-            } catch (error) {
-                console.error("Error saving user triggers:", error);
-            }
-        }
-    };
-
     const triggerOptions = [
         "myself",
         "work",
@@ -75,11 +63,16 @@ function UserPage() {
         "home",
         "hobbies"
     ];
-
     const handleTriggerSelection = (trigger) => {
-        if (!selectedTriggers.includes(trigger)) {
-            setSelectedTriggers([...selectedTriggers, trigger]);
-        }
+        setSelectedTriggers((prevTriggers) => {
+            // Check if the trigger already exists in the array
+            if (!prevTriggers.includes(trigger)) {
+                const updatedTriggers = [...prevTriggers, trigger];
+                saveUserTriggers(updatedTriggers);
+                return updatedTriggers;
+            }
+            return prevTriggers; // Return the previous state if the trigger already exists
+        });
     };
 
     const handleCustomTriggerChange = (event) => {
@@ -94,9 +87,23 @@ function UserPage() {
     };
 
     const handleTriggerRemoval = (trigger) => {
-        const updatedTriggers = selectedTriggers.filter((item) => item !== trigger);
-        setSelectedTriggers(updatedTriggers);
+        setSelectedTriggers((prevTriggers) => {
+            const updatedTriggers = prevTriggers.filter((item) => item !== trigger);
+            saveUserTriggers(updatedTriggers);
+            return updatedTriggers;
+        });
     };
+
+    const saveUserTriggers = async (triggers) => {
+    if (user) {
+        try {
+            const userDocRef = doc(getFirestore(), "userTriggers", user.uid);
+            await setDoc(userDocRef, { uid: user.uid, triggers});
+        } catch (error) {
+            console.error("Error saving user triggers:", error);
+        }
+    }
+};
 
 
     return (
@@ -160,7 +167,6 @@ function UserPage() {
                             ))}
                         </div>
                     </div>
-                    <button className="userpage__triggers-save" onClick={saveUserTriggers}>Save Changes</button>
                 </section>
 
                 <section className='userpage__faq'>
