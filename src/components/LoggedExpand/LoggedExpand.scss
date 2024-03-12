@@ -12,6 +12,9 @@
     @include desktop {
         margin: 0;
     }
+    @include mobile {
+        margin: 0 0 .8rem;
+    }
     &-eq {
         @include column;
         width: 94%;
@@ -41,13 +44,16 @@
                 }
             }
             &__title {
-                letter-spacing: 0.08rem;
+                letter-spacing: 0.02rem;
                 background-color: rgb(70, 178, 178, 0.6);
                 border-radius: 1rem;
                 margin: 1rem 0 1rem;
                 padding: 0.2rem;
                 font-weight: 500;
                 width: 100%;
+                @include mobile {
+                    font-size: 1rem
+                }
             }
         }
         &-right {
@@ -113,6 +119,9 @@
                 border-radius: 1rem;
                 @include column;
                 padding: .6rem 1rem;
+                @include mobile {
+                    padding: .36rem;
+                }
                 &-level {
                     margin: 0;
                     padding: .2rem 0;
@@ -149,7 +158,7 @@
     }
     &__notes {
         background-color: rgb(70, 178, 178, 0.6);
-        border-radius: 1rem;
+        border-radius: .4rem;
         width: 100%;
         padding: .4rem;
         font-size: .8rem;
@@ -272,5 +281,8 @@
     &__close {
         @extend .open-add__button;
         margin: 1rem;
+        @include mobile {
+            margin: .4rem;
+        }
     }
 }

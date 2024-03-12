@@ -133,7 +133,7 @@ function SampleExpand() {
                             </div>
                         </div>
                         <div className='open-bottom-right'>
-                            <p className='open-bottom-right__hours'>5 hours</p>
+                            <p className='open-bottom-right__hours'>5 hrs</p>
                             <img className='open-bottom-right__quality' src={Good} alt="sleep quality" title="sleep quality" />
                         </div>
                     </div>
@@ -154,7 +154,11 @@ function SampleExpand() {
                                             <button className='open__notes-comment--button' onClick={() => handleDeleteComment}>X</button>
                                         </div>
                                         <div className='open__notes-comment'>
-                                            
+                                            <b>Toggle your maps</b> to show your progression per year / month / week / and day since you first started. 
+                                            <button className='open__notes-comment--button' onClick={() => handleDeleteComment}>X</button>
+                                        </div>
+                                        <div className='open__notes-comment'>
+                                            Yes, you can log multiple entries a day.
                                             <button className='open__notes-comment--button' onClick={() => handleDeleteComment}>X</button>
                                         </div>
                                 </>
