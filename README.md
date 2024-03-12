@@ -36,31 +36,30 @@ Mood tracking is a challenging chore to maintain
 
 ### Features
 
-- I want to log my mood without having to think about what to write. (Prompts)
-- I want to log my mood with consisent necessary information. (Required Input)
-- I want the ability look at my moods and easily assess patterns. (Mood Maps)
+- I want to consistently log my mood with necessary information without having to think about what to write. (Prompts, Required Input)
+- I want to be able to retroactively add notes to previous entries (Insight Commenter)
+- I want the ability look at my moods, my sleep, and more and easily assess patterns (Maps / Graphs - currently for mood & sleep)
 - I want an easy, succinct way to explain how I feel. ('"Emoji-Emotion Display" Choices' Array)
-- I want a place where I can peruse through all of my past moods. (Mood Logs Tab)
-- I want the ability to look back through years of my logs and see patterns (Toggle Mood Map)
+- I want a place where I can peruse through all of my past moods, and be able to sort & search through them. (Mood Logs Page. Search function. Sort function)
+- I want the ability to look back through years of my logs since I began logging, and see my patterns.  (Toggle Mood Map Controls - Yr, Mo, Wk, Day)
+- *in development* I want to have the option to track my consumptions - food, medication, etc; and be able to track symptoms from my menses (extended log)
 
 ## Implementation
 
 ### Tech Stack
 
 - React
-- Express
+- Node.js
 - Client libraries: 
     - react
     - react-router
     - axios
     - sass
     - chart.js
-    - @mui/x-charts/LineChart
 
 - Server libraries:
-    - knex
-    - express
-    - firebase for user auth
+    - firebase
+    - google Oauth
     - cloud firestore
     - nodemon
     - uuid
@@ -78,7 +77,7 @@ Mood tracking is a challenging chore to maintain
 - Mood Maps
 
 ### Mockups
-**note** the blocks with ***yellow*** background colors were not meant to be functional for the prototype demo but are gradually becoming functional for deployment!
+**note** the blocks with ***yellow*** background colors were not meant to be functional for the prototype demo but are now fully functional in deployment!
 
 #### Welcome Page
 ![](welcome.png)
@@ -117,6 +116,7 @@ Response:
     "state": "Elevated",
     "level": "Moderate",
     "irritability": 1,
+    "graphValue": 3, // corresponds to a mood state and level combo
     "anxiety": 1,
     "hours": 4,
     "quality": "okay"
@@ -183,14 +183,6 @@ Response:
 - Deploy client (and server) projects
 
 ## Coming Soon
-
-1
-- dynamic memory counter & dynamic mood counter in the user toggle side nav bar.
-- unsaved log warning window
-- Debugged Mood Map 
-- display the chosen emoji-emotion from the form just submitted into the "log successful" pop up.
-
-2
 - memory rooms page: space to organize memories into user specified compartments. + ability to view them via a "room carousel"
 - memory features.
 - Sleep Map
