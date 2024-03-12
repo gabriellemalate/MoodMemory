@@ -48,6 +48,31 @@ Mood tracking is a challenging chore to maintain
 - I want the ability to look back through years of my logs since I began logging, and see my patterns.  (Toggle Mood Map Controls - Yr, Mo, Wk, Day)
 - *in development* I want to have the option to track my consumptions - food, medication, etc; and be able to track symptoms from my menses (extended log)
 
+### Screenshots
+These are on _MOBILE_ but MoodMemory is **available in all screensizes**
+
+#### Form Page
+<section style="display: flex; flex-direction: row;">
+<img src="home.png" alt="Home Page" width="200">
+<img src="homeForm.png" alt="Home Form" width="200">
+<img src="homeSubmit.png" alt="Home Submit" width="200">
+</section>
+
+#### Log Library
+<section style="display: flex; flex-direction: row;">
+<img src="logs.png" alt="Logs" width="200">
+<img src="openLog.png" alt="Open Sample Log" width="200">
+</section>
+
+#### Maps Page
+<section style="display: flex; flex-direction: row;">
+<img src="dayMap.png" alt="Graph of logs in one day" width="200">
+<img src="yearMap.png" alt="Grap of logs in a year" width="200">
+</section>
+
+#### User Info Features
+<img src="userpage.png" alt="Grap of logs in a year" width="200">
+
 ## Implementation
 
 ### Tech Stack
