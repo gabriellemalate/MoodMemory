@@ -1,5 +1,7 @@
-# Project Title
+# Project
 MoodMemory
+
+moodmemory.netlify.app - try it! I'm happy to hear any feedback.
 
 ## Overview
 
@@ -39,7 +41,9 @@ Mood tracking is a challenging chore to maintain
 - I want to consistently log my mood with necessary information without having to think about what to write. (Prompts, Required Input)
 - I want to be able to retroactively add notes to previous entries (Insight Commenter)
 - I want the ability look at my moods, my sleep, and more and easily assess patterns (Maps / Graphs - currently for mood & sleep)
+- I want to keep track of my entry statistics (total counter & streak)
 - I want an easy, succinct way to explain how I feel. ('"Emoji-Emotion Display" Choices' Array)
+- I want to have a clear list to track my foremost concerns (Trigger box)
 - I want a place where I can peruse through all of my past moods, and be able to sort & search through them. (Mood Logs Page. Search function. Sort function)
 - I want the ability to look back through years of my logs since I began logging, and see my patterns.  (Toggle Mood Map Controls - Yr, Mo, Wk, Day)
 - *in development* I want to have the option to track my consumptions - food, medication, etc; and be able to track symptoms from my menses (extended log)
@@ -182,7 +186,7 @@ Response:
 
 - Deploy client (and server) projects
 
-## Coming Soon
+## Features in Development
 - memory rooms page: space to organize memories into user specified compartments. + ability to view them via a "room carousel"
 - memory features.
 - Sleep Map
