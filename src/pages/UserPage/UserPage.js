@@ -41,7 +41,7 @@ function UserPage() {
     const fetchUserTriggers = async (uid) => {
         try {
             const userDoc = await getDoc(doc(getFirestore(), "userTriggers", uid));
-            if (userDoc.exists()) {
+            if (userDoc.exists() && userDoc.data().uid === uid) {
                 setSelectedTriggers(userDoc.data().triggers);
             }
         } catch (error) {

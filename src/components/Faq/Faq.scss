@@ -9,6 +9,10 @@
     width: 94%;
     @include column;
 
+    @include mobile {
+        display: none;
+    }
+
     &-eq {
         width: 96%;
         @include column;
