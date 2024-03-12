@@ -16,6 +16,9 @@
         background-color: rgb(100, 205, 249);
     }
     max-width: 40rem;
+    @include mobile {
+        margin: .32rem;
+    }
 
     &-eq {
         @include row;
@@ -70,6 +73,7 @@
                     font-weight: 200;
                     line-height: 1;
                     text-wrap: nowrap;
+                    // overflow: hidden;
                 }
             }
             &-right {
@@ -77,6 +81,10 @@
                 height: fit-content;
                 &-date {
                     @extend .logged-info__top-left-emotion;
+                    @include mobile {
+                        font-size: .92rem;
+                        font-weight: 400;
+                    }
                 }
             }
         }
@@ -105,6 +113,10 @@
                 color: #863983;
                 @include tablet {
                     margin: 0;
+                }
+                @include mobile {
+                    font-size: 1rem;
+                    align-self: flex-end;
                 }
             }
             &-lower {

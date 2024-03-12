@@ -9,9 +9,13 @@ function LoggedExpand({ logData }) {
     const [newComment, setNewComment] = useState('');
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [time, setTime] = useState('');
+    const [formattedDate, setFormattedDate] = useState('');
 
     useEffect(() => {
         if (logData.date) {
+            const formattedDate = formatDate(logData.date.toDate());
+            setFormattedDate(formattedDate);
+
             // Extract hour, minute, and AM/PM from the date
             const hour = logData.date.toDate().getHours();
             const minute = logData.date.toDate().getMinutes();
@@ -25,6 +29,13 @@ function LoggedExpand({ logData }) {
             setTime(formattedTime);
         }
     }, [logData.date]);
+
+    const formatDate = (date) => {
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const day = date.getDate().toString().padStart(2, '0');
+        const year = date.getFullYear().toString().slice(-2); // Extract last two digits of the year
+        return `${month}/${day}/${year}`;
+    };
 
     const handleAddComment = async () => {
         if (newComment.trim() !== '') {
@@ -125,7 +136,7 @@ function LoggedExpand({ logData }) {
                         </div>
                         <div className='open-top-right'>
                             <div className='open-top-right__stamp'>
-                                <h3 className='open-top-right__date'>{logData.date && logData.date.toDate().toLocaleDateString()}</h3>
+                                <h3 className='open-top-right__date'>{formattedDate}</h3>
                                 <h3 className='open-top-right__time'>{time}</h3>
                             </div>
                             <h2 className='open-top-right__state'>{logData.state} {logData.level}</h2>

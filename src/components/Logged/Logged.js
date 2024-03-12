@@ -9,6 +9,23 @@ function Logged({ logData, searchTerm }) {
         setExpanded(!expanded);
     };
 
+    const formatShortYear = (dateString) => {
+        const date = new Date(dateString);
+        const month = date.toLocaleString('default', { month: 'long' }); // Get full month name
+        const day = date.getDate(); // Get day of the month
+
+        return `${month} ${day}`;
+        // const dateParts = dateString.split('/');
+        // if (dateParts.length === 3) {
+        //     // Extract month, day, and year
+        //     const month = dateParts[0].padStart(2, '0'); // Add leading zero if single digit
+        //     const day = dateParts[1].padStart(2, '0'); // Add leading zero if single digit
+        //     const year = dateParts[2].substring(2); // Extract the last two digits of the year
+        //     return `${month}/${day}/${year}`;
+        // }
+        // return dateString;
+    };
+
     const isMatch = (log) => {
         const lowercaseSearchTerm = searchTerm.toLowerCase();
         const lowercaseTitle = log.title.toLowerCase();
@@ -36,7 +53,7 @@ function Logged({ logData, searchTerm }) {
                                     <h2 className='logged-info__top-left-emotion'>{logData.emotion}</h2>
                                 </div>
                                 <div className='logged-info__top-right'>
-                                    <h2 className='logged-info__top-right-date'>{logData.date && logData.date.toDate().toLocaleDateString()}</h2>
+                                    <h2 className='logged-info__top-right-date'>{logData.date && formatShortYear(logData.date.toDate().toLocaleDateString())}</h2>
                                 </div>
                             </div>
                             <h3 className='logged-info__top-left-title'>{logData.title}</h3>
