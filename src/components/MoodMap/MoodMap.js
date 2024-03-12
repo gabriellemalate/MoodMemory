@@ -12,6 +12,7 @@ const MoodMap = () => {
     const [currentGroup, setCurrentGroup] = useState('year');
     const [currentIndex, setCurrentIndex] = useState(0);
     const [currentTitle, setCurrentTitle] = useState('year');
+    const [currentDay, setCurrentDay] = useState(new Date());
 
     Chart.register(...registerables);
 
@@ -21,7 +22,7 @@ const MoodMap = () => {
 
     useEffect(() => {
         createOrUpdateChart();
-    }, [moodData, currentGroup, currentIndex]);
+    }, [moodData, currentGroup, currentIndex, currentDay]);
 
     const fetchData = async () => {
         if (!auth.currentUser) {
@@ -30,11 +31,24 @@ const MoodMap = () => {
             return;
         }
 
+        let startDate, endDate;
+        if (currentGroup === 'day') {
+            startDate = new Date(currentDay);
+            startDate.setHours(0, 0, 0, 0);
+            endDate = new Date(currentDay);
+            endDate.setHours(23, 59, 59, 999);
+        } else {
+            startDate = getStartDate();
+            endDate = new Date();
+        }
+
         const moodlogsCollection = collection(db, 'moodlogs');
         const q = query(
             moodlogsCollection,
             where('uid', '==', auth.currentUser.uid),
-            orderBy('date')
+            orderBy('date'),
+            currentGroup !== 'day' && where('date', '>=', startDate),
+            currentGroup !== 'day' && where('date', '<=', endDate)
         );
 
         try {
@@ -67,10 +81,16 @@ const MoodMap = () => {
             data: {
                 datasets: [
                     {
-                        label: 'Mood State',
+                        label: 'empty',
                         data: graphData,
-                        backgroundColor: 'rgb(75, 192, 192)',
-                        pointRadius: 5,
+                        backgroundColor: graphData.map(({ y }) => y === .5 ? 'black' : 'orange'),
+                        pointRadius: graphData.map(({ y }) => y === .5 ? 2 : 6), // smaller radius for empty dots
+                    },
+                    {
+                        label: 'mood state',
+                        data: graphData,
+                        backgroundColor: 'orange',
+                        pointRadius: 6
                     },
                 ],
             },
@@ -112,8 +132,8 @@ const MoodMap = () => {
                             // maxRotation: 0,
                             callback: function (value, index, values) {
                                 switch (value) {
-                                    // case -1:
-                                    // return 'n/a';
+                                    case -1:
+                                    return 'no log';
                                     case 0:
                                         return 'D-sev';
                                     case 1:
@@ -185,6 +205,12 @@ const MoodMap = () => {
                             }
                         }
                     }
+                },
+                legend: {
+                    labels: {
+                        // Set the font color for the legend labels
+                        color: 'rgb(75, 192, 192)'
+                    }
                 }
             },
         });
@@ -205,7 +231,7 @@ const MoodMap = () => {
 
             else {
                 // If there's no mood entry for the date, insert a placeholder 
-                graphData.push({ x: new Date(d), y: -1, backgroundColor: 'red', legend: 'Missed' });
+                graphData.push({ x: new Date(d), y: .5});
             }
         }
 
@@ -243,6 +269,9 @@ const MoodMap = () => {
             setCurrentTitle('month');
         } else if (group === 'week') {
             setCurrentTitle('week');
+        } else if (group === 'day') {
+            setCurrentTitle('day');
+            setCurrentDay(new Date());
         }
     };
 
@@ -323,6 +352,22 @@ const MoodMap = () => {
         });
     };
 
+    const handlePrevDay = () => {
+        setCurrentDay(prevDay => {
+            const prev = new Date(prevDay);
+            prev.setDate(prev.getDate() - 1);
+            return prev;
+        });
+    };
+
+    const handleNextDay = () => {
+        setCurrentDay(prevDay => {
+            const next = new Date(prevDay);
+            next.setDate(next.getDate() + 1);
+            return next;
+        });
+    };
+
     return (
         <>
             <section className="map">
@@ -337,10 +382,21 @@ const MoodMap = () => {
                             <button className="map-groups-group" onClick={() => handleChangeGroup('year')}>Yr</button>
                             <button className="map-groups-group" onClick={() => handleChangeGroup('month')}>Mo</button>
                             <button className="map-groups-group" onClick={() => handleChangeGroup('week')}>Wk</button>
+                            <button className="map-groups-group" onClick={() => handleChangeGroup('day')}>Day</button>
                         </div>
                         <div className='map-arrows'>
-                            <button className='map-arrows-arrow' onClick={handlePrev}>&lt;</button>
-                            <button className='map-arrows-arrow' onClick={handleNext}>&gt;</button>
+                        {currentGroup === 'day' && (
+                                <>
+                                    <button className='map-arrows-arrow' onClick={handlePrevDay}>&lt;</button>
+                                    <button className='map-arrows-arrow' onClick={handleNextDay}>&gt;</button>
+                                </>
+                            )}
+                            {currentGroup !== 'day' && (
+                                <>
+                                    <button className='map-arrows-arrow' onClick={handlePrev}>&lt;</button>
+                                    <button className='map-arrows-arrow' onClick={handleNext}>&gt;</button>
+                                </>
+                            )}
                         </div>
                     </div>
                 </article>
