@@ -89,6 +89,10 @@
             width: 42%;
             height: 13rem;
             border-radius: .4rem;
+            &-item {
+                background-color: rgba(241, 5, 127, 0.72);
+                margin: .2rem 0;
+            }
         }
     }
     &__faq {

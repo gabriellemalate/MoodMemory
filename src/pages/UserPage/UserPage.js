@@ -4,7 +4,7 @@ import Header from '../../components/Header/Header';
 import MobileNav from "../../components/MobileNav/MobileNav";
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { getFirestore, where, collection, query, orderBy, getDocs } from "firebase/firestore";
+import { getFirestore, where, collection, query, orderBy, getDocs,doc, setDoc, getDoc } from "firebase/firestore";
 
 function UserPage() {
     const [user] = useAuthState(auth);
@@ -12,6 +12,12 @@ function UserPage() {
     const [streak, setStreak] = useState(1);
     const [selectedTriggers, setSelectedTriggers] = useState([]);
     const [customTrigger, setCustomTrigger] = useState("");
+
+    useEffect(() => {
+        if (user) {
+            fetchUserTriggers(user.uid);
+        }
+    }, [user]);
 
     useEffect(() => {
         // Fetch total logs
@@ -31,6 +37,29 @@ function UserPage() {
         fetchTotalLogs();
         calculateStreak();
     }, []);
+
+    const fetchUserTriggers = async (uid) => {
+        try {
+            const userDoc = await getDoc(doc(firestore, "userTriggers", uid));
+            if (userDoc.exists()) {
+                setUserTriggers(userDoc.data().triggers);
+            }
+        } catch (error) {
+            console.error("Error fetching user triggers:", error);
+        }
+    };
+
+    const saveUserTriggers = async () => {
+        if (user) {
+            try {
+                const userDocRef = doc(firestore, "userTriggers", user.uid);
+                await setDoc(userDocRef, { triggers: selectedTriggers });
+                setUserTriggers(selectedTriggers);
+            } catch (error) {
+                console.error("Error saving user triggers:", error);
+            }
+        }
+    };
 
     const triggerOptions = [
         "myself",
@@ -121,13 +150,15 @@ function UserPage() {
                         </div>
                         <div className="userpage__triggers-user">
                             {selectedTriggers.map((trigger, index) => (
-                                <div key={index} className="userpage__triggers-user-item">
-                                    <span>{trigger}</span>
-                                    <button className="userpage__triggers-user-x" onClick={() => handleTriggerRemoval(trigger)}>x</button>
-                                </div>
+                                <p 
+                                key={index} className="userpage__triggers-user-item"
+                                onClick={() => handleTriggerRemoval(trigger)}>
+                                {trigger}
+                                </p>
                             ))}
                         </div>
                     </div>
+                    <button onClick={saveUserTriggers}>Save Changes</button>
                 </section>
 
                 <section className='userpage__faq'>
