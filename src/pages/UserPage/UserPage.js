@@ -79,12 +79,15 @@ function UserPage() {
         setCustomTrigger(event.target.value);
     };
 
-    const handleCustomTriggerAdd = () => {
+    const handleCustomTriggerAdd = async () => {
         if (customTrigger.trim() !== "" && !selectedTriggers.includes(customTrigger.trim())) {
-            setSelectedTriggers([...selectedTriggers, customTrigger.trim()]);
+            const updatedTriggers = [...selectedTriggers, customTrigger.trim()];
+            setSelectedTriggers(updatedTriggers);
             setCustomTrigger("");
-        }
-    };
+        // Save the updated triggers to the database
+        await saveUserTriggers(updatedTriggers);
+    }
+};
 
     const handleTriggerRemoval = (trigger) => {
         setSelectedTriggers((prevTriggers) => {
