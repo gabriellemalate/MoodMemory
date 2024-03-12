@@ -70,10 +70,11 @@
         padding: .5rem 1rem;
         margin-left: 1rem;
         @include mobile {
-            font-size: .8rem;
-            padding: .4rem .4rem;
+            font-size: .72rem;
+            padding: .4rem .6rem;
             margin-left: .6rem;
             @include column;
+            border-radius: 1.2rem;
         }
         &:hover {
             background-color: rgb(71, 4, 171);
