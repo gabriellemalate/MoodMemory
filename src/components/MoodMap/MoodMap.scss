@@ -14,6 +14,9 @@
         @include mobile {
             border-radius: .4rem;
         }
+        @include smallscreen {
+            margin-top: 2rem;
+        }
         &-eq {
             width: 100%;
             @include row;
@@ -38,7 +41,7 @@
     }
     &-title {
         margin: 0;
-        font-size: 1.5rem;
+        font-size: 1.18rem;
         font-weight: 400;
         width: 88%;
         text-align: start;

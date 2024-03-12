@@ -118,10 +118,10 @@
             }
             @include desktop {
                 width: fit-content;
-                background-color: rgba(237, 156, 250, 0.683);
+                background-color: rgba(93, 56, 99, 0.402);
                 margin: 0;
                 padding: 2rem 1rem 1rem;
-                border-radius: 1.5rem;
+                border-radius: 4rem;
             }
             &-head {
                 @include mobile-head-category;
@@ -197,9 +197,9 @@
             margin-top: 1.4rem;
             @include desktop {
                 width: 16.4rem;
-                background-color: rgba(237, 156, 250, 0.683);
+                background-color: rgba(93, 56, 99, 0.402);
                 padding: 0 1.4rem 1.6rem;
-                border-radius: 1.5rem;
+                border-radius: 4rem;
                 margin-top: 0;
             }
             &-all {
@@ -252,9 +252,9 @@
             margin: 6.8rem 0 2rem;
             @include desktop {
                 width: fit-content;
-                background-color: rgba(237, 156, 250, 0.683);
+                background-color: rgba(93, 56, 99, 0.402);
                 padding: 0 0 1.4rem 1rem;
-                border-radius: 1.5rem;
+                border-radius: 5rem;
                 margin: 0;
                 max-width: 28rem;
             }
@@ -345,8 +345,8 @@
                 width: 90%;
                 &-eq {
                     @include desktop {
-                        background-color: #e45cfcb8;
-                        border-radius: 2rem;
+                        background-color: rgba(93, 56, 99, 0.402);
+                        border-radius: 5rem;
                         padding: 0.8rem 0 0;
                     }
                 }
@@ -393,8 +393,8 @@
             margin: 4rem 0 3rem;
             @include desktop {
                 width: 40rem;
-                background-color: #e45cfcb8;
-                border-radius: 2rem;
+                background-color: rgba(93, 56, 99, 0.402);
+                border-radius: 5rem;
             }
 
             &-option-eq {

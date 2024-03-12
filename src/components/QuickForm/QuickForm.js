@@ -902,7 +902,7 @@ const QuickForm = () => {
                                 <textarea
                                     className="add-mood-quick__notes-form-box add-mood-quick__notes-form-box-title"
                                     type="Text"
-                                    placeholder="optional"
+                                    placeholder="a personal flare~"
                                     name="title"
                                     value={formData.title}
                                     onChange={(e) => handleTitleChange(e.target.value)}
@@ -911,7 +911,7 @@ const QuickForm = () => {
                                 <textarea
                                     className="add-mood-quick__notes-form-box add-mood-quick__notes-form-box-note"
                                     type="Text"
-                                    placeholder="add notes and symptoms or keep this blank"
+                                    placeholder="notes / symptoms / ideas or keep this blank"
                                     name="notes"
                                     value={formData.notes}
                                     onChange={(e) => handleNotesChange(e.target.value)}
@@ -920,7 +920,7 @@ const QuickForm = () => {
                         </div>
                         <div className="add-mood-quick-only__buttons form-group">
                             <div className="form-group-custom">
-                                <label className="form-group-custom-title" htmlFor="customDate">Custom Date (Optional)</label>
+                                <label className="form-group-custom-title" htmlFor="customDate">Retroactive Log (Optional)</label>
                                 <input className="form-group-custom-calendar"
                                     type="date"
                                     id="customDate"
