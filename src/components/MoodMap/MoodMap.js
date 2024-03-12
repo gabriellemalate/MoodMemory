@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import "./MoodMap.scss";
-import { db } from '../../firebase';
-import { collection, query, orderBy, getDocs } from 'firebase/firestore';
+import { auth, db } from '../../firebase';
+import { collection, query, orderBy, getDocs, where } from 'firebase/firestore';
 import Chart from 'chart.js/auto';
 import { registerables } from 'chart.js';
 import 'chartjs-adapter-date-fns';
-import { auth } from "./firebase";
 
 const MoodMap = () => {
     const [moodData, setMoodData] = useState([]);
@@ -134,7 +133,7 @@ const MoodMap = () => {
         }
 
         const moodlogsCollection = collection(db, 'moodlogs');
-        const q = query(moodlogsCollection, orderBy('date'));
+        const q = query(moodlogsCollection, where('uid', '==', auth.currentUser.uid), orderBy('date'));
 
         try {
             const querySnapshot = await getDocs(q);
