@@ -16,6 +16,12 @@
         padding-bottom: .8rem;
         font-size: 1.5rem;
         color: rgb(242, 227, 176);
+        @include mobile {
+            font-size: 1.2rem;
+            border-bottom: .1rem double purple;
+            color:  purple;
+            margin: 1.6rem 0 1rem;
+        }
         &:hover {
             @include shadow-left;
             border-color: $glow;
@@ -30,6 +36,7 @@
         background-color: rgb(177, 236, 214);
         border-radius: 1.5rem;
         padding: .2rem .6rem;
+        
         &-button {
             border: 0;
             margin-left: .3rem;
@@ -87,6 +94,9 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: flex-start;
+        }
+        @include mobile {
+            margin-top: .8rem;
         }
     }
 }

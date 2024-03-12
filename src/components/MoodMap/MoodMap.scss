@@ -21,6 +21,9 @@
         width: 100%;
         @include column;
         height: 36vh;
+        @include mobile {
+            max-height: 31.2vh;
+        }
 
         &__slide {
             width: 100%;
@@ -29,7 +32,14 @@
     }
     &-title {
         margin: 0;
-        height: 1rem;
+        font-size: 1.5rem;
+        font-weight: 400;
+        width: 88%;
+        text-align: start;
+        @include mobile {
+            font-size: .8rem;
+            margin-top: .4rem;
+        }
     }
     &-arrows {
         background-color: rgb(134, 199, 199);
@@ -45,6 +55,9 @@
             margin: 0 .5rem;
             padding: .5rem .8rem;
             background-color: rgba(150, 107, 15, 0.86);
+            @include mobile {
+                padding: .2rem .4rem;
+            }
         }
     }
     &-groups {
@@ -54,6 +67,9 @@
             margin-right: .4rem;
             margin-left: 0;
             padding: .5rem .8rem;
+            @include mobile {
+                padding: .2rem .4rem;
+            }
         }
     }
 }

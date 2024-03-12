@@ -11,7 +11,7 @@ const MoodMap = () => {
     const [data, setData] = useState([]);
     const [currentGroup, setCurrentGroup] = useState('year');
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [currentTitle, setCurrentTitle] = useState('');
+    const [currentTitle, setCurrentTitle] = useState('year');
 
     Chart.register(...registerables);
     //         const fetchData = async () => {
@@ -297,11 +297,11 @@ const MoodMap = () => {
     const handleChangeGroup = (group) => {
         setCurrentGroup(group);
         if (group === 'year') {
-            setCurrentTitle('Year');
+            setCurrentTitle('year');
         } else if (group === 'month') {
-            setCurrentTitle('Month');
+            setCurrentTitle('month');
         } else if (group === 'week') {
-            setCurrentTitle('Week');
+            setCurrentTitle('week');
         }
     };
 
@@ -406,8 +406,9 @@ const MoodMap = () => {
             <section className="map">
                 <article className="map-slides">
                     <canvas className='map-slides__slide' id="scatterChart"></canvas>
+                    <h2 className='map-title'>view: {currentTitle}</h2>
                 </article>
-                <h2 className='map-title'>{currentTitle}</h2>
+                
                 <article className="map-controls">
                     <div className='map-controls-eq'>
                         <div className='map-groups'>
