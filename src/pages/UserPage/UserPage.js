@@ -40,9 +40,9 @@ function UserPage() {
 
     const fetchUserTriggers = async (uid) => {
         try {
-            const userDoc = await getDoc(doc(firestore, "userTriggers", uid));
+            const userDoc = await getDoc(doc(getFirestore(), "userTriggers", uid));
             if (userDoc.exists()) {
-                setUserTriggers(userDoc.data().triggers);
+                setSelectedTriggers(userDoc.data().triggers);
             }
         } catch (error) {
             console.error("Error fetching user triggers:", error);
@@ -52,9 +52,9 @@ function UserPage() {
     const saveUserTriggers = async () => {
         if (user) {
             try {
-                const userDocRef = doc(firestore, "userTriggers", user.uid);
-                await setDoc(userDocRef, { triggers: selectedTriggers });
-                setUserTriggers(selectedTriggers);
+                const userDocRef = doc(getFirestore(), "userTriggers", user.uid);
+                await setDoc(userDocRef, { uid: user.uid, triggers: selectedTriggers });
+                setSelectedTriggers(selectedTriggers);
             } catch (error) {
                 console.error("Error saving user triggers:", error);
             }
@@ -136,7 +136,7 @@ function UserPage() {
                             <article className="userpage__triggers-add">
                                 <textarea
                                     className="userpage__triggers-add-input"
-                                    placeholder="add a custom trigger"
+                                    placeholder="custom trigger"
                                     value={customTrigger}
                                     onChange={handleCustomTriggerChange}
                                 />
