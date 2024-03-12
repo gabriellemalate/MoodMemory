@@ -20,14 +20,18 @@ function UserPage() {
     }, [user]);
 
     useEffect(() => {
-        // Fetch total logs
         const fetchTotalLogs = async () => {
+        try {
             const db = getFirestore();
             const logsCollection = collection(db, 'moodlogs');
-            const logsSnapshot = await getDocs(logsCollection);
+            const logsQuery = query(logsCollection, where('uid', '==', user.uid)); // Add where clause
+            const logsSnapshot = await getDocs(logsQuery);
             const logsCount = logsSnapshot.size;
             setTotalLogs(logsCount);
-        };
+        } catch (error) {
+            console.error("Error fetching total logs:", error);
+        }
+    };
 
         // Calculate streak (Assuming each log has a date field)
         const calculateStreak = async () => {

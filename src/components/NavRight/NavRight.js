@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef }  from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs, where, query } from "firebase/firestore";
 
 const NavRight = ({ setScrollToFAQ }) => {
     const [user] = useAuthState(auth);
@@ -33,7 +33,12 @@ const NavRight = ({ setScrollToFAQ }) => {
         const fetchTotalLogs = async () => {
             const db = getFirestore();
             const logsCollection = collection(db, 'moodlogs');
-            const logsSnapshot = await getDocs(logsCollection);
+            const logsSnapshot = await getDocs(
+                query(
+                    collection(db, 'moodlogs'),
+                    where('uid', '==', user.uid)
+                )
+            );
             const logsCount = logsSnapshot.size;
             setTotalLogs(logsCount);
         };
