@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import './Logged.scss';
 import LoggedExpand from '../LoggedExpand/LoggedExpand';
+import { auth } from '../../firebase';
 
 function Logged({ logData, searchTerm }) {
     const [expanded, setExpanded] = useState(false);
+    const [userUid, setUserUid] = useState(null); 
+
+    useEffect(() => {
+        // Get the current user's UID
+        const currentUser = auth.currentUser;
+        if (currentUser) {
+            setUserUid(currentUser.uid);
+        }
+    }, []);
 
     const toggleExpand = () => {
         setExpanded(!expanded);

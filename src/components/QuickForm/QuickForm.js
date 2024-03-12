@@ -38,6 +38,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { v4 as uuidv4 } from 'uuid';
+// import NavigationPrompt from './NavigationPrompt';
 
 
 const QuickForm = () => {
@@ -942,3 +943,4 @@ const QuickForm = () => {
 };
 
 export default QuickForm;
+// export default NavigationPrompt;

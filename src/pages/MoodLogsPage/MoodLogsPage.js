@@ -5,19 +5,26 @@ import MagnifyingGlass from "../../assets/search.svg"
 import Header from '../../components/Header/Header';
 import MobileNav from "../../components/MobileNav/MobileNav";
 import { db, auth } from '../../firebase';
-import { query, collection, orderBy, onSnapshot } from 'firebase/firestore';
+import { query, collection, orderBy, onSnapshot, where  } from 'firebase/firestore';
 import SampleLog from '../../components/SampleLog/SampleLog';
 
 function MoodLogsPage() {
     const [logData, setLogData] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [sortByDateAscending, setSortByDateAscending] = useState(false);
+    const [userUid, setUserUid] = useState(null); 
 
     useEffect(() => {
-        // const user = auth.currentUser;
-        // if (!user) return;
+        const currentUser = auth.currentUser;
+        if (currentUser) {
+            setUserUid(currentUser.uid);
+        }
 
-        const q = query(collection(db, 'moodlogs'), orderBy('date', sortByDateAscending ? 'asc' : 'desc')); // Order logs by date
+        const q = query(
+            collection(db, 'moodlogs'), 
+            where('uid', '==', currentUser.uid),
+            orderBy('date', sortByDateAscending ? 'asc' : 'desc')); // Order logs by date
+
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             const data = [];
             querySnapshot.forEach((doc) => {
