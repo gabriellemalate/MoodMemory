@@ -266,49 +266,51 @@ const QuickForm = () => {
                         ) : null}
 
                         {formData.state === "Depressed" || formData.state === "Elevated" ? (
-                            <article className='add-mood-quick__level-level'>
-                                <img className='add-mood-quick__level-divider' alt="choose level level" src={arrow} />
+                            
+                        <article className='add-mood-quick__level-level'>
+                            
+                            <img className='add-mood-quick__level-divider' alt="choose level level" src={arrow} />
 
-                                <div className='add-mood-quick__level-level-all'>
-
-                                    <div className='add-mood-quick__level-level-container'>
-                                        <input
-                                            className='add-mood-quick__level-level-opt'
-                                            type='radio'
-                                            value="Mild"
-                                            name="level"
-                                            id="Mild"
-                                            onChange={() => handleLevelChange("Mild")}
-                                        />
-                                        <label className='add-mood-quick__level-level-option' htmlFor="Mild">Mild</label>
-                                    </div>
-
-                                    <div className='add-mood-quick__level-level-container'>
-                                        <input
-                                            className='add-mood-quick__level-level-opt'
-                                            type='radio'
-                                            value="Moderate"
-                                            name="level"
-                                            id="Moderate"
-                                            onChange={() => handleLevelChange("Moderate")}
-                                        />
-                                        <label className='add-mood-quick__level-level-option' htmlFor="Moderate">Moderate</label>
-                                    </div>
-
-                                    <div className='add-mood-quick__level-level-container'>
-                                        <input
-                                            className='add-mood-quick__level-level-opt'
-                                            type='radio'
-                                            value="Severe"
-                                            name="level"
-                                            id="Severe"
-                                            onChange={() => handleLevelChange("Severe")}
-                                        />
-                                        <label className='add-mood-quick__level-level-option' htmlFor="Severe">Severe</label>
-                                    </div>
-
+                            <div className='add-mood-quick__level-level-all'>
+                            {(!formData.level && !errors.level) && <span className="required">*</span>}
+                                <div className='add-mood-quick__level-level-container'>
+                                    <input
+                                        className='add-mood-quick__level-level-opt'
+                                        type='radio'
+                                        value="Mild"
+                                        name="level"
+                                        id="Mild"
+                                        onChange={() => handleLevelChange("Mild")}
+                                    />
+                                    <label className='add-mood-quick__level-level-option' htmlFor="Mild">Mild</label>
                                 </div>
-                            </article>
+
+                                <div className='add-mood-quick__level-level-container'>
+                                    <input
+                                        className='add-mood-quick__level-level-opt'
+                                        type='radio'
+                                        value="Moderate"
+                                        name="level"
+                                        id="Moderate"
+                                        onChange={() => handleLevelChange("Moderate")}
+                                    />
+                                    <label className='add-mood-quick__level-level-option' htmlFor="Moderate">Moderate</label>
+                                </div>
+
+                                <div className='add-mood-quick__level-level-container'>
+                                    <input
+                                        className='add-mood-quick__level-level-opt'
+                                        type='radio'
+                                        value="Severe"
+                                        name="level"
+                                        id="Severe"
+                                        onChange={() => handleLevelChange("Severe")}
+                                    />
+                                    <label className='add-mood-quick__level-level-option' htmlFor="Severe">Severe</label>
+                                </div>
+
+                            </div>
+                        </article>
                         ) : null}
                     </article>
 
@@ -442,7 +444,7 @@ const QuickForm = () => {
 
                                 <div className='add-mood-quick__sleep-form-quality'>
                                     <div className='add-mood-quick__sleep-form-quality-head'>
-                                    {(!formData.quality && !errors.quality) && <span className="required">*</span>}quality of sleep</div>
+                                        {(!formData.quality && !errors.quality) && <span className="required">*</span>}quality of sleep</div>
                                     <div className='add-mood-quick__sleep-form-quality-options'>
                                         <img className={`add-mood-quick__sleep-form-quality-option ${formData.quality === 'Poor' ? 'selected' : ''}`}
                                             src={poorsleep}
@@ -478,7 +480,7 @@ const QuickForm = () => {
                     <article className='add-mood-quick__emote'>
                         <div className='add-mood-quick__emote-eq'>
                             <div className='add-mood-quick__emote-head'>
-                            {(!formData.emoji && !errors.emoji) && <span className="required">*</span>}Which best represents how you feel?</div>
+                                {(!formData.emoji && !errors.emoji) && <span className="required">*</span>}Which best represents how you feel?</div>
                             <article className='add-mood-quick__emote-menu'>
                                 <ul className='add-mood-quick__emote-menu-eq'>
                                     <li className='add-mood-quick__emote-menu-option'>
