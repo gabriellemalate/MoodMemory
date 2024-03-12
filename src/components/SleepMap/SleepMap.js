@@ -8,6 +8,8 @@ import 'chartjs-adapter-date-fns';
 const SleepMap = () => {
     const [sleepData, setSleepData] = useState([]);
 
+    Chart.register(...registerables);
+
     useEffect(() => {
         fetchData();
     }, []);
@@ -48,7 +50,7 @@ const SleepMap = () => {
 
         let existingChart = window.sleepChart;
 
-        if (existingChart) {
+        if (existingChart instanceof Chart) {
             existingChart.destroy();
         }
 

@@ -52,6 +52,9 @@
             background-color: rgb(12, 54, 96);
             border-radius: .2rem;
             margin-bottom: 0;
+            @include mobile {
+                font-size: 1rem;
+            }
         }
         &-eq {
             @include row;

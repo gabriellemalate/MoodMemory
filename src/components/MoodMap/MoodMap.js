@@ -126,7 +126,6 @@ const MoodMap = () => {
                             text: 'Mood State',
                         },
                         min: 0,
-                        // -1,
                         max: 6,
                         ticks: {
                             autoSkip: false,
