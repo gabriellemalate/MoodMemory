@@ -35,6 +35,9 @@
                 }
                 &-emotion {
                     margin: .2rem 0;
+                    @include mobile {
+                        font-size: 1rem;
+                    }
                 }
             }
             &__title {
@@ -60,15 +63,22 @@
                 @include row;
                 width: 100%;
                 justify-content: center;
+                @include mobile {
+                    padding: .2rem 0;
+                }
             }
             &__date {
                 font-weight: 200;
                 margin: 0;
+                @include mobile {
+                    font-size: 1rem;
+                }
             }
             &__time {
                 font-weight: 200;
                 margin: 0;
                 margin-left: 1rem;
+                
             }
             &__state {
                 width: 100%;
@@ -76,9 +86,13 @@
                 background-color: $periwinkle-lite;
                 padding: .4rem 1rem;
                 margin: .5rem 0 0;
-                letter-spacing: .1rem;
+                letter-spacing: .08rem;
                 font-weight: 500;
                 font-size: 1.2rem;
+                @include mobile {
+                    font-size: .88rem;
+                    padding: .2rem 1rem;
+                }
             }
         }
     }
@@ -183,6 +197,9 @@
         border-radius: 1rem;
         background-color: rgba(147, 214, 247, 0.8);
         padding:.5rem 0 1.8rem;
+        @include mobile {
+            padding: .6rem 0;
+        }
         &:hover {
             background-color: rgba(68, 147, 186, 0.8);
         }
@@ -197,6 +214,9 @@
             font-style: italic;
             @include mobile {
                 border-radius: .6rem;
+                font-size: .8rem;
+                padding: .2rem 1rem;
+                margin: 0 0 .4rem;
             }
         }
         &__enter {
@@ -212,6 +232,7 @@
             @include mobile {
                 border-radius: .5rem;
                 margin-left: .4rem;
+                padding: .5rem;
             }
         }
         &__button {

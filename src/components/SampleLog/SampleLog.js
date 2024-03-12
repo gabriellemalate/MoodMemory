@@ -23,8 +23,8 @@ function SampleLog({ logData, searchTerm }) {
                     <div className='logged-info'>
                         <div className='logged-info__top'>
                             <div className='logged-info__top-left'>
-                                <h2 className='logged-info__top-left-emotion'>welcome</h2>
-                                <h3 className='logged-info__top-left-title'>This is a sample log</h3>
+                                <h2 className='logged-info__top-left-emotion'>sample log</h2>
+                                <h3 className='logged-info__top-left-title'>click me for a guide!</h3>
                             </div>
                             <div className='logged-info__top-right'>
                                 <h2 className='logged-info__top-right-date'>∞</h2>

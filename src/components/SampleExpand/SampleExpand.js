@@ -116,7 +116,7 @@ function SampleExpand() {
                             <h2 className='open-top-right__state'>Elevated Mild</h2>
                         </div>
                     </div>
-                    <h3 className='open-top-left__title'>This is a sample log</h3>
+                    <h3 className='open-top-left__title'>your title goes here</h3>
                     <div className='open-bottom'>
                         <div className='open-bottom-left'>
 
@@ -140,17 +140,21 @@ function SampleExpand() {
                     <p className='open__notes'>
                         <h2 className='open__notes-head'>Your Notes</h2>
                         <div className='open__notes-frame'>
-                            <p className='open__notes-initial'>This serves as a display for your reference</p>
+                            <p className='open__notes-initial'>This log won't affect your total count, search, or sort, nor show on your maps.</p>
                             
                                 <>
                                     <h5 className='open__notes-pophead' >Comments:</h5>
-                                    
+                                
                                         <div className='open__notes-comment'>
-                                            This log won't affect your total count or sort, nor display on your maps. You can use this as a space for drafts.
+                                            <b>Add and delete comments</b> to the entries in your library, besides this one.
                                             <button className='open__notes-comment--button' onClick={() => handleDeleteComment}>X</button>
                                         </div>
                                         <div className='open__notes-comment'>
-                                            You can add and delete comments to the entries in your library, except for this one.
+                                            <b>Clicking on a mood label,</b> will show you all the entries you have of that exact kind.
+                                            <button className='open__notes-comment--button' onClick={() => handleDeleteComment}>X</button>
+                                        </div>
+                                        <div className='open__notes-comment'>
+                                            
                                             <button className='open__notes-comment--button' onClick={() => handleDeleteComment}>X</button>
                                         </div>
                                 </>
