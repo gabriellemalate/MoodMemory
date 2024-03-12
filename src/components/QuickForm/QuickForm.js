@@ -212,8 +212,14 @@ const QuickForm = () => {
                     onSubmit={handleSubmit}
                 >
                     <article className='add-mood-quick__level'>
-                        <h3 className='add-mood-quick__level-head'>Mood State</h3>
+                        <div className='add-mood-quick__level-head'>
+                            {/* Conditionally render the required label */}
+                            {(!formData.state && !errors.state) && <span className="required">*</span>}
+                            Mood State
+                        </div>
+
                         <p className='add-mood-quick__level-subhead'>think of this as your energy level</p>
+
                         <article className='add-mood-quick__level-state'>
 
                             <div className='add-mood-quick__level-state-container'>
@@ -252,6 +258,12 @@ const QuickForm = () => {
 
                         </article>
                         <div className="error error-state">{errors.state}</div>
+
+                        {formData.state === "Depressed" || formData.state === "Elevated" ? (
+                            <article className='add-mood-quick__level-level'>
+                                {/* Add code for mood levels */}
+                            </article>
+                        ) : null}
 
                         {formData.state === "Depressed" || formData.state === "Elevated" ? (
                             <article className='add-mood-quick__level-level'>
@@ -302,9 +314,11 @@ const QuickForm = () => {
 
                     <article className='add-mood-quick__observations'>
                         <div className='add-mood-quick__observations-all'>
-                            <h3 className='add-mood-quick__observations-all-head'>Imbalance Symptoms</h3>
+                            <div className='add-mood-quick__observations-all-head'>
+                                Imbalance Symptoms</div>
                             <div className='add-mood-quick__observations-irritability'>
-                                <label htmlFor="irritablity" className='add-mood-quick__observations-irritability-head'>irritability</label>
+                                <label htmlFor="irritablity" className='add-mood-quick__observations-irritability-head'>
+                                    irritability</label>
                                 <select className='add-mood-quick__observations-irritability-menu'
                                     onChange={(e) => handleNumberChange('irritability', parseInt(e.target.value))}
                                 >
@@ -427,7 +441,8 @@ const QuickForm = () => {
                                 </div>
 
                                 <div className='add-mood-quick__sleep-form-quality'>
-                                    <h3 className='add-mood-quick__sleep-form-quality-head'>quality of sleep</h3>
+                                    <div className='add-mood-quick__sleep-form-quality-head'>
+                                    {(!formData.quality && !errors.quality) && <span className="required">*</span>}quality of sleep</div>
                                     <div className='add-mood-quick__sleep-form-quality-options'>
                                         <img className={`add-mood-quick__sleep-form-quality-option ${formData.quality === 'Poor' ? 'selected' : ''}`}
                                             src={poorsleep}
@@ -462,7 +477,8 @@ const QuickForm = () => {
 
                     <article className='add-mood-quick__emote'>
                         <div className='add-mood-quick__emote-eq'>
-                            <h3 className='add-mood-quick__emote-head'>Which best represents how you feel?</h3>
+                            <div className='add-mood-quick__emote-head'>
+                            {(!formData.emoji && !errors.emoji) && <span className="required">*</span>}Which best represents how you feel?</div>
                             <article className='add-mood-quick__emote-menu'>
                                 <ul className='add-mood-quick__emote-menu-eq'>
                                     <li className='add-mood-quick__emote-menu-option'>

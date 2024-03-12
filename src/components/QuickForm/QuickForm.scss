@@ -17,6 +17,13 @@
         }
     }
 }
+.required {
+    color: #9b0e2a;
+    @include mobile {
+        font-size: 1.6rem;
+        font-weight: 600;
+    }
+}
 .add-mood {
     margin-bottom: 6rem;
 
@@ -126,6 +133,7 @@
             &-head {
                 @include mobile-head-category;
                 margin: 0;
+                @include row;
                 @include tablet {
                     font-size: 2rem;
                 }
