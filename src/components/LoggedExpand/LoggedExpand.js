@@ -11,9 +11,19 @@ function LoggedExpand({ logData }) {
     const [time, setTime] = useState('');
 
     useEffect(() => {
-        // Format the time from the logData
-        const logTime = logData.date ? logData.date.toDate().toLocaleTimeString() : '';
-        setTime(logTime);
+        if (logData.date) {
+            // Extract hour, minute, and AM/PM from the date
+            const hour = logData.date.toDate().getHours();
+            const minute = logData.date.toDate().getMinutes();
+            const period = hour >= 12 ? 'PM' : 'AM';
+            // Convert hour to 12-hour format
+            const hour12 = hour % 12 || 12;
+            // Format minute with leading zero if necessary
+            const formattedMinute = minute < 10 ? '0' + minute : minute;
+            // Format time string
+            const formattedTime = `${hour12}:${formattedMinute} ${period}`;
+            setTime(formattedTime);
+        }
     }, [logData.date]);
 
     const handleAddComment = async () => {
