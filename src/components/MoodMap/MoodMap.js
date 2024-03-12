@@ -75,20 +75,22 @@ const MoodMap = () => {
         const graphData = getGraphData();
         const startDate = getStartDate();
         const endDate = new Date();
+        const emptyData = graphData.filter(({ y }) => y === .1);
+        const moodStateData = graphData.filter(({ y }) => y !== .1);
 
         window.myScatterChart = new Chart(ctx, {
             type: 'scatter',
             data: {
                 datasets: [
                     {
-                        label: 'empty',
-                        data: graphData,
-                        backgroundColor: graphData.map(({ y }) => y === .5 ? 'black' : 'orange'),
-                        pointRadius: graphData.map(({ y }) => y === .5 ? 2 : 6), // smaller radius for empty dots
+                        label: 'no log',
+                        data: emptyData,
+                        backgroundColor: 'black',
+                        pointRadius: 1
                     },
                     {
                         label: 'mood state',
-                        data: graphData,
+                        data: moodStateData,
                         backgroundColor: 'orange',
                         pointRadius: 6
                     },
@@ -108,7 +110,7 @@ const MoodMap = () => {
                             },
                             min: startDate,
                             max: endDate,
-                            maxTicksLimit: currentGroup === 'month' ? 8 : undefined 
+                            maxTicksLimit: currentGroup === 'month' ? 8 : undefined
                         },
                         title: {
                             display: true,
@@ -133,7 +135,7 @@ const MoodMap = () => {
                             callback: function (value, index, values) {
                                 switch (value) {
                                     case -1:
-                                    return 'no log';
+                                        return 'no log';
                                     case 0:
                                         return 'D-sev';
                                     case 1:
@@ -231,7 +233,7 @@ const MoodMap = () => {
 
             else {
                 // If there's no mood entry for the date, insert a placeholder 
-                graphData.push({ x: new Date(d), y: .5});
+                graphData.push({ x: new Date(d), y:.1 });
             }
         }
 
@@ -385,7 +387,7 @@ const MoodMap = () => {
                             <button className="map-groups-group" onClick={() => handleChangeGroup('day')}>Day</button>
                         </div>
                         <div className='map-arrows'>
-                        {currentGroup === 'day' && (
+                            {currentGroup === 'day' && (
                                 <>
                                     <button className='map-arrows-arrow' onClick={handlePrevDay}>&lt;</button>
                                     <button className='map-arrows-arrow' onClick={handleNextDay}>&gt;</button>
