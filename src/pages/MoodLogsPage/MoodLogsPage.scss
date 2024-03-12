@@ -62,6 +62,12 @@
         letter-spacing: .06rem;
         padding: .5rem 1rem;
         margin-left: 1rem;
+        @include mobile {
+            font-size: .8rem;
+            padding: .4rem .4rem;
+            margin-left: .6rem;
+            @include column;
+        }
         &:hover {
             background-color: rgb(71, 4, 171);
             outline: solid rgb(180, 237, 237) .15rem;

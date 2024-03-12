@@ -169,9 +169,6 @@ function LoggedExpand({ logData }) {
                             <button className='open-add__button' type="button" onClick={handleAddComment}>add</button>
                         </div>
                     </form>
-                    {/* <button className='open__close' onClick={toggleExpand}>
-                        close
-                    </button> */}
                     <button className='open__close' onClick={handleDelete}>
                         delete
                     </button>

@@ -57,7 +57,7 @@ function MoodLogsPage() {
                             </button>
                         </form>
                         <button className="all-logs__sort-button" onClick={toggleSortOrder}>
-                            Sort by: {sortByDateAscending ? 'Oldest First' : 'Newest First'}
+                            <span>Sort by:</span> <span>{sortByDateAscending ? 'Oldest First' : 'Newest First'}</span>
                         </button>
                     </div>
                     <section className='all-logs__logs'>

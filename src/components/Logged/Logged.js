@@ -9,10 +9,6 @@ function Logged({ logData, searchTerm }) {
         setExpanded(!expanded);
     };
 
-    // useEffect(() => {
-    //     console.log("logData inside Logged component:", logData); // Log the received logData
-    // }, [logData]);
-
     const isMatch = (log) => {
         const lowercaseSearchTerm = searchTerm.toLowerCase();
         const lowercaseTitle = log.title.toLowerCase();
@@ -22,9 +18,6 @@ function Logged({ logData, searchTerm }) {
         // Check if the title or emotion includes the search term
         return lowercaseTitle.includes(lowercaseSearchTerm) || lowercaseEmotion.includes(lowercaseSearchTerm) || lowercaseLevel.includes(lowercaseSearchTerm);
     };
-
-    // // Ensure logData is an array before mapping over it
-    // const sortedLogData = Array.isArray(logData) ? logData : [];
 
     return (
         <>
@@ -41,12 +34,12 @@ function Logged({ logData, searchTerm }) {
                             <div className='logged-info__top'>
                                 <div className='logged-info__top-left'>
                                     <h2 className='logged-info__top-left-emotion'>{logData.emotion}</h2>
-                                    <h3 className='logged-info__top-left-title'>{logData.title}</h3>
                                 </div>
                                 <div className='logged-info__top-right'>
                                     <h2 className='logged-info__top-right-date'>{logData.date && logData.date.toDate().toLocaleDateString()}</h2>
                                 </div>
                             </div>
+                            <h3 className='logged-info__top-left-title'>{logData.title}</h3>
                             <div className='logged-info__bottom'>
                                 <div className='logged-info__bottom-eq'>
                                     <h2 className='logged-info__bottom-state'>{logData.state} {logData.level}</h2>

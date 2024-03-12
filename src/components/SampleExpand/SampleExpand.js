@@ -113,7 +113,7 @@ function SampleExpand() {
                                 <h3 className='open-top-right__date'>∞</h3>
 
                             </div>
-                            <h2 className='open-top-right__state'>Elevated <b>Mild</b></h2>
+                            <h2 className='open-top-right__state'>Elevated Mild</h2>
                         </div>
                     </div>
                     <h3 className='open-top-left__title'>This is a sample log</h3>
