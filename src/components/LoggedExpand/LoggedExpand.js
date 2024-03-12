@@ -8,6 +8,13 @@ function LoggedExpand({ logData }) {
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState('');
     const [showConfirmation, setShowConfirmation] = useState(false);
+    const [time, setTime] = useState('');
+
+    useEffect(() => {
+        // Format the time from the logData
+        const logTime = logData.date ? logData.date.toDate().toLocaleTimeString() : '';
+        setTime(logTime);
+    }, [logData.date]);
 
     const handleAddComment = async () => {
         if (newComment.trim() !== '') {
@@ -80,7 +87,6 @@ function LoggedExpand({ logData }) {
         setShowConfirmation(false);
         // Perform the deletion
         try {
-            // Your deletion logic here
             // After successful deletion, show the success message
             alert('Successfully Deleted');
         } catch (error) {
@@ -110,7 +116,7 @@ function LoggedExpand({ logData }) {
                         <div className='open-top-right'>
                             <div className='open-top-right__stamp'>
                                 <h3 className='open-top-right__date'>{logData.date && logData.date.toDate().toLocaleDateString()}</h3>
-
+                                <h3 className='open-top-right__time'>{time}</h3>
                             </div>
                             <h2 className='open-top-right__state'>{logData.state} {logData.level}</h2>
                         </div>
@@ -132,7 +138,7 @@ function LoggedExpand({ logData }) {
                             </div>
                         </div>
                         <div className='open-bottom-right'>
-                            <p className='open-bottom-right__hours'>{logData.hours} hour{logData.hours !== 1 ? 's' : ''}</p>
+                            <p className='open-bottom-right__hours'>{logData.hours} hr{logData.hours !== 1 ? 's' : ''}</p>
                             <img className='open-bottom-right__quality' src={require(`../../assets/${logData.quality}.png`)} alt="sleep quality" title="sleep quality" />
                         </div>
                     </div>

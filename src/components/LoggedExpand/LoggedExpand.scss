@@ -60,7 +60,7 @@
                 background-color: rgb(70, 178, 178, 0.6);
                 border-radius: 1rem;
                 padding: 0.5rem 1rem;
-                @include row;
+                @include column;
                 width: 100%;
                 justify-content: center;
                 @include mobile {
@@ -71,14 +71,16 @@
                 font-weight: 200;
                 margin: 0;
                 @include mobile {
-                    font-size: 1rem;
+                    font-size: .8rem;
                 }
             }
             &__time {
                 font-weight: 200;
+                padding: 0;
                 margin: 0;
-                margin-left: 1rem;
-                
+                @include mobile {
+                    font-size: .8rem;
+                }
             }
             &__state {
                 width: 100%;
@@ -131,8 +133,14 @@
             padding: 0 1rem;
             width: 45%;
             justify-content: center;
+            @include mobile {
+                padding: .4rem;
+            }
             &__hours {
                 padding-right: 1rem;
+                @include mobile {
+                    padding-right: .26rem;
+                }
             }
             &__quality {
                 width: 3.4rem;
