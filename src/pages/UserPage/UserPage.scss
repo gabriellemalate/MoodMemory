@@ -78,6 +78,9 @@
             @include row;
             &-input {
                 resize: none;
+                height: 1.6rem;
+                font-family: avenir;
+                margin-right: .4rem;
             }
             // &-press {
 
@@ -85,16 +88,26 @@
         }
         &-user {
             border: .1rem double rgb(144, 14, 144);
-            background-color: rgba(65, 230, 128, 0.613);
+            background-color: rgba(65, 230, 128, 0.307);
             width: 42%;
             height: 13rem;
             border-radius: .4rem;
+            
             &-item {
                 background-color: rgba(241, 5, 127, 0.72);
                 margin: .2rem 0;
+                &:hover {
+                    background-color: rgba(241, 98, 172, 0.72);
+                }
             }
         }
+        &-save {
+            margin-top: .4rem;
+            align-self: flex-end;
+            margin-right: .6rem;
+        }
     }
+
     &__faq {
         background-color: hsla(189, 89%, 72%, 0.3);
         margin-bottom: 3rem;

@@ -77,7 +77,9 @@ function UserPage() {
     ];
 
     const handleTriggerSelection = (trigger) => {
-        setSelectedTriggers([...selectedTriggers, trigger]);
+        if (!selectedTriggers.includes(trigger)) {
+            setSelectedTriggers([...selectedTriggers, trigger]);
+        }
     };
 
     const handleCustomTriggerChange = (event) => {
@@ -85,7 +87,7 @@ function UserPage() {
     };
 
     const handleCustomTriggerAdd = () => {
-        if (customTrigger.trim() !== "") {
+        if (customTrigger.trim() !== "" && !selectedTriggers.includes(customTrigger.trim())) {
             setSelectedTriggers([...selectedTriggers, customTrigger.trim()]);
             setCustomTrigger("");
         }
@@ -158,7 +160,7 @@ function UserPage() {
                             ))}
                         </div>
                     </div>
-                    <button onClick={saveUserTriggers}>Save Changes</button>
+                    <button className="userpage__triggers-save" onClick={saveUserTriggers}>Save Changes</button>
                 </section>
 
                 <section className='userpage__faq'>
