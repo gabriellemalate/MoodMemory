@@ -25,12 +25,15 @@
         @include column;
         height: 36vh;
         @include mobile {
-            max-height: 31.2vh;
+            max-height: 31.4vh;
         }
 
         &__slide {
             width: 100%;
             background-color: rgb(150, 150, 242);
+            @include mobile {
+                height: 40;
+            }
         }
     }
     &-title {

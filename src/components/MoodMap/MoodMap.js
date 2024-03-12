@@ -31,7 +31,11 @@ const MoodMap = () => {
         }
 
         const moodlogsCollection = collection(db, 'moodlogs');
-        const q = query(moodlogsCollection, where('uid', '==', auth.currentUser.uid), orderBy('date'));
+        const q = query(
+            moodlogsCollection,
+            where('uid', '==', auth.currentUser.uid),
+            orderBy('date')
+        );
 
         try {
             const querySnapshot = await getDocs(q);
@@ -76,14 +80,15 @@ const MoodMap = () => {
                         type: 'time',
                         time: {
                             unit: currentGroup === 'year' ? 'year' : (currentGroup === 'month' ? 'day' : 'day'),
-                            tooltipFormat: 'MMM dd, yyyy', // Format for tooltip
+                            tooltipFormat: currentGroup === 'year' ? 'MMM dd, yyyy' : 'MMM dd',
                             displayFormats: {
-                                day: 'MMM dd, yyyy', // Format for displaying day labels
-                                month: 'MMM yyyy',   // Format for displaying month labels
-                                year: 'yyyy'         // Format for displaying year labels
+                                day: currentGroup === 'year' ? 'MMM dd, yyyy' : 'M/dd',
+                                month: currentGroup === 'year' ? 'MMM yyyy' : 'm dd',
+                                year: 'yyyy'
                             },
                             min: startDate,
-                            max: endDate
+                            max: endDate,
+                            maxTicksLimit: currentGroup === 'month' ? 8 : undefined 
                         },
                         title: {
                             display: true,
@@ -99,25 +104,30 @@ const MoodMap = () => {
                             text: 'Mood State',
                         },
                         min: 0,
+                        // -1,
                         max: 6,
                         ticks: {
                             autoSkip: false,
+                            // minRotation: -8,
+                            // maxRotation: 0,
                             callback: function (value, index, values) {
                                 switch (value) {
+                                    // case -1:
+                                    // return 'n/a';
                                     case 0:
-                                        return 'D-Sev';
+                                        return 'D-sev';
                                     case 1:
-                                        return 'D-Mod';
+                                        return 'D-mo';
                                     case 2:
-                                        return 'D-Mil';
+                                        return 'D-mi';
                                     case 3:
                                         return 'WNL';
                                     case 4:
-                                        return 'E-Mil';
+                                        return 'E-mi';
                                     case 5:
-                                        return 'E-Mod';
+                                        return 'E-mo';
                                     case 6:
-                                        return 'E-Sev';
+                                        return 'E-sev';
                                     default:
                                         return '';
                                 }
@@ -186,14 +196,17 @@ const MoodMap = () => {
         const endDate = new Date();
 
         for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
-            const moodEntry = moodData.find(entry => entry.date.toDate().toDateString() === d.toDateString());
-            if (moodEntry) {
-                graphData.push({ x: moodEntry.date.toDate(), y: moodEntry.graphValue });
+            const moodEntries = moodData.filter(entry => entry.date.toDate().toDateString() === d.toDateString());
+            if (moodEntries.length > 0) {
+                moodEntries.forEach(entry => {
+                    graphData.push({ x: entry.date.toDate(), y: entry.graphValue });
+                });
             }
-            // else {
-            //     // If there's no mood entry for the date, insert a placeholder 
-            //     graphData.push({ x: new Date(d), y: 3, backgroundColor: 'red', legend: 'Missed' });
-            // }
+
+            else {
+                // If there's no mood entry for the date, insert a placeholder 
+                graphData.push({ x: new Date(d), y: -1, backgroundColor: 'red', legend: 'Missed' });
+            }
         }
 
         return graphData;
