@@ -159,7 +159,8 @@
             top: 120rem;
             width: 88vw;
             left: 6vw;
-            height: 70rem;
+            // height: 70rem;
+            height: 49rem;
         }
     }
     &_13 {
@@ -172,7 +173,8 @@
         outline: rgba(200, 157, 0, 0.9) dotted 1.8rem;
         @include desktop {
             outline: rgba(159, 15, 178, 0.9) solid 6rem;
-            top: 184rem;
+            // top: 184rem;
+            top: 70rem;
             width: 31vw;
             left: 54vw;
             height: 23rem;
