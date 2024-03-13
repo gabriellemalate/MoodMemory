@@ -4,6 +4,7 @@ import { auth } from "../../firebase";
 import { GoogleAuthProvider, signInWithRedirect, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, doc, setDoc, collection, getDoc, addDoc } from "firebase/firestore";
 import { functions } from "firebase/functions";
+import { navigate } from "react-router-dom";
 
 const WelcomePage = () => {
     const googleSignIn = () => {
@@ -27,6 +28,7 @@ const WelcomePage = () => {
                 // Log the user's UID and email
                 console.log("User UID:", user.uid);
                 console.log("User Email:", user.email);
+                navigate("/moodhome");
             })
             .catch((error) => {
                 console.error("Error signing in with Google:", error);
