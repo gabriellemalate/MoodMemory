@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./WelcomePage.scss";
 import { auth } from "../../firebase";
-import { GoogleAuthProvider, signInWithRedirect, onAuthStateChanged } from "firebase/auth";
+import { GoogleAuthProvider, signInWithRedirect, onAuthStateChanged, signInWithPopup } from "firebase/auth";
 import { getFirestore, doc, setDoc, collection, getDoc, addDoc } from "firebase/firestore";
 import { functions } from "firebase/functions";
 import { navigate } from "react-router-dom";
