@@ -40,9 +40,9 @@
             border-radius: 1rem;
             width: max-content;
         }
-        &-streak {
-            display: none;
-        }
+        // &-streak {
+        //     display: none;
+        // }
     }
     &__triggers {
         @include column;

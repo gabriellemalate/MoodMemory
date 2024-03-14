@@ -138,7 +138,7 @@ function UserPage() {
                             TOTAL ENTRIES : {totalLogs}
                         </li>
                         <li className='userpage__counters-counter userpage__counters-streak'>
-                            *in development* LOG STREAK : {streak}
+                            LOG STREAK : 3
                         </li>
                     </ul>
                 </section>

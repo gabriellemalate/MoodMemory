@@ -12,7 +12,6 @@ import {
 import { getFirestore, doc, setDoc, collection, getDoc, addDoc } from "firebase/firestore";
 import { functions } from "firebase/functions";
 import { useNavigate } from "react-router-dom";
-// import { Navigate } from "react-router-dom";
 import LoadingPage from "../LoadingPage/LoadingPage";
 
 const WelcomePage = () => {
