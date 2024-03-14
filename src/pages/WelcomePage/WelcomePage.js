@@ -11,12 +11,13 @@ import {
 } from "firebase/auth";
 import { getFirestore, doc, setDoc, collection, getDoc, addDoc } from "firebase/firestore";
 import { functions } from "firebase/functions";
-import { navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import { Navigate } from "react-router-dom";
 import LoadingPage from "../LoadingPage/LoadingPage";
 
 const WelcomePage = () => {
     const [redirectInProgress, setRedirectInProgress] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         // Check if there is a redirect result when the component mounts
