@@ -13,6 +13,9 @@
         padding: 1rem 0 1rem;
         justify-content: center;
         height: fit-screen;
+        @include mobile {
+            margin: 7rem 0 0;
+        }
     }
     &__head {
         padding: 1rem 0 1rem;
@@ -58,6 +61,9 @@
                 @include shadow-right;
             }
         }
+        @include mobile {
+            margin-top: 1rem;
+        }
     }
     &__button {
         margin: 3rem 0 1rem;
@@ -72,6 +78,9 @@
             margin: 5rem 0 1rem;
             height: 3rem;
             font-size: 1.2rem;
+        }
+        @include mobile {
+            margin-top: 2.4rem;
         }
         &:hover {
             background-color: $periwinkle-lite;
@@ -109,6 +118,9 @@
         height: 35vh;
         top: 14.5vh;
         left: 10vw;
+        @include mobile {
+            height: 55vh;
+        }
     }
 
     &_1 {
@@ -123,6 +135,10 @@
         }
         @include tablet {
             outline: dotted 2rem #95123b;
+        }
+        @include mobile {
+            top: 9vh;
+            height: 70vh;
         }
     }
 }
