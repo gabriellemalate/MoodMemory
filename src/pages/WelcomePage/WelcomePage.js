@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./WelcomePage.scss";
 import { auth, signInWithRedirect, getRedirectResult } from "../../firebase";
-import { GoogleAuthProvider, signInWithRedirect, getRedirectResult, onAuthStateChanged
+import {
+    GoogleAuthProvider
+    // , signInWithRedirect, getRedirectResult, 
+    // onAuthStateChanged
     // , signInWithPopup 
 } from "firebase/auth";
 import { getFirestore, doc, setDoc, collection, getDoc, addDoc } from "firebase/firestore";
 import { functions } from "firebase/functions";
-// import { navigate } from "react-router-dom";
+import { navigate } from "react-router-dom";
 import LoadingPage from "../LoadingPage/LoadingPage";
 
 const WelcomePage = () => {
@@ -72,10 +75,10 @@ const WelcomePage = () => {
 
     return (
         <main className="welcome">
-             {redirectInProgress ? (
+            {redirectInProgress ? (
                 <LoadingPage />
-            ) : ( 
-                 <> 
+            ) : (
+                <>
                     <article className='morph-wrap'>
                         <div className="morphs_1 morphs" />
                         <div className="morphs_2 morphs" />
@@ -100,8 +103,8 @@ const WelcomePage = () => {
                             Sign In
                         </button>
                     </div>
-                 </>
-            )} 
+                </>
+            )}
         </main>
     );
 }
