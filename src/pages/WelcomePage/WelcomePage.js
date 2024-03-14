@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./WelcomePage.scss";
-import { auth, signInWithRedirect, getRedirectResult } from "../../firebase";
+import { auth
+    // , signInWithRedirect, getRedirectResult 
+} from "../../firebase";
 import {
     GoogleAuthProvider
-    // , signInWithRedirect, getRedirectResult, 
+    , signInWithRedirect, getRedirectResult 
     // onAuthStateChanged
     // , signInWithPopup 
 } from "firebase/auth";
