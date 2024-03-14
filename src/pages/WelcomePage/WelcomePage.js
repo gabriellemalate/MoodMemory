@@ -12,6 +12,7 @@ import {
 import { getFirestore, doc, setDoc, collection, getDoc, addDoc } from "firebase/firestore";
 import { functions } from "firebase/functions";
 import { navigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
 import LoadingPage from "../LoadingPage/LoadingPage";
 
 const WelcomePage = () => {
@@ -23,7 +24,7 @@ const WelcomePage = () => {
             .then((result) => {
                 if (result.user) {
                     // User is already signed in, redirect them to home page
-                    window.location.href = '/moodhome';
+                    navigate('/moodhome');
                 }
             })
             .catch((error) => {
