@@ -13,7 +13,6 @@
     }
     &-item {
         font-size: .8rem;
-        text-wrap: nowrap;
     }
 }
 .instruction {
@@ -81,6 +80,8 @@
             padding: 0;
             width: 100%;
             @include row;
+            flex-wrap: wrap;
+            margin: .34rem 0;
             &-head {
                 margin: 0;
                 width: 100%;
@@ -96,6 +97,8 @@
                 background-color: rgba(120, 10, 113, 0.926);
                 border-radius: .4rem;
                 padding: .1rem .4rem;
+                text-wrap: nowrap;
+                margin-bottom: .2rem;
             }
         }
     }
