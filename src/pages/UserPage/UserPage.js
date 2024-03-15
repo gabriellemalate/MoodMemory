@@ -36,46 +36,58 @@ function UserPage() {
 
     }, []);
 
-    // const calculateStreak = async () => {
-    //     try {
-    //         const db = getFirestore();
-    //         const logsCollection = collection(db, 'moodlogs');
-    //         const logsQuery = query(logsCollection, where('uid', '==', user.uid), orderBy('date', 'desc')); // Order logs by date in descending order
-    //         const logsSnapshot = await getDocs(logsQuery);
-    //         const logsData = logsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-    
-    //         let streakCount = 0; // Initialize streak count
-    //         let lastDate = null;
-    //         let currentStreak = 0;
-    
-    //         logsData.forEach(log => {
-    //             const logDate = new Date(log.date.toDate()).toLocaleDateString();
-    //             if (lastDate && logDate === lastDate) {
-    //                 currentStreak++;
-    //             } else if (lastDate && logDate !== lastDate) {
-    //                 if (currentStreak > streakCount) {
-    //                     streakCount = currentStreak;
-    //                 }
-    //                 currentStreak = 1; // Reset streak if dates are not consecutive
-    //             } else {
-    //                 // First log entry
-    //                 currentStreak = 1;
-    //             }
-    //             lastDate = logDate;
-    //         });
-    
-    //         // Check if the current streak is greater than the previous streak
-    //         if (currentStreak > streakCount) {
-    //             streakCount = currentStreak;
-    //         }
-    
-    //         setStreak(streakCount); // Update streak state
-    //     } catch (error) {
-    //         console.error("Error calculating streak:", error);
-    //     }
-    // };
-    
-    
+    useEffect(() => {
+        const calculateStreak = async () => {
+            try {
+                const db = getFirestore();
+                const logsCollection = collection(db, 'moodlogs');
+                const logsQuery = query(logsCollection, where('uid', '==', user.uid), orderBy('date', 'desc')); // Order logs by date in descending order
+                const logsSnapshot = await getDocs(logsQuery);
+                const logsData = logsSnapshot.docs.map(doc => doc.data());
+
+                let currentStreak = 0;
+
+                if (logsData.length === 0) {
+                    setStreak(0);
+                    return;
+                }
+
+                const currentDate = new Date();
+                const today = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()); // Reset time to midnight
+                let lastLogDate = new Date(logsData[0].date.toDate());
+                lastLogDate = new Date(lastLogDate.getFullYear(), lastLogDate.getMonth(), lastLogDate.getDate()); // Reset time to midnight
+
+                // Check if the most recent log is within the past 24 hours
+                if (today - lastLogDate > 24 * 60 * 60 * 1000) {
+                    setStreak(0);
+                    return;
+                }
+
+                // Iterate through logs to find consecutive days
+                for (let i = 0; i < logsData.length; i++) {
+                    const logDate = new Date(logsData[i].date.toDate());
+                    const logDay = new Date(logDate.getFullYear(), logDate.getMonth(), logDate.getDate());
+
+                    if (today - logDay === currentStreak * 24 * 60 * 60 * 1000) {
+                        currentStreak++;
+                    } else if (today - logDay === (currentStreak - 1) * 24 * 60 * 60 * 1000) {
+                        continue; // Log from yesterday, streak continues
+                    } else {
+                        break; // Streak broken
+                    }
+                }
+
+                setStreak(currentStreak);
+            } catch (error) {
+                console.error("Error calculating streak:", error);
+            }
+        };
+
+        if (user) {
+            calculateStreak();
+        }
+    }, [user]);
+
 
     //     try {
     //         const db = getFirestore();
@@ -117,57 +129,57 @@ function UserPage() {
     //     return yesterday.toLocaleDateString();
     // };
 
-    useEffect(() => {
-        const calculateStreak = async () => {
-            try {
-                const db = getFirestore();
-                const logsCollection = collection(db, 'moodlogs');
-                const logsQuery = query(logsCollection, where('uid', '==', user.uid), orderBy('date', 'desc')); // Order logs by date in descending order
-                const logsSnapshot = await getDocs(logsQuery);
-                const logsData = logsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    // useEffect(() => {
+    //     const calculateStreak = async () => {
+    //         try {
+    //             const db = getFirestore();
+    //             const logsCollection = collection(db, 'moodlogs');
+    //             const logsQuery = query(logsCollection, where('uid', '==', user.uid), orderBy('date', 'desc')); // Order logs by date in descending order
+    //             const logsSnapshot = await getDocs(logsQuery);
+    //             const logsData = logsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 
-                let currentStreak = 0;
+    //             let currentStreak = 1;
 
-                // Check if there are any logs
-                if (logsData.length === 0) {
-                    setStreak(0);
-                    return;
-                }
+    //             // Check if there are any logs
+    //             if (logsData.length === 0) {
+    //                 setStreak(0);
+    //                 return;
+    //             }
 
-                // Get the date of the most recent log
-                const currentDate = new Date();
-                const lastLogDate = new Date(logsData[0].date.toDate());
+    //             // Get the date of the most recent log
+    //             const currentDate = new Date();
+    //             const lastLogDate = new Date(logsData[0].date.toDate());
 
-                // Check if the most recent log is within the past 24 hours
-                if (currentDate - lastLogDate > 24 * 60 * 60 * 1000) {
-                    setStreak(0); // No streak if no recent logs
-                    return;
-                }
+    //             // Check if the most recent log is within the past 24 hours
+    //             if (currentDate - lastLogDate > 24 * 60 * 60 * 1000) {
+    //                 setStreak(0); // No streak if no recent logs
+    //                 return;
+    //             }
 
-                // Iterate through logs to find consecutive days
-                let consecutiveDays = 1;
-                let previousDate = lastLogDate;
-                for (let i = 1; i < logsData.length; i++) {
-                    const logDate = new Date(logsData[i].date.toDate());
-                    // Check if the log date is consecutive to the previous one
-                    if ((previousDate.getTime() - logDate.getTime()) / (1000 * 60 * 60 * 24) === 1) {
-                        consecutiveDays++;
-                    } else {
-                        break; // Streak is broken, exit loop
-                    }
-                    previousDate = logDate;
-                }
+    //             // Iterate through logs to find consecutive days
+    //             let consecutiveDays = 1;
+    //             let previousDate = lastLogDate;
+    //             for (let i = 1; i < logsData.length; i++) {
+    //                 const logDate = new Date(logsData[i].date.toDate());
+    //                 // Check if the log date is consecutive to the previous one
+    //                 if ((previousDate.getTime() - logDate.getTime()) / (1000 * 60 * 60 * 24) === 1) {
+    //                     consecutiveDays++;
+    //                 } else {
+    //                     break; // Streak is broken, exit loop
+    //                 }
+    //                 previousDate = logDate;
+    //             }
 
-                setStreak(consecutiveDays);
-            } catch (error) {
-                console.error("Error calculating streak:", error);
-            }
-        };
+    //             setStreak(consecutiveDays);
+    //         } catch (error) {
+    //             console.error("Error calculating streak:", error);
+    //         }
+    //     };
 
-        if (user) {
-            calculateStreak();
-        }
-    }, [user]);
+    //     if (user) {
+    //         calculateStreak();
+    //     }
+    // }, [user]);
     
     const fetchUserTriggers = async (uid) => {
         try {
