@@ -252,17 +252,27 @@ function UserPage() {
 
     const handleQualityItemClick = async (quality) => {
         try {
-            const db = getFirestore();
-            const logsCollection = collection(db, "moodlogs");
-            const logsQuery = query(logsCollection, where("uid", "==", user.uid), where("quality", "==", quality), orderBy("date", "desc"), limit(7));
-            const logsSnapshot = await getDocs(logsQuery);
-
-            const logsData = logsSnapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data()
-            })); 
-
-            setSelectedQualityLogs(logsData);
+            if (selectedQualityLogs[0]?.quality === quality) {
+                // If the currently selected quality matches the clicked quality, clear the selected logs
+                setSelectedQualityLogs([]);
+            } else {
+                const db = getFirestore();
+                const logsCollection = collection(db, "moodlogs");
+                const logsQuery = query(logsCollection, where("uid", "==", user.uid), where("quality", "==", quality), orderBy("date", "desc"), limit(12));
+                console.log("Logs query:", logsQuery);
+    
+                const logsSnapshot = await getDocs(logsQuery);
+                console.log("Logs snapshot:", logsSnapshot);
+    
+                const logsData = logsSnapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
+                console.log("Logs data:", logsData);
+    
+                setSelectedQualityLogs(logsData);
+                console.log("Selected quality logs:", selectedQualityLogs);
+            }
         } catch (error) {
             console.error("Error fetching logs for selected quality:", error);
         }
