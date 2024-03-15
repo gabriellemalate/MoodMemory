@@ -411,6 +411,7 @@
             &-eq {
                 @include column;
                 width: 100%;
+                
             }
             &-head {
                 @include mobile-head-category;
@@ -433,10 +434,11 @@
                     flex-wrap: wrap;
                     justify-content: center;
                     padding: 0.5rem 0.2rem;
-                    border: double rgb(92, 41, 146) 0.2rem;
+                    // border: double rgb(92, 41, 146) 0.2rem;
                     border-radius: 1.2rem;
+                    background-image: linear-gradient(to top right, rgb(255, 106, 0) , rgb(78, 233, 26));
                     @include desktop {
-                        background-color: rgba(103, 17, 141, 0.754);
+                        // background-color: rgba(103, 17, 141, 0.754);
                         border-color: rgb(10, 131, 41);
                         padding: 1.5rem 0.5rem;
                         width: 95%;

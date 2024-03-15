@@ -857,18 +857,18 @@ const QuickForm = () => {
                                         </button>
                                     </li>
                                     <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'panicking' ? 'selected' : ''}`} type="button" >
+                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'panic' ? 'selected' : ''}`} type="button" >
                                             <input
                                                 name="emotion"
                                                 className='add-mood-quick__emote-option-eq'
                                                 type='radio'
-                                                id='panicking'
+                                                id='panic'
                                                 value='panic'
                                                 checked={formData.emoji === 'panic'}
-                                                onChange={() => handleInputChange('emotion', 'panicking', 'panicking')}
+                                                onChange={() => handleInputChange('emotion', 'panic', 'panic')}
                                             />
-                                            <label htmlFor='panicking'>
-                                                <img alt="panicking" src={panic} />
+                                            <label htmlFor='panic'>
+                                                <img alt="panic" src={panic} />
                                                 <h4>panicking</h4>
                                             </label>
                                         </button>
