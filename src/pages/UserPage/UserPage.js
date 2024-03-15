@@ -230,15 +230,11 @@ function UserPage() {
             const logsQuery = query(logsCollection, where("uid", "==", user.uid), where("quality", "==", quality), orderBy("date", "desc"), limit(7));
             const logsSnapshot = await getDocs(logsQuery);
 
-            const logsData = logsSnapshot.docs.map((doc) => {
-                const log = doc.data();
-                return {
-                    id: doc.id,
-                    ...log,
-                    date: log.date.toDate().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })
-                };
-            });
-            
+            const logsData = logsSnapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data()
+            }));
+
             setSelectedQualityLogs(logsData);
         } catch (error) {
             console.error("Error fetching logs for selected quality:", error);
@@ -302,12 +298,12 @@ function UserPage() {
                     </ul>
 
                     {selectedEmotionLogs.length > 0 && (
-                        <div className="userpage__selected-emotion-logs">
-                            <h3>Logs for selected emotion: {selectedEmotionLogs[0].emotion}</h3>
-                            <ul>
+                        <div className="selectedcount">
+                            <h3 className="selectedcount-head">Logs for selected emotion: {selectedEmotionLogs[0].emotion}</h3>
+                            <ul className="selectedcount-list">
                                 {selectedEmotionLogs.map((log) => (
-                                    <li key={log.id}>
-                                        Date: {log.date.toDate().toLocaleDateString()}, Title: {log.title}, Notes: {log.notes}
+                                    <li key={log.id} className="selectedcount-item">
+                                        {log.date.toDate().toLocaleDateString()}, Title: {log.title}, Notes: {log.notes}
                                     </li>
                                 ))}
                             </ul>
