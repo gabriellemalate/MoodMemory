@@ -24,7 +24,7 @@ function UserPage() {
         try {
             const db = getFirestore();
             const logsCollection = collection(db, 'moodlogs');
-            const logsQuery = query(logsCollection, where('uid', '==', user.uid)); // Add where clause
+            const logsQuery = query(logsCollection, where('uid', '==', user.uid)); 
             const logsSnapshot = await getDocs(logsQuery);
             const logsCount = logsSnapshot.size;
             setTotalLogs(logsCount);
@@ -32,16 +32,143 @@ function UserPage() {
             console.error("Error fetching total logs:", error);
         }
     };
-
-        // Calculate streak (Assuming each log has a date field)
-        const calculateStreak = async () => {
-
-        };
-
         fetchTotalLogs();
-        calculateStreak();
+
     }, []);
 
+    // const calculateStreak = async () => {
+    //     try {
+    //         const db = getFirestore();
+    //         const logsCollection = collection(db, 'moodlogs');
+    //         const logsQuery = query(logsCollection, where('uid', '==', user.uid), orderBy('date', 'desc')); // Order logs by date in descending order
+    //         const logsSnapshot = await getDocs(logsQuery);
+    //         const logsData = logsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    
+    //         let streakCount = 0; // Initialize streak count
+    //         let lastDate = null;
+    //         let currentStreak = 0;
+    
+    //         logsData.forEach(log => {
+    //             const logDate = new Date(log.date.toDate()).toLocaleDateString();
+    //             if (lastDate && logDate === lastDate) {
+    //                 currentStreak++;
+    //             } else if (lastDate && logDate !== lastDate) {
+    //                 if (currentStreak > streakCount) {
+    //                     streakCount = currentStreak;
+    //                 }
+    //                 currentStreak = 1; // Reset streak if dates are not consecutive
+    //             } else {
+    //                 // First log entry
+    //                 currentStreak = 1;
+    //             }
+    //             lastDate = logDate;
+    //         });
+    
+    //         // Check if the current streak is greater than the previous streak
+    //         if (currentStreak > streakCount) {
+    //             streakCount = currentStreak;
+    //         }
+    
+    //         setStreak(streakCount); // Update streak state
+    //     } catch (error) {
+    //         console.error("Error calculating streak:", error);
+    //     }
+    // };
+    
+    
+
+    //     try {
+    //         const db = getFirestore();
+    //         const logsCollection = collection(db, 'moodlogs');
+    //         const logsQuery = query(logsCollection, where('uid', '==', user.uid), orderBy('date', 'desc')); // Order logs by date in descending order
+    //         const logsSnapshot = await getDocs(logsQuery);
+    //         const logsData = logsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    
+    //         let streakCount = 1; // Initialize streak count
+    //         let currentDay = null;
+    
+    //         // Loop through each log entry
+    //         logsData.forEach(log => {
+    //             const logDate = new Date(log.date.toDate()).toLocaleDateString();
+    
+    //             // If log is for today or yesterday, increment streak count
+    //             if (logDate === currentDay || logDate === getYesterdayDateString(currentDay)) {
+    //                 streakCount++;
+    //             } else {
+    //                 // If log is not for consecutive days, reset streak count
+    //                 currentDay = logDate;
+    //                 streakCount = 1;
+    //             }
+    //         });
+    
+    //         setStreak(streakCount); // Update streak state
+    //     } catch (error) {
+    //         console.error("Error calculating streak:", error);
+    //     }
+    // };
+    
+    // const getYesterdayDateString = (currentDateString) => {
+    //     if (!currentDateString) return null;
+    
+    //     const currentDate = new Date(currentDateString);
+    //     const yesterday = new Date(currentDate);
+    //     yesterday.setDate(currentDate.getDate() - 1);
+    
+    //     return yesterday.toLocaleDateString();
+    // };
+
+    useEffect(() => {
+        const calculateStreak = async () => {
+            try {
+                const db = getFirestore();
+                const logsCollection = collection(db, 'moodlogs');
+                const logsQuery = query(logsCollection, where('uid', '==', user.uid), orderBy('date', 'desc')); // Order logs by date in descending order
+                const logsSnapshot = await getDocs(logsQuery);
+                const logsData = logsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+                let currentStreak = 0;
+
+                // Check if there are any logs
+                if (logsData.length === 0) {
+                    setStreak(0);
+                    return;
+                }
+
+                // Get the date of the most recent log
+                const currentDate = new Date();
+                const lastLogDate = new Date(logsData[0].date.toDate());
+
+                // Check if the most recent log is within the past 24 hours
+                if (currentDate - lastLogDate > 24 * 60 * 60 * 1000) {
+                    setStreak(0); // No streak if no recent logs
+                    return;
+                }
+
+                // Iterate through logs to find consecutive days
+                let consecutiveDays = 1;
+                let previousDate = lastLogDate;
+                for (let i = 1; i < logsData.length; i++) {
+                    const logDate = new Date(logsData[i].date.toDate());
+                    // Check if the log date is consecutive to the previous one
+                    if ((previousDate.getTime() - logDate.getTime()) / (1000 * 60 * 60 * 24) === 1) {
+                        consecutiveDays++;
+                    } else {
+                        break; // Streak is broken, exit loop
+                    }
+                    previousDate = logDate;
+                }
+
+                setStreak(consecutiveDays);
+            } catch (error) {
+                console.error("Error calculating streak:", error);
+            }
+        };
+
+        if (user) {
+            calculateStreak();
+        }
+    }, [user]);
+    
     const fetchUserTriggers = async (uid) => {
         try {
             const userDoc = await getDoc(doc(getFirestore(), "userTriggers", uid));
@@ -138,7 +265,7 @@ function UserPage() {
                             TOTAL ENTRIES : {totalLogs}
                         </li>
                         <li className='userpage__counters-counter userpage__counters-streak'>
-                            LOG STREAK : 3
+                            LOG STREAK : {streak}
                         </li>
                     </ul>
                 </section>
