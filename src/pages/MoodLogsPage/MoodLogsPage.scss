@@ -1,6 +1,24 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
-
+.top-eq {
+    @include row;
+    width: 50%;
+    justify-content: space-between;
+    @include mobile {
+        margin: 1.6rem 0 1rem;
+        width: 90%;
+    }
+    &-streak {
+        color: purple;
+        background-color: rgba(150, 239, 244, 0.747);
+        padding: .2rem 1rem;
+        border-radius: 4rem;
+        font-weight: 600;
+        &:hover, &:active {
+            background-color: rgba(39, 143, 149, 0.747);
+        }
+    }
+}
 .all-logs {
     @include column;
     width: 100%;
@@ -10,17 +28,17 @@
         @include column;
     }
     &__head {
-        letter-spacing: .2rem;
-        border-bottom: .4rem dotted purple;
+        letter-spacing: 0.2rem;
+        border-bottom: 0.4rem dotted purple;
         width: fit-content;
-        padding-bottom: .8rem;
+        padding-bottom: 0.8rem;
         font-size: 1.5rem;
         color: rgb(242, 227, 176);
         @include mobile {
             font-size: 1.2rem;
-            border-bottom: .1rem double purple;
-            color:  purple;
-            margin: 1.6rem 0 1rem;
+            border-bottom: 0.1rem double purple;
+            letter-spacing: 0;
+            color: purple;
         }
         &:hover {
             @include shadow-left;
@@ -35,11 +53,11 @@
         @include row;
         background-color: rgb(177, 236, 214);
         border-radius: 1.5rem;
-        padding: .2rem .6rem;
-        
+        padding: 0.2rem 0.6rem;
+
         &-button {
             border: 0;
-            margin-left: .3rem;
+            margin-left: 0.3rem;
             background-color: rgb(177, 236, 214);
             cursor: pointer;
             border-radius: 1rem;
@@ -50,11 +68,11 @@
         &-bar {
             border-radius: 1rem;
             font-family: avenir;
-            padding: .5rem 1rem;
+            padding: 0.5rem 1rem;
             height: 2.2rem;
             resize: none;
             &::placeholder {
-                color: rgb(66, 108, 126)
+                color: rgb(66, 108, 126);
             }
         }
     }
@@ -66,24 +84,24 @@
         cursor: pointer;
         color: rgb(255, 161, 29);
         font-weight: 500;
-        letter-spacing: .06rem;
-        padding: .5rem 1rem;
+        letter-spacing: 0.06rem;
+        padding: 0.5rem 1rem;
         margin-left: 1rem;
         @include mobile {
-            font-size: .72rem;
-            padding: .4rem .6rem;
-            margin-left: .6rem;
+            font-size: 0.72rem;
+            padding: 0.4rem 0.6rem;
+            margin-left: 0.6rem;
             @include column;
             border-radius: 1.2rem;
         }
         &:hover {
             background-color: rgb(71, 4, 171);
-            outline: solid rgb(180, 237, 237) .15rem;
+            outline: solid rgb(180, 237, 237) 0.15rem;
             color: rgb(239, 166, 63);
         }
         &:active {
             background-color: rgb(102, 21, 223);
-            outline: solid rgb(114, 225, 225) .15rem;
+            outline: solid rgb(114, 225, 225) 0.15rem;
         }
     }
     &__logs {
@@ -97,7 +115,7 @@
             align-items: flex-start;
         }
         @include mobile {
-            margin-top: .8rem;
+            margin-top: 0.8rem;
         }
     }
 }

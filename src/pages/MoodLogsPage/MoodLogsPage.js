@@ -5,14 +5,17 @@ import MagnifyingGlass from "../../assets/search.svg"
 import Header from '../../components/Header/Header';
 import MobileNav from "../../components/MobileNav/MobileNav";
 import { db, auth } from '../../firebase';
-import { query, collection, orderBy, onSnapshot, where  } from 'firebase/firestore';
+import { query, collection, orderBy, onSnapshot, getFirestore, where, getDocs, doc, setDoc, getDoc } from 'firebase/firestore';
 import SampleLog from '../../components/SampleLog/SampleLog';
+import { useAuthState } from "react-firebase-hooks/auth";
 
 function MoodLogsPage() {
     const [logData, setLogData] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [sortByDateAscending, setSortByDateAscending] = useState(false);
-    const [userUid, setUserUid] = useState(null); 
+    const [userUid, setUserUid] = useState(null);
+    const [user] = useAuthState(auth);
+    const [streak, setStreak] = useState(1);
 
     useEffect(() => {
         const currentUser = auth.currentUser;
@@ -20,12 +23,12 @@ function MoodLogsPage() {
             setUserUid(currentUser.uid);
         }
 
-        
+
         const q = query(
-            collection(db, 'moodlogs'), 
+            collection(db, 'moodlogs'),
             where('uid', '==', currentUser.uid),
             orderBy('date', sortByDateAscending ? 'asc' : 'desc')); // Order logs by date
-console.log(currentUser.uid)
+        console.log(currentUser.uid)
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             const data = [];
             querySnapshot.forEach((doc) => {
@@ -45,12 +48,69 @@ console.log(currentUser.uid)
         setSortByDateAscending(!sortByDateAscending);
     };
 
+    useEffect(() => {
+        const calculateStreak = async () => {
+            try {
+                const db = getFirestore();
+                const logsCollection = collection(db, 'moodlogs');
+                const logsQuery = query(logsCollection, where('uid', '==', user.uid), orderBy('date', 'desc')); // Order logs by date in descending order
+                const logsSnapshot = await getDocs(logsQuery);
+                const logsData = logsSnapshot.docs.map(doc => doc.data());
+
+                let currentStreak = 0;
+
+                if (logsData.length === 0) {
+                    setStreak(0);
+                    return;
+                }
+
+                const currentDate = new Date();
+                const today = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()); // Reset time to midnight
+                let lastLogDate = new Date(logsData[0].date.toDate());
+                lastLogDate = new Date(lastLogDate.getFullYear(), lastLogDate.getMonth(), lastLogDate.getDate()); // Reset time to midnight
+
+                // Check if the most recent log is within the past 24 hours
+                if (today - lastLogDate > 24 * 60 * 60 * 1000) {
+                    setStreak(0);
+                    return;
+                }
+
+                // Iterate through logs to find consecutive days
+                for (let i = 0; i < logsData.length; i++) {
+                    const logDate = new Date(logsData[i].date.toDate());
+                    const logDay = new Date(logDate.getFullYear(), logDate.getMonth(), logDate.getDate());
+
+                    if (today - logDay === currentStreak * 24 * 60 * 60 * 1000) {
+                        currentStreak++;
+                    } else if (today - logDay === (currentStreak - 1) * 24 * 60 * 60 * 1000) {
+                        continue; // Log from yesterday, streak continues
+                    } else {
+                        break; // Streak broken
+                    }
+                }
+
+                setStreak(currentStreak);
+            } catch (error) {
+                console.error("Error calculating streak:", error);
+            }
+        };
+
+        if (user) {
+            calculateStreak();
+        }
+    }, [user]);
+
     return (
         <>
             <Header />
             <main className='all-logs'>
                 <div className='all-logs__eq'>
-                    <h1 className='all-logs__head'>Your Logged Moods</h1>
+                    <div className='top-eq'>
+                    <h1 className='all-logs__head'>Log Library</h1>
+                    <p className='top-eq-streak'>
+                        STREAK ❤️‍🔥 : {streak}
+                    </p>
+                    </div>
                     <div className='all-logs__top'>
                         <form className="all-logs__search" action="" method="">
                             <textarea
