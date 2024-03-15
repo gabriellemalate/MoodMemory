@@ -324,7 +324,7 @@ function UserPage() {
                 <section className="userpage__counters">
                     <ul className='userpage__counters-eq'>
                         <li className='userpage__counters-counter'>
-                            TOTAL : {totalLogs}
+                            TOTAL ✐ ✎ {totalLogs}
                         </li>
                         <li className='userpage__counters-counter userpage__counters-streak'>
                             STREAK ❤️‍🔥 : {streak}

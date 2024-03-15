@@ -339,6 +339,10 @@ $theblue: rgba(17, 95, 121, 0.851);
                         @extend .add-mood-quick__observations-irritability-menu;
                         height: 2.3rem;
                         border-radius: 1.2rem;
+                        @include mobile {
+                            height: 1.8rem;
+                            margin: 0;
+                        }
                     }
                 }
                 &-quality {
@@ -431,21 +435,32 @@ $theblue: rgba(17, 95, 121, 0.851);
                     background-color: $periwinkle-lite;
                     color: $white;
                     font-weight: 600;
-
+                    @include mobile {
+                        font-size: .9rem;
+                    }
+                    
                     &-title {
                         height: 2.5rem;
                         margin: 0 0 2rem;
                         @include mobile {
                             margin: 0;
+                            height: 2rem;
+                            padding: .3rem 0 0 .8rem;
                         }
                     }
                     &-note {
                         height: 5rem;
                         margin: 0 0 2rem;
+                        @include mobile {
+                            padding: .3rem .4rem 0 .6rem;
+                        }
                     }
                     &::placeholder {
                         font-family: avenir, Arial, Helvetica, sans-serif;
                         color: rgb(69, 19, 116);
+                        @include mobile {
+                            font-weight: 400;
+                        }
                     }
                 }
             }

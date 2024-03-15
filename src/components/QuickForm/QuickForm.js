@@ -662,6 +662,7 @@ const QuickForm = () => {
                             <div className="error">{errors.emoji}</div>
                         </div>
                     </article>
+
                     <article className='add-mood-quick__level'>
                         <div className='add-mood-quick__level-head'>
                             {/* Conditionally render the required label */}
@@ -1378,6 +1379,15 @@ const QuickForm = () => {
                             <div className="error">{errors.emoji}</div>
                         </div>
                     </article>
+
+                    <div className='additional'>
+                        <article className='additional-victories'>
+
+                        </article>
+                        <article className='additional-hurdles'>
+
+                        </article>
+                    </div>
 
                     <article className='add-mood-quick__notes'>
                         <div className='add-mood-quick__notes-form'>
