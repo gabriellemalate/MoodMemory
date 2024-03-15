@@ -13,12 +13,15 @@ const MoodMap = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [currentTitle, setCurrentTitle] = useState('year');
     const [currentDay, setCurrentDay] = useState(new Date());
+    const [dayIndex, setDayIndex] = useState(0); // Track index of current day in moodData
 
     Chart.register(...registerables);
 
     useEffect(() => {
         fetchData();
     }, []);
+
+
 
     useEffect(() => {
         createOrUpdateChart();
@@ -232,7 +235,7 @@ const MoodMap = () => {
 
             else {
                 // If there's no mood entry for the date, insert a placeholder 
-                graphData.push({ x: new Date(d), y:.1 });
+                graphData.push({ x: new Date(d), y: .1 });
             }
         }
 
@@ -294,6 +297,8 @@ const MoodMap = () => {
                     const month = currentDate.getMonth();
                     const prevMonthData = moodData.filter(entry => entry.date.toDate().getFullYear() === year && entry.date.toDate().getMonth() === month);
                     if (prevMonthData.length > 0) {
+                        setCurrentDay(prevMonthData[prevMonthData.length - 1].date.toDate()); // Set currentDay to the last day of the previous month
+                        setDayIndex(prevMonthData.length - 1); // Set dayIndex to the last day of the previous month in moodData
                         return moodData.findIndex(entry => entry.id === prevMonthData[prevMonthData.length - 1].id);
                     }
                     // If there's no data for the previous month, stay on the current month
@@ -306,6 +311,8 @@ const MoodMap = () => {
                     const currentWeek = getWeekNumber(currentDate);
                     const prevWeekData = moodData.filter(entry => getWeekNumber(entry.date.toDate()) === currentWeek - 1);
                     if (prevWeekData.length > 0) {
+                        setCurrentDay(prevWeekData[prevWeekData.length - 1].date.toDate()); // Set currentDay to the last day of the previous week
+                        setDayIndex(prevWeekData.length - 1); // Set dayIndex to the last day of the previous week in moodData
                         return moodData.findIndex(entry => entry.id === prevWeekData[prevWeekData.length - 1].id);
                     }
                     // If there's no data for the previous week, stay on the current week
@@ -333,6 +340,8 @@ const MoodMap = () => {
                 const month = currentDate.getMonth();
                 const nextMonthData = moodData.filter(entry => entry.date.toDate().getFullYear() === year && entry.date.toDate().getMonth() === month);
                 if (nextMonthData.length > 0) {
+                    setCurrentDay(nextMonthData[0].date.toDate()); // Set currentDay to the first day of the next month
+                    setDayIndex(0); // Set dayIndex to the first day of the next month in moodData
                     return moodData.findIndex(entry => entry.id === nextMonthData[0].id);
                 }
                 // If there's no data for the next month, stay on the current month
@@ -345,6 +354,8 @@ const MoodMap = () => {
                 const currentWeek = getWeekNumber(currentDate);
                 const nextWeekData = moodData.filter(entry => getWeekNumber(entry.date.toDate()) === currentWeek + 1);
                 if (nextWeekData.length > 0) {
+                    setCurrentDay(nextWeekData[0].date.toDate()); // Set currentDay to the first day of the next week
+                    setDayIndex(0); // Set dayIndex to the first day of the next week in moodData
                     return moodData.findIndex(entry => entry.id === nextWeekData[0].id);
                 }
                 // If there's no data for the next week, stay on the current week
@@ -357,6 +368,10 @@ const MoodMap = () => {
         setCurrentDay(prevDay => {
             const prev = new Date(prevDay);
             prev.setDate(prev.getDate() - 1);
+            setDayIndex(prevIndex => {
+                const index = prevIndex - 1;
+                return index < 0 ? 0 : index; // Ensure index doesn't go below 0
+            });
             return prev;
         });
     };
@@ -365,6 +380,10 @@ const MoodMap = () => {
         setCurrentDay(prevDay => {
             const next = new Date(prevDay);
             next.setDate(next.getDate() + 1);
+            setDayIndex(prevIndex => {
+                const index = prevIndex + 1;
+                return index >= moodData.length ? moodData.length - 1 : index; // Ensure index doesn't exceed moodData length
+            });
             return next;
         });
     };

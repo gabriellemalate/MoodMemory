@@ -49,6 +49,11 @@
         @include desktop {
             display: none;
         }
+        @include mobile {
+            top: 2rem;
+            width: 23rem;
+            left: 1%;
+        }
     }
     &_7 {
         //3rd DESK1
@@ -70,6 +75,15 @@
             max-height: 30rem;
             outline: rgb(251, 197, 47) dotted 3rem;
         }
+        @include mobile {
+            background: rgb(2, 221, 100, 0.75);
+            border: 1.2rem solid rgb(3, 15, 3);
+            top: 27.6rem;
+            // top: 20rem;
+            width: 90vw;
+            left: 5%;
+            outline: rgba(238, 25, 160, 0.707) dotted .5rem;
+        }
     }
     &_5 {
         //4th
@@ -84,6 +98,14 @@
         }
         @include desktop {
             display: none;
+        }
+        @include mobile {
+            border: 1rem solid rgb(3, 15, 3);
+            // top: 9.6rem;
+            top: 10rem;
+            width: 90vw;
+            left: 5%;
+            outline: rgba(238, 25, 160, 0.517) dotted .5rem;
         }
     }
 
