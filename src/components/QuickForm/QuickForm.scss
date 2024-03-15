@@ -2,7 +2,7 @@
 @use "../../styles/partials/variables" as *;
 
 @import url("https://fonts.googleapis.com/css?family=Titan+One");
-$theblue:rgba(17, 95, 121, 0.851);
+$theblue: rgba(17, 95, 121, 0.851);
 
 .form-group {
     @include row;
@@ -11,7 +11,7 @@ $theblue:rgba(17, 95, 121, 0.851);
         margin: 2rem 1.6rem 0 0;
         &-title {
             color: aliceblue;
-            padding-bottom: .2rem;
+            padding-bottom: 0.2rem;
         }
         &-calendar {
             font-family: avenir;
@@ -26,10 +26,17 @@ $theblue:rgba(17, 95, 121, 0.851);
     }
 }
 
-
+.mobileonly {
+    @include smallscreen {
+        display: none;
+    }
+    margin-top: 0;
+}
 .add-mood {
     margin-bottom: 6rem;
-
+    @include mobile {
+        margin-bottom: 0;
+    }
     &-quick {
         @include column;
 
@@ -43,8 +50,8 @@ $theblue:rgba(17, 95, 121, 0.851);
             z-index: -1;
             margin: 3rem 0 3rem;
             @include mobile {
-                margin: 3.4rem 0 0;
-                padding: 0 1rem;
+                margin: 1rem 0 0;
+                padding: 0;
                 font-size: 1.4rem;
                 line-height: 2.5rem;
             }
@@ -71,13 +78,14 @@ $theblue:rgba(17, 95, 121, 0.851);
                 &-name {
                     @extend .add-mood-quick__head-crop;
                 }
+                
             }
         }
         &-only {
             @include column;
             border-radius: 1rem;
             padding: 2.5rem 0 2rem;
-            width: 95%;
+            width: 98%;
             @include tablet {
                 padding: 2.5rem 0 2rem;
             }
@@ -88,6 +96,11 @@ $theblue:rgba(17, 95, 121, 0.851);
                 justify-content: space-between;
                 width: 86%;
                 max-width: 95rem;
+            }
+            @include mobile {
+                margin: 0;
+                border-bottom: .1rem black solid;
+                border-radius: 0;
             }
 
             &__buttons {
@@ -110,12 +123,15 @@ $theblue:rgba(17, 95, 121, 0.851);
                     width: 8rem;
                     height: 3rem;
                     &:hover {
-                        outline: darkgreen .6rem dotted;
+                        outline: darkgreen 0.6rem dotted;
                     }
                     &:active {
                         background-color: rgb(123, 221, 241);
                         color: black;
                     }
+                }
+                @include mobile {
+                    margin-top: 0;
                 }
             }
         }
@@ -123,9 +139,7 @@ $theblue:rgba(17, 95, 121, 0.851);
         &__level {
             @include column;
             width: 100%;
-            @include mobile {
-                
-            }
+
             @include desktop {
                 width: fit-content;
                 background-color: rgba(93, 56, 99, 0.402);
@@ -133,12 +147,18 @@ $theblue:rgba(17, 95, 121, 0.851);
                 padding: 2rem 1rem 1rem;
                 border-radius: 4rem;
             }
+            @include mobile {
+                margin-top: 1rem;
+            }
             &-head {
                 @include mobile-head-category;
                 margin: 0;
                 @include row;
                 @include tablet {
                     font-size: 2rem;
+                }
+                @include mobile {
+                    font-size: 1rem;
                 }
             }
             &-subhead {
@@ -165,7 +185,6 @@ $theblue:rgba(17, 95, 121, 0.851);
                         background-color: $periwinkle;
                         color: $aqua;
                         font-weight: bold;
-
                     }
                     &:not(:checked) + label {
                         border: 0.2rem solid $periwinkle;
@@ -213,7 +232,11 @@ $theblue:rgba(17, 95, 121, 0.851);
                 border-radius: 4rem;
                 margin-top: 0;
             }
+            
             &-all {
+                @include mobile {
+                    margin: 0;
+                }
                 &-head {
                     @include mobile-head-category;
                     margin-bottom: 0.65rem;
@@ -224,6 +247,9 @@ $theblue:rgba(17, 95, 121, 0.851);
                         text-wrap: wrap;
                         line-height: 2.2rem;
                         margin-bottom: 1rem;
+                    }
+                    @include mobile {
+                        font-size: 1rem;
                     }
                 }
             }
@@ -269,11 +295,17 @@ $theblue:rgba(17, 95, 121, 0.851);
                 margin: 0;
                 max-width: 28rem;
             }
+            @include mobile {
+                margin-top: 1rem;
+            }
+
             &-form {
+                
                 &-eq {
                     @include desktop {
                         @include row;
                     }
+                    
                 }
                 &-head {
                     @include mobile-head-category;
@@ -284,6 +316,10 @@ $theblue:rgba(17, 95, 121, 0.851);
                     @include desktop {
                         margin: 1.4rem 0 1rem;
                     }
+                    @include mobile {
+                        margin: 0;
+                        font-size: 1rem;
+                    }
                 }
                 &-hours {
                     @include column;
@@ -293,6 +329,11 @@ $theblue:rgba(17, 95, 121, 0.851);
                         margin: 0.5rem 0 0.8rem;
                         font-size: 1rem;
                         letter-spacing: 0.1rem;
+                        @include mobile {
+                            margin: .26rem 0 .2rem;
+                            font-size: .88rem;
+                            font-weight: 500;
+                        }
                     }
                     &-menu {
                         @extend .add-mood-quick__observations-irritability-menu;
@@ -305,17 +346,17 @@ $theblue:rgba(17, 95, 121, 0.851);
 
                     &-head {
                         @extend .add-mood-quick__sleep-form-hours-head;
-                        margin: 0 0 0.8rem;
+                        margin: 0 0 0.4rem;
                     }
                     &-options {
                         @include row;
                         justify-content: center;
                         background-color: $periwinkle-lite;
                         width: fit-content;
-                        padding: 0.8rem .5rem;
+                        padding: 0.8rem 0.5rem;
                         border-radius: 1rem;
                         border: 0.2rem double $periwinkle;
-                        
+
                         @include desktop {
                             width: 64%;
                             flex-wrap: wrap;
@@ -352,6 +393,9 @@ $theblue:rgba(17, 95, 121, 0.851);
                 justify-content: space-around;
                 height: 45rem;
             }
+            @include mobile {
+                margin: 1rem 0;
+            }
             &-form {
                 width: 90%;
                 &-eq {
@@ -367,9 +411,14 @@ $theblue:rgba(17, 95, 121, 0.851);
                     @include tablet {
                         font-size: 2rem;
                     }
+                    @include mobile {
+                        font-size: 1rem;
+                        margin: 0;
+                    }
                     &--note {
                         margin-top: 0.8rem;
                     }
+                    
                 }
                 &-box {
                     resize: none;
@@ -386,6 +435,9 @@ $theblue:rgba(17, 95, 121, 0.851);
                     &-title {
                         height: 2.5rem;
                         margin: 0 0 2rem;
+                        @include mobile {
+                            margin: 0;
+                        }
                     }
                     &-note {
                         height: 5rem;
@@ -407,6 +459,9 @@ $theblue:rgba(17, 95, 121, 0.851);
                 background-color: rgba(93, 56, 99, 0.402);
                 border-radius: 5rem;
             }
+            @include mobile {
+                display: none;
+            }
 
             &-option-eq {
                 display: none;
@@ -414,9 +469,16 @@ $theblue:rgba(17, 95, 121, 0.851);
             &-eq {
                 @include column;
                 width: 100%;
-                
             }
             &-head {
+                @include mobile {
+                    font-size: .9rem;
+                    margin-top: 0;
+                    letter-spacing: .1rem;
+                    width: 100%;
+                    padding: 0;
+                    margin: 0;
+                }
                 @include mobile-head-category;
                 width: 70%;
                 margin: 1.8rem 0 0.5rem;
@@ -431,6 +493,7 @@ $theblue:rgba(17, 95, 121, 0.851);
             &-menu {
                 @include column;
                 width: 100%;
+                
                 &-eq {
                     width: 100%;
                     @include row;
@@ -439,12 +502,15 @@ $theblue:rgba(17, 95, 121, 0.851);
                     padding: 0.5rem 0.2rem;
                     // border: double rgb(92, 41, 146) 0.2rem;
                     border-radius: 1.2rem;
-                    background-image: linear-gradient(to top right, rgb(199, 68, 68) , rgb(78, 233, 26));
+                    background-image: linear-gradient(to top right, rgb(199, 68, 68), rgb(78, 233, 26));
                     @include desktop {
                         // background-color: rgba(103, 17, 141, 0.754);
                         border-color: rgb(10, 131, 41);
                         padding: 1.5rem 0.5rem;
                         width: 95%;
+                    }
+                    @include mobile {
+                        margin: 0;
                     }
                 }
                 &-option {
@@ -466,14 +532,13 @@ $theblue:rgba(17, 95, 121, 0.851);
                         }
 
                         @include mobile {
-                            border-radius: .1rem;
+                            border-radius: 0.1rem;
                         }
 
                         &:hover {
                             transform: scale(2);
                             font-weight: 900;
                         }
-                        
 
                         & div {
                             @include column;
@@ -495,7 +560,7 @@ $theblue:rgba(17, 95, 121, 0.851);
 
                         &.selected {
                             border: 0;
-                            outline: dashed .2rem rgb(190, 44, 78);
+                            outline: dashed 0.2rem rgb(190, 44, 78);
                         }
                     }
                 }
@@ -515,7 +580,6 @@ $theblue:rgba(17, 95, 121, 0.851);
         margin: 1rem 0 0;
     }
 }
-
 
 .blue {
     background-color: $theblue;
