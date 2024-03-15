@@ -1,6 +1,20 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
-
+.selectedcount {
+    &-head {
+        margin: 0;
+        font-weight: 400;
+        font-size: 1rem;
+        color: white;
+    }
+    &-list {
+        padding: 0;
+        margin: .2rem;
+    }
+    &-item {
+        font-size: .8rem;
+    }
+}
 .userpage {
     @include column;
     &__head {

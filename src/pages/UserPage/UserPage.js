@@ -4,35 +4,44 @@ import Header from '../../components/Header/Header';
 import MobileNav from "../../components/MobileNav/MobileNav";
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { getFirestore, where, collection, query, orderBy, getDocs, doc, setDoc, getDoc } from "firebase/firestore";
+import { getFirestore, where, collection, query, orderBy, getDocs, doc, setDoc, getDoc, limit } from "firebase/firestore";
 
 function UserPage() {
     const [user] = useAuthState(auth);
     const [totalLogs, setTotalLogs] = useState(0);
     const [streak, setStreak] = useState(1);
-    const [selectedTriggers, setSelectedTriggers] = useState([]);
-    const [customTrigger, setCustomTrigger] = useState("");
+    // const [selectedTriggers, setSelectedTriggers] = useState([]);
+    // const [customTrigger, setCustomTrigger] = useState("");
     const [emotionCounts, setEmotionCounts] = useState({});
+    const [qualityCounts, setQualityCounts] = useState({});
+    const [selectedQualityLogs, setSelectedQualityLogs] = useState([]);
+    const [selectedEmotionLogs, setSelectedEmotionLogs] = useState([]);
+
+    // useEffect(() => {
+    //     if (user) {
+    //         fetchUserTriggers(user.uid);
+    //     }
+    // }, [user]);
 
     useEffect(() => {
         if (user) {
-            fetchUserTriggers(user.uid);
+            fetchQualityCounts(user.uid);
         }
     }, [user]);
 
     useEffect(() => {
         const fetchTotalLogs = async () => {
-        try {
-            const db = getFirestore();
-            const logsCollection = collection(db, 'moodlogs');
-            const logsQuery = query(logsCollection, where('uid', '==', user.uid)); 
-            const logsSnapshot = await getDocs(logsQuery);
-            const logsCount = logsSnapshot.size;
-            setTotalLogs(logsCount);
-        } catch (error) {
-            console.error("Error fetching total logs:", error);
-        }
-    };
+            try {
+                const db = getFirestore();
+                const logsCollection = collection(db, 'moodlogs');
+                const logsQuery = query(logsCollection, where('uid', '==', user.uid));
+                const logsSnapshot = await getDocs(logsQuery);
+                const logsCount = logsSnapshot.size;
+                setTotalLogs(logsCount);
+            } catch (error) {
+                console.error("Error fetching total logs:", error);
+            }
+        };
         fetchTotalLogs();
 
     }, []);
@@ -114,85 +123,150 @@ function UserPage() {
             console.error("Error fetching emotion counts:", error);
         }
     };
-    
-    const fetchUserTriggers = async (uid) => {
+
+    // const fetchUserTriggers = async (uid) => {
+    //     try {
+    //         const userDoc = await getDoc(doc(getFirestore(), "userTriggers", uid));
+    //         if (userDoc.exists() && userDoc.data().uid === uid) {
+    //             setSelectedTriggers(userDoc.data().triggers);
+    //         }
+    //     } catch (error) {
+    //         console.error("Error fetching user triggers:", error);
+    //     }
+    // };
+
+    // const triggerOptions = [
+    //     "myself",
+    //     "work",
+    //     "partner",
+    //     "family",
+    //     "friends",
+    //     "sleep",
+    //     "health",
+    //     "food",
+    //     "exercise",
+    //     "finance",
+    //     "home",
+    //     "hobbies"
+    // ];
+    // const handleTriggerSelection = (trigger) => {
+    //     if (selectedTriggers.length < 8 && !selectedTriggers.includes(trigger)) {
+    //         setSelectedTriggers((prevTriggers) => {
+    //             const updatedTriggers = [...prevTriggers, trigger];
+    //             saveUserTriggers(updatedTriggers);
+    //             return updatedTriggers;
+    //         });
+    //     } else {
+    //         alert("Maximum 8 reached");
+    //     }
+    // };
+
+    // const handleCustomTriggerChange = (event) => {
+    //     setCustomTrigger(event.target.value);
+    // };
+
+    // const handleCustomTriggerAdd = async () => {
+    //     if (selectedTriggers.length < 8) {
+    //         if (customTrigger.trim() !== "" && !selectedTriggers.includes(customTrigger.trim())) {
+    //             const updatedTriggers = [...selectedTriggers, customTrigger.trim()];
+    //             setSelectedTriggers(updatedTriggers);
+    //             setCustomTrigger("");
+    //             // Save the updated triggers to the database
+    //             await saveUserTriggers(updatedTriggers);
+    //         }
+    //     } else {
+    //         // Disable the input field or button to prevent adding more triggers
+    //         document.querySelector('.userpage__triggers-add-input').disabled = true;
+    //         document.querySelector('.userpage__triggers-add-press').disabled = true;
+    //         // Show a warning message when the maximum number of triggers is reached
+    //         alert("Maximum 8 triggers reached");
+    //     }
+    // };
+
+    // const handleTriggerRemoval = (trigger) => {
+    //     setSelectedTriggers((prevTriggers) => {
+    //         const updatedTriggers = prevTriggers.filter((item) => item !== trigger);
+    //         saveUserTriggers(updatedTriggers);
+    //         return updatedTriggers;
+    //     });
+    // };
+
+    // const saveUserTriggers = async (triggers) => {
+    //     if (user) {
+    //         try {
+    //             const userDocRef = doc(getFirestore(), "userTriggers", user.uid);
+    //             await setDoc(userDocRef, { uid: user.uid, triggers });
+    //         } catch (error) {
+    //             console.error("Error saving user triggers:", error);
+    //         }
+    //     }
+    // };
+
+    const fetchQualityCounts = async (uid) => {
         try {
-            const userDoc = await getDoc(doc(getFirestore(), "userTriggers", uid));
-            if (userDoc.exists() && userDoc.data().uid === uid) {
-                setSelectedTriggers(userDoc.data().triggers);
-            }
-        } catch (error) {
-            console.error("Error fetching user triggers:", error);
-        }
-    };
+            const db = getFirestore();
+            const logsCollection = collection(db, "moodlogs");
+            const logsQuery = query(logsCollection, where("uid", "==", uid));
+            const logsSnapshot = await getDocs(logsQuery);
 
-    const triggerOptions = [
-        "myself",
-        "work",
-        "partner",
-        "family",
-        "friends",
-        "sleep",
-        "health",
-        "food",
-        "exercise",
-        "finance",
-        "home",
-        "hobbies"
-    ];
-    const handleTriggerSelection = (trigger) => {
-        if (selectedTriggers.length < 8 && !selectedTriggers.includes(trigger)) {
-            setSelectedTriggers((prevTriggers) => {
-                const updatedTriggers = [...prevTriggers, trigger];
-                saveUserTriggers(updatedTriggers);
-                return updatedTriggers;
+            let counts = {};
+
+            logsSnapshot.forEach((doc) => {
+                const { quality } = doc.data();
+                console.log("Quality:", quality);
+                counts[quality] = (counts[quality] || 0) + 1;
             });
-        } else {
-            alert("Maximum 8 reached");
+
+            setQualityCounts(counts);
+        } catch (error) {
+            console.error("Error fetching quality counts:", error);
         }
     };
 
-    const handleCustomTriggerChange = (event) => {
-        setCustomTrigger(event.target.value);
-    };
+    const handleQualityItemClick = async (quality) => {
+        try {
+            const db = getFirestore();
+            const logsCollection = collection(db, "moodlogs");
+            const logsQuery = query(logsCollection, where("uid", "==", user.uid), where("quality", "==", quality), orderBy("date", "desc"), limit(7));
+            const logsSnapshot = await getDocs(logsQuery);
 
-    const handleCustomTriggerAdd = async () => {
-        if (selectedTriggers.length < 8) {
-            if (customTrigger.trim() !== "" && !selectedTriggers.includes(customTrigger.trim())) {
-                const updatedTriggers = [...selectedTriggers, customTrigger.trim()];
-                setSelectedTriggers(updatedTriggers);
-                setCustomTrigger("");
-                // Save the updated triggers to the database
-                await saveUserTriggers(updatedTriggers);
-            }
-        } else {
-            // Disable the input field or button to prevent adding more triggers
-            document.querySelector('.userpage__triggers-add-input').disabled = true;
-            document.querySelector('.userpage__triggers-add-press').disabled = true;
-            // Show a warning message when the maximum number of triggers is reached
-            alert("Maximum 8 triggers reached");
+            const logsData = logsSnapshot.docs.map((doc) => {
+                const log = doc.data();
+                return {
+                    id: doc.id,
+                    ...log,
+                    date: log.date.toDate().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })
+                };
+            });
+            
+            setSelectedQualityLogs(logsData);
+        } catch (error) {
+            console.error("Error fetching logs for selected quality:", error);
         }
     };
 
-    const handleTriggerRemoval = (trigger) => {
-        setSelectedTriggers((prevTriggers) => {
-            const updatedTriggers = prevTriggers.filter((item) => item !== trigger);
-            saveUserTriggers(updatedTriggers);
-            return updatedTriggers;
-        });
-    };
+    const handleEmotionItemClick = async (emotion) => {
+        try {
+            const db = getFirestore();
+            const logsCollection = collection(db, "moodlogs");
+            const logsQuery = query(logsCollection, where("uid", "==", user.uid), where("emotion", "==", emotion), orderBy("date", "desc"));
+            console.log("Logs query:", logsQuery);
 
-    const saveUserTriggers = async (triggers) => {
-        if (user) {
-            try {
-                const userDocRef = doc(getFirestore(), "userTriggers", user.uid);
-                await setDoc(userDocRef, { uid: user.uid, triggers });
-            } catch (error) {
-                console.error("Error saving user triggers:", error);
-            }
+            const logsSnapshot = await getDocs(logsQuery);
+            console.log("Logs snapshot:", logsSnapshot);
+
+            const logsData = logsSnapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data()
+            }));
+            console.log("Logs data:", logsData);
+
+            setSelectedEmotionLogs(logsData);
+            console.log("Selected emotion logs:", selectedEmotionLogs);
+        } catch (error) {
+            console.error("Error fetching logs for selected emotion:", error);
         }
     };
-
 
     return (
         <>
@@ -218,15 +292,50 @@ function UserPage() {
 
                 <section className="userpage__totals">
                     <h3 className="userpage__totals-head">Your Counters</h3>
-                <h3 className="userpage__totals-emotions-head">EMOTIONS you've logged:</h3>
-                <ul className="userpage__totals-emotions">
+                    <h3 className="userpage__totals-emotions-head">EMOTIONS you've logged -</h3>
+                    <ul className="userpage__totals-emotions">
                         {Object.entries(emotionCounts).map(([emotion, count]) => (
-                            <li key={emotion} className="userpage__totals-emotions-item">
+                            <li key={emotion} className="userpage__totals-emotions-item" onClick={() => handleEmotionItemClick(emotion)}>
                                 {emotion}: {count}
                             </li>
                         ))}
                     </ul>
+
+                    {selectedEmotionLogs.length > 0 && (
+                        <div className="userpage__selected-emotion-logs">
+                            <h3>Logs for selected emotion: {selectedEmotionLogs[0].emotion}</h3>
+                            <ul>
+                                {selectedEmotionLogs.map((log) => (
+                                    <li key={log.id}>
+                                        Date: {log.date.toDate().toLocaleDateString()}, Title: {log.title}, Notes: {log.notes}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+
+                    <h3 className="userpage__totals-emotions-head">SLEEP QUALITY is typically -</h3>
+                    <ul className="userpage__totals-emotions">
+                        {Object.entries(qualityCounts).map(([quality, count]) => (
+                            <li key={quality} className="userpage__totals-emotions-item" onClick={() => handleQualityItemClick(quality)}>
+                                {quality}: {count}
+                            </li>
+                        ))}
+                    </ul>
                 </section>
+
+                {selectedQualityLogs.length > 0 && (
+                    <div className="selectedcount">
+                        <h3 className="selectedcount-head">Most recent logs with <b>{selectedQualityLogs[0].quality} Sleep Quality</b> </h3>
+                        <ul className="selectedcount-list">
+                            {selectedQualityLogs.map((log) => (
+                                <li key={log.id} className="selectedcount-item">
+                                    {log.date.toDate().toLocaleDateString()}, {log.date.toDate().toLocaleString('en-US', { weekday: 'long' })}, {log.date.toDate().toLocaleTimeString()}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
 
                 {/* <section className="userpage__triggers">
                     <h3 className="userpage__triggers-head">Active Triggers</h3>
