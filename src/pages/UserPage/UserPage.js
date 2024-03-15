@@ -12,6 +12,7 @@ function UserPage() {
     const [streak, setStreak] = useState(1);
     const [selectedTriggers, setSelectedTriggers] = useState([]);
     const [customTrigger, setCustomTrigger] = useState("");
+    const [emotionCounts, setEmotionCounts] = useState({});
 
     useEffect(() => {
         if (user) {
@@ -87,6 +88,32 @@ function UserPage() {
             calculateStreak();
         }
     }, [user]);
+
+    useEffect(() => {
+        if (user) {
+            fetchEmotionCounts(user.uid);
+        }
+    }, [user]);
+
+    const fetchEmotionCounts = async (uid) => {
+        try {
+            const db = getFirestore();
+            const logsCollection = collection(db, "moodlogs");
+            const logsQuery = query(logsCollection, where("uid", "==", uid));
+            const logsSnapshot = await getDocs(logsQuery);
+
+            let counts = {};
+
+            logsSnapshot.forEach((doc) => {
+                const { emotion } = doc.data();
+                counts[emotion] = (counts[emotion] || 0) + 1;
+            });
+
+            setEmotionCounts(counts);
+        } catch (error) {
+            console.error("Error fetching emotion counts:", error);
+        }
+    };
     
     const fetchUserTriggers = async (uid) => {
         try {
@@ -181,11 +208,23 @@ function UserPage() {
                 <section className="userpage__counters">
                     <ul className='userpage__counters-eq'>
                         <li className='userpage__counters-counter'>
-                            TOTAL ENTRIES : {totalLogs}
+                            TOTAL : {totalLogs}
                         </li>
                         <li className='userpage__counters-counter userpage__counters-streak'>
-                            LOG STREAK : {streak}
+                            STREAK ❤️‍🔥 : {streak}
                         </li>
+                    </ul>
+                </section>
+
+                <section className="userpage__totals">
+                    <h3 className="userpage__totals-head">Your Counters</h3>
+                <h3 className="userpage__totals-emotions-head">EMOTIONS you've logged:</h3>
+                <ul className="userpage__totals-emotions">
+                        {Object.entries(emotionCounts).map(([emotion, count]) => (
+                            <li key={emotion} className="userpage__totals-emotions-item">
+                                {emotion}: {count}
+                            </li>
+                        ))}
                     </ul>
                 </section>
 

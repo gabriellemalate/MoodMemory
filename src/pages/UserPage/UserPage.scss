@@ -26,13 +26,14 @@
             padding: 0;
             @include mobile {
                 margin: 0;
+                @include row;
             }
         }
 
         &-counter {
             align-self: flex-start;
             margin: 0 1rem 1rem 1rem;
-            font-size: 1.2rem;
+            font-size: .88rem;
             font-weight: 600;
             color: purple;
             background-color: rgba(150, 239, 244, 0.747);
@@ -43,6 +44,40 @@
         // &-streak {
         //     display: none;
         // }
+    }
+    &__totals {
+        width: 100%;
+        @include column;
+        &-head {
+            width: 90%;
+            background-color: rgb(12, 54, 96);
+            border-radius: .2rem;
+            margin-bottom: 0;
+            @include mobile {
+                font-size: 1rem;
+            }
+        }
+        &-emotions {
+            padding: 0;
+            width: 100%;
+            @include row;
+            &-head {
+                margin: 0;
+                width: 100%;
+                border-bottom: blue 1px solid;
+                color: rgb(12, 54, 96);
+                font-size: .9rem;
+                letter-spacing: .06rem;
+                margin-top: .6rem;
+            }
+            &-item {
+                margin: 0 .2rem;
+                font-size: .9rem;
+                background-color: rgba(120, 10, 113, 0.926);
+                border-radius: .4rem;
+                padding: .1rem .4rem;
+            }
+        }
     }
     &__triggers {
         @include column;
