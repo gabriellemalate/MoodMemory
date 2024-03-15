@@ -6,10 +6,16 @@ import Faq from "../../components/Faq/Faq"
 import Header from '../../components/Header/Header';
 import MobileNav from '../../components/MobileNav/MobileNav';
 import Footer from '../../components/Footer/Footer';
+import { auth } from "../../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { getFirestore, where, collection, query, orderBy, getDocs, doc, setDoc, getDoc } from "firebase/firestore";
 
 function MoodHomePage() {
+    const [user] = useAuthState(auth);
     const [scrollToFAQ, setScrollToFAQ] = useState(false);
     const faqRef = useRef(null);
+    const [selectedTriggers, setSelectedTriggers] = useState([]);
+    const [customTrigger, setCustomTrigger] = useState("");
 
     useEffect(() => {
         // scroll to the FAQ section when the component mounts
@@ -18,6 +24,84 @@ function MoodHomePage() {
             setScrollToFAQ(false);
         }
     }, [scrollToFAQ]);
+
+    const fetchUserTriggers = async (uid) => {
+        try {
+            const userDoc = await getDoc(doc(getFirestore(), "userTriggers", uid));
+            if (userDoc.exists() && userDoc.data().uid === uid) {
+                setSelectedTriggers(userDoc.data().triggers);
+            }
+        } catch (error) {
+            console.error("Error fetching user triggers:", error);
+        }
+    };
+
+    const triggerOptions = [
+        "myself",
+        "work",
+        "partner",
+        "family",
+        "friends",
+        "sleep",
+        "health",
+        "food",
+        "exercise",
+        "finance",
+        "home",
+        "hobbies"
+    ];
+    const handleTriggerSelection = (trigger) => {
+        if (selectedTriggers.length < 8 && !selectedTriggers.includes(trigger)) {
+            setSelectedTriggers((prevTriggers) => {
+                const updatedTriggers = [...prevTriggers, trigger];
+                saveUserTriggers(updatedTriggers);
+                return updatedTriggers;
+            });
+        } else {
+            alert("Maximum 8 reached");
+        }
+    };
+
+    const handleCustomTriggerChange = (event) => {
+        setCustomTrigger(event.target.value);
+    };
+
+    const handleCustomTriggerAdd = async () => {
+        if (selectedTriggers.length < 8) {
+            if (customTrigger.trim() !== "" && !selectedTriggers.includes(customTrigger.trim())) {
+                const updatedTriggers = [...selectedTriggers, customTrigger.trim()];
+                setSelectedTriggers(updatedTriggers);
+                setCustomTrigger("");
+                // Save the updated triggers to the database
+                await saveUserTriggers(updatedTriggers);
+            }
+        } else {
+            // Disable the input field or button to prevent adding more triggers
+            document.querySelector('.userpage__triggers-add-input').disabled = true;
+            document.querySelector('.userpage__triggers-add-press').disabled = true;
+            // Show a warning message when the maximum number of triggers is reached
+            alert("Maximum 8 triggers reached");
+        }
+    };
+
+    const handleTriggerRemoval = (trigger) => {
+        setSelectedTriggers((prevTriggers) => {
+            const updatedTriggers = prevTriggers.filter((item) => item !== trigger);
+            saveUserTriggers(updatedTriggers);
+            return updatedTriggers;
+        });
+    };
+
+    const saveUserTriggers = async (triggers) => {
+        if (user) {
+            try {
+                const userDocRef = doc(getFirestore(), "userTriggers", user.uid);
+                await setDoc(userDocRef, { uid: user.uid, triggers });
+            } catch (error) {
+                console.error("Error saving user triggers:", error);
+            }
+        }
+    };
 
     return (
         <>
@@ -49,10 +133,52 @@ function MoodHomePage() {
                         </div>
 
                     </section>
-                        <Faq ref={faqRef} />
+                    <Faq ref={faqRef} />
 
+                    <section className="userpage__triggers">
+                        <h3 className="userpage__triggers-head">Active Triggers</h3>
+                        <div className="userpage__triggers-eq">
+                            <div className="userpage__triggers-options">
+                                <ul className="userpage__triggers-list">
+                                    {triggerOptions.map((trigger, index) => (
+                                        <li
+                                            key={index}
+                                            className={`userpage__triggers-list-item ${selectedTriggers.includes(trigger) ? 'selected' : ''}`}
+                                            onClick={() => handleTriggerSelection(trigger)}>
+                                            {trigger}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <article className="userpage__triggers-add">
+                                    <textarea
+                                        className="userpage__triggers-add-input"
+                                        placeholder="custom trigger"
+                                        value={customTrigger}
+                                        onChange={handleCustomTriggerChange}
+                                        disabled={selectedTriggers.length >= 8} // Disable the input when maximum limit is reached
+                                    />
+                                    <button
+                                        className="userpage__triggers-add-press"
+                                        onClick={handleCustomTriggerAdd}
+                                        disabled={selectedTriggers.length >= 8} // Disable the button when maximum limit is reached
+                                    >
+                                        +
+                                    </button>
+                                </article>
+                            </div>
+                            <div className="userpage__triggers-user">
+                                {selectedTriggers.map((trigger, index) => (
+                                    <p
+                                        key={index} className="userpage__triggers-user-item"
+                                        onClick={() => handleTriggerRemoval(trigger)}>
+                                        {trigger}
+                                    </p>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
                 </div>
-                <Footer/>
+                <Footer />
             </main>
             <MobileNav />
         </>

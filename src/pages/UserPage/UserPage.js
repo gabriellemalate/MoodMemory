@@ -228,7 +228,7 @@ function UserPage() {
                     </ul>
                 </section>
 
-                <section className="userpage__triggers">
+                {/* <section className="userpage__triggers">
                     <h3 className="userpage__triggers-head">Active Triggers</h3>
                     <div className="userpage__triggers-eq">
                         <div className="userpage__triggers-options">
@@ -269,7 +269,7 @@ function UserPage() {
                             ))}
                         </div>
                     </div>
-                </section>
+                </section> */}
 
                 <section className='userpage__faq'>
                     <div className='userpage__faq-eq'>
