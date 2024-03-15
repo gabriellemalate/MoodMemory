@@ -439,7 +439,7 @@ $theblue:rgb(17, 95, 121);
                     padding: 0.5rem 0.2rem;
                     // border: double rgb(92, 41, 146) 0.2rem;
                     border-radius: 1.2rem;
-                    background-image: linear-gradient(to top right, rgb(255, 106, 0) , rgb(78, 233, 26));
+                    background-image: linear-gradient(to top right, rgb(199, 68, 68) , rgb(78, 233, 26));
                     @include desktop {
                         // background-color: rgba(103, 17, 141, 0.754);
                         border-color: rgb(10, 131, 41);
@@ -528,7 +528,7 @@ $thegreen: green;
 .green {
     background-color: $thegreen;
 }
-$thered: red;
+$thered: rgb(255, 0, 123);
 .red {
     background-color: $thered;
 }

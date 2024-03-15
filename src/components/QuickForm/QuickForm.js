@@ -661,24 +661,24 @@ const QuickForm = () => {
                                             </label>
                                         </button>
                                     </li>
-
                                     <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`blue add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'sad' ? 'selected' : ''}`} type="button" >
+                                        <button className={`blue add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'down' ? 'selected' : ''}`} type="button" >
                                             <input
                                                 name="emotion"
                                                 className='add-mood-quick__emote-option-eq'
                                                 type='radio'
-                                                id='sad'
-                                                value='sad'
-                                                checked={formData.emoji === 'sad'}
-                                                onChange={() => handleInputChange('emotion', 'sad', 'sad')}
+                                                id='down'
+                                                value='down'
+                                                checked={formData.emoji === 'down'}
+                                                onChange={() => handleInputChange('emotion', 'down', 'down')}
                                             />
-                                            <label htmlFor='sad'>
-                                                <img alt="sad" src={sad} />
-                                                <h4>sad</h4>
+                                            <label htmlFor='down'>
+                                                <img alt="down" src={down} />
+                                                <h4>down</h4>
                                             </label>
                                         </button>
                                     </li>
+                                    
                                     <li className='add-mood-quick__emote-menu-option'>
                                         <button className={`orange add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'irritable' ? 'selected' : ''}`} type="button" >
                                             <input
@@ -905,19 +905,19 @@ const QuickForm = () => {
                                     </li>
 
                                     <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`deepblue add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'down' ? 'selected' : ''}`} type="button" >
+                                        <button className={`deepblue add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'sad' ? 'selected' : ''}`} type="button" >
                                             <input
                                                 name="emotion"
                                                 className='add-mood-quick__emote-option-eq'
                                                 type='radio'
-                                                id='down'
-                                                value='down'
-                                                checked={formData.emoji === 'down'}
-                                                onChange={() => handleInputChange('emotion', 'down', 'down')}
+                                                id='sad'
+                                                value='sad'
+                                                checked={formData.emoji === 'sad'}
+                                                onChange={() => handleInputChange('emotion', 'sad', 'sad')}
                                             />
-                                            <label htmlFor='down'>
-                                                <img alt="down" src={down} />
-                                                <h4>down</h4>
+                                            <label htmlFor='sad'>
+                                                <img alt="sad" src={sad} />
+                                                <h4>sad</h4>
                                             </label>
                                         </button>
                                     </li>
