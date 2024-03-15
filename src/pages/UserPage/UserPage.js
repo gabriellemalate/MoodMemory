@@ -260,7 +260,7 @@ function UserPage() {
             const logsData = logsSnapshot.docs.map((doc) => ({
                 id: doc.id,
                 ...doc.data()
-            }));
+            })); 
 
             setSelectedQualityLogs(logsData);
         } catch (error) {
@@ -274,22 +274,27 @@ function UserPage() {
 
     const handleEmotionItemClick = async (emotion) => {
         try {
-            const db = getFirestore();
-            const logsCollection = collection(db, "moodlogs");
-            const logsQuery = query(logsCollection, where("uid", "==", user.uid), where("emotion", "==", emotion), orderBy("date", "desc"));
-            console.log("Logs query:", logsQuery);
-
-            const logsSnapshot = await getDocs(logsQuery);
-            console.log("Logs snapshot:", logsSnapshot);
-
-            const logsData = logsSnapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data()
-            }));
-            console.log("Logs data:", logsData);
-
-            setSelectedEmotionLogs(logsData);
-            console.log("Selected emotion logs:", selectedEmotionLogs);
+            if (selectedEmotionLogs[0]?.emotion === emotion) {
+                // If the currently selected emotion matches the clicked emotion, clear the selected logs
+                setSelectedEmotionLogs([]);
+            } else {
+                const db = getFirestore();
+                const logsCollection = collection(db, "moodlogs");
+                const logsQuery = query(logsCollection, where("uid", "==", user.uid), where("emotion", "==", emotion), orderBy("date", "desc"), limit(12));
+                console.log("Logs query:", logsQuery);
+    
+                const logsSnapshot = await getDocs(logsQuery);
+                console.log("Logs snapshot:", logsSnapshot);
+    
+                const logsData = logsSnapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
+                console.log("Logs data:", logsData);
+    
+                setSelectedEmotionLogs(logsData);
+                console.log("Selected emotion logs:", selectedEmotionLogs);
+            }
         } catch (error) {
             console.error("Error fetching logs for selected emotion:", error);
         }
@@ -320,6 +325,7 @@ function UserPage() {
                 <section className="userpage__totals">
                     <h3 className="userpage__totals-head">Your Counters</h3>
                     <h3 className="userpage__totals-emotions-head">EMOTIONS you've logged -</h3>
+                    <p className="instruction">click one to show entries with that attribute</p>
                     <ul className="userpage__totals-emotions">
                         {Object.entries(emotionCounts).map(([emotion, count]) => (
                             <li key={emotion} className="userpage__totals-emotions-item" onClick={() => handleEmotionItemClick(emotion)}>
@@ -342,6 +348,7 @@ function UserPage() {
                     )}
 
                     <h3 className="userpage__totals-emotions-head">SLEEP QUALITY is typically -</h3>
+                    <p className="instruction">click one to show - max. 7 - recent entries</p>
                     <ul className="userpage__totals-emotions">
                         {Object.entries(qualityCounts).map(([quality, count]) => (
                             <li key={quality} className="userpage__totals-emotions-item" onClick={() => handleQualityItemClick(quality)}>

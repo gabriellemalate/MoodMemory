@@ -13,7 +13,13 @@
     }
     &-item {
         font-size: .8rem;
+        text-wrap: nowrap;
     }
+}
+.instruction {
+    margin: 0;
+    font-size: .9rem;
+    color: aliceblue;
 }
 .userpage {
     @include column;
