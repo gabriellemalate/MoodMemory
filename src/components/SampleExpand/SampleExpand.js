@@ -43,23 +43,23 @@ function SampleExpand() {
     const handleDeleteComment = async (commentId) => {
         const confirmDelete = window.confirm('Are you sure you want to delete this comment?');
 
-    if (confirmDelete) {
-        try {
-            // Filter out the comment to be deleted
-            const updatedComments = comments.filter(comment => comment.id !== commentId);
+        if (confirmDelete) {
+            try {
+                // Filter out the comment to be deleted
+                const updatedComments = comments.filter(comment => comment.id !== commentId);
 
-            // Update Firestore with the updated comments
-            const logRef = doc(db, 'moodlogs', logData.id);
-            await updateDoc(logRef, { comments: updatedComments });
+                // Update Firestore with the updated comments
+                const logRef = doc(db, 'moodlogs', logData.id);
+                await updateDoc(logRef, { comments: updatedComments });
 
-            // Update local state
-            setComments(updatedComments);
-            console.log('Comment successfully deleted from Firestore!');
-        } catch (error) {
-            console.error('Error deleting comment from Firestore: ', error);
+                // Update local state
+                setComments(updatedComments);
+                console.log('Comment successfully deleted from Firestore!');
+            } catch (error) {
+                console.error('Error deleting comment from Firestore: ', error);
+            }
         }
-    }
-};
+    };
 
     const handleDelete = async () => {
         const confirmDelete = window.confirm('Are you sure you want to delete this entry?');
@@ -122,11 +122,11 @@ function SampleExpand() {
 
                             <div className='open-bottom-left__obs'>
                                 <p className='open-bottom-left__obs-level'>
-                                    Irritability 
+                                    Irritability
                                     <span className='open-bottom-left__obs-irr' > 0</span>
                                 </p>
                                 <p className='open-bottom-left__obs-level'>
-                                    Anxiety 
+                                    Anxiety
                                     <span className='open-bottom-left__obs-anx'> 1</span>
                                 </p>
 
@@ -141,28 +141,27 @@ function SampleExpand() {
                         <h2 className='open__notes-head'>Your Notes</h2>
                         <div className='open__notes-frame'>
                             <p className='open__notes-initial'>This log won't affect your total count, search, or sort, nor show on your maps.</p>
-                            
-                                <>
-                                    <h5 className='open__notes-pophead' >Comments:</h5>
-                                
-                                        <div className='open__notes-comment'>
-                                            <b>Add and delete comments</b> to the entries in your library, besides this one.
-                                            <button className='open__notes-comment--button' onClick={() => handleDeleteComment}>X</button>
-                                        </div>
-                                        <div className='open__notes-comment'>
-                                            <b>Clicking on a mood label,</b> will show you all the entries you have of that exact kind.
-                                            <button className='open__notes-comment--button' onClick={() => handleDeleteComment}>X</button>
-                                        </div>
-                                        <div className='open__notes-comment'>
-                                            <b>Toggle your maps</b> to show your progression per year / month / week / and day since you first started. 
-                                            <button className='open__notes-comment--button' onClick={() => handleDeleteComment}>X</button>
-                                        </div>
-                                        <div className='open__notes-comment'>
-                                            Yes, you can log multiple entries a day.
-                                            <button className='open__notes-comment--button' onClick={() => handleDeleteComment}>X</button>
-                                        </div>
-                                </>
-                            
+
+                            <>
+                                <h5 className='open__notes-pophead' >Comments:</h5>
+
+                                <div className='open__notes-comment'>
+                                    <b>Add and delete comments</b> to the entries in your library, besides this one.
+                                    <button className='open__notes-comment--button' onClick={() => handleDeleteComment}>X</button>
+                                </div>
+                                <div className='open__notes-comment'>
+                                    <b>Info Page</b> will show you all your log statistics!
+                                    <button className='open__notes-comment--button' onClick={() => handleDeleteComment}>X</button>
+                                </div>
+                                <div className='open__notes-comment'>
+                                    <b>Toggle your maps</b> to show your progression per year / month / week / and day since you first started.
+                                    <button className='open__notes-comment--button' onClick={() => handleDeleteComment}>X</button>
+                                </div>
+                                <div className='open__notes-comment'>
+                                    Yes, you can log multiple entries a day.
+                                    <button className='open__notes-comment--button' onClick={() => handleDeleteComment}>X</button>
+                                </div>
+                            </>
                         </div>
                     </p>
                     <form className='open-add'>
@@ -199,7 +198,6 @@ function SampleExpand() {
                     <button onClick={handleCancelDelete}>Cancel</button>
                 </div>
             )}
-
         </>
     );
 }
