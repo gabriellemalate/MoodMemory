@@ -483,8 +483,61 @@ const QuickForm = () => {
                                 {(!formData.emoji && !errors.emoji) && <span className="required">*</span>}Which best represents how you feel?</div>
                             <article className='add-mood-quick__emote-menu'>
                                 <ul className='add-mood-quick__emote-menu-eq'>
+                                <li className='add-mood-quick__emote-menu-option'>
+                                        <button className={`blue add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'anxious' ? 'selected' : ''}`} type="button" >
+                                            <input
+                                                className='add-mood-quick__emote-option-eq'
+                                                type='radio'
+                                                id='anxious'
+                                                value='anxious'
+                                                checked={formData.emoji === 'anxious'}
+                                                onChange={() => handleInputChange('emotion', 'anxious', 'anxious')}
+                                            />
+                                            <label htmlFor='anxious'>
+                                                <img alt="anxious" src={anxious} />
+                                                <h4>anxious</h4>
+                                            </label>
+                                        </button>
+                                    </li>
+
                                     <li className='add-mood-quick__emote-menu-option'>
-                                        <button type="button" className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'motivated' ? 'selected' : ''}`}>
+                                        <button className={`yellow add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'tired' ? 'selected' : ''}`} type="button" >
+                                            <input
+                                                name="emotion"
+                                                className='add-mood-quick__emote-option-eq'
+                                                type='radio'
+                                                id='tired'
+                                                value='tired'
+                                                checked={formData.emoji === 'tired'}
+                                                onChange={() => handleInputChange('emotion', 'tired', 'tired')}
+                                            />
+                                            <label htmlFor='tired'>
+                                                <img alt="tired" src={tired} />
+                                                <h4>tired</h4>
+                                            </label>
+                                        </button>
+                                    </li>
+
+                                    <li className='add-mood-quick__emote-menu-option'>
+                                        <button className={`green add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'happy' ? 'selected' : ''}`} type="button" >
+                                            <input
+                                                name="emotion"
+                                                className='add-mood-quick__emote-option-eq'
+                                                type='radio'
+                                                id='happy'
+                                                value='happy'
+                                                checked={formData.emoji === 'happy'}
+                                                onChange={() => handleInputChange('emotion', 'happy', 'happy')}
+                                            />
+                                            <label htmlFor='happy'>
+                                                <img alt="happy" src={happy} />
+                                                <h4>happy</h4>
+                                            </label>
+                                        </button>
+                                    </li>
+
+                                    <li className='add-mood-quick__emote-menu-option'>
+                                        <button type="button" className={`red add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'motivated' ? 'selected' : ''}`}>
                                             <input
                                                 name="emotion"
                                                 className='add-mood-quick__emote-option-eq'
@@ -500,24 +553,117 @@ const QuickForm = () => {
                                             </label>
                                         </button>
                                     </li>
+
                                     <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'anxious' ? 'selected' : ''}`} type="button" >
+                                        <button className={`red add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'excited' ? 'selected' : ''}`} type="button" >
                                             <input
+                                                name="emotion"
                                                 className='add-mood-quick__emote-option-eq'
                                                 type='radio'
-                                                id='anxious'
-                                                value='anxious'
-                                                checked={formData.emoji === 'anxious'}
-                                                onChange={() => handleInputChange('emotion', 'anxious', 'anxious')}
+                                                id='excited'
+                                                value='excited'
+                                                checked={formData.emoji === 'excited'}
+                                                onChange={() => handleInputChange('emotion', 'excited', 'excited')}
                                             />
-                                            <label htmlFor='anxious'>
-                                                <img alt="anxious" src={anxious} />
-                                                <h4>anxious</h4>
+                                            <label htmlFor='excited'>
+                                                <img alt="excited" src={excited} />
+                                                <h4>excited</h4>
                                             </label>
                                         </button>
                                     </li>
+
                                     <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'relaxed' ? 'selected' : ''}`}
+                                        <button className={`blue add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'unmotivated' ? 'selected' : ''}`} type="button" >
+                                            <input
+                                                name="emotion"
+                                                className='add-mood-quick__emote-option-eq'
+                                                type='radio'
+                                                id='unmotivated'
+                                                value='unmotivated'
+                                                checked={formData.emoji === 'unmotivated'}
+                                                onChange={() => handleInputChange('emotion', 'unmotivated', 'unmotivated')}
+                                            />
+                                            <label htmlFor='unmotivated'>
+                                                <img alt="unmotivated" src={unmotivated} />
+                                                <h4>unmotivated</h4>
+                                            </label>
+                                        </button>
+                                    </li>
+
+                                    <li className='add-mood-quick__emote-menu-option'>
+                                        <button className={`yellow add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'annoyed' ? 'selected' : ''}`} type="button" >
+                                            <input
+                                                name="emotion"
+                                                className='add-mood-quick__emote-option-eq'
+                                                type='radio'
+                                                id='annoyed'
+                                                value='annoyed'
+                                                checked={formData.emoji === 'annoyed'}
+                                                onChange={() => handleInputChange('emotion', 'annoyed', 'annoyed')}
+                                            />
+                                            <label htmlFor='annoyed'>
+                                                <img alt="annoyed" src={annoyed} />
+                                                <h4>annoyed</h4>
+                                            </label>
+                                        </button>
+                                    </li>
+                                    
+                                    <li className='add-mood-quick__emote-menu-option'>
+                                        <button className={`green add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'loving' ? 'selected' : ''}`} type="button" >
+                                            <input
+                                                name="emotion"
+                                                className='add-mood-quick__emote-option-eq'
+                                                type='radio'
+                                                id='loving'
+                                                value='loving'
+                                                checked={formData.emoji === 'loving'}
+                                                onChange={() => handleInputChange('emotion', 'loving', 'loving')}
+                                            />
+                                            <label htmlFor='loving'>
+                                                <img alt="loving" src={loving} />
+                                                <h4>loving</h4>
+                                            </label>
+                                        </button>
+                                    </li>
+
+                                    <li className='add-mood-quick__emote-menu-option'>
+                                        <button className={`red add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'proud' ? 'selected' : ''}`} type="button" >
+                                            <input
+                                                name="emotion"
+                                                className='add-mood-quick__emote-option-eq'
+                                                type='radio'
+                                                id='proud'
+                                                value='proud'
+                                                checked={formData.emoji === 'proud'}
+                                                onChange={() => handleInputChange('emotion', 'proud', 'proud')}
+                                            />
+                                            <label htmlFor='proud'>
+                                                <img alt="proud" src={proud} />
+                                                <h4>proud</h4>
+                                            </label>
+                                        </button>
+                                    </li>
+
+                                    <li className='add-mood-quick__emote-menu-option'>
+                                        <button className={`red add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'energized' ? 'selected' : ''}`} type="button" >
+                                            <input
+                                                name="emotion"
+                                                className='add-mood-quick__emote-option-eq'
+                                                type='radio'
+                                                id='energized'
+                                                value='energized'
+                                                checked={formData.emoji === 'energized'}
+                                                onChange={() => handleInputChange('emotion', 'energized', 'energized')}
+                                            />
+                                            <label htmlFor='energized'>
+                                                <img alt="energized" src={energized} />
+                                                <h4>energized</h4>
+                                            </label>
+                                        </button>
+                                    </li>
+
+                                    <li className='add-mood-quick__emote-menu-option'>
+                                        <button className={`green add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'relaxed' ? 'selected' : ''}`}
                                             type="button">
                                             <input
                                                 name="emotion"
@@ -534,8 +680,9 @@ const QuickForm = () => {
                                             </label>
                                         </button>
                                     </li>
+
                                     <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'stressed' ? 'selected' : ''}`} type="button" >
+                                        <button className={`orange add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'stressed' ? 'selected' : ''}`} type="button" >
                                             <input
                                                 name="emotion"
                                                 className='add-mood-quick__emote-option-eq'
@@ -552,7 +699,7 @@ const QuickForm = () => {
                                         </button>
                                     </li>
                                     <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'unsure' ? 'selected' : ''}`} type="button">
+                                        <button className={`yellow add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'unsure' ? 'selected' : ''}`} type="button">
                                             <input
                                                 className='add-mood-quick__emote-option-eq'
                                                 type='radio'
@@ -567,25 +714,9 @@ const QuickForm = () => {
                                             </label>
                                         </button>
                                     </li>
+                                    
                                     <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'tired' ? 'selected' : ''}`} type="button" >
-                                            <input
-                                                name="emotion"
-                                                className='add-mood-quick__emote-option-eq'
-                                                type='radio'
-                                                id='tired'
-                                                value='tired'
-                                                checked={formData.emoji === 'tired'}
-                                                onChange={() => handleInputChange('emotion', 'tired', 'tired')}
-                                            />
-                                            <label htmlFor='tired'>
-                                                <img alt="tired" src={tired} />
-                                                <h4>tired</h4>
-                                            </label>
-                                        </button>
-                                    </li>
-                                    <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'content' ? 'selected' : ''}`} type="button" >
+                                        <button className={`yellow add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'content' ? 'selected' : ''}`} type="button" >
                                             <input
                                                 name="emotion"
                                                 className='add-mood-quick__emote-option-eq'
@@ -602,7 +733,7 @@ const QuickForm = () => {
                                         </button>
                                     </li>
                                     <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'grateful' ? 'selected' : ''}`} type="button" >
+                                        <button className={`green add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'grateful' ? 'selected' : ''}`} type="button" >
                                             <input
                                                 name="emotion"
                                                 className='add-mood-quick__emote-option-eq'
@@ -619,7 +750,7 @@ const QuickForm = () => {
                                         </button>
                                     </li>
                                     <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'down' ? 'selected' : ''}`} type="button" >
+                                        <button className={`blue add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'down' ? 'selected' : ''}`} type="button" >
                                             <input
                                                 name="emotion"
                                                 className='add-mood-quick__emote-option-eq'
@@ -636,7 +767,7 @@ const QuickForm = () => {
                                         </button>
                                     </li>
                                     <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'sad' ? 'selected' : ''}`} type="button" >
+                                        <button className={`blue add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'sad' ? 'selected' : ''}`} type="button" >
                                             <input
                                                 name="emotion"
                                                 className='add-mood-quick__emote-option-eq'
@@ -652,93 +783,9 @@ const QuickForm = () => {
                                             </label>
                                         </button>
                                     </li>
+                                    
                                     <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'proud' ? 'selected' : ''}`} type="button" >
-                                            <input
-                                                name="emotion"
-                                                className='add-mood-quick__emote-option-eq'
-                                                type='radio'
-                                                id='proud'
-                                                value='proud'
-                                                checked={formData.emoji === 'proud'}
-                                                onChange={() => handleInputChange('emotion', 'proud', 'proud')}
-                                            />
-                                            <label htmlFor='proud'>
-                                                <img alt="proud" src={proud} />
-                                                <h4>proud</h4>
-                                            </label>
-                                        </button>
-                                    </li>
-                                    <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'unmotivated' ? 'selected' : ''}`} type="button" >
-                                            <input
-                                                name="emotion"
-                                                className='add-mood-quick__emote-option-eq'
-                                                type='radio'
-                                                id='unmotivated'
-                                                value='unmotivated'
-                                                checked={formData.emoji === 'unmotivated'}
-                                                onChange={() => handleInputChange('emotion', 'unmotivated', 'unmotivated')}
-                                            />
-                                            <label htmlFor='unmotivated'>
-                                                <img alt="unmotivated" src={unmotivated} />
-                                                <h4>unmotivated</h4>
-                                            </label>
-                                        </button>
-                                    </li>
-                                    <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'annoyed' ? 'selected' : ''}`} type="button" >
-                                            <input
-                                                name="emotion"
-                                                className='add-mood-quick__emote-option-eq'
-                                                type='radio'
-                                                id='annoyed'
-                                                value='annoyed'
-                                                checked={formData.emoji === 'annoyed'}
-                                                onChange={() => handleInputChange('emotion', 'annoyed', 'annoyed')}
-                                            />
-                                            <label htmlFor='annoyed'>
-                                                <img alt="annoyed" src={annoyed} />
-                                                <h4>annoyed</h4>
-                                            </label>
-                                        </button>
-                                    </li>
-                                    <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'loving' ? 'selected' : ''}`} type="button" >
-                                            <input
-                                                name="emotion"
-                                                className='add-mood-quick__emote-option-eq'
-                                                type='radio'
-                                                id='loving'
-                                                value='loving'
-                                                checked={formData.emoji === 'loving'}
-                                                onChange={() => handleInputChange('emotion', 'loving', 'loving')}
-                                            />
-                                            <label htmlFor='loving'>
-                                                <img alt="loving" src={loving} />
-                                                <h4>loving</h4>
-                                            </label>
-                                        </button>
-                                    </li>
-                                    <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'happy' ? 'selected' : ''}`} type="button" >
-                                            <input
-                                                name="emotion"
-                                                className='add-mood-quick__emote-option-eq'
-                                                type='radio'
-                                                id='happy'
-                                                value='happy'
-                                                checked={formData.emoji === 'happy'}
-                                                onChange={() => handleInputChange('emotion', 'happy', 'happy')}
-                                            />
-                                            <label htmlFor='happy'>
-                                                <img alt="happy" src={happy} />
-                                                <h4>happy</h4>
-                                            </label>
-                                        </button>
-                                    </li>
-                                    <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'worried' ? 'selected' : ''}`} type="button" >
+                                        <button className={`orange add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'worried' ? 'selected' : ''}`} type="button" >
                                             <input
                                                 name="emotion"
                                                 className='add-mood-quick__emote-option-eq'
@@ -755,7 +802,7 @@ const QuickForm = () => {
                                         </button>
                                     </li>
                                     <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'frustrated' ? 'selected' : ''}`} type="button" >
+                                        <button className={`blue add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'frustrated' ? 'selected' : ''}`} type="button" >
                                             <input
                                                 name="emotion"
                                                 className='add-mood-quick__emote-option-eq'
@@ -772,7 +819,7 @@ const QuickForm = () => {
                                         </button>
                                     </li>
                                     <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'satisfied' ? 'selected' : ''}`} type="button" >
+                                        <button className={`green add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'satisfied' ? 'selected' : ''}`} type="button" >
                                             <input
                                                 name="emotion"
                                                 className='add-mood-quick__emote-option-eq'
@@ -788,42 +835,10 @@ const QuickForm = () => {
                                             </label>
                                         </button>
                                     </li>
+                                    
+                                    
                                     <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'energized' ? 'selected' : ''}`} type="button" >
-                                            <input
-                                                name="emotion"
-                                                className='add-mood-quick__emote-option-eq'
-                                                type='radio'
-                                                id='energized'
-                                                value='energized'
-                                                checked={formData.emoji === 'energized'}
-                                                onChange={() => handleInputChange('emotion', 'energized', 'energized')}
-                                            />
-                                            <label htmlFor='energized'>
-                                                <img alt="energized" src={energized} />
-                                                <h4>energized</h4>
-                                            </label>
-                                        </button>
-                                    </li>
-                                    <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'excited' ? 'selected' : ''}`} type="button" >
-                                            <input
-                                                name="emotion"
-                                                className='add-mood-quick__emote-option-eq'
-                                                type='radio'
-                                                id='excited'
-                                                value='excited'
-                                                checked={formData.emoji === 'excited'}
-                                                onChange={() => handleInputChange('emotion', 'excited', 'excited')}
-                                            />
-                                            <label htmlFor='excited'>
-                                                <img alt="excited" src={excited} />
-                                                <h4>excited</h4>
-                                            </label>
-                                        </button>
-                                    </li>
-                                    <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'angry' ? 'selected' : ''}`} type="button" >
+                                        <button className={`deepblue add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'angry' ? 'selected' : ''}`} type="button" >
                                             <input
                                                 name="emotion"
                                                 className='add-mood-quick__emote-option-eq'
@@ -840,7 +855,7 @@ const QuickForm = () => {
                                         </button>
                                     </li>
                                     <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'hopeless' ? 'selected' : ''}`} type="button" >
+                                        <button className={`black add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'hopeless' ? 'selected' : ''}`} type="button" >
                                             <input
                                                 name="emotion"
                                                 className='add-mood-quick__emote-option-eq'
@@ -857,7 +872,7 @@ const QuickForm = () => {
                                         </button>
                                     </li>
                                     <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'panic' ? 'selected' : ''}`} type="button" >
+                                        <button className={`black add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'panic' ? 'selected' : ''}`} type="button" >
                                             <input
                                                 name="emotion"
                                                 className='add-mood-quick__emote-option-eq'
@@ -874,7 +889,7 @@ const QuickForm = () => {
                                         </button>
                                     </li>
                                     <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'exhausted' ? 'selected' : ''}`} type="button" >
+                                        <button className={`black add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'exhausted' ? 'selected' : ''}`} type="button" >
                                             <input
                                                 className='add-mood-quick__emote-option-eq'
                                                 type='radio'
@@ -891,7 +906,7 @@ const QuickForm = () => {
                                         </button>
                                     </li>
                                     <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'irritable' ? 'selected' : ''}`} type="button" >
+                                        <button className={`orange add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'irritable' ? 'selected' : ''}`} type="button" >
                                             <input
                                                 className='add-mood-quick__emote-option-eq'
                                                 type='radio'
