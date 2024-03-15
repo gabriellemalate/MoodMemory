@@ -18,6 +18,12 @@ function MoodHomePage() {
     const [customTrigger, setCustomTrigger] = useState("");
 
     useEffect(() => {
+        if (user) {
+            fetchUserTriggers(user.uid);
+        }
+    }, [user]);
+
+    useEffect(() => {
         // scroll to the FAQ section when the component mounts
         if (scrollToFAQ && faqRef.current) {
             faqRef.current.scrollIntoView({ behavior: "smooth" });
@@ -58,7 +64,7 @@ function MoodHomePage() {
                 return updatedTriggers;
             });
         } else {
-            alert("Maximum 8 reached");
+            alert("Invalid action or Maximum of 8 reached");
         }
     };
 
