@@ -106,10 +106,11 @@ function MoodLogsPage() {
             <main className='all-logs'>
                 <div className='all-logs__eq'>
                     <div className='top-eq'>
-                    <h1 className='all-logs__head'>Log Library</h1>
-                    <p className='top-eq-streak'>
-                        STREAK ❤️‍🔥 : {streak}
-                    </p>
+                        <h1 className='all-logs__head'>Log Library</h1>
+                        <div className='top-eq-streak'>
+                            <div className='streak'>
+                                STREAK ❤️‍🔥 : {streak}</div>
+                        </div>
                     </div>
                     <div className='all-logs__top'>
                         <form className="all-logs__search" action="" method="">

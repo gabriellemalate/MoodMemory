@@ -12,6 +12,15 @@
             width: 100%;
         }
     }
+    &__top {
+        @include row;
+        margin: 0;
+        width: 70%;
+        @include mobile {
+            width: 90%;
+            margin: 1rem 0;
+        }
+    }
     &__head {
         letter-spacing: 0.12rem;
         border-bottom: 0.2rem solid rgb(135, 29, 135);
@@ -31,7 +40,7 @@
         @include mobile {
             border-bottom: .1rem solid rgb(135, 29, 135);
             font-size: 1.2rem;
-            margin: 1rem;
+            margin: 0rem;
             color: rgb(135, 29, 135);
         }
         @include smallscreen {

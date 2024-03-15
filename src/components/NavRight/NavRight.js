@@ -20,6 +20,8 @@ const NavRight = ({ setScrollToFAQ }) => {
         });
     };
 
+
+
     const handleFAQClick = () => {
         if (faqRef.current) {
             faqRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -64,8 +66,8 @@ const NavRight = ({ setScrollToFAQ }) => {
                             <li className='user-nav__top-list-item-moodtotal user-nav__top-list-item'><Link to="/userpage"> <b>Total Entries= 
                             {totalLogs}</b></Link>
                             </li>
-                            <li className='user-nav__top-list-item-moodstreak user-nav__top-list-item' title="log in streak"><Link to="/userpage"><b>Log Streak={streak}</b></Link>
-                            </li>
+                            {/* <li className='user-nav__top-list-item-moodstreak user-nav__top-list-item' title="log in streak"><Link to="/userpage"><b>Log Streak={streak}</b></Link>
+                            </li> */}
                             {/* <li className='user-nav__top-list-item-memoryinfo user-nav__top-list-item'>
                                 0 memories secured
                             </li> */}
