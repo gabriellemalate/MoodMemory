@@ -63,6 +63,33 @@ function UserPage() {
                 }
 
                 const currentDate = new Date();
+
+                // const lastLogDate = new Date(logsData[0].date.toDate()); // Get timestamp of most recent log
+
+                // // Calculate the difference in milliseconds between the current time and the timestamp of the last log
+                // const timeDifference = currentDate - lastLogDate;
+
+                // // If the difference is greater than 24 hours, reset the streak
+                // if (timeDifference > 24 * 60 * 60 * 1000) {
+                //     setStreak(0);
+                //     return;
+                // }
+
+                // // Iterate through logs to find consecutive days
+                // for (let i = 0; i < logsData.length; i++) {
+                //     const logDate = new Date(logsData[i].date.toDate());
+                //     const logDay = new Date(logDate.getFullYear(), logDate.getMonth(), logDate.getDate());
+
+                //     // If the log is from today, increment the streak
+                //     if (currentDate - logDay === currentStreak * 24 * 60 * 60 * 1000) {
+                //         currentStreak++;
+                //     } else if (currentDate - logDay === (currentStreak - 1) * 24 * 60 * 60 * 1000) {
+                //         continue; // Log from yesterday, streak continues
+                //     } else {
+                //         break; // Streak broken
+                //     }
+                // }
+
                 const today = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()); // Reset time to midnight
                 let lastLogDate = new Date(logsData[0].date.toDate());
                 lastLogDate = new Date(lastLogDate.getFullYear(), lastLogDate.getMonth(), lastLogDate.getDate()); // Reset time to midnight
@@ -241,6 +268,10 @@ function UserPage() {
         }
     };
 
+    const capitalizeFirstLetter = (string) => {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    };
+
     const handleEmotionItemClick = async (emotion) => {
         try {
             const db = getFirestore();
@@ -299,7 +330,7 @@ function UserPage() {
 
                     {selectedEmotionLogs.length > 0 && (
                         <div className="selectedcount">
-                            <h3 className="selectedcount-head">Logs for selected emotion: {selectedEmotionLogs[0].emotion}</h3>
+                            <h3 className="selectedcount-head"> Times you've logged <b>{capitalizeFirstLetter(selectedEmotionLogs[0].emotion)}</b></h3>
                             <ul className="selectedcount-list">
                                 {selectedEmotionLogs.map((log) => (
                                     <li key={log.id} className="selectedcount-item">
