@@ -801,7 +801,7 @@ const QuickForm = () => {
                                         </button>
                                     </li>
                                     <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`yellow add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'unsure' ? 'selected' : ''}`} type="button">
+                                        <button className={`liteyellow add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'unsure' ? 'selected' : ''}`} type="button">
                                             <input
                                                 className='add-mood-quick__emote-option-eq'
                                                 type='radio'
@@ -818,7 +818,7 @@ const QuickForm = () => {
                                     </li>
                                     
                                     <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`yellow add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'content' ? 'selected' : ''}`} type="button" >
+                                        <button className={`liteyellow add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'content' ? 'selected' : ''}`} type="button" >
                                             <input
                                                 name="emotion"
                                                 className='add-mood-quick__emote-option-eq'
@@ -952,7 +952,7 @@ const QuickForm = () => {
                             </div>
                         </div>
                         <div className="add-mood-quick-only__buttons form-group">
-                            <div className="form-group-custom">
+                            {/* <div className="form-group-custom">
                                 <label className="form-group-custom-title" htmlFor="customDate">Retroactive Log (Optional)</label>
                                 <input className="form-group-custom-calendar"
                                     type="date"
@@ -961,7 +961,7 @@ const QuickForm = () => {
                                     value={formData.customDate}
                                     onChange={(e) => setFormData({ ...formData, customDate: e.target.value })}
                                 />
-                            </div>
+                            </div> */}
                             <button
                                 className="add-mood-quick-only__submit"
                                 type="submit"

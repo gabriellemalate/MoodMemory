@@ -524,7 +524,7 @@ $theyellow: rgba(210, 210, 47, 0.818);
 .yellow {
     background-color: $theyellow;
 }
-$thegreen: rgba(0, 128, 0, 0.729);
+$thegreen: rgba(22, 201, 22, 0.729);
 .green {
     background-color: $thegreen;
 }
@@ -542,4 +542,8 @@ $thedeep: rgba(0, 0, 255, 0.763);
 }
 .black {
     background-color: rgba(0, 0, 0, 0.753);
+}
+$liteyellow: rgba(217, 255, 0, 0.82);
+.liteyellow {
+    background-color: $liteyellow;
 }
