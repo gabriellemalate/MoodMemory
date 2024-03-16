@@ -80,10 +80,8 @@ function MoodLogsPage() {
                     const logDate = new Date(logsData[i].date.toDate());
                     const logDay = new Date(logDate.getFullYear(), logDate.getMonth(), logDate.getDate());
 
-                    if (today - logDay === currentStreak * 24 * 60 * 60 * 1000) {
+                    if (today - logDay <= currentStreak * 24 * 60 * 60 * 1000) {
                         currentStreak++;
-                    } else if (today - logDay === (currentStreak - 1) * 24 * 60 * 60 * 1000) {
-                        continue; // Log from yesterday, streak continues
                     } else {
                         break; // Streak broken
                     }
