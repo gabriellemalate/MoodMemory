@@ -139,8 +139,6 @@ function MoodHomePage() {
                         </div>
 
                     </section>
-                    <Faq ref={faqRef} />
-
                     <section className="userpage__triggers">
                         <h3 className="userpage__triggers-head">Active Triggers</h3>
                         <div className="userpage__triggers-eq">
@@ -183,6 +181,9 @@ function MoodHomePage() {
                             </div>
                         </div>
                     </section>
+                    <Faq ref={faqRef} />
+
+                    
                 </div>
                 <Footer />
             </main>
