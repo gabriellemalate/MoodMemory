@@ -140,14 +140,14 @@ function Patterns() {
                     <h5 className='patterns__pattern-head'>typical duration of elevation~</h5> 
                     <p className='patterns__pattern-data'><b className='patterns__pattern-number'>
                         {elevationCount}
-                    </b> days</p>
+                    </b> day{elevationCount !== 1 ? 's' : ''}</p>
 
                 </article>
                 <article className='patterns__pattern patterns__pattern-duration'>
                     <h5 className='patterns__pattern-head'>typical duration of depression~ </h5>
                     <p className='patterns__pattern-data'><b className='patterns__pattern-number'>
                         {depressionCount}
-                    </b> days</p>
+                    </b> day{depressionCount !== 1 ? 's' : ''}</p>
                 </article>
                 <article className='patterns__pattern'>
                     <h5 className='patterns__pattern-head'>events that incite a dip⤵ in mood</h5> 

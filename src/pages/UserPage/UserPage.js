@@ -375,8 +375,11 @@ function UserPage() {
                     </div>
                 )}
 
-                <section>
-                    COMMON PHRASES & WORDS
+                <section className="userpage__totals">
+                    <h4 className="userpage__totals-head">KEY PHRASES & WORDS</h4>
+                    <article>
+
+                    </article>
                 </section>
 
                 <section className='userpage__faq'>
