@@ -14,6 +14,34 @@ function UserPage() {
     const [qualityCounts, setQualityCounts] = useState({});
     const [selectedQualityLogs, setSelectedQualityLogs] = useState([]);
     const [selectedEmotionLogs, setSelectedEmotionLogs] = useState([]);
+    const [stateCounts, setStateCounts] = useState({});
+
+    useEffect(() => {
+        if (user) {
+            fetchStateCounts(user.uid);
+        }
+    }, [user]);
+
+    const fetchStateCounts = async (uid) => {
+        try {
+            const db = getFirestore();
+            const logsCollection = collection(db, "moodlogs");
+            const logsQuery = query(logsCollection, where("uid", "==", uid));
+            const logsSnapshot = await getDocs(logsQuery);
+
+            let counts = {};
+
+            logsSnapshot.forEach((doc) => {
+                const { state } = doc.data();
+                counts[state] = (counts[state] || 0) + 1;
+            });
+
+            setStateCounts(counts);
+        } catch (error) {
+            console.error("Error fetching state counts:", error);
+        }
+    };
+
 
     let backgroundColor;
 
@@ -90,23 +118,23 @@ function UserPage() {
                 const logsQuery = query(logsCollection, where('uid', '==', user.uid), orderBy('date', 'desc'));
                 const logsSnapshot = await getDocs(logsQuery);
                 const logsData = logsSnapshot.docs.map(doc => doc.data());
-    
+
                 let currentStreak = 0;
                 let lastLogDate = null;
-    
+
                 if (logsData.length === 0) {
                     setStreak(0);
                     return;
                 }
-    
+
                 const currentDate = new Date();
                 const today = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()); // Reset time to midnight
-    
+
                 // Iterate through logs to find consecutive days
                 for (let i = 0; i < logsData.length; i++) {
                     const logDate = new Date(logsData[i].date.toDate());
                     const logDay = new Date(logDate.getFullYear(), logDate.getMonth(), logDate.getDate());
-    
+
                     // Check if the log is from the current streak day or the day before
                     if (today - logDay <= currentStreak * 24 * 60 * 60 * 1000) {
                         // Check if the log is from the same date as the previous log
@@ -116,21 +144,21 @@ function UserPage() {
                     } else {
                         break; // Streak broken
                     }
-    
+
                     lastLogDate = logDay; // Update last log date
                 }
-    
+
                 setStreak(currentStreak);
             } catch (error) {
                 console.error("Error calculating streak:", error);
             }
         };
-    
+
         if (user) {
             calculateStreak();
         }
     }, [user]);
-    
+
 
     useEffect(() => {
         if (user) {
@@ -157,82 +185,6 @@ function UserPage() {
             console.error("Error fetching emotion counts:", error);
         }
     };
-    //     try {
-    //         const userDoc = await getDoc(doc(getFirestore(), "userTriggers", uid));
-    //         if (userDoc.exists() && userDoc.data().uid === uid) {
-    //             setSelectedTriggers(userDoc.data().triggers);
-    //         }
-    //     } catch (error) {
-    //         console.error("Error fetching user triggers:", error);
-    //     }
-    // };
-
-    // const triggerOptions = [
-    //     "myself",
-    //     "work",
-    //     "partner",
-    //     "family",
-    //     "friends",
-    //     "sleep",
-    //     "health",
-    //     "food",
-    //     "exercise",
-    //     "finance",
-    //     "home",
-    //     "hobbies"
-    // ];
-    // const handleTriggerSelection = (trigger) => {
-    //     if (selectedTriggers.length < 8 && !selectedTriggers.includes(trigger)) {
-    //         setSelectedTriggers((prevTriggers) => {
-    //             const updatedTriggers = [...prevTriggers, trigger];
-    //             saveUserTriggers(updatedTriggers);
-    //             return updatedTriggers;
-    //         });
-    //     } else {
-    //         alert("Maximum 8 reached");
-    //     }
-    // };
-
-    // const handleCustomTriggerChange = (event) => {
-    //     setCustomTrigger(event.target.value);
-    // };
-
-    // const handleCustomTriggerAdd = async () => {
-    //     if (selectedTriggers.length < 8) {
-    //         if (customTrigger.trim() !== "" && !selectedTriggers.includes(customTrigger.trim())) {
-    //             const updatedTriggers = [...selectedTriggers, customTrigger.trim()];
-    //             setSelectedTriggers(updatedTriggers);
-    //             setCustomTrigger("");
-    //             // Save the updated triggers to the database
-    //             await saveUserTriggers(updatedTriggers);
-    //         }
-    //     } else {
-    //         // Disable the input field or button to prevent adding more triggers
-    //         document.querySelector('.userpage__triggers-add-input').disabled = true;
-    //         document.querySelector('.userpage__triggers-add-press').disabled = true;
-    //         // Show a warning message when the maximum number of triggers is reached
-    //         alert("Maximum 8 triggers reached");
-    //     }
-    // };
-
-    // const handleTriggerRemoval = (trigger) => {
-    //     setSelectedTriggers((prevTriggers) => {
-    //         const updatedTriggers = prevTriggers.filter((item) => item !== trigger);
-    //         saveUserTriggers(updatedTriggers);
-    //         return updatedTriggers;
-    //     });
-    // };
-
-    // const saveUserTriggers = async (triggers) => {
-    //     if (user) {
-    //         try {
-    //             const userDocRef = doc(getFirestore(), "userTriggers", user.uid);
-    //             await setDoc(userDocRef, { uid: user.uid, triggers });
-    //         } catch (error) {
-    //             console.error("Error saving user triggers:", error);
-    //         }
-    //     }
-    // };
 
     const fetchQualityCounts = async (uid) => {
         try {
@@ -361,6 +313,15 @@ function UserPage() {
                             </ul>
                         </div>
                     )}
+
+                    <h3 className="userpage__totals-states-head">STATES you've logged -</h3>
+                    <ul className="userpage__totals-states">
+                        {Object.entries(stateCounts).map(([state, count]) => (
+                            <li key={state} className={`userpage__totals-states-item`}>
+                                {state} <b>{count}</b>
+                            </li>
+                        ))}
+                    </ul>
 
                     <h3 className="userpage__totals-emotions-head">SLEEP QUALITY is typically -</h3>
                     <p className="instruction">click one to show - max. 7 - recent entries</p>

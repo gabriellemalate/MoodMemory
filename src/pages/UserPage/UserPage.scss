@@ -106,6 +106,15 @@
                 color: white;
             }
         }
+        &-states {
+            @extend .userpage__totals-emotions;
+            &-head {
+                @extend .userpage__totals-emotions-head;
+            }
+            &-item {
+                @extend .userpage__totals-emotions-item;
+            }
+        }
     }
     &__triggers {
         @include column;
