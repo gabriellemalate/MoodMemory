@@ -69,7 +69,7 @@ function UserPage() {
             case "unsure":
             case "wired":
             case "wired":
-                return "rgba(217, 255, 0, 0.69)";
+                return "rgba(247, 235, 0, 0.69)";
             case "happy":
             case "loving":
             case "relaxed":
@@ -90,11 +90,26 @@ function UserPage() {
     const getBgColor = (state) => {
         switch (state.toLowerCase()) {
             case "elevated":
-                return "green";
+                return "rgba(140, 235, 218, 0.654)";
             case "depressed":
-                return "red";
+                return "rgba(13, 105, 99, 0.754)";
             case "wnl":
-                return "blue";
+                return "rgba(44, 178, 169, 0.754)";
+            default:
+                return "initial"; // or any default color you prefer
+        }
+    };
+
+    const getBckgColor = (quality) => {
+        switch (quality.toLowerCase()) {
+            case "awesome":
+                return "rgba(140, 235, 218, 0.654)";
+            case "okay":
+                return "rgba(13, 105, 99, 0.754)";
+            case "poor":
+                return "rgba(14, 64, 44, 0.754)";
+            case "good":
+                return "rgba(44, 178, 169, 0.754)";
             default:
                 return "initial"; // or any default color you prefer
         }
@@ -330,7 +345,7 @@ function UserPage() {
                     <h3 className="userpage__totals-states-head">STATES you've logged -</h3>
                     <ul className="userpage__totals-states">
                         {Object.entries(stateCounts).map(([state, count]) => (
-                            <li key={state} className={`userpage__totals-states-item`}>
+                            <li key={state} className={`userpage__totals-states-item`} style={{ backgroundColor: getBgColor(state) }}>
                                 {state} <b>{count}</b>
                             </li>
                         ))}
@@ -340,8 +355,8 @@ function UserPage() {
                     <p className="instruction">click one to show - max. 7 - recent entries</p>
                     <ul className="userpage__totals-emotions">
                         {Object.entries(qualityCounts).map(([quality, count]) => (
-                            <li key={quality} className={`userpage__totals-emotions-item ${selectedQualityLogs[0]?.quality === quality ? 'selected' : ''}`} onClick={() => handleQualityItemClick(quality)}>
-                                {quality}: {count}
+                            <li key={quality} className={`userpage__totals-emotions-item ${selectedQualityLogs[0]?.quality === quality ? 'selected' : ''}`} onClick={() => handleQualityItemClick(quality)} style={{ backgroundColor: getBckgColor(quality) }}>
+                                {quality}: <b>{count}</b>
                             </li>
                         ))}
                     </ul>
