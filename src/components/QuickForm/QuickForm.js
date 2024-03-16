@@ -158,8 +158,15 @@ const QuickForm = () => {
             setErrors((prevErrors) => ({ ...prevErrors, state: '' }));
         }
 
+        if ((formData.state === 'Depressed' || formData.state === 'Elevated') && !formData.level) {
+            setErrors((prevErrors) => ({ ...prevErrors, level: '*Select a severity level' }));
+            formIsValid = false;
+        } else {
+            setErrors((prevErrors) => ({ ...prevErrors, level: '' }));
+        }
+
         if (formData.hours !== 0 && !formData.quality) {
-            setErrors((prevErrors) => ({ ...prevErrors, quality: '*If you slept at all, choose a sleep quality option' }));
+            setErrors((prevErrors) => ({ ...prevErrors, quality: '*Select a quality of restfulness' }));
             formIsValid = false;
         } else {
             setErrors((prevErrors) => ({ ...prevErrors, quality: '' }));
@@ -783,6 +790,7 @@ const QuickForm = () => {
                                     </div>
 
                                 </div>
+                                <div className="error error-state">{errors.level}</div>
                             </article>
                         ) : null}
                     </article>
@@ -945,6 +953,7 @@ const QuickForm = () => {
                                         />
                                     </div>
                                     {formData.hours !== '0' && formData.quality !== '' && <div className="error">{errors.quality}</div>}
+                                    <div className="error">{errors.quality}</div>
                                 </div>
                             </div>
                         </div>

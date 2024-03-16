@@ -658,6 +658,9 @@
     &-state {
         margin: 1rem 0 0;
     }
+    @include mobile {
+        font-size: .8rem;
+    }
 }
 
 .blue {
