@@ -316,6 +316,7 @@
             @include row;
             padding-left: .2rem;
             margin: .2rem 0;
+            overflow: scroll;
         }
         &-item {
             font-size: .9rem;

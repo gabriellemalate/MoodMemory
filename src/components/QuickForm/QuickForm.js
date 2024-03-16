@@ -44,6 +44,7 @@ const QuickForm = () => {
     const [user] = useAuthState(auth);
     const [selectedVictories, setSelectedVictories] = useState([]);
     const [selectedHurdles, setSelectedHurdles] = useState([]);
+    const [selectedConsumptions, setSelectedConsumptions] = useState([]);
     const [formData, setFormData] = useState({
         state: '',
         level: '',
@@ -59,6 +60,7 @@ const QuickForm = () => {
         comments: '',
         victories: '',
         hurdles: '',
+        consumptions: '',
     });
     const [errors, setErrors] = useState({
         state: '',
@@ -120,20 +122,27 @@ const QuickForm = () => {
 
     const handleVictoriesChange = (victory) => {
         const updatedVictories = selectedVictories.includes(victory)
-        ? selectedVictories.filter((v) => v !== victory)
-        : [...selectedVictories, victory];
-    setSelectedVictories(updatedVictories);
-    console.log("Selected Victories:", updatedVictories); 
+            ? selectedVictories.filter((v) => v !== victory)
+            : [...selectedVictories, victory];
+        setSelectedVictories(updatedVictories);
+        console.log("Selected Victories:", updatedVictories);
     };
 
     const handleHurdlesChange = (hurdle) => {
         const updatedHurdles = selectedHurdles.includes(hurdle)
-        ? selectedHurdles.filter((h) => h !== hurdle)
-        : [...selectedHurdles, hurdle];
-    setSelectedHurdles(updatedHurdles);
-    console.log("Selected Hurdles:", updatedHurdles); 
+            ? selectedHurdles.filter((h) => h !== hurdle)
+            : [...selectedHurdles, hurdle];
+        setSelectedHurdles(updatedHurdles);
+        console.log("Selected Hurdles:", updatedHurdles);
     };
 
+    const handleConsumptionChange = (consumption) => {
+        const updatedConsumptions = selectedConsumptions.includes(consumption)
+            ? selectedConsumptions.filter((c) => c !== consumption)
+            : [...selectedConsumptions, consumption];
+        setSelectedConsumptions(updatedConsumptions);
+        console.log("Selected Consumptions:", updatedConsumptions);
+    };
 
     const handleInputChange = (fieldName, emotion, emojiPath) => {
         setFormData((prevData) => ({ ...prevData, [fieldName]: emotion, emoji: emojiPath }));
@@ -221,7 +230,8 @@ const QuickForm = () => {
                 graphValue: graphValue,
                 comments: comments,
                 victories: selectedVictories,
-            hurdles: selectedHurdles, 
+                hurdles: selectedHurdles,
+                consumptions: selectedConsumptions,
                 // customDate: '',
             });
         } catch (error) {
@@ -1414,16 +1424,16 @@ const QuickForm = () => {
                         <article className='additional-victories'>
                             <h3 className='add-mood-quick__level-head additional-head'>Victories</h3>
                             <div className='additional-list'>
-                                <button type="button" className={`additional-list-item ${selectedVictories.includes('movement') ? 'selected' : ''}`} onClick={() => handleVictoriesChange('movement')}>
+                                <button type="button" className={`additional-victory additional-list-item ${selectedVictories.includes('movement') ? 'selected' : ''}`} onClick={() => handleVictoriesChange('movement')}>
                                     movement
                                 </button>
-                                <button type="button" className={`additional-list-item ${selectedVictories.includes('chores') ? 'selected' : ''}`} onClick={() => handleVictoriesChange('chores')}>
+                                <button type="button" className={`additional-victory additional-list-item ${selectedVictories.includes('chores') ? 'selected' : ''}`} onClick={() => handleVictoriesChange('chores')}>
                                     chores
                                 </button>
-                                <button type="button" className={`additional-list-item ${selectedVictories.includes('mindfulness') ? 'selected' : ''}`} onClick={() => handleVictoriesChange('mindfulness')}>
+                                <button type="button" className={`additional-victory additional-list-item ${selectedVictories.includes('mindfulness') ? 'selected' : ''}`} onClick={() => handleVictoriesChange('mindfulness')}>
                                     mindful activity
                                 </button>
-                                <button type="button" className={`additional-list-item ${selectedVictories.includes('learning') ? 'selected' : ''}`} onClick={() => handleVictoriesChange('learning')}>
+                                <button type="button" className={`additional-victory additional-list-item ${selectedVictories.includes('learning') ? 'selected' : ''}`} onClick={() => handleVictoriesChange('learning')}>
                                     learning
                                 </button>
                             </div>
@@ -1431,17 +1441,60 @@ const QuickForm = () => {
                         <article className='additional-hurdles'>
                             <h3 className='add-mood-quick__level-head additional-head'>Hurdles</h3>
                             <div className='additional-list'>
-                                <button type="button" className={`additional-list-item ${selectedHurdles.includes('rumination') ? 'selected' : ''}`} onClick={() => handleHurdlesChange('rumination')}>
+                                <button type="button" className={`additional-hurdle additional-list-item ${selectedHurdles.includes('rumination') ? 'selected' : ''}`} onClick={() => handleHurdlesChange('rumination')}>
                                     rumination
                                 </button>
-                                <button type="button" className={`additional-list-item ${selectedHurdles.includes('procrastination') ? 'selected' : ''}`} onClick={() => handleHurdlesChange('procrastination')}>
+                                <button type="button" className={`additional-hurdle additional-list-item ${selectedHurdles.includes('procrastination') ? 'selected' : ''}`} onClick={() => handleHurdlesChange('procrastination')}>
                                     procrastination
                                 </button>
-                                <button type="button" className={`additional-list-item ${selectedHurdles.includes('isolation') ? 'selected' : ''}`} onClick={() => handleHurdlesChange('isolation')}>
+                                <button type="button" className={`additional-hurdle additional-list-item ${selectedHurdles.includes('isolation') ? 'selected' : ''}`} onClick={() => handleHurdlesChange('isolation')}>
                                     isolation
                                 </button>
-                                <button type="button" className={`additional-list-item ${selectedHurdles.includes('panicked') ? 'selected' : ''}`} onClick={() => handleHurdlesChange('panicked')}>
+                                <button type="button" className={`additional-hurdle additional-list-item ${selectedHurdles.includes('panicked') ? 'selected' : ''}`} onClick={() => handleHurdlesChange('panicked')}>
                                     panic attack
+                                </button>
+                            </div>
+                        </article>
+                        <article className='additional-consumption'>
+                            <h3 className='add-mood-quick__level-head additional-head'>Consumption</h3>
+                            <div className='additional-list'>
+                                <button type="button" className={`additional-list-item additional-list-button ${selectedConsumptions.includes('forgot to eat') ? 'selected' : ''}`} onClick={() => handleConsumptionChange('forgot to eat')}>
+                                    forgot to eat
+                                </button>
+                                <button type="button" className={`additional-list-item additional-list-button ${selectedConsumptions.includes('fasting') ? 'selected' : ''}`} onClick={() => handleConsumptionChange('fasting')}>
+                                    fasting
+                                </button>
+                                <button type="button" className={`additional-list-item additional-list-button ${selectedConsumptions.includes('snack') ? 'selected' : ''}`} onClick={() => handleConsumptionChange('snack')}>
+                                    snack
+                                </button>
+                                <button type="button" className={`additional-list-item additional-list-button ${selectedConsumptions.includes('full meal') ? 'selected' : ''}`} onClick={() => handleConsumptionChange('full meal')}>
+                                    full meal
+                                </button>
+
+                                <button type="button" className={`additional-list-item additional-list-button ${selectedConsumptions.includes('junk food') ? 'selected' : ''}`} onClick={() => handleConsumptionChange('junk food')}>
+                                    junk food
+                                </button>
+                                <button type="button" className={`additional-list-item additional-list-button ${selectedConsumptions.includes('healthy eats') ? 'selected' : ''}`} onClick={() => handleConsumptionChange('healthy eats')}>
+                                    healthy eats
+                                </button>
+                                <button type="button" className={`additional-list-item additional-list-button ${selectedConsumptions.includes('supplements') ? 'selected' : ''}`} onClick={() => handleConsumptionChange('supplements')}>
+                                    supplements
+                                </button>
+                                <button type="button" className={`additional-list-item additional-list-button ${selectedConsumptions.includes('medication') ? 'selected' : ''}`} onClick={() => handleConsumptionChange('medicaton')}>
+                                    medication
+                                </button>
+
+                                <button type="button" className={`smaller additional-list-item additional-list-button ${selectedConsumptions.includes('cbd') ? 'selected' : ''}`} onClick={() => handleConsumptionChange('cbd')}>
+                                    CBD
+                                </button>
+                                <button type="button" className={`smaller additional-list-item additional-list-button ${selectedConsumptions.includes('cannabis') ? 'selected' : ''}`} onClick={() => handleConsumptionChange('cannabis')}>
+                                    cannabis
+                                </button>
+                                <button type="button" className={`smaller additional-list-item additional-list-button ${selectedConsumptions.includes('alcohol') ? 'selected' : ''}`} onClick={() => handleConsumptionChange('alcohol')}>
+                                    alcohol
+                                </button>
+                                <button type="button" className={`smaller additional-list-item additional-list-button ${selectedConsumptions.includes('tobacco') ? 'selected' : ''}`} onClick={() => handleConsumptionChange('tobacco')}>
+                                    tobacco
                                 </button>
                             </div>
                         </article>

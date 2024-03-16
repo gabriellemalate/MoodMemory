@@ -5,6 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { collection, addDoc, query, where, getDocs  } from 'firebase/firestore';
 
 function Patterns() {
+    const [user] = useAuthState(auth);
     const [elevationCount, setElevationCount] = useState(0);
     const [depressionCount, setDepressionCount] = useState(0);
     const [currentUserUid, setCurrentUserUid] = useState(null);
@@ -134,6 +135,7 @@ function Patterns() {
     return (
         <>
             <section className='patterns'>
+            <h2 className='maps__mood-head'>{user ? user.displayName.split(' ')[0] : ''}'s Patterns</h2>
                 <article className='patterns__pattern patterns__pattern-duration'>
                     <h5 className='patterns__pattern-head'>typical duration of elevation~</h5> 
                     <p className='patterns__pattern-data'><b className='patterns__pattern-number'>
