@@ -66,10 +66,10 @@ function MobileNav() {
                             <h3 className='mobnav-item__option-head'>Maps</h3>
                         </Link>
                     </li>
-                    <li className='mobnav-item'>
+                    <li className='mobnav-item usermobnav'>
                         <Link className='mobnav-item__option' to="/userpage">
-                            <img src={Question} alt="FAQ" className='mobnav-item__option-img' />
-                            <h3 className='mobnav-item__option-head'>Info</h3>
+                            <img src={Question} alt="FAQ" className='mobnav-item__option-img usermobnav-img' />
+                            <h3 className='mobnav-item__option-head'>You</h3>
                         </Link>
                     </li>
                     <li className='mobnav-item'>

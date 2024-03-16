@@ -70,6 +70,9 @@
                     font-size: 1.2rem;
                     line-height: 1;
                     font-weight: 500;
+                    @include mobile {
+                        font-size: 1rem;
+                    }
                 }
                 &-title {
                     margin: .2rem 0 0;
@@ -79,7 +82,13 @@
                     font-weight: 200;
                     line-height: 1;
                     text-wrap: nowrap;
+                    width: 100%;
+                    text-align: start;
                     // overflow: hidden;
+                    @include mobile {
+                        letter-spacing: 0.04rem;
+                        font-size: .9rem;
+                    }
                 }
             }
             &-right {
@@ -123,6 +132,8 @@
                 @include mobile {
                     font-size: 1rem;
                     align-self: flex-end;
+                    padding: .22rem .6rem;
+                    margin: 0 0 .3rem;
                 }
             }
             &-lower {
@@ -135,6 +146,11 @@
                 }
                 &-item {
                     padding: 0 .5rem;
+                }
+                @include mobile {
+                    font-size: .8rem;
+                    margin-top: 0;
+                    // margin-bottom: .2rem;
                 }
             }
         }

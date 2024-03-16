@@ -1,6 +1,11 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
-
+.usermobnav {
+    margin-top: .23rem;
+    &-img {
+        margin-bottom: .17rem;
+    }
+}
 .mobnav {
     @include smallscreen {
         display: none;

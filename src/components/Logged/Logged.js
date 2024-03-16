@@ -124,7 +124,7 @@ function Logged({ logData, searchTerm }) {
                                     <div className='logged-info__bottom-lower'>
                                         <span className='logged-info__bottom-lower-item'>Irr:<b className='logged-info--bold'>{logData.irritability}</b></span>
                                         <span className='logged-info__bottom-lower-item'>Anx:<b className='logged-info--bold'>{logData.anxiety}</b></span>
-                                        <span className='logged-info__bottom-lower-item'> Hours:<b className='logged-info--bold'>{logData.hours}</b></span>
+                                        <span className='logged-info__bottom-lower-item'> Hrs:<b className='logged-info--bold'>{logData.hours}</b></span>
                                     </div>
                                 </div>
                             </div>
