@@ -277,6 +277,9 @@
                 border-radius: 4rem;
                 margin-top: 0;
             }
+            @include mobile {
+                margin-top: .4rem;
+            }
             
             &-all {
                 @include mobile {
@@ -345,6 +348,7 @@
             }
             @include mobile {
                 margin-top: 1rem;
+                margin-bottom: 0;
             }
 
             &-form {
@@ -381,7 +385,7 @@
                         margin: 0 0 .4rem;
                         @include row;
                         justify-content: space-between;
-                        width: 78%;
+                        width: 84%;
                     }
                     &-head {
                         @extend .add-mood-quick__observations-irritability-head;

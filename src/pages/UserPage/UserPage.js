@@ -17,11 +17,48 @@ function UserPage() {
     const [selectedQualityLogs, setSelectedQualityLogs] = useState([]);
     const [selectedEmotionLogs, setSelectedEmotionLogs] = useState([]);
 
-    // useEffect(() => {
-    //     if (user) {
-    //         fetchUserTriggers(user.uid);
-    //     }
-    // }, [user]);
+    let backgroundColor;
+
+    const getBackgroundColor = (emotion) => {
+        switch (emotion) {
+            case "anxious":
+            case "unmotivated":
+            case "down":
+                return "rgba(17, 95, 121, 0.851)";
+            case "exhausted":
+            case "hopeless":
+            case "panic":
+                return "rgba(0, 0, 0, 0.753)";
+            case "frustrated":
+            case "angry":
+            case "sad":
+                return "rgba(0, 0, 255, 0.763)";
+            case "tired":
+            case "annoyed":
+                return "rgba(245, 210, 54, 0.818)";
+            case "irritable":
+            case "worried":
+            case "stressed":
+                return "rgba(290, 146, 0, 0.792)";
+            case "unsure":
+            case "content":
+                return "rgba(217, 255, 0, 0.69)";
+            case "happy":
+            case "loving":
+            case "relaxed":
+            case "satisfied":
+            case "grateful":
+                return "rgba(22, 201, 22, 0.729)";
+            case "motivated":
+            case "proud":
+            case "energized":
+            case "excited":
+                return "rgba(255, 0, 123, 0.896)";
+            default:
+                // Default color or error handling
+                return "initial"; // or any default color you prefer
+        }
+    };
 
     useEffect(() => {
         if (user) {
@@ -63,32 +100,6 @@ function UserPage() {
                 }
 
                 const currentDate = new Date();
-
-                // const lastLogDate = new Date(logsData[0].date.toDate()); // Get timestamp of most recent log
-
-                // // Calculate the difference in milliseconds between the current time and the timestamp of the last log
-                // const timeDifference = currentDate - lastLogDate;
-
-                // // If the difference is greater than 24 hours, reset the streak
-                // if (timeDifference > 24 * 60 * 60 * 1000) {
-                //     setStreak(0);
-                //     return;
-                // }
-
-                // // Iterate through logs to find consecutive days
-                // for (let i = 0; i < logsData.length; i++) {
-                //     const logDate = new Date(logsData[i].date.toDate());
-                //     const logDay = new Date(logDate.getFullYear(), logDate.getMonth(), logDate.getDate());
-
-                //     // If the log is from today, increment the streak
-                //     if (currentDate - logDay === currentStreak * 24 * 60 * 60 * 1000) {
-                //         currentStreak++;
-                //     } else if (currentDate - logDay === (currentStreak - 1) * 24 * 60 * 60 * 1000) {
-                //         continue; // Log from yesterday, streak continues
-                //     } else {
-                //         break; // Streak broken
-                //     }
-                // }
 
                 const today = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()); // Reset time to midnight
                 let lastLogDate = new Date(logsData[0].date.toDate());
@@ -150,8 +161,6 @@ function UserPage() {
             console.error("Error fetching emotion counts:", error);
         }
     };
-
-    // const fetchUserTriggers = async (uid) => {
     //     try {
     //         const userDoc = await getDoc(doc(getFirestore(), "userTriggers", uid));
     //         if (userDoc.exists() && userDoc.data().uid === uid) {
@@ -338,8 +347,8 @@ function UserPage() {
                     <p className="instruction">click one to show entries with that attribute</p>
                     <ul className="userpage__totals-emotions">
                         {Object.entries(emotionCounts).map(([emotion, count]) => (
-                            <li key={emotion} className={`userpage__totals-emotions-item ${selectedEmotionLogs[0]?.emotion === emotion ? 'selected' : ''}`} onClick={() => handleEmotionItemClick(emotion)}>
-                                {emotion}: {count}
+                            <li key={emotion} className={`userpage__totals-emotions-item ${selectedEmotionLogs[0]?.emotion === emotion ? 'selected' : ''}`} onClick={() => handleEmotionItemClick(emotion)} style={{ backgroundColor: getBackgroundColor(emotion) }}>
+                                {emotion} <b>{count}</b>
                             </li>
                         ))}
                     </ul>
@@ -380,49 +389,6 @@ function UserPage() {
                         </ul>
                     </div>
                 )}
-
-                {/* <section className="userpage__triggers">
-                    <h3 className="userpage__triggers-head">Active Triggers</h3>
-                    <div className="userpage__triggers-eq">
-                        <div className="userpage__triggers-options">
-                            <ul className="userpage__triggers-list">
-                                {triggerOptions.map((trigger, index) => (
-                                    <li
-                                        key={index}
-                                        className={`userpage__triggers-list-item ${selectedTriggers.includes(trigger) ? 'selected' : ''}`}
-                                        onClick={() => handleTriggerSelection(trigger)}>
-                                        {trigger}
-                                    </li>
-                                ))}
-                            </ul>
-                            <article className="userpage__triggers-add">
-                                <textarea
-                                    className="userpage__triggers-add-input"
-                                    placeholder="custom trigger"
-                                    value={customTrigger}
-                                    onChange={handleCustomTriggerChange}
-                                    disabled={selectedTriggers.length >= 8} // Disable the input when maximum limit is reached
-                                />
-                                <button
-                                    className="userpage__triggers-add-press"
-                                    onClick={handleCustomTriggerAdd}
-                                    disabled={selectedTriggers.length >= 8} // Disable the button when maximum limit is reached
-                                >
-                                    +
-                                </button>
-                            </article>
-                        </div>
-                        <div className="userpage__triggers-user">
-                            {selectedTriggers.map((trigger, index) => (
-                                <p
-                                    key={index} className="userpage__triggers-user-item"
-                                    onClick={() => handleTriggerRemoval(trigger)}>
-                                    {trigger}
-                                </p>
-                            ))}
-                        </div>
-                    </div>
-                </section> */}
 
                 <section className='userpage__faq'>
                     <div className='userpage__faq-eq'>
