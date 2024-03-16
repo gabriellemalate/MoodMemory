@@ -1403,7 +1403,7 @@ const QuickForm = () => {
 
                     <div className='additional'>
                         <article className='additional-victories'>
-                            <h3 className='add-mood-quick__level-head'>Victories</h3>
+                            <h3 className='add-mood-quick__level-head additional-head'>Victories</h3>
                             <div className='additional-list'>
                                 <button type="button" className={`additional-list-item ${selectedVictories.includes('movement') ? 'selected' : ''}`} onClick={() => handleVictoriesChange('movement')}>
                                     movement
@@ -1420,7 +1420,7 @@ const QuickForm = () => {
                             </div>
                         </article>
                         <article className='additional-hurdles'>
-                            <h3 className='add-mood-quick__level-head'>Hurdles</h3>
+                            <h3 className='add-mood-quick__level-head additional-head'>Hurdles</h3>
                             <div className='additional-list'>
                                 <button type="button" className={`additional-list-item ${selectedHurdles.includes('rumination') ? 'selected' : ''}`} onClick={() => handleHurdlesChange('rumination')}>
                                     rumination

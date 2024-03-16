@@ -70,23 +70,23 @@ function LoggedExpand({ logData }) {
     const handleDeleteComment = async (commentId) => {
         const confirmDelete = window.confirm('Are you sure you want to delete this comment?');
 
-    if (confirmDelete) {
-        try {
-            // Filter out the comment to be deleted
-            const updatedComments = comments.filter(comment => comment.id !== commentId);
+        if (confirmDelete) {
+            try {
+                // Filter out the comment to be deleted
+                const updatedComments = comments.filter(comment => comment.id !== commentId);
 
-            // Update Firestore with the updated comments
-            const logRef = doc(db, 'moodlogs', logData.id);
-            await updateDoc(logRef, { comments: updatedComments });
+                // Update Firestore with the updated comments
+                const logRef = doc(db, 'moodlogs', logData.id);
+                await updateDoc(logRef, { comments: updatedComments });
 
-            // Update local state
-            setComments(updatedComments);
-            console.log('Comment successfully deleted from Firestore!');
-        } catch (error) {
-            console.error('Error deleting comment from Firestore: ', error);
+                // Update local state
+                setComments(updatedComments);
+                console.log('Comment successfully deleted from Firestore!');
+            } catch (error) {
+                console.error('Error deleting comment from Firestore: ', error);
+            }
         }
-    }
-};
+    };
 
     const handleDelete = async () => {
         const confirmDelete = window.confirm('Are you sure you want to delete this entry?');
@@ -196,6 +196,27 @@ function LoggedExpand({ logData }) {
                             <button className='open-add__button' type="button" onClick={handleAddComment}>add</button>
                         </div>
                     </form>
+                    
+                    <article className="open">
+                        {/* Other content */}
+                        <div className="open__victories">
+                            <h2>Victories</h2>
+                            <ul>
+                                {logData.victories && logData.victories.map((victory, index) => (
+                                    <li key={index}>{victory}</li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className="open__hurdles">
+                            <h2>Hurdles</h2>
+                            <ul>
+                                {logData.hurdles && logData.hurdles.map((hurdle, index) => (
+                                    <li key={index}>{hurdle}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    </article>
+
                     <button className='open__close' onClick={handleDelete}>
                         delete
                     </button>
