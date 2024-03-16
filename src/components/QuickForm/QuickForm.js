@@ -43,6 +43,7 @@ import { v4 as uuidv4 } from 'uuid';
 const QuickForm = () => {
     const [user] = useAuthState(auth);
     const [selectedVictories, setSelectedVictories] = useState([]);
+    const [selectedTriggers, setSelectedTriggers] = useState([]);
     const [selectedHurdles, setSelectedHurdles] = useState([]);
     const [selectedConsumptions, setSelectedConsumptions] = useState([]);
     const [formData, setFormData] = useState({
@@ -93,6 +94,14 @@ const QuickForm = () => {
         console.log('State Changed:', selectedState);
         setFormData((prevData) => ({ ...prevData, state: selectedState }));
     };
+
+    const handleTriggerChange = (trigger) => {
+        const updatedTriggers = selectedTriggers.includes(trigger)
+            ? selectedTriggers.filter((t) => t !== trigger)
+            : [...selectedTriggers, trigger];
+        setSelectedTriggers(updatedTriggers);
+    };
+
 
     const handleLevelChange = (selectedLevel) => {
         console.log('Level Changed:', selectedLevel);
@@ -232,6 +241,7 @@ const QuickForm = () => {
                 victories: selectedVictories,
                 hurdles: selectedHurdles,
                 consumptions: selectedConsumptions,
+                triggers: selectedTriggers,
                 // customDate: '',
             });
         } catch (error) {
@@ -1455,6 +1465,76 @@ const QuickForm = () => {
                                 </button>
                             </div>
                         </article>
+                        <article className='additional-triggers'>
+                            <h3 className='add-mood-quick__level-head additional-head'>Triggers</h3>
+                            <div className='additional-list'>
+                                <button type="button" className={`additional-list-trigger ${selectedTriggers.includes('myself') ? 'selected' : ''}`}
+                                    onClick={() => handleTriggerChange('myself')}>
+                                    myself
+                                </button>
+                                <button type="button" className={`additional-list-trigger ${selectedTriggers.includes('work') ? 'selected' : ''}`}
+                                    onClick={() => handleTriggerChange('work')}>
+                                    work
+                                </button>
+                                <button type="button" className={`additional-list-trigger ${selectedTriggers.includes('partner') ? 'selected' : ''}`}
+                                    onClick={() => handleTriggerChange('partner')}>
+                                    partner
+                                </button>
+                                <button type="button" className={`additional-list-trigger ${selectedTriggers.includes('family') ? 'selected' : ''}`}
+                                    onClick={() => handleTriggerChange('family')}>
+                                    family
+                                </button>
+
+                                <button type="button" className={`additional-list-trigger ${selectedTriggers.includes('friends') ? 'selected' : ''}`}
+                                    onClick={() => handleTriggerChange('friends')}>
+                                    friends
+                                </button>
+                                <button type="button" className={`additional-list-trigger ${selectedTriggers.includes('sleep') ? 'selected' : ''}`}
+                                    onClick={() => handleTriggerChange('sleep')}>
+                                    sleep
+                                </button>
+                                <button type="button" className={`additional-list-trigger ${selectedTriggers.includes('health') ? 'selected' : ''}`}
+                                    onClick={() => handleTriggerChange('health')}>
+                                    health
+                                </button>
+                                <button type="button" className={`additional-list-trigger ${selectedTriggers.includes('food') ? 'selected' : ''}`}
+                                    onClick={() => handleTriggerChange('food')}>
+                                    food
+                                </button>
+
+                                <button type="button" className={`additional-list-trigger ${selectedTriggers.includes('exercise') ? 'selected' : ''}`}
+                                    onClick={() => handleTriggerChange('exercise')}>
+                                    exercise
+                                </button>
+                                <button type="button" className={`additional-list-trigger ${selectedTriggers.includes('finance') ? 'selected' : ''}`}
+                                    onClick={() => handleTriggerChange('finance')}>
+                                    finance
+                                </button>
+                                <button type="button" className={`additional-list-trigger ${selectedTriggers.includes('home') ? 'selected' : ''}`}
+                                    onClick={() => handleTriggerChange('home')}>
+                                    home
+                                </button>
+                                <button type="button" className={`additional-list-trigger ${selectedTriggers.includes('hobbies') ? 'selected' : ''}`}
+                                    onClick={() => handleTriggerChange('hobbies')}>
+                                    hobbies
+                                </button>
+                            </div>
+
+                            <div className="userpage__triggers-add">
+                                <input
+                                    type="text"
+                                    className="userpage__triggers-add-input"
+                                    placeholder="custom trigger"
+                                />
+                                <button
+                                    className="userpage__triggers-add-press"
+
+                                >
+                                    +
+                                </button>
+                            </div>
+
+                        </article>
                         <article className='additional-consumption'>
                             <h3 className='add-mood-quick__level-head additional-head'>Consumption</h3>
                             <div className='additional-list'>
@@ -1541,8 +1621,8 @@ const QuickForm = () => {
                             >Log!</button>
                         </div>
                     </article>
-                </form>
-            </section>
+                </form >
+            </section >
         </>
     );
 };
