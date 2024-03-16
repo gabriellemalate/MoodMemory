@@ -75,8 +75,8 @@ function Logged({ logData, searchTerm }) {
             backgroundColor = "rgba(290, 146, 0, 0.792)";
             break;
         case "unsure":
-        case "content":
-            backgroundColor = "rgba(217, 255, 0, 0.82)";
+        case "wired":
+            backgroundColor = "rgba(247, 245, 0, 0.74)";
             break;
         case "happy":
         case "loving":

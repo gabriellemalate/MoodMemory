@@ -8,7 +8,7 @@ import awesomesleep from "../../assets/Awesome.png";
 import angry from "../../assets/emotes/angry.png";
 import annoyed from "../../assets/emotes/annoyed.png";
 import anxious from "../../assets/emotes/anxious.png";
-import content from "../../assets/emotes/content.png";
+import wired from "../../assets/emotes/wired.png";
 import down from "../../assets/emotes/down.png";
 import energized from "../../assets/emotes/energized.png";
 import excited from "../../assets/emotes/excited.png";
@@ -581,19 +581,19 @@ const QuickForm = () => {
                                     </li>
 
                                     <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`liteyellow add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'content' ? 'selected' : ''}`} type="button" >
+                                        <button className={`liteyellow add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'wired' ? 'selected' : ''}`} type="button" >
                                             <input
                                                 name="emotion"
                                                 className='add-mood-quick__emote-option-eq'
                                                 type='radio'
-                                                id='content'
-                                                value='content'
-                                                checked={formData.emoji === 'content'}
-                                                onChange={() => handleInputChange('emotion', 'content', 'content')}
+                                                id='wired'
+                                                value='wired'
+                                                checked={formData.emoji === 'wired'}
+                                                onChange={() => handleInputChange('emotion', 'wired', 'wired')}
                                             />
-                                            <label htmlFor='content'>
-                                                <img alt="content" src={content} />
-                                                <h4>content</h4>
+                                            <label htmlFor='wired'>
+                                                <img alt="wired" src={wired} />
+                                                <h4>wired</h4>
                                             </label>
                                         </button>
                                     </li>
@@ -1300,19 +1300,19 @@ const QuickForm = () => {
                                     </li>
 
                                     <li className='add-mood-quick__emote-menu-option'>
-                                        <button className={`liteyellow add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'content' ? 'selected' : ''}`} type="button" >
+                                        <button className={`liteyellow add-mood-quick__emote-menu-option--buttonpress ${formData.emoji === 'wired' ? 'selected' : ''}`} type="button" >
                                             <input
                                                 name="emotion"
                                                 className='add-mood-quick__emote-option-eq'
                                                 type='radio'
-                                                id='content'
-                                                value='content'
-                                                checked={formData.emoji === 'content'}
-                                                onChange={() => handleInputChange('emotion', 'content', 'content')}
+                                                id='wired'
+                                                value='wired'
+                                                checked={formData.emoji === 'wired'}
+                                                onChange={() => handleInputChange('emotion', 'wired', 'wired')}
                                             />
-                                            <label htmlFor='content'>
-                                                <img alt="content" src={content} />
-                                                <h4>content</h4>
+                                            <label htmlFor='wired'>
+                                                <img alt="wired" src={wired} />
+                                                <h4>wired</h4>
                                             </label>
                                         </button>
                                     </li>

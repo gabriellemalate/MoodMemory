@@ -14,6 +14,8 @@ import Patterns from '../../components/Patterns/Patterns';
 const MoodMapsPage = () => {
     const [user] = useAuthState(auth);
     const [streak, setStreak] = useState(1);
+    const currentUserUid = user ? user.uid : null; 
+    
     useEffect(() => {
         const calculateStreak = async () => {
             try {
@@ -96,7 +98,7 @@ const MoodMapsPage = () => {
 
                     <section className='maps__mood'>
                         <h2 className='maps__mood-head'>Your Patterns</h2>
-                        <Patterns/>
+                        <Patterns currentUserUid={currentUserUid} />
                     </section>
 
                 </div>
