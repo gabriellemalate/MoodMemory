@@ -136,7 +136,7 @@ function LoggedExpand({ logData }) {
                         </div>
                         <div className='open-top-right'>
                             <div className='open-top-right__stamp'>
-                                <h3 className='open-top-right__date'>{formattedDate}</h3>
+                                <h3 className='open-top-right__date'>{formattedDate} </h3>
                                 <h3 className='open-top-right__time'>{time}</h3>
                             </div>
                             <h2 className='open-top-right__state'>{logData.state} {logData.level}</h2>
@@ -162,6 +162,22 @@ function LoggedExpand({ logData }) {
                             <p className='open-bottom-right__hours'>{logData.hours} hr{logData.hours !== 1 ? 's' : ''}</p>
                             <img className='open-bottom-right__quality' src={require(`../../assets/${logData.quality}.png`)} alt="sleep quality" title="sleep quality" />
                         </div>
+                    </div>
+                    <div className="open__victories">
+                        <h2 className="open__victories-head">Victories </h2>
+                        <ul className="open__victories-list">
+                            {logData.victories && logData.victories.map((victory, index) => (
+                                <li className="open__victories-item" key={index}>{victory}</li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className="open__hurdles">
+                        <h2 className="open__hurdles-head">Hurdles</h2>
+                        <ul className="open__hurdles-list">
+                            {logData.hurdles && logData.hurdles.map((hurdle, index) => (
+                                <li className="open__hurdles-item" key={index}>{hurdle}</li>
+                            ))}
+                        </ul>
                     </div>
                     <p className='open__notes'>
                         <h2 className='open__notes-head'>Your Notes</h2>
@@ -196,26 +212,6 @@ function LoggedExpand({ logData }) {
                             <button className='open-add__button' type="button" onClick={handleAddComment}>add</button>
                         </div>
                     </form>
-                    
-                    <article className="open">
-                        {/* Other content */}
-                        <div className="open__victories">
-                            <h2>Victories</h2>
-                            <ul>
-                                {logData.victories && logData.victories.map((victory, index) => (
-                                    <li key={index}>{victory}</li>
-                                ))}
-                            </ul>
-                        </div>
-                        <div className="open__hurdles">
-                            <h2>Hurdles</h2>
-                            <ul>
-                                {logData.hurdles && logData.hurdles.map((hurdle, index) => (
-                                    <li key={index}>{hurdle}</li>
-                                ))}
-                            </ul>
-                        </div>
-                    </article>
 
                     <button className='open__close' onClick={handleDelete}>
                         delete

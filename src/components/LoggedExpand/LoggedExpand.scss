@@ -19,6 +19,9 @@
         @include column;
         width: 94%;
         padding: 1rem 0 0rem;
+        @include mobile {
+            padding: .3rem 0 0;
+        }
     }
     &-top {
         @include row;
@@ -27,14 +30,20 @@
         margin: 0;
 
         &-left {
-            width: 50%;
+            width: 37%;
             &__frame {
                 @include column;
                 background-color: $periwinkle-lite;
-                border-radius: 1rem;
+                border-radius: .4rem;
                 padding: .86rem 1rem .5rem;
+                @include mobile {
+                    padding: .5rem 1rem 0;
+                }
                 &-emoji {
                     width: 2rem;
+                    @include mobile {
+                        width: 1.7rem;
+                    }
                 }
                 &-emotion {
                     margin: .2rem 0;
@@ -52,13 +61,14 @@
                 font-weight: 500;
                 width: 100%;
                 @include mobile {
-                    font-size: 1rem
+                    font-size: .92rem;
+                    margin: .2rem 0;
                 }
             }
         }
         &-right {
             @include column;
-            width: 45%;
+            width: 61%;
             align-items: flex-end;
             justify-content: space-between;
 
@@ -66,7 +76,7 @@
                 background-color: rgb(70, 178, 178, 0.6);
                 border-radius: 1rem;
                 padding: 0.5rem 1rem;
-                @include column;
+                @include row;
                 width: 100%;
                 justify-content: center;
                 @include mobile {
@@ -78,6 +88,7 @@
                 margin: 0;
                 @include mobile {
                     font-size: .8rem;
+                    margin-right: 1rem;
                 }
             }
             &__time {
@@ -94,7 +105,7 @@
                 background-color: $periwinkle-lite;
                 padding: .4rem 1rem;
                 margin: .5rem 0 0;
-                letter-spacing: .08rem;
+                letter-spacing: .02rem;
                 font-weight: 500;
                 font-size: 1.2rem;
                 @include mobile {
@@ -116,15 +127,16 @@
                 margin: 0;
                 width: 100%;
                 background-color: $periwinkle-lite;
-                border-radius: 1rem;
+                border-radius: .3rem;
                 @include column;
                 padding: .6rem 1rem;
                 @include mobile {
-                    padding: .36rem;
+                    padding: .2rem;
+                    font-size: .88rem;
                 }
                 &-level {
                     margin: 0;
-                    padding: .2rem 0;
+                    padding: .1rem 0;
                 }
                 &-irr {
                     font-weight: 700;
@@ -138,12 +150,13 @@
             margin: 0;
             @include row;
             background-color: $periwinkle-lite;
-            border-radius: 1rem;
+            border-radius: .3rem;
             padding: 0 1rem;
             width: 45%;
             justify-content: center;
             @include mobile {
-                padding: .4rem;
+                padding: .2rem;
+                font-size: .88rem;
             }
             &__hours {
                 padding-right: 1rem;
@@ -153,6 +166,9 @@
             }
             &__quality {
                 width: 3.4rem;
+                @include mobile {
+                    width: 3rem;
+                }
             }
         }
     }
@@ -162,7 +178,9 @@
         width: 100%;
         padding: .4rem;
         font-size: .8rem;
-        
+        @include mobile {
+            margin: .2rem 0 .3rem;
+        }
         &-head {
             font-size: .8rem;
             margin: 0 0 .2rem .5rem;
@@ -189,7 +207,7 @@
         }
         &-frame {
             border: .1rem solid rgb(157, 212, 212);
-            border-radius: 1rem;
+            border-radius: .3rem;
             padding: .7rem;
             @include column;
             padding-bottom: 1rem;
@@ -198,8 +216,8 @@
             }
         }
         &-initial {
-            background-color: rgb(45, 157, 120);
-            border-radius: 4rem;
+            background-color: rgb(104, 170, 148);
+            border-radius: .3rem;
             width: 100%;
             padding: .1rem 0;
             @include mobile {
@@ -276,6 +294,46 @@
                 background-color: $periwinkle-lite;
                 color: rgb(21, 21, 124);
             }
+        }
+    }
+    &__victories {
+        width: 99%;
+        border-radius: 0;
+        margin-top: .1rem;
+        @include row;
+        &-head {
+            font-size: .9rem;
+            margin: 0;
+            padding-right: .3rem;
+        }
+        &-list {
+            padding: 0;
+            @include row;
+            padding-left: .2rem;
+            margin: .2rem 0;
+        }
+        &-item {
+            font-size: .9rem;
+            margin-left: .2rem;
+            padding: .1rem .32rem;
+            background-color: rgba(107, 228, 185, 0.6);
+            color: rgba(29, 60, 50, 0.6);
+            border-radius: .12rem;
+        }
+    }
+    &__hurdles {
+        @extend .open__victories;
+        margin-top: 0;
+        &-head {
+            @extend .open__victories-head;
+        }
+        &-list {
+            @extend .open__victories-list;
+        }
+        &-item {
+            @extend .open__victories-item;
+            background-color: rgba(238, 177, 133, 0.724);
+            color: rgb(22, 93, 68);
         }
     }
     &__close {

@@ -17,7 +17,7 @@
     }
     max-width: 40rem;
     @include mobile {
-        margin: .32rem;
+        margin: .32rem 0 0 0;
         border-radius: .4rem;
         width: 96%;
     }
@@ -37,7 +37,7 @@
         width: fit-content;
         padding: 1rem;
         border-radius: 1rem;
-        border: 0.1rem solid rgb(228, 138, 255);
+        // border: 0.1rem solid rgb(228, 138, 255);
         background-color: rgba(127, 206, 240, 0.5);
         @include column;
         justify-content: center;
