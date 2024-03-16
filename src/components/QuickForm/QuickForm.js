@@ -148,7 +148,6 @@ const QuickForm = () => {
         // Initialize comments field as an empty array
         const comments = [];
 
-
         // Validation checks
         let formIsValid = true;
 
@@ -214,8 +213,8 @@ const QuickForm = () => {
                 title: formData.title,
                 graphValue: graphValue,
                 comments: comments,
-                victories: formData.victories,
-                hurdles: formData.hurdles,
+                victories: selectedVictories,
+            hurdles: selectedHurdles, 
                 // customDate: '',
             });
         } catch (error) {
