@@ -339,6 +339,10 @@
     &__close {
         @extend .open-add__button;
         margin: 1rem;
+        padding: .2rem;
+        background-color: rgba(255, 87, 32, 0.724);
+        border-color: rgba(247, 180, 157, 0.724);
+        color: rgb(102, 4, 102);
         @include mobile {
             margin: .4rem;
         }
