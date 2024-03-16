@@ -20,6 +20,7 @@
     font-size: .9rem;
     color: aliceblue;
 }
+
 .userpage {
     @include column;
     &__head {
@@ -270,4 +271,7 @@
             }
         }
     }
+}
+.selected {
+    background-color: rgb(166, 55, 166);
 }

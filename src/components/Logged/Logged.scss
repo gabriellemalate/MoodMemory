@@ -14,11 +14,12 @@
     }
     &:active {
         background-color: rgb(100, 205, 249);
-        background-color: rgba(245, 210, 54, 0.818);
     }
     max-width: 40rem;
     @include mobile {
         margin: .32rem;
+        border-radius: .4rem;
+        width: 96%;
     }
 
     &-eq {
@@ -26,6 +27,10 @@
         justify-content: space-between;
         width: 94%;
         padding: 0.8rem 0 0.8rem;
+        @include mobile {
+            padding: .3rem 0;
+            
+        }
     }
     &__frame {
         margin-right: 1rem;

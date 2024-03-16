@@ -338,7 +338,7 @@ function UserPage() {
                     <p className="instruction">click one to show entries with that attribute</p>
                     <ul className="userpage__totals-emotions">
                         {Object.entries(emotionCounts).map(([emotion, count]) => (
-                            <li key={emotion} className="userpage__totals-emotions-item" onClick={() => handleEmotionItemClick(emotion)}>
+                            <li key={emotion} className={`userpage__totals-emotions-item ${selectedEmotionLogs[0]?.emotion === emotion ? 'selected' : ''}`} onClick={() => handleEmotionItemClick(emotion)}>
                                 {emotion}: {count}
                             </li>
                         ))}
@@ -361,7 +361,7 @@ function UserPage() {
                     <p className="instruction">click one to show - max. 7 - recent entries</p>
                     <ul className="userpage__totals-emotions">
                         {Object.entries(qualityCounts).map(([quality, count]) => (
-                            <li key={quality} className="userpage__totals-emotions-item" onClick={() => handleQualityItemClick(quality)}>
+                            <li key={quality} className={`userpage__totals-emotions-item ${selectedQualityLogs[0]?.quality === quality ? 'selected' : ''}`} onClick={() => handleQualityItemClick(quality)}>
                                 {quality}: {count}
                             </li>
                         ))}
