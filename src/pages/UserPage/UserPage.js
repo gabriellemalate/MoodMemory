@@ -91,6 +91,7 @@ function UserPage() {
                 const logsData = logsSnapshot.docs.map(doc => doc.data());
 
                 let currentStreak = 0;
+                let lastLogDate = null; 
 
                 if (logsData.length === 0) {
                     setStreak(0);
@@ -98,35 +99,25 @@ function UserPage() {
                 }
 
                 const currentDate = new Date();
-
                 const today = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()); // Reset time to midnight
-                let lastLogDate = new Date(logsData[0].date.toDate());
-                lastLogDate = new Date(lastLogDate.getFullYear(), lastLogDate.getMonth(), lastLogDate.getDate()); // Reset time to midnight
-
-                // Check if the most recent log is within the past 24 hours
-                if (today - lastLogDate > 24 * 60 * 60 * 1000) {
-                    setStreak(0);
-                    return;
-                }
 
                 // Iterate through logs to find consecutive days
-                for (let i = 0; i < logsData.length; i++) {
-                    const logDate = new Date(logsData[i].date.toDate());
-                    const logDay = new Date(logDate.getFullYear(), logDate.getMonth(), logDate.getDate());
+            for (let i = 0; i < logsData.length; i++) {
+                const logDate = new Date(logsData[i].date.toDate());
+                const logDay = new Date(logDate.getFullYear(), logDate.getMonth(), logDate.getDate());
 
-                    // if (today - logDay === currentStreak * 24 * 60 * 60 * 1000) {
-                    //     currentStreak++;
-                    // } else if (today - logDay === (currentStreak - 1) * 24 * 60 * 60 * 1000) {
-                    //     continue; // Log from yesterday, streak continues
-                    // } else {
-                    //     break; // Streak broken
-                    // }
-                    if (today - logDay <= currentStreak * 24 * 60 * 60 * 1000) {
+                // Check if the log is from the current streak day or the day before
+                if (today - logDay <= currentStreak * 24 * 60 * 60 * 1000) {
+                    // Check if the log is from the same date as the previous log
+                    if (!lastLogDate || logDay.getTime() !== lastLogDate.getTime()) {
                         currentStreak++;
-                    } else {
-                        break; // Streak broken
                     }
+                } else {
+                    break; // Streak broken
                 }
+
+                lastLogDate = logDay; // Update last log date
+            }
 
                 setStreak(currentStreak);
             } catch (error) {
@@ -138,7 +129,6 @@ function UserPage() {
             calculateStreak();
         }
     }, [user]);
-
     
 
     useEffect(() => {

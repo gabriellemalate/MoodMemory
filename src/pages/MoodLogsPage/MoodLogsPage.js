@@ -68,27 +68,6 @@ function MoodLogsPage() {
                 const currentDate = new Date();
                 const today = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()); // Reset time to midnight
 
-                // let lastLogDate = new Date(logsData[0].date.toDate());
-                // lastLogDate = new Date(lastLogDate.getFullYear(), lastLogDate.getMonth(), lastLogDate.getDate()); // Reset time to midnight
-
-                // // Check if the most recent log is within the past 24 hours
-                // if (today - lastLogDate > 24 * 60 * 60 * 1000) {
-                //     setStreak(0);
-                //     return;
-                // }
-
-                // // Iterate through logs to find consecutive days
-                // for (let i = 0; i < logsData.length; i++) {
-                //     const logDate = new Date(logsData[i].date.toDate());
-                //     const logDay = new Date(logDate.getFullYear(), logDate.getMonth(), logDate.getDate());
-
-                //     if (today - logDay <= currentStreak * 24 * 60 * 60 * 1000) {
-                //         currentStreak++;
-                //     } else {
-                //         break; // Streak broken
-                //     }
-                // }
-
                 // Iterate through logs to find consecutive days
             for (let i = 0; i < logsData.length; i++) {
                 const logDate = new Date(logsData[i].date.toDate());
