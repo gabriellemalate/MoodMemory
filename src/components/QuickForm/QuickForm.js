@@ -40,7 +40,6 @@ import { db } from '../../firebase';
 import { v4 as uuidv4 } from 'uuid';
 // import NavigationPrompt from './NavigationPrompt';
 
-
 const QuickForm = () => {
     const [user] = useAuthState(auth);
     const [formData, setFormData] = useState({
@@ -1382,10 +1381,38 @@ const QuickForm = () => {
 
                     <div className='additional'>
                         <article className='additional-victories'>
-
+                            <h3 className='add-mood-quick__level-head'>Victories</h3>
+                            <ul className='additional-list'>
+                                <li className='additional-list-item'>
+                                    movement
+                                </li>
+                                <li className='additional-list-item'>
+                                    chores
+                                </li>
+                                <li className='additional-list-item'>
+                                    mindful activity
+                                </li>
+                                <li className='additional-list-item'>
+                                    learning
+                                </li>
+                            </ul>
                         </article>
                         <article className='additional-hurdles'>
-
+                            <h3 className='add-mood-quick__level-head'>Hurdles</h3>
+                            <ul className='additional-list'>
+                                <li className='additional-list-item'>
+                                    rumination
+                                </li>
+                                <li className='additional-list-item'>
+                                    procrastination
+                                </li>
+                                <li className='additional-list-item'>
+                                    isolation
+                                </li>
+                                <li className='additional-list-item'>
+                                    panic attack
+                                </li>
+                            </ul>
                         </article>
                     </div>
 
@@ -1437,4 +1464,3 @@ const QuickForm = () => {
 };
 
 export default QuickForm;
-// export default NavigationPrompt;

@@ -70,11 +70,11 @@ const MoodMapsPage = () => {
             <main className='maps'>
                 <div className='maps__eq'>
                     <article className='maps__top'>
-                    <h1 className='maps__head'>Maps</h1>
-                    <div className='top-streak'>
+                        <h1 className='maps__head'>Maps</h1>
+                        <div className='top-streak'>
                             <div className='streak'>
                                 STREAK ❤️‍🔥 : {streak}</div>
-                    </div>
+                        </div>
                     </article>
                     <article className='blob-wrap'>
                         <div className="blobs blobs_map-1" />
@@ -87,9 +87,14 @@ const MoodMapsPage = () => {
                         <h2 className='maps__mood-head'>mood</h2>
                         <MoodMap />
                     </section>
-                    <section className='maps__sleep'>
+                    {/* <section className='maps__sleep'>
                         <h2 className='maps__sleep-head'>*in dev* sleep</h2>
                         <SleepMap />
+                    </section> */}
+
+                    <section className='maps__mood'>
+                        <h2 className='maps__mood-head'>Your Patterns</h2>
+                        
                     </section>
 
                 </div>
