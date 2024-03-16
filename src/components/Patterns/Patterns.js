@@ -134,22 +134,26 @@ function Patterns() {
     return (
         <>
             <section className='patterns'>
-                <article className='patterns__pattern'>
-                    <h5 className='patterns__pattern-head'>your typical duration of elevation: <b className='patterns__pattern-number'>
+                <article className='patterns__pattern patterns__pattern-duration'>
+                    <h5 className='patterns__pattern-head'>typical duration of elevation~</h5> 
+                    <p className='patterns__pattern-data'><b className='patterns__pattern-number'>
                         {elevationCount}
-                    </b> days</h5>
+                    </b> days</p>
 
                 </article>
-                <article className='patterns__pattern'>
-                    <h5 className='patterns__pattern-head'>your typical duration of depression: <b className='patterns__pattern-number'>
+                <article className='patterns__pattern patterns__pattern-duration'>
+                    <h5 className='patterns__pattern-head'>typical duration of depression~ </h5>
+                    <p className='patterns__pattern-data'><b className='patterns__pattern-number'>
                         {depressionCount}
-                    </b> days</h5>
+                    </b> days</p>
                 </article>
                 <article className='patterns__pattern'>
-                    <h5 className='patterns__pattern-head'>events that incite a dip⤵ in mood - keywords from your notes, comments and titles</h5>
+                    <h5 className='patterns__pattern-head'>events that incite a dip⤵ in mood</h5> 
+                    <div className='patterns__pattern-keys'>keywords from your notes, comments and titles~</div>
                 </article>
                 <article className='patterns__pattern'>
-                    <h5 className='patterns__pattern-head'>events that incite a spike⤴ in mood - keywords from your notes, comments and titles</h5>
+                    <h5 className='patterns__pattern-head'>events that incite a spike⤴ in mood</h5>
+                    <div className='patterns__pattern-keys'>keywords from your notes, comments and titles~</div>
                 </article>
             </section>
         </>

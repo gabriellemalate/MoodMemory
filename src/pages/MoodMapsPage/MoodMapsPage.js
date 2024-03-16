@@ -85,7 +85,7 @@ return (
                 </article>
 
                 <section className='maps__mood'>
-                    <h2 className='maps__mood-head'>mood</h2>
+                    <h2 className='maps__mood-head'>Mood Map</h2>
                     <MoodMap />
                 </section>
                 {/* <section className='maps__sleep'>
@@ -94,7 +94,7 @@ return (
                     </section> */}
 
                 <section className='maps__mood'>
-                    <h2 className='maps__mood-head'>Your Patterns</h2>
+                    <h2 className='maps__mood-head'>{user ? user.displayName.split(' ')[0] : ''}'s Patterns</h2>
                     <Patterns currentUserUid={currentUserUid} />
                 </section>
 

@@ -2,14 +2,39 @@
 @use "../../styles/partials/variables" as *;
 
 .patterns {
-    padding: 0;
+    padding: 0 0 .6rem;
+    width: 98%;
     &__pattern {
+        width: 100%;
         margin: 0;
-        padding: 0;
+        padding: 0 .4rem;
+        margin-bottom: .2rem;
+        @include column;
         &-head {
             font-weight: 400;
-            margin: 0 0 .6rem;
+            margin: 0 0 0rem;
+            align-self: flex-start;
+            text-align: start;
+            // font-size: .9rem;
             // background-color: red;
+        }
+        &-data {
+            margin: 0;
+            font-size: .8rem;
+        }
+        &-number {
+            color: azure;
+            font-size: .88rem;
+        }
+        &-keys {
+            font-size: .77rem;
+            width: 100%;
+            border: .1rem double $deepblue;
+            border-radius: .3rem;
+            height: 2rem;
+        }
+        &-duration {
+            @include row
         }
     }
 }
