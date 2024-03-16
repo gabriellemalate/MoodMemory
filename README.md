@@ -46,9 +46,11 @@ Mood tracking is a challenging chore to maintain
 - I want to have a clear list to track my foremost concerns (Trigger box)
 - I want a place where I can peruse through all of my past moods, and be able to sort & search through them. (Mood Logs Page. Search function. Sort function)
 - I want the ability to look back through years of my logs since I began logging, and see my patterns.  (Toggle Mood Map Controls - Yr, Mo, Wk, Day)
-- *in development* I want to have the option to track my consumptions - food, medication, etc; and be able to track symptoms from my menses (extended log)
+- I want the option to track my Hurdles and accomplishments ("Victories" and "Hurdles" Selection) 
+- I want the option to track my consumptions - food, medication, etc (Consumptions Selection)
+- *in development* I want to track symptoms from my menses (extended log)
 
-### Screenshots
+### Screenshots (outdated)
 These are on _MOBILE_ but MoodMemory is **available in all screensizes**
 
 #### Form Page
