@@ -40,6 +40,7 @@ function UserPage() {
                 return "rgba(290, 146, 0, 0.792)";
             case "unsure":
             case "wired":
+            case "wired":
                 return "rgba(217, 255, 0, 0.69)";
             case "happy":
             case "loving":
@@ -106,11 +107,17 @@ function UserPage() {
                 const logDate = new Date(logsData[i].date.toDate());
                 const logDay = new Date(logDate.getFullYear(), logDate.getMonth(), logDate.getDate());
 
-                // Check if the log is from the current streak day or the day before
-                if (today - logDay <= currentStreak * 24 * 60 * 60 * 1000) {
-                    // Check if the log is from the same date as the previous log
-                    if (!lastLogDate || logDay.getTime() !== lastLogDate.getTime()) {
+                    // if (today - logDay === currentStreak * 24 * 60 * 60 * 1000) {
+                    //     currentStreak++;
+                    // } else if (today - logDay === (currentStreak - 1) * 24 * 60 * 60 * 1000) {
+                    //     continue; // Log from yesterday, streak continues
+                    // } else {
+                    //     break; // Streak broken
+                    // }
+                    if (today - logDay <= currentStreak * 24 * 60 * 60 * 1000) {
                         currentStreak++;
+                    } else {
+                        break; // Streak broken
                     }
                 } else {
                     break; // Streak broken
@@ -129,6 +136,7 @@ function UserPage() {
             calculateStreak();
         }
     }, [user]);
+
     
 
     useEffect(() => {
