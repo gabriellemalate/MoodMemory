@@ -163,22 +163,26 @@ function LoggedExpand({ logData }) {
                             <img className='open-bottom-right__quality' src={require(`../../assets/${logData.quality}.png`)} alt="sleep quality" title="sleep quality" />
                         </div>
                     </div>
-                    <div className="open__victories">
-                        <h2 className="open__victories-head">Victories </h2>
-                        <ul className="open__victories-list">
-                            {logData.victories && logData.victories.map((victory, index) => (
-                                <li className="open__victories-item" key={index}>{victory}</li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div className="open__hurdles">
-                        <h2 className="open__hurdles-head">Hurdles</h2>
-                        <ul className="open__hurdles-list">
-                            {logData.hurdles && logData.hurdles.map((hurdle, index) => (
-                                <li className="open__hurdles-item" key={index}>{hurdle}</li>
-                            ))}
-                        </ul>
-                    </div>
+                    {logData.victories && logData.victories.length > 0 && (
+                        <div className="open__victories">
+                            <h2 className="open__victories-head">Victories </h2>
+                            <ul className="open__victories-list">
+                                {logData.victories.map((victory, index) => (
+                                    <li className="open__victories-item" key={index}>{victory}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+                    {logData.hurdles && logData.hurdles.length > 0 && (
+                        <div className="open__hurdles">
+                            <h2 className="open__hurdles-head">Hurdles</h2>
+                            <ul className="open__hurdles-list">
+                                {logData.hurdles.map((hurdle, index) => (
+                                    <li className="open__hurdles-item" key={index}>{hurdle}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
                     <p className='open__notes'>
                         <h2 className='open__notes-head'>Your Notes</h2>
                         <div className='open__notes-frame'>
