@@ -130,7 +130,6 @@ function UserPage() {
             calculateStreak();
         }
     }, [user]);
-
     
 
     useEffect(() => {

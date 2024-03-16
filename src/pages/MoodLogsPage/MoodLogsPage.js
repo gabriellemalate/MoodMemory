@@ -68,6 +68,7 @@ function MoodLogsPage() {
                 const currentDate = new Date();
                 const today = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()); // Reset time to midnight
     
+
                 // Iterate through logs to find consecutive days
                 for (let i = 0; i < logsData.length; i++) {
                     const logDate = new Date(logsData[i].date.toDate());
