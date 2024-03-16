@@ -10,6 +10,14 @@ function LoggedExpand({ logData }) {
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [time, setTime] = useState('');
     const [formattedDate, setFormattedDate] = useState('');
+    const [consumptions, setConsumptions] = useState([]);
+
+    useEffect(() => {
+        if (logData.consumptions) {
+            setConsumptions(logData.consumptions);
+        }
+    }, [logData.consumptions]);
+
 
     useEffect(() => {
         if (logData.date) {
@@ -183,6 +191,17 @@ function LoggedExpand({ logData }) {
                             </ul>
                         </div>
                     )}
+                    {consumptions && consumptions.length > 0 && (
+                        <div className="open__consumptions">
+                            <h2 className="open__consumptions-head">Consumptions</h2>
+                            <ul className="open__consumptions-list">
+                                {consumptions.map((consumption, index) => (
+                                    <li className="open__consumptions-item" key={index}>{consumption}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+
                     <p className='open__notes'>
                         <h2 className='open__notes-head'>Your Notes</h2>
                         <div className='open__notes-frame'>

@@ -325,6 +325,7 @@
             background-color: rgba(107, 228, 185, 0.6);
             color: rgba(29, 60, 50, 0.6);
             border-radius: .12rem;
+            text-wrap: nowrap;
         }
     }
     &__hurdles {
@@ -340,6 +341,20 @@
             @extend .open__victories-item;
             background-color: rgba(238, 177, 133, 0.724);
             color: rgb(22, 93, 68);
+        }
+    }
+    &__consumptions {
+        @extend .open__victories;
+        margin-top: 0;
+        &-head {
+            @extend .open__victories-head;
+        }
+        &-list {
+            @extend .open__victories-list;
+        }
+        &-item {
+            @extend .open__victories-item;
+            background-color: rgba(238, 133, 233, 0.67);
         }
     }
     &__close {
