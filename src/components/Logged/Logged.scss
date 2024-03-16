@@ -29,7 +29,7 @@
         padding: 0.8rem 0 0.8rem;
         @include mobile {
             padding: .3rem 0;
-            
+            margin: 0;
         }
     }
     &__frame {

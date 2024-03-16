@@ -4,7 +4,7 @@
 .open {
     margin: 1rem 0;
     background-color: rgb(100, 205, 249, 0.8);
-    width: 90%;
+    width: 95%;
     border-radius: 1rem;
     @include column;
     color: aliceblue;
@@ -17,7 +17,7 @@
     }
     &-eq {
         @include column;
-        width: 94%;
+        width: 96%;
         padding: 1rem 0 0rem;
         @include mobile {
             padding: .3rem 0 0;
@@ -188,7 +188,8 @@
         }
         &-pophead {
             justify-content: flex-start;
-            margin: 0;
+            margin: .24rem 0 0;
+            align-self: flex-start;
         }
         &-comment {
             @include row;
@@ -196,8 +197,10 @@
             width: 100%;
             overflow: scroll;
             font-size: .8rem;
+            text-align: start;
             @include mobile {
                 padding-bottom: .6rem;
+                font-size: .76rem;
             }
             &--button {
                 border: 0;

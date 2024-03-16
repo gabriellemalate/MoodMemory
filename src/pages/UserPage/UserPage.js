@@ -87,6 +87,19 @@ function UserPage() {
         }
     };
 
+    const getBgColor = (state) => {
+        switch (state.toLowerCase()) {
+            case "elevated":
+                return "green";
+            case "depressed":
+                return "red";
+            case "wnl":
+                return "blue";
+            default:
+                return "initial"; // or any default color you prefer
+        }
+    };
+
     useEffect(() => {
         if (user) {
             fetchQualityCounts(user.uid);
