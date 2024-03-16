@@ -222,6 +222,7 @@
             padding: .1rem 0;
             @include mobile {
                 border-radius: .3rem;
+                margin: 0;
             }
         }
     }
@@ -229,11 +230,11 @@
         @include column;
         width: 100%;
         margin: 0 1rem;
-        border-radius: 1rem;
+        border-radius: .3rem;
         background-color: rgba(147, 214, 247, 0.8);
         padding:.5rem 0 1.8rem;
         @include mobile {
-            padding: .6rem 0;
+            padding: .4rem 0;
         }
         &:hover {
             background-color: rgba(68, 147, 186, 0.8);
@@ -248,10 +249,12 @@
             font-weight: 600;
             font-style: italic;
             @include mobile {
-                border-radius: .6rem;
+                border-radius: .3rem;
                 font-size: .8rem;
                 padding: .2rem 1rem;
-                margin: 0 0 .4rem;
+                margin: 0;
+                padding: .1rem 0;
+                width: 94%;
             }
         }
         &__enter {
@@ -268,6 +271,8 @@
                 border-radius: .5rem;
                 margin-left: .4rem;
                 padding: .5rem;
+                height: 1.6rem;
+                border: .1rem solid rgb(77, 88, 82);
             }
         }
         &__button {

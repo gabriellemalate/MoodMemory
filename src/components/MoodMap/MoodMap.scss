@@ -3,7 +3,7 @@
 
 .map{
     @include column;
-    padding: 0 0 1.5rem;
+    padding: 0 0 1rem;
     width: 100%;
 
     &-controls {
@@ -13,6 +13,8 @@
         border-radius: 1rem;
         @include mobile {
             border-radius: .4rem;
+            width: 96%;
+            padding: .4rem;
         }
         @include smallscreen {
             margin-top: 2rem;

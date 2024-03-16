@@ -269,16 +269,16 @@ function UserPage() {
                 const logsCollection = collection(db, "moodlogs");
                 const logsQuery = query(logsCollection, where("uid", "==", user.uid), where("quality", "==", quality), orderBy("date", "desc"), limit(12));
                 console.log("Logs query:", logsQuery);
-    
+
                 const logsSnapshot = await getDocs(logsQuery);
                 console.log("Logs snapshot:", logsSnapshot);
-    
+
                 const logsData = logsSnapshot.docs.map((doc) => ({
                     id: doc.id,
                     ...doc.data()
                 }));
                 console.log("Logs data:", logsData);
-    
+
                 setSelectedQualityLogs(logsData);
                 console.log("Selected quality logs:", selectedQualityLogs);
             }
@@ -301,16 +301,16 @@ function UserPage() {
                 const logsCollection = collection(db, "moodlogs");
                 const logsQuery = query(logsCollection, where("uid", "==", user.uid), where("emotion", "==", emotion), orderBy("date", "desc"), limit(12));
                 console.log("Logs query:", logsQuery);
-    
+
                 const logsSnapshot = await getDocs(logsQuery);
                 console.log("Logs snapshot:", logsSnapshot);
-    
+
                 const logsData = logsSnapshot.docs.map((doc) => ({
                     id: doc.id,
                     ...doc.data()
                 }));
                 console.log("Logs data:", logsData);
-    
+
                 setSelectedEmotionLogs(logsData);
                 console.log("Selected emotion logs:", selectedEmotionLogs);
             }
@@ -390,14 +390,18 @@ function UserPage() {
                     </div>
                 )}
 
+                <section>
+                    COMMON PHRASES & WORDS
+                </section>
+
                 <section className='userpage__faq'>
                     <div className='userpage__faq-eq'>
                         <h2 className='userpage__faq-head'>FAQ</h2>
                         <div className='userpage__faq-questions'>
                             <article className='userpage__faq-query'>
                                 <h4 className='userpage__faq-query__head'>What is WNL?</h4>
-                                <p className='userpage__faq-query__answer'>{'"within normal limits" no symptoms of depression or elevation. '} 
-                                {/* <a className='userpage__faq-query__answer-link' href='https://agilevirtualpt.com/blog/why-you-want-to-hear-virtual-physical-therapists-use-the-medical-abbreviation-wnl-in-your-sessions/'>More info here</a> */}
+                                <p className='userpage__faq-query__answer'>{'"within normal limits" no symptoms of depression or elevation. '}
+                                    {/* <a className='userpage__faq-query__answer-link' href='https://agilevirtualpt.com/blog/why-you-want-to-hear-virtual-physical-therapists-use-the-medical-abbreviation-wnl-in-your-sessions/'>More info here</a> */}
                                 </p>
                             </article>
                             <article className='userpage__faq-query'>

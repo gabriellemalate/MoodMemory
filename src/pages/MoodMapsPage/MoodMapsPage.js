@@ -9,6 +9,8 @@ import { db, auth } from '../../firebase';
 import { query, collection, orderBy, onSnapshot, getFirestore, where, getDocs, doc, setDoc, getDoc } from 'firebase/firestore';
 import SampleLog from '../../components/SampleLog/SampleLog';
 import { useAuthState } from "react-firebase-hooks/auth";
+import Patterns from '../../components/Patterns/Patterns';
+
 const MoodMapsPage = () => {
     const [user] = useAuthState(auth);
     const [streak, setStreak] = useState(1);
@@ -94,7 +96,7 @@ const MoodMapsPage = () => {
 
                     <section className='maps__mood'>
                         <h2 className='maps__mood-head'>Your Patterns</h2>
-                        
+                        <Patterns/>
                     </section>
 
                 </div>
