@@ -2,7 +2,6 @@
 @use "../../styles/partials/variables" as *;
 
 @import url("https://fonts.googleapis.com/css?family=Titan+One");
-$theblue: rgba(17, 95, 121, 0.851);
 
 .form-group {
     @include row;
@@ -87,7 +86,7 @@ $theblue: rgba(17, 95, 121, 0.851);
             @include column;
             border-radius: 1rem;
             padding: 2.5rem 0 2rem;
-            width: 98%;
+            width: 96%;
             @include tablet {
                 padding: 2.5rem 0 2rem;
             }
@@ -104,6 +103,7 @@ $theblue: rgba(17, 95, 121, 0.851);
                 border-bottom: .1rem black solid;
                 border-radius: 0;
                 padding-top: 1.4rem;
+                width: 100%;
             }
 
             &__buttons {
@@ -176,12 +176,15 @@ $theblue: rgba(17, 95, 121, 0.851);
             &-divider {
                 width: 1.4rem;
                 margin: 0 0 1.5rem;
+                @include mobile {
+                    margin-bottom: 1rem;
+                }
             }
             &-state {
                 @include row;
                 justify-content: center;
                 width: 90%;
-
+                
                 &-opt {
                     display: none;
                     &:checked + label {
@@ -198,6 +201,10 @@ $theblue: rgba(17, 95, 121, 0.851);
                         margin: 0 0.4rem;
                         @include mobile-body;
                         cursor: pointer;
+                        @include mobile {
+                            padding: .32rem .7rem;
+                            border-radius: 3rem;
+                        }
                     }
                 }
             }
@@ -214,6 +221,7 @@ $theblue: rgba(17, 95, 121, 0.851);
 
                 &-opt {
                     @extend .add-mood-quick__level-state-opt;
+                    
                     &:active {
                         border: 2rem solid $periwinkle;
                         font-weight: bold;
@@ -285,6 +293,9 @@ $theblue: rgba(17, 95, 121, 0.851);
                 }
                 &-menu {
                     @extend .add-mood-quick__observations-irritability-menu;
+                    @include mobile {
+                        margin-bottom: .8rem;
+                    }
                 }
             }
         }
@@ -308,7 +319,9 @@ $theblue: rgba(17, 95, 121, 0.851);
                     @include desktop {
                         @include row;
                     }
-                    
+                    @include mobile {
+                        @include column;
+                    }
                 }
                 &-head {
                     @include mobile-head-category;
@@ -333,6 +346,9 @@ $theblue: rgba(17, 95, 121, 0.851);
                     margin: 0 0 1rem;
                     @include mobile {
                         margin: 0 0 .4rem;
+                        @include row;
+                        justify-content: space-between;
+                        width: 78%;
                     }
                     &-head {
                         @extend .add-mood-quick__observations-irritability-head;
@@ -377,6 +393,7 @@ $theblue: rgba(17, 95, 121, 0.851);
                             padding: 0;
                             height: 9rem;
                         }
+                        
                     }
                     &-option {
                         width: 3.5rem;
@@ -536,6 +553,8 @@ $theblue: rgba(17, 95, 121, 0.851);
                     }
                     @include mobile {
                         margin: 0;
+                        border-radius: .4rem;
+                        padding: .3rem .2rem;
                     }
                 }
                 &-option {
@@ -546,7 +565,7 @@ $theblue: rgba(17, 95, 121, 0.851);
                         width: 3.78rem;
                         margin: 0.3rem 0;
                         padding: 0.3rem 0 0;
-                        border: solid 0.03rem rgb(238, 240, 252);
+                        border: solid 0.03rem rgb(195, 203, 250);
                         transition: transform 0.18s;
                         cursor: pointer;
 
@@ -609,30 +628,30 @@ $theblue: rgba(17, 95, 121, 0.851);
 .blue {
     background-color: $theblue;
 }
-$theyellow: rgba(210, 210, 47, 0.818);
+
 .yellow {
     background-color: $theyellow;
 }
-$thegreen: rgba(22, 201, 22, 0.729);
+
 .green {
     background-color: $thegreen;
 }
-$thered: rgba(255, 0, 123, 0.896);
+
 .red {
     background-color: $thered;
 }
-$theorange: rgba(255, 166, 0, 0.792);
+
 .orange {
     background-color: $theorange;
 }
-$thedeep: rgba(0, 0, 255, 0.763);
+
 .deepblue {
     background-color: $thedeep;
 }
 .black {
     background-color: rgba(0, 0, 0, 0.753);
 }
-$liteyellow: rgba(217, 255, 0, 0.82);
+
 .liteyellow {
     background-color: $liteyellow;
 }

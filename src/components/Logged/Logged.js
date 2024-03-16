@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import './Logged.scss';
 import LoggedExpand from '../LoggedExpand/LoggedExpand';
 import { auth } from '../../firebase';
+import { theblue, thedeep, theyellow, theorange, liteyellow, thegreen, thered } from '../../styles/variables';
 
 function Logged({ logData, searchTerm }) {
     const [expanded, setExpanded] = useState(false);
-    const [userUid, setUserUid] = useState(null); 
+    const [userUid, setUserUid] = useState(null);
 
     useEffect(() => {
         // Get the current user's UID
@@ -46,16 +47,66 @@ function Logged({ logData, searchTerm }) {
         return lowercaseTitle.includes(lowercaseSearchTerm) || lowercaseEmotion.includes(lowercaseSearchTerm) || lowercaseLevel.includes(lowercaseSearchTerm);
     };
 
+    let backgroundColor;
+
+    switch (logData.emoji) {
+        case "anxious":
+        case "unmotivated":
+        case "down":
+            backgroundColor = "rgba(17, 95, 121, 0.851)";
+            break;
+        case "exhausted":
+        case "hopeless":
+        case "panic":
+            backgroundColor = "rgba(0, 0, 0, 0.753)";
+            break;
+        case "frustrated":
+        case "angry":
+        case "sad":
+            backgroundColor = "rgba(0, 0, 255, 0.763)";
+            break;
+        case "tired":
+        case "annoyed":
+            backgroundColor = "rgba(245, 210, 54, 0.818)";
+            break;
+        case "irritable":
+        case "worried":
+        case "stressed":
+            backgroundColor = "rgba(290, 146, 0, 0.792)";
+            break;
+        case "unsure":
+        case "content":
+            backgroundColor = "rgba(217, 255, 0, 0.82)";
+            break;
+        case "happy":
+        case "loving":
+        case "relaxed":
+        case "satisfied":
+        case "grateful":
+            backgroundColor = "rgba(22, 201, 22, 0.729)";
+            break;
+        case "motivated":
+        case "proud":
+        case "energized":
+        case "excited":
+            backgroundColor = "rgba(255, 0, 123, 0.896)";
+            break;
+        default:
+            // Default color or error handling
+            backgroundColor = "initial"; // or any default color you prefer
+            break;
+    }
+
     return (
         <>
 
             {isMatch(logData) && (
                 <article
                     className={`logged ${expanded ? 'expanded' : 'compressed'}`}>
-                    <div className='logged-eq' onClick={toggleExpand}>
+                    <div className='logged-eq' onClick={toggleExpand} >
 
-                        <div className='logged__frame'>
-                            <img className='logged__frame-emoji' alt='logged emotion' src={require(`../../assets/emotes/${logData.emoji}.png`)} />
+                        <div className='logged__frame' style={{ backgroundColor: backgroundColor }}>
+                            <img className='logged__frame-emoji' alt='logged emotion'  src={require(`../../assets/emotes/${logData.emoji}.png`)} />
                         </div>
                         <div className='logged-info'>
                             <div className='logged-info__top'>
@@ -85,7 +136,5 @@ function Logged({ logData, searchTerm }) {
         </>
     );
 }
-
-
 
 export default Logged;
