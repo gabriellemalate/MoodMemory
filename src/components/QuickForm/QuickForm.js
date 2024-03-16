@@ -42,6 +42,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 const QuickForm = () => {
     const [user] = useAuthState(auth);
+    const [selectedVictories, setSelectedVictories] = useState([]);
+    const [selectedHurdles, setSelectedHurdles] = useState([]);
     const [formData, setFormData] = useState({
         state: '',
         level: '',
@@ -55,6 +57,8 @@ const QuickForm = () => {
         notes: '',
         graphValue: '',
         comments: '',
+        victories: '',
+        hurdles: '',
     });
     const [errors, setErrors] = useState({
         state: '',
@@ -113,6 +117,23 @@ const QuickForm = () => {
         console.log('Notes Changed:', notes);
         setFormData((prevData) => ({ ...prevData, notes }));
     };
+
+    const handleVictoriesChange = (victory) => {
+        const updatedVictories = selectedVictories.includes(victory)
+        ? selectedVictories.filter((v) => v !== victory)
+        : [...selectedVictories, victory];
+    setSelectedVictories(updatedVictories);
+    console.log("Selected Victories:", updatedVictories); 
+    };
+
+    const handleHurdlesChange = (hurdle) => {
+        const updatedHurdles = selectedHurdles.includes(hurdle)
+        ? selectedHurdles.filter((h) => h !== hurdle)
+        : [...selectedHurdles, hurdle];
+    setSelectedHurdles(updatedHurdles);
+    console.log("Selected Hurdles:", updatedHurdles); 
+    };
+
 
     const handleInputChange = (fieldName, emotion, emojiPath) => {
         setFormData((prevData) => ({ ...prevData, [fieldName]: emotion, emoji: emojiPath }));
@@ -193,7 +214,9 @@ const QuickForm = () => {
                 title: formData.title,
                 graphValue: graphValue,
                 comments: comments,
-                customDate: '',
+                victories: formData.victories,
+                hurdles: formData.hurdles,
+                // customDate: '',
             });
         } catch (error) {
             console.error('Error submitting form data:', error.message);
@@ -1382,37 +1405,37 @@ const QuickForm = () => {
                     <div className='additional'>
                         <article className='additional-victories'>
                             <h3 className='add-mood-quick__level-head'>Victories</h3>
-                            <ul className='additional-list'>
-                                <li className='additional-list-item'>
+                            <div className='additional-list'>
+                                <button type="button" className={`additional-list-item ${selectedVictories.includes('movement') ? 'selected' : ''}`} onClick={() => handleVictoriesChange('movement')}>
                                     movement
-                                </li>
-                                <li className='additional-list-item'>
+                                </button>
+                                <button type="button" className={`additional-list-item ${selectedVictories.includes('chores') ? 'selected' : ''}`} onClick={() => handleVictoriesChange('chores')}>
                                     chores
-                                </li>
-                                <li className='additional-list-item'>
+                                </button>
+                                <button type="button" className={`additional-list-item ${selectedVictories.includes('mindfulness') ? 'selected' : ''}`} onClick={() => handleVictoriesChange('mindfulness')}>
                                     mindful activity
-                                </li>
-                                <li className='additional-list-item'>
+                                </button>
+                                <button type="button" className={`additional-list-item ${selectedVictories.includes('learning') ? 'selected' : ''}`} onClick={() => handleVictoriesChange('learning')}>
                                     learning
-                                </li>
-                            </ul>
+                                </button>
+                            </div>
                         </article>
                         <article className='additional-hurdles'>
                             <h3 className='add-mood-quick__level-head'>Hurdles</h3>
-                            <ul className='additional-list'>
-                                <li className='additional-list-item'>
+                            <div className='additional-list'>
+                                <button type="button" className={`additional-list-item ${selectedHurdles.includes('rumination') ? 'selected' : ''}`} onClick={() => handleHurdlesChange('rumination')}>
                                     rumination
-                                </li>
-                                <li className='additional-list-item'>
+                                </button>
+                                <button type="button" className={`additional-list-item ${selectedHurdles.includes('procrastination') ? 'selected' : ''}`} onClick={() => handleHurdlesChange('procrastination')}>
                                     procrastination
-                                </li>
-                                <li className='additional-list-item'>
+                                </button>
+                                <button type="button" className={`additional-list-item ${selectedHurdles.includes('isolation') ? 'selected' : ''}`} onClick={() => handleHurdlesChange('isolation')}>
                                     isolation
-                                </li>
-                                <li className='additional-list-item'>
+                                </button>
+                                <button type="button" className={`additional-list-item ${selectedHurdles.includes('panicked') ? 'selected' : ''}`} onClick={() => handleHurdlesChange('panicked')}>
                                     panic attack
-                                </li>
-                            </ul>
+                                </button>
+                            </div>
                         </article>
                     </div>
 

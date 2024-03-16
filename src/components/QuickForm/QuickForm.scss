@@ -17,11 +17,35 @@
         }
     }
 }
+
 .required {
     color: #9b0e2a;
     @include mobile {
         font-size: 1.6rem;
         font-weight: 600;
+    }
+}
+
+.additional {
+    // &-victories {
+
+    // }
+    // &-hurdles {
+
+    // }
+    &-list {
+        &-item {
+            width: 48%;
+                background-color: rgba(120, 10, 113, 0.926);
+                margin-bottom: .34rem;
+                border-radius: .4rem;
+                &:active {
+                    background-color: rgb(102, 226, 178);
+                }
+                &.selected {
+                    background-color: rgb(48, 150, 111);
+                }
+        }
     }
 }
 
@@ -31,6 +55,7 @@
     }
     margin-top: 0;
 }
+
 .add-mood {
     margin-bottom: 6rem;
     @include mobile {
@@ -655,3 +680,4 @@
 .liteyellow {
     background-color: $liteyellow;
 }
+
