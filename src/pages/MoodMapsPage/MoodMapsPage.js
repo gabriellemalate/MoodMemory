@@ -26,13 +26,8 @@ const MoodMapsPage = () => {
                 const logsData = logsSnapshot.docs.map(doc => doc.data());
     
                 let currentStreak = 0;
-<<<<<<< HEAD
                 let lastLogDate = null;
     
-=======
-                let lastLogDate = null; 
-
->>>>>>> c1f3b8d (Streak count redundancy fix)
                 if (logsData.length === 0) {
                     setStreak(0);
                     return;
@@ -40,7 +35,6 @@ const MoodMapsPage = () => {
     
                 const currentDate = new Date();
                 const today = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()); // Reset time to midnight
-<<<<<<< HEAD
     
                 // Iterate through logs to find consecutive days
                 for (let i = 0; i < logsData.length; i++) {
@@ -60,27 +54,6 @@ const MoodMapsPage = () => {
                     lastLogDate = logDay; // Update last log date
                 }
     
-=======
-
-                // Iterate through logs to find consecutive days
-            for (let i = 0; i < logsData.length; i++) {
-                const logDate = new Date(logsData[i].date.toDate());
-                const logDay = new Date(logDate.getFullYear(), logDate.getMonth(), logDate.getDate());
-
-                // Check if the log is from the current streak day or the day before
-                if (today - logDay <= currentStreak * 24 * 60 * 60 * 1000) {
-                    // Check if the log is from the same date as the previous log
-                    if (!lastLogDate || logDay.getTime() !== lastLogDate.getTime()) {
-                        currentStreak++;
-                    }
-                } else {
-                    break; // Streak broken
-                }
-
-                lastLogDate = logDay; // Update last log date
-            }
-
->>>>>>> c1f3b8d (Streak count redundancy fix)
                 setStreak(currentStreak);
             } catch (error) {
                 console.error("Error calculating streak:", error);
