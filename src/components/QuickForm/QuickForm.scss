@@ -27,9 +27,9 @@
 }
 
 .additional {
-    // &-victories {
-
-    // }
+    &-victories {
+        margin-bottom: 1rem;
+    }
     // &-hurdles {
 
     // }
@@ -39,11 +39,15 @@
                 background-color: rgba(120, 10, 113, 0.926);
                 margin-bottom: .34rem;
                 border-radius: .4rem;
-                &:active {
-                    background-color: rgb(102, 226, 178);
-                }
+                color: $glow;
+                // font-size: .8rem;
+                // &:active {
+                //     background-color: rgb(102, 226, 178);
+                // }
                 &.selected {
                     background-color: rgb(48, 150, 111);
+                    color:rgb(225, 247, 255);
+                    border-color: rgb(48, 150, 111);
                 }
         }
     }
@@ -339,7 +343,6 @@
             }
 
             &-form {
-                
                 &-eq {
                     @include desktop {
                         @include row;
@@ -411,12 +414,14 @@
                         padding: 0.8rem 0.5rem;
                         border-radius: 1rem;
                         border: 0.2rem double $periwinkle;
-
                         @include desktop {
                             width: 64%;
                             flex-wrap: wrap;
                             padding: 0;
                             height: 9rem;
+                        }
+                        @include mobile {
+                            padding: 0;
                         }
                         
                     }
@@ -569,7 +574,7 @@
                     padding: 0.5rem 0.2rem;
                     // border: double rgb(92, 41, 146) 0.2rem;
                     border-radius: 1.2rem;
-                    background-image: linear-gradient(to top right, rgb(199, 68, 68), rgb(78, 233, 26));
+                    background-image: linear-gradient(to top right, rgb(199, 68, 68, .9), rgb(78, 233, 26, .9));
                     @include desktop {
                         // background-color: rgba(103, 17, 141, 0.754);
                         border-color: rgb(10, 131, 41);

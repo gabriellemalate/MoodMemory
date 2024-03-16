@@ -38,8 +38,10 @@
             align-self: center;
         }
         @include mobile {
-            border-bottom: .1rem solid rgb(135, 29, 135);
-            font-size: 1.2rem;
+            border-bottom: 0;
+            padding-bottom: 0;
+            font-size: 1.24rem;
+            letter-spacing: 0;
             margin: 0rem;
             color: rgb(135, 29, 135);
         }
