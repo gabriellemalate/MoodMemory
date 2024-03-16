@@ -82,6 +82,13 @@ function Patterns() {
                 const moodLogsSnapshot = await getDocs(q);
                 const moodLogs = moodLogsSnapshot.docs.map(doc => doc.data());
 
+                if (moodLogs.length < 12) {
+                    // If less than 12 logs, set counts to "Not enough data"
+                    setElevationCount('Not enough data');
+                    setDepressionCount('Not enough data');
+                    return;
+                }
+
                 let consecutiveElevationCount = 0;
                 let consecutiveDepressionCount = 0;
                 let prevDate = null;

@@ -10,8 +10,6 @@ function UserPage() {
     const [user] = useAuthState(auth);
     const [totalLogs, setTotalLogs] = useState(0);
     const [streak, setStreak] = useState(1);
-    // const [selectedTriggers, setSelectedTriggers] = useState([]);
-    // const [customTrigger, setCustomTrigger] = useState("");
     const [emotionCounts, setEmotionCounts] = useState({});
     const [qualityCounts, setQualityCounts] = useState({});
     const [selectedQualityLogs, setSelectedQualityLogs] = useState([]);
@@ -41,7 +39,7 @@ function UserPage() {
             case "stressed":
                 return "rgba(290, 146, 0, 0.792)";
             case "unsure":
-            case "content":
+            case "wired":
                 return "rgba(217, 255, 0, 0.69)";
             case "happy":
             case "loving":
@@ -116,10 +114,15 @@ function UserPage() {
                     const logDate = new Date(logsData[i].date.toDate());
                     const logDay = new Date(logDate.getFullYear(), logDate.getMonth(), logDate.getDate());
 
-                    if (today - logDay === currentStreak * 24 * 60 * 60 * 1000) {
+                    // if (today - logDay === currentStreak * 24 * 60 * 60 * 1000) {
+                    //     currentStreak++;
+                    // } else if (today - logDay === (currentStreak - 1) * 24 * 60 * 60 * 1000) {
+                    //     continue; // Log from yesterday, streak continues
+                    // } else {
+                    //     break; // Streak broken
+                    // }
+                    if (today - logDay <= currentStreak * 24 * 60 * 60 * 1000) {
                         currentStreak++;
-                    } else if (today - logDay === (currentStreak - 1) * 24 * 60 * 60 * 1000) {
-                        continue; // Log from yesterday, streak continues
                     } else {
                         break; // Streak broken
                     }
@@ -135,6 +138,8 @@ function UserPage() {
             calculateStreak();
         }
     }, [user]);
+
+    
 
     useEffect(() => {
         if (user) {
