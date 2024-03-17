@@ -210,12 +210,12 @@ function UserPage() {
             let counts = {};
 
             logsSnapshot.forEach((doc) => {
-                console.log("Document Data:", doc.data()); // Log document data to check the structure
+
                 const { victories } = doc.data();
                 if (victories) {
                     if (Array.isArray(victories)) {
                         victories.forEach((victory) => {
-                            console.log("Victory:", victory); // Log each victory to check its structure
+
                             if (typeof victory === 'string') {
                                 counts[victory] = (counts[victory] || 0) + 1;
                             }
@@ -227,8 +227,6 @@ function UserPage() {
                 }
             });
 
-
-            console.log("Victory Counts:", counts);
             setVictoryCounts(counts);
         } catch (error) {
             console.error("Error fetching victory counts:", error);
@@ -373,7 +371,7 @@ function UserPage() {
 
             logsSnapshot.forEach((doc) => {
                 const { quality } = doc.data();
-                console.log("Quality:", quality);
+  
                 counts[quality] = (counts[quality] || 0) + 1;
             });
 
@@ -392,19 +390,15 @@ function UserPage() {
                 const db = getFirestore();
                 const logsCollection = collection(db, "moodlogs");
                 const logsQuery = query(logsCollection, where("uid", "==", user.uid), where("quality", "==", quality), orderBy("date", "desc"), limit(12));
-                console.log("Logs query:", logsQuery);
 
                 const logsSnapshot = await getDocs(logsQuery);
-                console.log("Logs snapshot:", logsSnapshot);
 
                 const logsData = logsSnapshot.docs.map((doc) => ({
                     id: doc.id,
                     ...doc.data()
                 }));
-                console.log("Logs data:", logsData);
 
                 setSelectedQualityLogs(logsData);
-                console.log("Selected quality logs:", selectedQualityLogs);
             }
         } catch (error) {
             console.error("Error fetching logs for selected quality:", error);
@@ -424,19 +418,15 @@ function UserPage() {
                 const db = getFirestore();
                 const logsCollection = collection(db, "moodlogs");
                 const logsQuery = query(logsCollection, where("uid", "==", user.uid), where("emotion", "==", emotion), orderBy("date", "desc"), limit(12));
-                console.log("Logs query:", logsQuery);
 
                 const logsSnapshot = await getDocs(logsQuery);
-                console.log("Logs snapshot:", logsSnapshot);
 
                 const logsData = logsSnapshot.docs.map((doc) => ({
                     id: doc.id,
                     ...doc.data()
                 }));
-                console.log("Logs data:", logsData);
 
                 setSelectedEmotionLogs(logsData);
-                console.log("Selected emotion logs:", selectedEmotionLogs);
             }
         } catch (error) {
             console.error("Error fetching logs for selected emotion:", error);
