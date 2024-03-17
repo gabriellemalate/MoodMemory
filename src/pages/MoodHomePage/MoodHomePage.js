@@ -53,8 +53,8 @@ function MoodHomePage() {
         "play",
         "meditation",
         "work",
-        "clean",
-        "altruism"
+        "generosity",
+        "cleaning"
     ];
     const handleFocusSelection = (focus) => {
         if (selectedFocus.length < 8 && !selectedFocus.includes(focus)) {
