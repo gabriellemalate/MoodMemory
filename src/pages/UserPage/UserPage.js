@@ -15,6 +15,10 @@ function UserPage() {
     const [selectedQualityLogs, setSelectedQualityLogs] = useState([]);
     const [selectedEmotionLogs, setSelectedEmotionLogs] = useState([]);
     const [stateCounts, setStateCounts] = useState({});
+    const [victoryCounts, setVictoryCounts] = useState({});
+    const [selectedVictoryLogs, setSelectedVictoryLogs] = useState([]);
+    const [hurdleCounts, setHurdleCounts] = useState({});
+    const [selectedHurdleLogs, setSelectedHurdleLogs] = useState([]);
 
     useEffect(() => {
         if (user) {
@@ -41,7 +45,6 @@ function UserPage() {
             console.error("Error fetching state counts:", error);
         }
     };
-
 
     let backgroundColor;
 
@@ -186,6 +189,101 @@ function UserPage() {
             calculateStreak();
         }
     }, [user]);
+
+
+    //Victories
+    useEffect(() => {
+        if (user) {
+            fetchVictoryCounts(user.uid);
+            // Similar calls for hurdles, consumptions, and triggers
+        }
+    }, [user]);
+
+    const fetchVictoryCounts = async (uid) => {
+        try {
+            const db = getFirestore();
+            const logsCollection = collection(db, "moodlogs");
+            const logsQuery = query(logsCollection, where("uid", "==", uid));
+            const logsSnapshot = await getDocs(logsQuery);
+
+            let counts = {};
+
+            logsSnapshot.forEach((doc) => {
+                const { victories } = doc.data();
+                if (victories && Array.isArray(victories)) {
+                    victories.forEach((victory) => {
+                        counts[victory] = (counts[victory] || 0) + 1;
+                    });
+                }
+            });
+    
+            setVictoryCounts(counts);
+        } catch (error) {
+            console.error("Error fetching victory counts:", error);
+        }
+    };
+
+    const handleVictoryItemClick = async (victory) => {
+        try {
+            if (selectedVictoryLogs[0] === victory) {
+                // If the currently selected victory matches the clicked victory, clear the selected logs
+                setSelectedVictoryLogs([]);
+            } else {
+                const db = getFirestore();
+                const logsCollection = collection(db, "moodlogs");
+                const logsQuery = query(logsCollection, where("uid", "==", user.uid), where("victories", "array-contains", victory), orderBy("date", "desc"));
+                const logsSnapshot = await getDocs(logsQuery);
+
+                const logsData = logsSnapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
+
+                setSelectedVictoryLogs(logsData);
+            }
+        } catch (error) {
+            console.error("Error fetching logs for selected victory:", error);
+        }
+    };
+
+    
+
+    const fetchHurdleCounts = async (uid) => {
+        try {
+            const db = getFirestore();
+            const logsCollection = collection(db, "moodlogs");
+            const logsQuery = query(logsCollection, where("uid", "==", uid));
+            const logsSnapshot = await getDocs(logsQuery);
+
+            let counts = {};
+
+            logsSnapshot.forEach((doc) => {
+                const { hurdles } = doc.data(); // Assuming "hurdles" is a field in your documents
+                if (hurdles && Array.isArray(hurdles)) {
+                    hurdles.forEach((hurdle) => {
+                        counts[hurdle] = (counts[hurdle] || 0) + 1;
+                    });
+                }
+            });
+
+            setHurdleCounts(counts);
+        } catch (error) {
+            console.error("Error fetching hurdle counts:", error);
+        }
+    };
+
+    const handleHurdleItemClick = async (hurdle) => {
+        try {
+            if (selectedHurdleLogs[0] === hurdle) {
+                setSelectedHurdleLogs([]);
+            } else {
+                // Fetch logs for the selected hurdle and update selectedHurdleLogs state
+                // Similar to how you fetched logs for emotions and victories
+            }
+        } catch (error) {
+            console.error("Error fetching logs for selected hurdle:", error);
+        }
+    };
 
 
     useEffect(() => {
@@ -350,6 +448,63 @@ function UserPage() {
                             </li>
                         ))}
                     </ul>
+
+
+                    <article className="userpage__totals-states">
+                        <h3 className="userpage__totals-states-head">Victories you've logged -</h3>
+                        <ul className="userpage__totals-states-list">
+                            {Object.entries(victoryCounts).map(([victory, count]) => (
+                                <li key={victory} className={`userpage__totals-states-item ${selectedVictoryLogs[0] === victory ? 'selected' : ''}`} onClick={() => handleVictoryItemClick(victory)}>
+                                    {victory} <b>{count}</b>
+                                </li>
+                            ))}
+                        </ul>
+
+                        {selectedVictoryLogs.length > 0 && (
+                            <div className="selected-states">
+                                <h3 className="selected-states-head">Logs for <b>{selectedVictoryLogs[0]}</b></h3>
+                                <ul className="selected-states-list">
+                                    {selectedVictoryLogs.map((log) => (
+                                        <li key={log.id} className="selected-states-item">
+                                            {log.date.toDate().toLocaleDateString()}, Title: {log.title}, Notes: {log.notes}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+                    </article>
+
+                    <article className="userpage__states">
+                    <h3 className="userpage__states-head">
+                        Hurdles you've logged -
+                    </h3>
+                    <ul className="userpage__states-list">
+                        {Object.entries(hurdleCounts).map(([hurdle, count]) => (
+                            <li
+                                key={hurdle}
+                                className={`userpage__states-item ${
+                                    selectedHurdleLogs[0] === hurdle
+                                        ? "selected"
+                                        : ""
+                                }`}
+                                onClick={() => handleHurdleItemClick(hurdle)}
+                            >
+                                {hurdle} <b>{count}</b>
+                            </li>
+                        ))}
+                    </ul>
+                    {/* Display selectedHurdleLogs */}
+                    {selectedHurdleLogs.length > 0 && (
+                        <div className="selected-states">
+                            <h3 className="selected-states-head">
+                                Logs for <b>{selectedHurdleLogs[0]}</b>
+                            </h3>
+                            <ul className="selected-states-list">
+                                {/* Display logs for the selected hurdle */}
+                            </ul>
+                        </div>
+                    )}
+                </article>
 
                     <h3 className="userpage__totals-emotions-head">SLEEP QUALITY is typically -</h3>
                     <p className="instruction">click one to show - max. 7 - recent entries</p>

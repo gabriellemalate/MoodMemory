@@ -43,18 +43,18 @@ function MoodHomePage() {
     };
 
     const triggerOptions = [
+        "social needs",
+        "screentime",
         "gratefulness",
-        "no screens",
         "go walk",
         "shower",
+        "stretch",
+        "study",
+        "play",
         "eat",
-        "social needs",
         "meds",
         "read",
-        "stretch",
-        "play",
-        "clean",
-        "study"
+        "clean"
     ];
     const handleTriggerSelection = (trigger) => {
         if (selectedTriggers.length < 8 && !selectedTriggers.includes(trigger)) {
