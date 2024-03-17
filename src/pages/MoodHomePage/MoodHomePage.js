@@ -141,7 +141,9 @@ function MoodHomePage() {
                     </section>
                     <section className="userpage__triggers">
                         <h3 className="userpage__triggers-head">Current Daily Goals</h3>
+                        <p className='instruction'>a list you can refer to everyday</p>
                         <div className="userpage__triggers-eq">
+                            
                             <div className="userpage__triggers-options">
                                 <ul className="userpage__triggers-list">
                                     {triggerOptions.map((trigger, index) => (
