@@ -37,7 +37,7 @@
                 padding-bottom: .2rem;
                 font-size: 1.8rem;
                 padding-bottom: .1rem;
-                margin-bottom: .4rem;
+                margin: 0 0 .4rem;
             }
         }
     }
@@ -207,6 +207,9 @@
         &-eq {
             width: 96%;
             @include column;
+            @include mobile {
+                width: 100%;
+            }
         }
 
         &-head {
@@ -227,6 +230,7 @@
                 border-bottom: 0.2rem rgb(88, 8, 104) double;
                 font-size: 1.8rem;
                 padding-bottom: .2rem;
+                margin: 0;
             }
         }
         &-questions {
