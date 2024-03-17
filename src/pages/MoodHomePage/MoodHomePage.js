@@ -43,18 +43,18 @@ function MoodHomePage() {
     };
 
     const focusOptions = [
-        "(-) screentime",
+        "recharge",
         "gratefulness",
         "social needs",
-        "go walk",
-        "shower",
+        "exercise",
+        "hygiene",
         "stretch",
         "study",
         "play",
-        "alone time",
-        "meds",
-        "read",
-        "clean"
+        "meditation",
+        "work",
+        "clean",
+        "altruism"
     ];
     const handleFocusSelection = (focus) => {
         if (selectedFocus.length < 8 && !selectedFocus.includes(focus)) {
@@ -140,8 +140,8 @@ function MoodHomePage() {
 
                     </section>
                     <section className="userpage__triggers">
-                        <h3 className="userpage__triggers-head">Daily Focus</h3>
-                        <p className='instruction'>a list you can refer to everyday</p>
+                        <h3 className="userpage__triggers-head">Focus</h3>
+                        <p className='instruction'>a list of priorities you can refer to everyday</p>
                         <div className="userpage__triggers-eq">
                             
                             <div className="userpage__triggers-options">
