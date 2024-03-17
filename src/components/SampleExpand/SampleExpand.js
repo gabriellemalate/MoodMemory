@@ -161,6 +161,10 @@ function SampleExpand() {
                                     Yes, you can log multiple entries a day.
                                     <button className='open__notes-comment--button' onClick={() => handleDeleteComment}>X</button>
                                 </div>
+                                <div className='open__notes-comment'>
+                                    <b>Search for a</b> mood state, level, title, note, comment, or emotion with the search bar
+                                    <button className='open__notes-comment--button' onClick={() => handleDeleteComment}>X</button>
+                                </div>
                             </>
                         </div>
                     </p>
