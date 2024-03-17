@@ -46,6 +46,8 @@ const QuickForm = () => {
     const [selectedTriggers, setSelectedTriggers] = useState([]);
     const [selectedHurdles, setSelectedHurdles] = useState([]);
     const [selectedConsumptions, setSelectedConsumptions] = useState([]);
+    const [customTrigger, setCustomTrigger] = useState('');
+
     const [formData, setFormData] = useState({
         state: '',
         level: '',
@@ -102,6 +104,37 @@ const QuickForm = () => {
         setSelectedTriggers(updatedTriggers);
     };
 
+    const handleCustomTriggerChange = (event) => {
+        setCustomTrigger(event.target.value);
+    };
+
+    const handleCustomTriggerAdd = () => {
+        if (customTrigger.trim() !== '') {
+            const updatedTriggers = [...selectedTriggers, customTrigger.trim()];
+            setSelectedTriggers(updatedTriggers);
+            setCustomTrigger('');
+        }
+    };
+
+    const handleCustomTriggerRemove = (trigger) => {
+        const updatedTriggers = selectedTriggers.filter((t) => t !== trigger);
+        setSelectedTriggers(updatedTriggers);
+    };
+
+    const triggerOptions = [
+        "myself",
+        "work",
+        "partner",
+        "family",
+        "friends",
+        "sleep",
+        "health",
+        "food",
+        "exercise",
+        "finance",
+        "home",
+        "hobbies"
+    ];
 
     const handleLevelChange = (selectedLevel) => {
         console.log('Level Changed:', selectedLevel);
@@ -1518,6 +1551,24 @@ const QuickForm = () => {
                                     onClick={() => handleTriggerChange('hobbies')}>
                                     hobbies
                                 </button>
+                                {selectedTriggers.map((trigger) => {
+                                    // Check if the trigger is a custom trigger (not present in predefined trigger options)
+                                    const isCustomTrigger = !triggerOptions.includes(trigger);
+                                    // Render only if it's a custom trigger
+                                    if (isCustomTrigger) {
+                                        return (
+                                            <button
+                                                key={trigger}
+                                                type="button"
+                                                className="additional-list-trigger selected"
+                                                onClick={() => handleCustomTriggerRemove(trigger)}
+                                            >
+                                                {trigger}
+                                            </button>
+                                        );
+                                    }
+                                    return null; // Don't render predefined triggers
+                                })}
                             </div>
 
                             <div className="userpage__triggers-add">
@@ -1525,10 +1576,12 @@ const QuickForm = () => {
                                     type="text"
                                     className="userpage__triggers-add-input"
                                     placeholder="custom trigger"
+                                    value={customTrigger}
+                                    onChange={handleCustomTriggerChange}
                                 />
                                 <button
                                     className="userpage__triggers-add-press"
-
+                                    onClick={handleCustomTriggerAdd}
                                 >
                                     +
                                 </button>
