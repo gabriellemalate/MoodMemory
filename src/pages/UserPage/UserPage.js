@@ -19,6 +19,7 @@ function UserPage() {
     const [selectedVictoryLogs, setSelectedVictoryLogs] = useState([]);
     const [hurdleCounts, setHurdleCounts] = useState({});
     const [selectedHurdleLogs, setSelectedHurdleLogs] = useState([]);
+    const [triggerCounts, setTriggerCounts] = useState({});
 
     useEffect(() => {
         if (user) {
@@ -209,44 +210,67 @@ function UserPage() {
             let counts = {};
 
             logsSnapshot.forEach((doc) => {
+                console.log("Document Data:", doc.data()); // Log document data to check the structure
                 const { victories } = doc.data();
-                if (victories && Array.isArray(victories)) {
-                    victories.forEach((victory) => {
-                        counts[victory] = (counts[victory] || 0) + 1;
-                    });
+                if (victories) {
+                    if (Array.isArray(victories)) {
+                        victories.forEach((victory) => {
+                            console.log("Victory:", victory); // Log each victory to check its structure
+                            if (typeof victory === 'string') {
+                                counts[victory] = (counts[victory] || 0) + 1;
+                            }
+                        });
+                    } else if (typeof victories === 'string') {
+                        // Handle the case where victories is a single string value
+                        counts[victories] = (counts[victories] || 0) + 1;
+                    }
                 }
             });
-    
+
+
+            console.log("Victory Counts:", counts);
             setVictoryCounts(counts);
         } catch (error) {
             console.error("Error fetching victory counts:", error);
         }
     };
 
-    const handleVictoryItemClick = async (victory) => {
-        try {
-            if (selectedVictoryLogs[0] === victory) {
-                // If the currently selected victory matches the clicked victory, clear the selected logs
-                setSelectedVictoryLogs([]);
-            } else {
-                const db = getFirestore();
-                const logsCollection = collection(db, "moodlogs");
-                const logsQuery = query(logsCollection, where("uid", "==", user.uid), where("victories", "array-contains", victory), orderBy("date", "desc"));
-                const logsSnapshot = await getDocs(logsQuery);
+    // const handleVictoryItemClick = async (victory) => {
+    //     try {
+    //         if (selectedVictoryLogs[0] === victory) {
+    //             // If the currently selected victory matches the clicked victory, clear the selected logs
+    //             setSelectedVictoryLogs([]);
+    //         } else {
+    //             const db = getFirestore();
+    //             const logsCollection = collection(db, "moodlogs");
+    //             const logsQuery = query(
+    //                 logsCollection,
+    //                 where("uid", "==", user.uid),
+    //                 where("victories", "array-contains-any", [victory]), // Use array-contains-any
+    //                 orderBy("date", "desc")
+    //             );
 
-                const logsData = logsSnapshot.docs.map((doc) => ({
-                    id: doc.id,
-                    ...doc.data()
-                }));
+    //             const logsSnapshot = await getDocs(logsQuery);
 
-                setSelectedVictoryLogs(logsData);
-            }
-        } catch (error) {
-            console.error("Error fetching logs for selected victory:", error);
+    //             const logsData = logsSnapshot.docs.map((doc) => ({
+    //                 id: doc.id,
+    //                 ...doc.data()
+    //             }));
+
+    //             setSelectedVictoryLogs(logsData);
+    //         }
+    //     } catch (error) {
+    //         console.error("Error fetching logs for selected victory:", error);
+    //     }
+    // };
+
+
+    useEffect(() => {
+        if (user) {
+            fetchHurdleCounts(user.uid);
+            // Similar calls for hurdles, consumptions, and triggers
         }
-    };
-
-    
+    }, [user]);
 
     const fetchHurdleCounts = async (uid) => {
         try {
@@ -258,11 +282,18 @@ function UserPage() {
             let counts = {};
 
             logsSnapshot.forEach((doc) => {
-                const { hurdles } = doc.data(); // Assuming "hurdles" is a field in your documents
-                if (hurdles && Array.isArray(hurdles)) {
-                    hurdles.forEach((hurdle) => {
-                        counts[hurdle] = (counts[hurdle] || 0) + 1;
-                    });
+                const { hurdles } = doc.data();
+                if (hurdles) {
+                    if (Array.isArray(hurdles)) {
+                        hurdles.forEach((hurdle) => {
+                            if (typeof hurdle === 'string') {
+                                counts[hurdle] = (counts[hurdle] || 0) + 1;
+                            }
+                        });
+                    } else if (typeof hurdles === 'string') {
+
+                        counts[hurdles] = (counts[hurdles] || 0) + 1;
+                    }
                 }
             });
 
@@ -272,19 +303,38 @@ function UserPage() {
         }
     };
 
-    const handleHurdleItemClick = async (hurdle) => {
+    useEffect(() => {
+        if (user) {
+            fetchTriggerCounts(user.uid);
+        }
+    }, [user]);
+
+    // Function to fetch trigger counts
+    const fetchTriggerCounts = async (uid) => {
         try {
-            if (selectedHurdleLogs[0] === hurdle) {
-                setSelectedHurdleLogs([]);
-            } else {
-                // Fetch logs for the selected hurdle and update selectedHurdleLogs state
-                // Similar to how you fetched logs for emotions and victories
-            }
+            const db = getFirestore();
+            const logsCollection = collection(db, "moodlogs");
+            const logsQuery = query(logsCollection, where("uid", "==", uid));
+            const logsSnapshot = await getDocs(logsQuery);
+
+            let counts = {};
+
+            logsSnapshot.forEach((doc) => {
+                const { triggers } = doc.data();
+                if (triggers && Array.isArray(triggers)) {
+                    triggers.forEach((trigger) => {
+                        if (typeof trigger === 'string') {
+                            counts[trigger] = (counts[trigger] || 0) + 1;
+                        }
+                    });
+                }
+            });
+
+            setTriggerCounts(counts);
         } catch (error) {
-            console.error("Error fetching logs for selected hurdle:", error);
+            console.error("Error fetching trigger counts:", error);
         }
     };
-
 
     useEffect(() => {
         if (user) {
@@ -449,18 +499,19 @@ function UserPage() {
                         ))}
                     </ul>
 
+                    <h3 className="userpage__totals-states-head">VICTORIES you've logged -</h3>
 
-                    <article className="userpage__totals-states">
-                        <h3 className="userpage__totals-states-head">Victories you've logged -</h3>
-                        <ul className="userpage__totals-states-list">
-                            {Object.entries(victoryCounts).map(([victory, count]) => (
-                                <li key={victory} className={`userpage__totals-states-item ${selectedVictoryLogs[0] === victory ? 'selected' : ''}`} onClick={() => handleVictoryItemClick(victory)}>
-                                    {victory} <b>{count}</b>
-                                </li>
-                            ))}
-                        </ul>
+                    <ul className="userpage__totals-emotions">
+                        {Object.entries(victoryCounts).map(([victory, count]) => (
+                            <li key={victory} className={`victory-item userpage__totals-emotions-item ${selectedVictoryLogs[0] === victory ? 'selected' : ''}`}
+                            // onClick={() => handleVictoryItemClick(victory)}
+                            >
+                                {victory} <b>{count}</b>
+                            </li>
+                        ))}
+                    </ul>
 
-                        {selectedVictoryLogs.length > 0 && (
+                    {/* {selectedVictoryLogs.length > 0 && (
                             <div className="selected-states">
                                 <h3 className="selected-states-head">Logs for <b>{selectedVictoryLogs[0]}</b></h3>
                                 <ul className="selected-states-list">
@@ -471,40 +522,36 @@ function UserPage() {
                                     ))}
                                 </ul>
                             </div>
-                        )}
-                    </article>
+                        )} */}
 
-                    <article className="userpage__states">
-                    <h3 className="userpage__states-head">
-                        Hurdles you've logged -
+                    <h3 className="userpage__totals-emotions-head">
+                        HURDLES you've logged -
                     </h3>
-                    <ul className="userpage__states-list">
+                    <ul className="userpage__totals-emotions">
                         {Object.entries(hurdleCounts).map(([hurdle, count]) => (
                             <li
                                 key={hurdle}
-                                className={`userpage__states-item ${
-                                    selectedHurdleLogs[0] === hurdle
-                                        ? "selected"
-                                        : ""
-                                }`}
-                                onClick={() => handleHurdleItemClick(hurdle)}
+                                className={`hurdle-item userpage__totals-emotions-item ${selectedHurdleLogs[0] === hurdle
+                                    ? "selected"
+                                    : ""
+                                    }`}
+                            // onClick={() => handleHurdleItemClick(hurdle)}
                             >
                                 {hurdle} <b>{count}</b>
                             </li>
                         ))}
                     </ul>
-                    {/* Display selectedHurdleLogs */}
-                    {selectedHurdleLogs.length > 0 && (
+
+                    {/* {selectedHurdleLogs.length > 0 && (
                         <div className="selected-states">
                             <h3 className="selected-states-head">
                                 Logs for <b>{selectedHurdleLogs[0]}</b>
                             </h3>
                             <ul className="selected-states-list">
-                                {/* Display logs for the selected hurdle */}
+                                
                             </ul>
                         </div>
-                    )}
-                </article>
+                    )} */}
 
                     <h3 className="userpage__totals-emotions-head">SLEEP QUALITY is typically -</h3>
                     <p className="instruction">click one to show - max. 7 - recent entries</p>
@@ -515,6 +562,7 @@ function UserPage() {
                             </li>
                         ))}
                     </ul>
+
                 </section>
 
                 {selectedQualityLogs.length > 0 && (
@@ -529,6 +577,19 @@ function UserPage() {
                         </ul>
                     </div>
                 )}
+
+                <h3 className="userpage__totals-emotions-head">
+                    TRIGGERS you've logged -
+                </h3>
+                <ul className="userpage__totals-emotions">
+                    {Object.entries(triggerCounts).map(([trigger, count]) => (
+                        <li
+                            key={trigger}
+                            className='trigger-item userpage__totals-emotions-item'>
+                            {trigger} <b>{count}</b>
+                        </li>
+                    ))}
+                </ul>
 
                 <section className="userpage__totals">
                     <h4 className="userpage__totals-head">KEY PHRASES & WORDS</h4>

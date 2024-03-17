@@ -282,6 +282,15 @@
         }
     }
 }
+.victory-item {
+    background-color: $victory;
+}
+.hurdle-item {
+    background-color: $badcolor;
+}
+.triger-item {
+    background-color: $badcolor;
+}
 .selected {
     background-color: rgb(166, 55, 166);
 }
