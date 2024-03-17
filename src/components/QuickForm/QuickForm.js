@@ -1618,8 +1618,8 @@ const QuickForm = () => {
                                     medication
                                 </button>
 
-                                <button type="button" className={`smaller additional-list-item additional-list-button ${selectedConsumptions.includes('cbd') ? 'selected' : ''}`} onClick={() => handleConsumptionChange('cbd')}>
-                                    CBD
+                                <button type="button" className={`smaller additional-list-item additional-list-button ${selectedConsumptions.includes('caffeine') ? 'selected' : ''}`} onClick={() => handleConsumptionChange('caffeine')}>
+                                    caffeine
                                 </button>
                                 <button type="button" className={`smaller additional-list-item additional-list-button ${selectedConsumptions.includes('cannabis') ? 'selected' : ''}`} onClick={() => handleConsumptionChange('cannabis')}>
                                     cannabis
