@@ -150,11 +150,11 @@ function Patterns() {
                     </b> day{depressionCount !== 1 ? 's' : ''}</p>
                 </article>
                 <article className='patterns__pattern'>
-                    <h5 className='patterns__pattern-head'>events that incite a dip⤵ in mood</h5> 
+                    <h5 className='patterns__pattern-head'>events that incite a spike⤴ in mood</h5>
                     <div className='patterns__pattern-keys'>keywords from your notes, comments and titles~</div>
                 </article>
                 <article className='patterns__pattern'>
-                    <h5 className='patterns__pattern-head'>events that incite a spike⤴ in mood</h5>
+                    <h5 className='patterns__pattern-head'>events that incite a dip⤵ in mood</h5> 
                     <div className='patterns__pattern-keys'>keywords from your notes, comments and titles~</div>
                 </article>
             </section>

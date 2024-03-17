@@ -44,8 +44,8 @@ function MoodHomePage() {
 
     const triggerOptions = [
         "gratefulness",
-        "hobby time",
-        "walk more",
+        "no screens",
+        "go walk",
         "shower",
         "eat",
         "social needs",
