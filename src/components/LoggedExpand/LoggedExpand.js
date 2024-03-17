@@ -196,7 +196,7 @@ function LoggedExpand({ logData }) {
                             <h2 className="open__hurdles-head">Triggers</h2>
                             <ul className="open__hurdles-list">
                                 {logData.triggers.map((trigger, index) => (
-                                    <li className="open__hurdles-item" key={index}>{trigger}</li>
+                                    <li className="open__hurdles-item open__trigger" key={index}>{trigger}</li>
                                 ))}
                             </ul>
                         </div>

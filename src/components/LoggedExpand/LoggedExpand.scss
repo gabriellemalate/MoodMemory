@@ -325,7 +325,8 @@
             font-size: .9rem;
             margin-left: .2rem;
             padding: .1rem .32rem;
-            background-color: rgba(107, 228, 185, 0.6);
+            background-color: rgba(50, 236, 236, 0.848);
+            
             color: rgba(29, 60, 50, 0.6);
             border-radius: .12rem;
             text-wrap: nowrap;
@@ -346,6 +347,9 @@
             color: rgb(22, 93, 68);
         }
     }
+    &__trigger {
+        background-color: rgba(239, 217, 48, 0.6);
+    }
     &__consumptions {
         @extend .open__victories;
         margin-top: 0;
@@ -360,6 +364,7 @@
             background-color: rgba(238, 133, 233, 0.67);
         }
     }
+    
     &__close {
         @extend .open-add__button;
         margin: 1rem;
