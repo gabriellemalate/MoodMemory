@@ -43,15 +43,15 @@ function MoodHomePage() {
     };
 
     const triggerOptions = [
-        "social needs",
         "(-) screentime",
         "gratefulness",
+        "social needs",
         "go walk",
         "shower",
         "stretch",
         "study",
         "play",
-        "eat",
+        "alone time",
         "meds",
         "read",
         "clean"
