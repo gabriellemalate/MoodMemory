@@ -102,7 +102,7 @@ function MoodHomePage() {
         if (user) {
             try {
                 const userDocRef = doc(getFirestore(), "userReminders", user.uid);
-                await setDoc(userDocRef, { uid: user.uid, triggers });
+                await setDoc(userDocRef, { uid: user.uid, reminders: triggers });
             } catch (error) {
                 console.error("Error saving user triggers:", error);
             }
