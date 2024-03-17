@@ -42,9 +42,11 @@ function Logged({ logData, searchTerm }) {
         const lowercaseTitle = log.title.toLowerCase();
         const lowercaseEmotion = log.emotion.toLowerCase();
         const lowercaseLevel = log.level.toLowerCase();
+        const lowercaseState = log.state.toLowerCase(); 
 
         // Check if the title or emotion includes the search term
-        return lowercaseTitle.includes(lowercaseSearchTerm) || lowercaseEmotion.includes(lowercaseSearchTerm) || lowercaseLevel.includes(lowercaseSearchTerm);
+        return lowercaseTitle.includes(lowercaseSearchTerm) || lowercaseEmotion.includes(lowercaseSearchTerm) || lowercaseLevel.includes(lowercaseSearchTerm) ||
+        lowercaseState.includes(lowercaseSearchTerm);
     };
 
     let backgroundColor;
