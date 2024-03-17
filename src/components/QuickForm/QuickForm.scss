@@ -84,6 +84,9 @@
         background-color: $goodcolor;
         color: rgba(29, 60, 50, 0.88);
     }
+    &-consumption {
+        margin-top: .8rem;
+    }
 }
 .smaller {
     font-size: 0.77rem;
@@ -729,3 +732,4 @@
 .liteyellow {
     background-color: $liteyellow;
 }
+
