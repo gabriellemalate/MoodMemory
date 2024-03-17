@@ -158,7 +158,7 @@ function MoodHomePage() {
                                 <article className="userpage__triggers-add">
                                     <textarea
                                         className="userpage__triggers-add-input"
-                                        placeholder="custom reminder"
+                                        placeholder="custom focus"
                                         value={customFocus}
                                         onChange={handleCustomFocusChange}
                                         disabled={selectedFocus.length >= 8} // Disable the input when maximum limit is reached
