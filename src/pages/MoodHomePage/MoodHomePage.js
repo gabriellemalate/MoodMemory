@@ -43,12 +43,12 @@ function MoodHomePage() {
     };
 
     const triggerOptions = [
-        "have a walk",
-        "hobby time",
         "gratefulness",
+        "hobby time",
+        "walk more",
         "shower",
         "eat",
-        "relationships",
+        "social needs",
         "meds",
         "read",
         "stretch",
