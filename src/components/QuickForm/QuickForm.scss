@@ -71,6 +71,9 @@
             padding: 0.2rem .2rem;
             width: 16.6%;
         }
+        &-custom {
+            width: fit-content;
+        }
     }
     &-hurdle {
         background-color: rgba(238, 177, 133, 0.88);

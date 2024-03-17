@@ -191,6 +191,16 @@ function LoggedExpand({ logData }) {
                             </ul>
                         </div>
                     )}
+                    {logData.triggers && logData.triggers.length > 0 && (
+                        <div className="open__hurdles">
+                            <h2 className="open__hurdles-head">Triggers</h2>
+                            <ul className="open__hurdles-list">
+                                {logData.triggers.map((trigger, index) => (
+                                    <li className="open__hurdles-item" key={index}>{trigger}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
                     {consumptions && consumptions.length > 0 && (
                         <div className="open__consumptions">
                             <h2 className="open__consumptions-head">Consumptions</h2>

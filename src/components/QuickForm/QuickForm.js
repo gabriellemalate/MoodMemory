@@ -1560,7 +1560,7 @@ const QuickForm = () => {
                                             <button
                                                 key={trigger}
                                                 type="button"
-                                                className="additional-list-trigger selected"
+                                                className="additional-list-trigger additional-list-custom selected"
                                                 onClick={() => handleCustomTriggerRemove(trigger)}
                                             >
                                                 {trigger}
@@ -1582,6 +1582,7 @@ const QuickForm = () => {
                                 <button
                                     className="userpage__triggers-add-press"
                                     onClick={handleCustomTriggerAdd}
+                                    type='button'
                                 >
                                     +
                                 </button>
@@ -1613,7 +1614,7 @@ const QuickForm = () => {
                                 <button type="button" className={`additional-list-item additional-list-button ${selectedConsumptions.includes('supplements') ? 'selected' : ''}`} onClick={() => handleConsumptionChange('supplements')}>
                                     supplements
                                 </button>
-                                <button type="button" className={`additional-list-item additional-list-button ${selectedConsumptions.includes('medication') ? 'selected' : ''}`} onClick={() => handleConsumptionChange('medicaton')}>
+                                <button type="button" className={`additional-list-item additional-list-button ${selectedConsumptions.includes('medication') ? 'selected' : ''}`} onClick={() => handleConsumptionChange('medication')}>
                                     medication
                                 </button>
 
