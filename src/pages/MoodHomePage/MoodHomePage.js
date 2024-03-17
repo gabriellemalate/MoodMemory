@@ -14,12 +14,12 @@ function MoodHomePage() {
     const [user] = useAuthState(auth);
     const [scrollToFAQ, setScrollToFAQ] = useState(false);
     const faqRef = useRef(null);
-    const [selectedTriggers, setSelectedTriggers] = useState([]);
-    const [customTrigger, setCustomTrigger] = useState("");
+    const [selectedFocus, setSelectedFocus] = useState([]);
+    const [customFocus, setCustomFocus] = useState("");
 
     useEffect(() => {
         if (user) {
-            fetchUserTriggers(user.uid);
+            fetchUserFocus(user.uid);
         }
     }, [user]);
 
@@ -31,18 +31,18 @@ function MoodHomePage() {
         }
     }, [scrollToFAQ]);
 
-    const fetchUserTriggers = async (uid) => {
+    const fetchUserFocus = async (uid) => {
         try {
             const userDoc = await getDoc(doc(getFirestore(), "userReminders", uid));
             if (userDoc.exists() && userDoc.data().uid === uid) {
-                setSelectedTriggers(userDoc.data().triggers);
+                setSelectedFocus(userDoc.data().focus);
             }
         } catch (error) {
-            console.error("Error fetching user triggers:", error);
+            console.error("Error fetching user focus:", error);
         }
     };
 
-    const triggerOptions = [
+    const focusOptions = [
         "(-) screentime",
         "gratefulness",
         "social needs",
@@ -56,55 +56,55 @@ function MoodHomePage() {
         "read",
         "clean"
     ];
-    const handleTriggerSelection = (trigger) => {
-        if (selectedTriggers.length < 8 && !selectedTriggers.includes(trigger)) {
-            setSelectedTriggers((prevTriggers) => {
-                const updatedTriggers = [...prevTriggers, trigger];
-                saveUserTriggers(updatedTriggers);
-                return updatedTriggers;
+    const handleFocusSelection = (focus) => {
+        if (selectedFocus.length < 8 && !selectedFocus.includes(focus)) {
+            setSelectedFocus((prevFocus) => {
+                const updatedFocus = [...prevFocus, focus];
+                saveUserFocus(updatedFocus);
+                return updatedFocus;
             });
         } else {
             alert("Invalid action or Maximum of 8 reached");
         }
     };
 
-    const handleCustomTriggerChange = (event) => {
-        setCustomTrigger(event.target.value);
+    const handleCustomFocusChange = (event) => {
+        setCustomFocus(event.target.value);
     };
 
-    const handleCustomTriggerAdd = async () => {
-        if (selectedTriggers.length < 8) {
-            if (customTrigger.trim() !== "" && !selectedTriggers.includes(customTrigger.trim())) {
-                const updatedTriggers = [...selectedTriggers, customTrigger.trim()];
-                setSelectedTriggers(updatedTriggers);
-                setCustomTrigger("");
+    const handleCustomFocusAdd = async () => {
+        if (selectedFocus.length < 8) {
+            if (customFocus.trim() !== "" && !selectedFocus.includes(customFocus.trim())) {
+                const updatedFocus = [...selectedFocus, customFocus.trim()];
+                setSelectedFocus(updatedFocus);
+                setCustomFocus("");
                 // Save the updated triggers to the database
-                await saveUserTriggers(updatedTriggers);
+                await saveUserFocus(updatedFocus);
             }
         } else {
             // Disable the input field or button to prevent adding more triggers
             document.querySelector('.userpage__triggers-add-input').disabled = true;
             document.querySelector('.userpage__triggers-add-press').disabled = true;
             // Show a warning message when the maximum number of triggers is reached
-            alert("Maximum 8 triggers reached");
+            alert("Maximum 8 focus reached");
         }
     };
 
-    const handleTriggerRemoval = (trigger) => {
-        setSelectedTriggers((prevTriggers) => {
-            const updatedTriggers = prevTriggers.filter((item) => item !== trigger);
-            saveUserTriggers(updatedTriggers);
-            return updatedTriggers;
+    const handleFocusRemoval = (focus) => {
+        setSelectedFocus((prevFocus) => {
+            const updatedFocus = prevFocus.filter((item) => item !== focus);
+            saveUserFocus(updatedFocus);
+            return updatedFocus;
         });
     };
 
-    const saveUserTriggers = async (triggers) => {
+    const saveUserFocus = async (focus) => {
         if (user) {
             try {
                 const userDocRef = doc(getFirestore(), "userReminders", user.uid);
-                await setDoc(userDocRef, { uid: user.uid, reminders: triggers });
+                await setDoc(userDocRef, { uid: user.uid, focus: focus });
             } catch (error) {
-                console.error("Error saving user triggers:", error);
+                console.error("Error saving user focus:", error);
             }
         }
     };
@@ -146,12 +146,12 @@ function MoodHomePage() {
                             
                             <div className="userpage__triggers-options">
                                 <ul className="userpage__triggers-list">
-                                    {triggerOptions.map((trigger, index) => (
+                                    {focusOptions.map((focus, index) => (
                                         <li
                                             key={index}
-                                            className={`userpage__triggers-list-item ${selectedTriggers.includes(trigger) ? 'selected' : ''}`}
-                                            onClick={() => handleTriggerSelection(trigger)}>
-                                            {trigger}
+                                            className={`userpage__triggers-list-item ${selectedFocus.includes(focus) ? 'selected' : ''}`}
+                                            onClick={() => handleFocusSelection(focus)}>
+                                            {focus}
                                         </li>
                                     ))}
                                 </ul>
@@ -159,25 +159,25 @@ function MoodHomePage() {
                                     <textarea
                                         className="userpage__triggers-add-input"
                                         placeholder="custom reminder"
-                                        value={customTrigger}
-                                        onChange={handleCustomTriggerChange}
-                                        disabled={selectedTriggers.length >= 8} // Disable the input when maximum limit is reached
+                                        value={customFocus}
+                                        onChange={handleCustomFocusChange}
+                                        disabled={selectedFocus.length >= 8} // Disable the input when maximum limit is reached
                                     />
                                     <button
                                         className="userpage__triggers-add-press"
-                                        onClick={handleCustomTriggerAdd}
-                                        disabled={selectedTriggers.length >= 8} // Disable the button when maximum limit is reached
+                                        onClick={handleCustomFocusAdd}
+                                        disabled={selectedFocus.length >= 8} // Disable the button when maximum limit is reached
                                     >
                                         +
                                     </button>
                                 </article>
                             </div>
                             <div className="userpage__triggers-user">
-                                {selectedTriggers.map((trigger, index) => (
+                                {selectedFocus.map((focus, index) => (
                                     <p
                                         key={index} className="userpage__triggers-user-item"
-                                        onClick={() => handleTriggerRemoval(trigger)}>
-                                        {trigger}
+                                        onClick={() => handleFocusRemoval(focus)}>
+                                        {focus}
                                     </p>
                                 ))}
                             </div>
