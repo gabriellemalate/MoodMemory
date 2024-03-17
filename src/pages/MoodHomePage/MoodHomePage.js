@@ -33,7 +33,7 @@ function MoodHomePage() {
 
     const fetchUserTriggers = async (uid) => {
         try {
-            const userDoc = await getDoc(doc(getFirestore(), "userTriggers", uid));
+            const userDoc = await getDoc(doc(getFirestore(), "userReminders", uid));
             if (userDoc.exists() && userDoc.data().uid === uid) {
                 setSelectedTriggers(userDoc.data().triggers);
             }
@@ -43,18 +43,18 @@ function MoodHomePage() {
     };
 
     const triggerOptions = [
-        "myself",
-        "work",
-        "partner",
-        "family",
-        "friends",
-        "sleep",
-        "health",
-        "food",
-        "exercise",
-        "finance",
-        "home",
-        "hobbies"
+        "have a walk",
+        "hobby time",
+        "gratefulness",
+        "shower",
+        "eat",
+        "relationships",
+        "meds",
+        "read",
+        "stretch",
+        "play",
+        "clean",
+        "study"
     ];
     const handleTriggerSelection = (trigger) => {
         if (selectedTriggers.length < 8 && !selectedTriggers.includes(trigger)) {
@@ -101,7 +101,7 @@ function MoodHomePage() {
     const saveUserTriggers = async (triggers) => {
         if (user) {
             try {
-                const userDocRef = doc(getFirestore(), "userTriggers", user.uid);
+                const userDocRef = doc(getFirestore(), "userReminders", user.uid);
                 await setDoc(userDocRef, { uid: user.uid, triggers });
             } catch (error) {
                 console.error("Error saving user triggers:", error);
@@ -140,7 +140,7 @@ function MoodHomePage() {
 
                     </section>
                     <section className="userpage__triggers">
-                        <h3 className="userpage__triggers-head">Active Triggers</h3>
+                        <h3 className="userpage__triggers-head">Active Reminders</h3>
                         <div className="userpage__triggers-eq">
                             <div className="userpage__triggers-options">
                                 <ul className="userpage__triggers-list">
@@ -156,7 +156,7 @@ function MoodHomePage() {
                                 <article className="userpage__triggers-add">
                                     <textarea
                                         className="userpage__triggers-add-input"
-                                        placeholder="custom trigger"
+                                        placeholder="custom reminder"
                                         value={customTrigger}
                                         onChange={handleCustomTriggerChange}
                                         disabled={selectedTriggers.length >= 8} // Disable the input when maximum limit is reached
