@@ -98,7 +98,7 @@ const MoodMapsPage = () => {
 
                     <section className='maps__mood'>
                         <h2 className='maps__mood-head'>Emotions Map</h2>
-                        
+                        <EmotionMap/>
                     </section>
 
                     <section className='maps__mood'>
