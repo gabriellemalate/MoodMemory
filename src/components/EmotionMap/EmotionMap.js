@@ -23,21 +23,12 @@ function EmotionMap({ moodLogs }) {
         };
     }, [emotionData]);
 
-    let emotionChart = null; // Variable to store the chart instance
-    let scatterChart = null;
-    let creatingChart = false;
 
     const createScatterPlot = () => {
-        // if (creatingChart) return; // Exit if chart creation process is already ongoing
-        // creatingChart = true;
 
         const ctx = document.getElementById('emotionChart');
 
         if (!ctx || !emotionData.length) return;
-
-        // if (scatterChart) {
-        //     scatterChart.destroy();
-        // }
 
         if (chartInstance) {
             chartInstance.destroy();
@@ -49,10 +40,17 @@ function EmotionMap({ moodLogs }) {
             return `${logDate.getMonth() + 1}/${logDate.getDate()}/${logDate.getFullYear()}`;
         });
 
-        const xdata = moodLogs.map(log => {
+        const xData = moodLogs.map(log => {
             const logDate = new Date(log.date.toDate());
             return logDate;
         });
+
+        const today = new Date();
+        const oneMonthAgo = new Date();
+        oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+
+        const firstLogDate = xData.length > 0 ? xData[0] : new Date();
+        const lastLogDate = xData.length > 0 ? xData[xData.length - 1] : new Date();
 
         const data = emotionData.map(emotion => {
             // Assign numerical values to emotions
@@ -97,11 +95,6 @@ function EmotionMap({ moodLogs }) {
 
         if (data.length === 0) return;
 
-        // // Destroy existing chart if it exists
-        // if (emotionChart) {
-        //     emotionChart.destroy();
-        // }
-
         // Create new chart
         const newChartInstance = new Chart(ctx, {
             type: 'scatter',
@@ -109,7 +102,10 @@ function EmotionMap({ moodLogs }) {
                 labels: labels,
                 datasets: [{
                     label: 'Emotions',
-                    data: data,
+                    data: moodLogs.map(log => ({
+                        x: new Date(log.date.toDate()), // Use logDate for x-axis
+                        y: data[moodLogs.indexOf(log)] // Use emotion data for y-axis
+                    })),
                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
                     borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 1,
@@ -126,11 +122,13 @@ function EmotionMap({ moodLogs }) {
                     x: {
                         type: 'time', // Use time scale for x-axis
                         time: {
-                            unit: 'day' // Display dates by day
+                            unit: 'day', // Display dates by day
+                            min: firstLogDate,
+                            max: lastLogDate
                         },
                         title: {
                             display: true,
-                            text: 'Log Number'
+                            text: 'Date'
                         }
                     },
                     y: {
