@@ -10,6 +10,9 @@
         width: 95%;
     }
     @include smallscreen {
+        width: 80%;
+    }
+    @include tablet {
         width: 60%;
     }
 }
@@ -68,7 +71,7 @@
 .all-logs {
     @include column;
     width: 100%;
-    margin: 0 0 3rem;
+    margin: 0 0 3.4rem;
     &__eq {
         width: 100%;
         @include column;
@@ -151,6 +154,9 @@
             margin-left: 0.6rem;
             @include column;
             border-radius: 1.2rem;
+        }
+        @include smallscreen {
+            font-size: .8rem;
         }
         &:hover {
             background-color: rgb(71, 4, 171);
