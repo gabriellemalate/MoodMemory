@@ -16,7 +16,26 @@ import EmotionMap from '../../components/EmotionMap/EmotionMap';
 const MoodMapsPage = () => {
     const [user] = useAuthState(auth);
     const [streak, setStreak] = useState(1);
+    const [moodLogs, setMoodLogs] = useState([]); 
     const currentUserUid = user ? user.uid : null;
+
+    useEffect(() => {
+        const fetchMoodLogs = async () => {
+            try {
+                const logsCollection = collection(db, 'moodlogs');
+                const logsQuery = query(logsCollection, where('uid', '==', user.uid), orderBy('date', 'desc'));
+                const logsSnapshot = await getDocs(logsQuery);
+                const logsData = logsSnapshot.docs.map(doc => doc.data());
+                setMoodLogs(logsData);
+            } catch (error) {
+                console.error("Error fetching mood logs:", error);
+            }
+        };
+
+        if (user) {
+            fetchMoodLogs();
+        }
+    }, [user]);
 
     useEffect(() => {
         const calculateStreak = async () => {
@@ -98,7 +117,7 @@ const MoodMapsPage = () => {
 
                     <section className='maps__mood'>
                         <h2 className='maps__mood-head'>Emotions Map</h2>
-                        <EmotionMap/>
+                        <EmotionMap moodLogs={moodLogs} />
                     </section>
 
                     <section className='maps__mood'>
