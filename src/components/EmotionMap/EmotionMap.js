@@ -195,7 +195,6 @@ function EmotionMap({ moodLogs }) {
     return (
         <>
             <div className="emotion-map">
-                <h2 className="emotion-map__title">Emotion Map</h2>
                 <canvas id="emotionChart" width="400" height="200"></canvas>
             </div>
         </>
