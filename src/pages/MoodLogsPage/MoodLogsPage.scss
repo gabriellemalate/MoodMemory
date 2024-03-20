@@ -9,6 +9,9 @@
         margin: 0rem 0 0;
         width: 95%;
     }
+    @include smallscreen {
+        width: 60%;
+    }
 }
 .streak {
     color: purple;
@@ -160,14 +163,14 @@
         @include column;
         margin-top: 2rem;
         width: 100%;
-        @include desktop {
+        @include mobile {
+            margin-top: 0.8rem;
+        }
+        @include smallscreen {
             @include row;
             flex-wrap: wrap;
             justify-content: center;
             align-items: flex-start;
-        }
-        @include mobile {
-            margin-top: 0.8rem;
         }
     }
 }

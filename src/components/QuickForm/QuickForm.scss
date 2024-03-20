@@ -35,6 +35,10 @@
     &-head {
         font-weight: 700;
         border-bottom: 1px solid $white;
+        @include tablet {
+            font-size: 1.3rem;
+            text-shadow: 2px 2px 3px black;
+        }
     }
     &-list {
         &-item {
@@ -95,9 +99,6 @@
     opacity: 0.94;
 }
 .mobileonly {
-    @include smallscreen {
-        display: none;
-    }
     margin-top: 0;
 }
 
@@ -123,11 +124,15 @@
                 margin: 1rem 0 0;
                 padding: 0;
                 font-size: 1.4rem;
-                line-height: 2.5rem;
+                line-height: 2rem;
+            }
+            @include smallscreen {
+                margin: 1.3rem 0 0;
+                font-size: 1.64rem;
             }
             @include tablet {
-                font-size: 2.8rem;
-                line-height: 3.5rem;
+                font-size: 2rem;
+                line-height: 2rem;
                 margin: 3rem 0 4rem;
             }
             @include desktop {
@@ -135,6 +140,7 @@
                 line-height: 5rem;
                 margin: 12rem 0 15rem;
             }
+
 
             &-crop {
                 width: 100%;
@@ -174,6 +180,10 @@
                 border-radius: 0;
                 padding-top: 1.4rem;
                 width: 100%;
+            }
+            @include smallscreen {
+                padding: 1.2rem 0 0;
+                width: 99%;
             }
 
             &__buttons {
@@ -227,11 +237,15 @@
                 @include mobile-head-category;
                 margin: 0;
                 @include row;
-                @include tablet {
-                    font-size: 2rem;
-                }
                 @include mobile {
                     font-size: 1rem;
+                }
+                @include smallscreen {
+                    font-size: 1.14rem;
+                }
+                @include tablet {
+                    font-size: 1.2rem;
+                    text-shadow: 2px 2px 3px rgb(27, 21, 21);
                 }
             }
             &-subhead {
@@ -302,7 +316,6 @@
                 }
             }
         }
-
         &__observations {
             @include column;
             margin-top: 1.4rem;
@@ -324,16 +337,17 @@
                 &-head {
                     @include mobile-head-category;
                     margin-bottom: 0.65rem;
+                    @include mobile {
+                        font-size: 1rem;
+                    }
                     @include tablet {
-                        font-size: 2rem;
+                        font-size: 1.2rem;
+                        text-shadow: 2px 2px 3px rgb(27, 21, 21);
                     }
                     @include desktop {
                         text-wrap: wrap;
                         line-height: 2.2rem;
                         margin-bottom: 1rem;
-                    }
-                    @include mobile {
-                        font-size: 1rem;
                     }
                 }
             }
@@ -341,12 +355,17 @@
                 &-head {
                     @include mobile-subhead;
                     color: $blue-light;
-                    font-weight: bolder;
+                    font-weight: 500;
                     @include desktop {
                         font-size: 1.2rem;
                         color: white;
                         text-shadow: 2px 2px black;
                         margin-right: 0.5rem;
+                    }
+                    @include tablet {
+                        font-size: 1rem;
+                        color: white;
+                        text-shadow: 2px 2px 3px black;
                     }
                 }
                 &-menu {
@@ -397,22 +416,8 @@
                     }
                 }
                 &-head {
-                    @include mobile-head-category;
-                    margin: 2rem 0 1rem;
-                    @include tablet {
-                        font-size: 2rem;
-                    }
-                    @include desktop {
-                        margin: 1.4rem 0 1rem;
-                    }
-                    @include mobile {
-                        // margin: 0;
-                        // font-size: 1rem;
-                        // align-self: flex-start;
-                        // width: 100%;
-                        // text-align: start;
                         display: none;
-                    }
+
                 }
                 &-hours {
                     @include column;
@@ -513,11 +518,13 @@
                 &-head {
                     @include mobile-head-category;
                     margin-bottom: 0.5rem;
-                    @include tablet {
-                        font-size: 2rem;
-                    }
+                    @extend .add-mood-quick__observations-all-head;
                     @include mobile {
                         font-size: 1rem;
+                        margin: 0;
+                    }
+                    @include smallscreen {
+                        font-size: 1.3rem;
                         margin: 0;
                     }
                     &--note {
@@ -577,7 +584,9 @@
             @include mobile {
                 display: none;
             }
-
+            @include smallscreen {
+                display: none;
+            }
             &-option-eq {
                 display: none;
             }
@@ -586,6 +595,8 @@
                 width: 100%;
             }
             &-head {
+                @extend .add-mood-quick__observations-all-head;
+                align-self: center;
                 @include mobile {
                     font-size: 0.9rem;
                     margin-top: 0;
@@ -594,11 +605,15 @@
                     padding: 0;
                     margin: 0;
                 }
-                @include mobile-head-category;
-                width: 70%;
+                width: 80%;
                 margin: 1.8rem 0 0.5rem;
+                @include smallscreen {
+                    margin: 0;
+                    font-size: 1.15rem;
+                    width: 100%;
+                }
                 @include tablet {
-                    font-size: 2rem;
+                    font-size: 1.3rem;
                 }
                 @include desktop {
                     line-height: 2.5rem;
@@ -608,7 +623,6 @@
             &-menu {
                 @include column;
                 width: 100%;
-
                 &-eq {
                     width: 100%;
                     @include row;
@@ -628,6 +642,11 @@
                         margin: 0;
                         border-radius: 0.4rem;
                         padding: 0.3rem 0.2rem;
+                    }
+                    @include smallscreen {
+                        border-radius: 0.4rem;
+                        background-image: linear-gradient(to top right, rgb(199, 68, 68, 0.86), rgb(78, 233, 26, 0.86));
+                        margin: .1rem 0 0;
                     }
                 }
                 &-option {
@@ -650,6 +669,11 @@
 
                         @include mobile {
                             border-radius: 0.1rem;
+                        }
+
+                        @include smallscreen {
+                            border-radius: .3rem;
+                            width: 96%;
                         }
 
                         &:active {

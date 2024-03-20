@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './Logged.scss';
 import LoggedExpand from '../LoggedExpand/LoggedExpand';
 import { auth } from '../../firebase';
-import { theblue, thedeep, theyellow, theorange, liteyellow, thegreen, thered } from '../../styles/variables';
 
 function Logged({ logData, searchTerm }) {
     const [expanded, setExpanded] = useState(false);
@@ -26,15 +25,6 @@ function Logged({ logData, searchTerm }) {
         const day = date.getDate(); // Get day of the month
 
         return `${month} ${day}`;
-        // const dateParts = dateString.split('/');
-        // if (dateParts.length === 3) {
-        //     // Extract month, day, and year
-        //     const month = dateParts[0].padStart(2, '0'); // Add leading zero if single digit
-        //     const day = dateParts[1].padStart(2, '0'); // Add leading zero if single digit
-        //     const year = dateParts[2].substring(2); // Extract the last two digits of the year
-        //     return `${month}/${day}/${year}`;
-        // }
-        // return dateString;
     };
 
     const isMatch = (log) => {

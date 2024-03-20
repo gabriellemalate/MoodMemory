@@ -12,6 +12,7 @@
         background-color: $mint-bright;
         border-radius: 1rem;
         height: 60rem;
+        z-index: 2;
 
         @include smallscreen {
             width: 34rem;

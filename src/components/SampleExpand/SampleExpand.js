@@ -81,8 +81,6 @@ function SampleExpand() {
         setShowConfirmation(false);
         // Perform the deletion
         try {
-            // Your deletion logic here
-            // After successful deletion, show the success message
             alert('Successfully Deleted');
         } catch (error) {
             console.error('Error deleting document: ', error);

@@ -15,12 +15,16 @@
     &:active {
         background-color: rgb(100, 205, 249);
     }
-    max-width: 40rem;
+    max-width: 30rem;
     @include mobile {
         margin: .32rem 0 0 0;
         border-radius: .4rem;
         width: 96%;
     }
+    @include smallscreen  {
+        margin: 0 .4rem .4rem 0;
+    }
+
 
     &-eq {
         @include row;
@@ -31,6 +35,10 @@
             padding: .3rem 0;
             margin: 0;
         }
+        @include smallscreen {
+            width: 96%;
+        }
+    
     }
     &__frame {
         margin-right: 1rem;
@@ -38,13 +46,17 @@
         padding: 1rem;
         border-radius: 1rem;
         // border: 0.1rem solid rgb(228, 138, 255);
-        background-color: rgba(127, 206, 240, 0.5);
+        // background-color: rgba(127, 206, 240, 0.5);
         @include column;
         justify-content: center;
         @include mobile {
             padding: .5rem;
             margin-right: .2rem;
         }
+        @include smallscreen  {
+            margin-right: .4rem;
+        }
+
 
         &-emoji {
             width: 6.5vw;
@@ -53,9 +65,10 @@
                 width: 2.2rem;
             }
         }
+
     }
     &-info {
-        width: 80%;
+        width: 90%;
         padding-right: .1rem;
 
         &__top {
@@ -78,7 +91,7 @@
                     margin: .2rem 0 0;
                     padding: 0;
                     font-size: 1rem;
-                    letter-spacing: 0.1rem;
+                    letter-spacing: 0.02rem;
                     font-weight: 200;
                     line-height: 1;
                     text-wrap: nowrap;
@@ -123,7 +136,7 @@
                 @extend .logged-info__top-left-emotion;
                 background-color: antiquewhite;
                 border-radius: 1.5rem;
-                padding: .3rem 1rem;
+                padding: .2rem .5rem;
                 margin: 0 0 .5rem;
                 color: #863983;
                 @include tablet {
@@ -134,6 +147,10 @@
                     align-self: flex-end;
                     padding: .22rem .6rem;
                     margin: 0 0 .3rem;
+                }
+                @include smallscreen {
+                    font-size: 1rem;
+
                 }
             }
             &-lower {
