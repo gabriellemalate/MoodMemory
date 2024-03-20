@@ -4,7 +4,7 @@ import Chart from 'chart.js/auto';
 
 function EmotionMap({ moodLogs }) {
     const [emotionData, setEmotionData] = useState([]);
-    
+
     useEffect(() => {
         // Extract emotion data from moodLogs
         const extractedData = moodLogs.map(log => log.emotion);
@@ -15,6 +15,8 @@ function EmotionMap({ moodLogs }) {
         // Create scatterplot when emotionData changes
         createScatterPlot();
     }, [emotionData]);
+
+    let emotionChart = null; // Variable to store the chart instance
 
     const createScatterPlot = () => {
         const ctx = document.getElementById('emotionChart');
@@ -65,7 +67,13 @@ function EmotionMap({ moodLogs }) {
 
         if (data.length === 0) return;
 
-        new Chart(ctx, {
+        // Destroy existing chart if it exists
+        if (emotionChart) {
+            emotionChart.destroy();
+        }
+
+        // Create new chart
+        emotionChart = new Chart(ctx, {
             type: 'scatter',
             data: {
                 labels: labels,
@@ -95,7 +103,8 @@ function EmotionMap({ moodLogs }) {
                         title: {
                             display: true,
                             text: 'Emotion Level'
-                        }
+                        },
+                        min: 0
                     }
                 }
             }
@@ -104,9 +113,9 @@ function EmotionMap({ moodLogs }) {
     return (
         <>
             <div className="emotion-map">
-            <h2 className="emotion-map__title">Emotion Map</h2>
-            <canvas id="emotionChart" width="400" height="200"></canvas>
-        </div>
+                <h2 className="emotion-map__title">Emotion Map</h2>
+                <canvas id="emotionChart" width="400" height="200"></canvas>
+            </div>
         </>
     )
 }
