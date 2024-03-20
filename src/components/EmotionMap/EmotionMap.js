@@ -2,6 +2,17 @@ import './EmotionMap.scss';
 import React, { useState, useEffect } from 'react';
 import Chart from 'chart.js/auto';
 
+const emotionLabels = [
+    'exhausted/hopeless/panic',
+    'frustrated/angry/down',
+    'anxious/blue/sad',
+    'irritable/worried/stressed',
+    'tired/unmotivated',
+    'unsure/wired',
+    'happy/loving/relaxed/satisfied/grateful',
+    'motivated/excited/proud/energized'
+];
+
 function EmotionMap({ moodLogs }) {
     const [emotionData, setEmotionData] = useState([]);
     const [chartInstance, setChartInstance] = useState(null);
@@ -13,7 +24,6 @@ function EmotionMap({ moodLogs }) {
     }, [moodLogs]);
 
     useEffect(() => {
-        // Create scatterplot when emotionData changes
         createScatterPlot();
         return () => {
             // Clean up function to destroy the chart instance when component unmounts
@@ -36,7 +46,7 @@ function EmotionMap({ moodLogs }) {
 
         const labels = moodLogs.map(log => {
             const logDate = new Date(log.date.toDate());
-            // Format date as desired (e.g., MM/DD/YYYY)
+            
             return `${logDate.getMonth() + 1}/${logDate.getDate()}/${logDate.getFullYear()}`;
         });
 
@@ -48,6 +58,16 @@ function EmotionMap({ moodLogs }) {
         const today = new Date();
         const oneMonthAgo = new Date();
         oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+
+        const xLabels = moodLogs.map(log => {
+            const logDate = new Date(log.date.toDate());
+            // Only include dates from the past month
+            if (logDate >= oneMonthAgo && logDate <= today) {
+                // Format date as desired (e.g., MM/DD/YYYY)
+                return `${logDate.getMonth() + 1}/${logDate.getDate()}/${logDate.getFullYear()}`;
+            }
+            return null; // Return null for dates outside the past month
+        }).filter(date => date !== null); // Filter out null values
 
         const firstLogDate = xData.length > 0 ? xData[0] : new Date();
         const lastLogDate = xData.length > 0 ? xData[xData.length - 1] : new Date();
@@ -99,12 +119,12 @@ function EmotionMap({ moodLogs }) {
         const newChartInstance = new Chart(ctx, {
             type: 'scatter',
             data: {
-                labels: labels,
+                labels: xLabels,
                 datasets: [{
                     label: 'Emotions',
                     data: moodLogs.map(log => ({
-                        x: new Date(log.date.toDate()), // Use logDate for x-axis
-                        y: data[moodLogs.indexOf(log)] // Use emotion data for y-axis
+                        x: new Date(log.date.toDate()),
+                        y: data[moodLogs.indexOf(log)] 
                     })),
                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
                     borderColor: 'rgba(75, 192, 192, 1)',
@@ -118,13 +138,30 @@ function EmotionMap({ moodLogs }) {
                 }]
             },
             options: {
+                // tooltips: {
+                //     callbacks: {
+                //         // Customize tooltip label
+                //         label: function(context) {
+                //             var label = context.dataset.label || '';
+            
+                //             if (label) {
+                //                 label += ': ';
+                //             }
+                //             if (context.parsed.y !== null) {
+                //                 // Display date and emotion name
+                //                 label += new Date(context.parsed.x).toLocaleDateString() + ' - ' + emotionLabels[context.parsed.y];
+                //             }
+                //             return label;
+                //         }
+                //     }
+                // },
                 scales: {
                     x: {
-                        type: 'time', // Use time scale for x-axis
+                        type: 'time', 
                         time: {
-                            unit: 'day', // Display dates by day
-                            min: firstLogDate,
-                            max: lastLogDate
+                            unit: 'day', 
+                            min: oneMonthAgo, 
+                            max: today
                         },
                         title: {
                             display: true,
@@ -137,6 +174,17 @@ function EmotionMap({ moodLogs }) {
                             text: 'Emotion Level'
                         },
                         min: 0
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = emotionLabels[data[context.dataIndex]];
+                                const date = new Date(context.parsed.x);
+                                return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()} - ${label}`;
+                            }
+                        }
                     }
                 }
             }
