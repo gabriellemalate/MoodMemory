@@ -17,13 +17,19 @@ function EmotionMap({ moodLogs }) {
     }, [emotionData]);
 
     let emotionChart = null; // Variable to store the chart instance
+    let scatterChart = null; 
 
     const createScatterPlot = () => {
         const ctx = document.getElementById('emotionChart');
 
         if (!ctx || !emotionData.length) return;
 
+        if (scatterChart) {
+            scatterChart.destroy();
+        }
+
         const labels = emotionData.map((_, index) => index + 1); // Generate labels (1, 2, 3, ...)
+        
         const data = emotionData.map(emotion => {
             // Assign numerical values to emotions
             switch (emotion) {
