@@ -11,6 +11,7 @@ import SampleLog from '../../components/SampleLog/SampleLog';
 import { useAuthState } from "react-firebase-hooks/auth";
 import Patterns from '../../components/Patterns/Patterns';
 import FoodMap from '../../components/FoodMap/FoodMap';
+import EmotionMap from '../../components/EmotionMap/EmotionMap';
 
 const MoodMapsPage = () => {
     const [user] = useAuthState(auth);
