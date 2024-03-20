@@ -19,7 +19,12 @@ function EmotionMap({ moodLogs }) {
     let emotionChart = null; // Variable to store the chart instance
     let scatterChart = null; 
 
+    let creatingChart = false; 
+
     const createScatterPlot = () => {
+        if (creatingChart) return; // Exit if chart creation process is already ongoing
+    creatingChart = true;
+
         const ctx = document.getElementById('emotionChart');
 
         if (!ctx || !emotionData.length) return;
@@ -28,8 +33,12 @@ function EmotionMap({ moodLogs }) {
             scatterChart.destroy();
         }
 
-        const labels = emotionData.map((_, index) => index + 1); // Generate labels (1, 2, 3, ...)
-        
+        const labels = moodLogs.map(log => {
+            const logDate = new Date(log.date.toDate());
+            // Format date as desired (e.g., MM/DD/YYYY)
+            return `${logDate.getMonth() + 1}/${logDate.getDate()}/${logDate.getFullYear()}`;
+        });
+
         const data = emotionData.map(emotion => {
             // Assign numerical values to emotions
             switch (emotion) {
@@ -115,7 +124,9 @@ function EmotionMap({ moodLogs }) {
                 }
             }
         });
+        creatingChart = false;
     };
+    
     return (
         <>
             <div className="emotion-map">
