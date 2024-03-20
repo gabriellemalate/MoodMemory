@@ -75,11 +75,11 @@
     }
     &__head {
         letter-spacing: 0.2rem;
-        border-bottom: 0.4rem dotted purple;
+        border-bottom: 0.2rem double purple;
         width: fit-content;
-        padding-bottom: 0.8rem;
+        // padding-bottom: 0.8rem;
         font-size: 1.5rem;
-        color: rgb(242, 227, 176);
+        color: rgb(9, 2, 110);
         @include mobile {
             font-size: 1.2rem;
             border: 0;
@@ -96,6 +96,9 @@
         @include row;
         justify-content: space-between;
         width: 95.6%;
+        @include smallscreen {
+            width: 64%;
+        }
     }
     &__search {
         @include row;
