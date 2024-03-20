@@ -4,6 +4,7 @@ import Chart from 'chart.js/auto';
 
 function EmotionMap({ moodLogs }) {
     const [emotionData, setEmotionData] = useState([]);
+    const [chartInstance, setChartInstance] = useState(null);
 
     useEffect(() => {
         // Extract emotion data from moodLogs
@@ -14,29 +15,43 @@ function EmotionMap({ moodLogs }) {
     useEffect(() => {
         // Create scatterplot when emotionData changes
         createScatterPlot();
+        return () => {
+            // Clean up function to destroy the chart instance when component unmounts
+            if (chartInstance) {
+                chartInstance.destroy();
+            }
+        };
     }, [emotionData]);
 
     let emotionChart = null; // Variable to store the chart instance
-    let scatterChart = null; 
-
-    let creatingChart = false; 
+    let scatterChart = null;
+    let creatingChart = false;
 
     const createScatterPlot = () => {
-        if (creatingChart) return; // Exit if chart creation process is already ongoing
-    creatingChart = true;
+        // if (creatingChart) return; // Exit if chart creation process is already ongoing
+        // creatingChart = true;
 
         const ctx = document.getElementById('emotionChart');
 
         if (!ctx || !emotionData.length) return;
 
-        if (scatterChart) {
-            scatterChart.destroy();
+        // if (scatterChart) {
+        //     scatterChart.destroy();
+        // }
+
+        if (chartInstance) {
+            chartInstance.destroy();
         }
 
         const labels = moodLogs.map(log => {
             const logDate = new Date(log.date.toDate());
             // Format date as desired (e.g., MM/DD/YYYY)
             return `${logDate.getMonth() + 1}/${logDate.getDate()}/${logDate.getFullYear()}`;
+        });
+
+        const xdata = moodLogs.map(log => {
+            const logDate = new Date(log.date.toDate());
+            return logDate;
         });
 
         const data = emotionData.map(emotion => {
@@ -82,13 +97,13 @@ function EmotionMap({ moodLogs }) {
 
         if (data.length === 0) return;
 
-        // Destroy existing chart if it exists
-        if (emotionChart) {
-            emotionChart.destroy();
-        }
+        // // Destroy existing chart if it exists
+        // if (emotionChart) {
+        //     emotionChart.destroy();
+        // }
 
         // Create new chart
-        emotionChart = new Chart(ctx, {
+        const newChartInstance = new Chart(ctx, {
             type: 'scatter',
             data: {
                 labels: labels,
@@ -109,6 +124,10 @@ function EmotionMap({ moodLogs }) {
             options: {
                 scales: {
                     x: {
+                        type: 'time', // Use time scale for x-axis
+                        time: {
+                            unit: 'day' // Display dates by day
+                        },
                         title: {
                             display: true,
                             text: 'Log Number'
@@ -124,9 +143,9 @@ function EmotionMap({ moodLogs }) {
                 }
             }
         });
-        creatingChart = false;
+        setChartInstance(newChartInstance);
     };
-    
+
     return (
         <>
             <div className="emotion-map">
