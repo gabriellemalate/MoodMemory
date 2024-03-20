@@ -2,7 +2,9 @@ import './EmotionMap.scss';
 import React, { useState, useEffect } from 'react';
 import Chart from 'chart.js/auto';
 
-function EmotionMap() {
+function EmotionMap({ moodLogs }) {
+    const [emotionData, setEmotionData] = useState([]);
+    
     useEffect(() => {
         // Extract emotion data from moodLogs
         const extractedData = moodLogs.map(log => log.emotion);
@@ -101,19 +103,10 @@ function EmotionMap() {
     };
     return (
         <>
-            <div className='add-mood-quick__sleep-form-hours'>
-                <label htmlFor="hoursSlept" className='add-mood-quick__sleep-form-hours-head'>
-                    Hours Slept {(!formData.hours && sleepHoursTouched) && <span className="required">*</span>} {/* Step 3 */}
-                </label>
-                <select
-                    id="hoursSlept"
-                    className='add-mood-quick__sleep-form-hours-menu'
-                    onChange={(e) => handleNumberChange('hours', parseInt(e.target.value))}
-                >
-                    {/* Dropdown options remain unchanged */}
-                </select>
-                {errors.hours && <div className="error">{errors.hours}</div>} {/* Render error message */}
-            </div>
+            <div className="emotion-map">
+            <h2 className="emotion-map__title">Emotion Map</h2>
+            <canvas id="emotionChart" width="400" height="200"></canvas>
+        </div>
         </>
     )
 }
