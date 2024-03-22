@@ -138,23 +138,6 @@ function EmotionMap({ moodLogs }) {
                 }]
             },
             options: {
-                // tooltips: {
-                //     callbacks: {
-                //         // Customize tooltip label
-                //         label: function(context) {
-                //             var label = context.dataset.label || '';
-            
-                //             if (label) {
-                //                 label += ': ';
-                //             }
-                //             if (context.parsed.y !== null) {
-                //                 // Display date and emotion name
-                //                 label += new Date(context.parsed.x).toLocaleDateString() + ' - ' + emotionLabels[context.parsed.y];
-                //             }
-                //             return label;
-                //         }
-                //     }
-                // },
                 scales: {
                     x: {
                         type: 'time', 
