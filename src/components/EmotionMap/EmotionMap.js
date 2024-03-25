@@ -126,7 +126,7 @@ function EmotionMap({ moodLogs }) {
                         x: new Date(log.date.toDate()),
                         y: data[moodLogs.indexOf(log)] 
                     })),
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    backgroundColor: 'purple',
                     borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 1,
                     tension: 0.4,
