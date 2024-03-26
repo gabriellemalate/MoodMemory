@@ -1061,6 +1061,21 @@ const QuickForm = () => {
                                     panic attack
                                 </button>
                             </div>
+                            <div className="userpage__triggers-add">
+                                <input
+                                    type="text"
+                                    className="userpage__triggers-add-input"
+                                    placeholder="custom hurdle"
+                            
+                                />
+                                <button
+                                    className="userpage__triggers-add-press"
+                                 
+                                    type='button'
+                                >
+                                    +
+                                </button>
+                            </div>
                         </article>
                         <article className='additional-triggers'>
                             <h3 className='add-mood-quick__level-head additional-head'>Triggers</h3>
