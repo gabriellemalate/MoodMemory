@@ -1044,6 +1044,19 @@ const QuickForm = () => {
                                     learning
                                 </button>
                             </div>
+                            <div className="userpage__triggers-add">
+                                <input
+                                    type="text"
+                                    className="userpage__triggers-add-input"
+                                    placeholder="custom trigger"
+                                />
+                                <button
+                                    className="userpage__triggers-add-press"
+                                    type='button'
+                                >
+                                    +
+                                </button>
+                            </div>
                         </article>
                         <article className='additional-hurdles'>
                             <h3 className='add-mood-quick__level-head additional-head'>Hurdles</h3>
@@ -1070,7 +1083,6 @@ const QuickForm = () => {
                                 />
                                 <button
                                     className="userpage__triggers-add-press"
-                                 
                                     type='button'
                                 >
                                     +
