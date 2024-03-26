@@ -1048,7 +1048,7 @@ const QuickForm = () => {
                                 <input
                                     type="text"
                                     className="userpage__triggers-add-input"
-                                    placeholder="custom trigger"
+                                    placeholder="custom victory"
                                 />
                                 <button
                                     className="userpage__triggers-add-press"
