@@ -1104,7 +1104,7 @@ const QuickForm = () => {
                                     <input
                                         type="text"
                                         className="userpage__triggers-add-input"
-                                        placeholder="custom victory"
+                                        placeholder="custom victory (in beta)"
                                         value={customVictory}
                                         onChange={handleCustomVictoryChange}
                                     />
@@ -1138,7 +1138,7 @@ const QuickForm = () => {
                                 <input
                                     type="text"
                                     className="userpage__triggers-add-input"
-                                    placeholder="custom hurdle"
+                                    placeholder="custom hurdle (in beta)"
                                     value={customHurdle}
                                     onChange={handleCustomHurdleChange}
                                 />
@@ -1288,7 +1288,7 @@ const QuickForm = () => {
                                 <input
                                     type="text"
                                     className="userpage__triggers-add-input"
-                                    placeholder="custom consumption"
+                                    placeholder="custom consumption (in beta)"
                                     value={customConsumption}
                                     onChange={handleCustomConsumptionChange}
                                 />
