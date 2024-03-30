@@ -1266,6 +1266,22 @@ const QuickForm = () => {
                                     tobacco
                                 </button>
                             </div>
+                            <div className="userpage__triggers-add">
+                                <input
+                                    type="text"
+                                    className="userpage__triggers-add-input"
+                                    placeholder="custom consumption"
+                                    value={customConsumption}
+                                    onChange={handleCustomConsumptionChange}
+                                />
+                                <button
+                                    className="userpage__triggers-add-press"
+                                    onClick={handleCustomConsumptionAdd}
+                                    type='button'
+                                >
+                                    +
+                                </button>
+                            </div>
                         </article>
                     </div>
 
