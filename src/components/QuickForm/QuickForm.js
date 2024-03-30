@@ -51,6 +51,18 @@ const QuickForm = () => {
     const [customVictory, setCustomVictory] = useState('');
     const [customHurdle, setCustomHurdle] = useState('');
     const [customConsumption, setCustomConsumption] = useState('');
+    
+    const handleCustomVictoryChange = (event) => {
+        setCustomVictory(event.target.value);
+    };
+
+    const handleCustomHurdleChange = (event) => {
+        setCustomHurdle(event.target.value);
+    };
+
+    const handleCustomConsumptionChange = (event) => {
+        setCustomConsumption(event.target.value);
+    };
 
     const [formData, setFormData] = useState({
         state: '',
