@@ -47,7 +47,7 @@ const QuickForm = () => {
     const [selectedHurdles, setSelectedHurdles] = useState([]);
     const [selectedConsumptions, setSelectedConsumptions] = useState([]);
     const [customTrigger, setCustomTrigger] = useState('');
-    const [sleepHoursTouched, setSleepHoursTouched] = useState(false); 
+    const [sleepHoursTouched, setSleepHoursTouched] = useState(false);
     const [customVictory, setCustomVictory] = useState('');
     const [customHurdle, setCustomHurdle] = useState('');
     const [customConsumption, setCustomConsumption] = useState('');
@@ -1088,9 +1088,12 @@ const QuickForm = () => {
                                     type="text"
                                     className="userpage__triggers-add-input"
                                     placeholder="custom victory"
+                                    value={customVictory}
+                                    onChange={handleCustomVictoryChange}
                                 />
                                 <button
                                     className="userpage__triggers-add-press"
+                                    onClick={handleCustomVictoryAdd}
                                     type='button'
                                 >
                                     +
@@ -1114,19 +1117,21 @@ const QuickForm = () => {
                                 </button>
                             </div>
                             <div className="userpage__triggers-add">
-                                <input
-                                    type="text"
-                                    className="userpage__triggers-add-input"
-                                    placeholder="custom hurdle"
-                            
-                                />
-                                <button
-                                    className="userpage__triggers-add-press"
-                                    type='button'
-                                >
-                                    +
-                                </button>
-                            </div>
+                    <input
+                        type="text"
+                        className="userpage__triggers-add-input"
+                        placeholder="custom hurdle"
+                        value={customHurdle}
+                        onChange={handleCustomHurdleChange}
+                    />
+                    <button
+                        className="userpage__triggers-add-press"
+                        onClick={handleCustomHurdleAdd}
+                        type='button'
+                    >
+                        +
+                    </button>
+                </div>
                         </article>
                         <article className='additional-triggers'>
                             <h3 className='add-mood-quick__level-head additional-head'>Triggers</h3>
