@@ -52,6 +52,22 @@ const QuickForm = () => {
     const [customHurdle, setCustomHurdle] = useState('');
     const [customConsumption, setCustomConsumption] = useState('');
 
+    const [showCustomVictoryInput, setShowCustomVictoryInput] = useState(false);
+    const [showCustomHurdleInput, setShowCustomHurdleInput] = useState(false);
+    const [showCustomConsumptionInput, setShowCustomConsumptionInput] = useState(false);
+
+    const handleShowCustomVictoryInput = () => {
+        setShowCustomVictoryInput(true);
+    };
+
+    const handleShowCustomHurdleInput = () => {
+        setShowCustomHurdleInput(true);
+    };
+
+    const handleShowCustomConsumptionInput = () => {
+        setShowCustomConsumptionInput(true);
+    };
+
     const handleCustomVictoryChange = (event) => {
         setCustomVictory(event.target.value);
     };
