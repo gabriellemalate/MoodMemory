@@ -1283,6 +1283,24 @@ const QuickForm = () => {
                                 <button type="button" className={`smaller additional-list-item additional-list-button ${selectedConsumptions.includes('tobacco') ? 'selected' : ''}`} onClick={() => handleConsumptionChange('tobacco')}>
                                     tobacco
                                 </button>
+                                {/* {selectedconsumptions.map((consumption) => {
+                                    // Check if the consumption is a custom consumption (not present in predefined consumption options)
+                                    const isCustomconsumption = !consumptionOptions.includes(consumption);
+                                    // Render only if it's a custom consumption
+                                    if (isCustomconsumption) {
+                                        return (
+                                            <button
+                                                key={consumption}
+                                                type="button"
+                                                className="additional-list-consumption additional-list-custom selected"
+                                                onClick={() => handleCustomconsumptionRemove(consumption)}
+                                            >
+                                                {consumption}
+                                            </button>
+                                        );
+                                    }
+                                    return null; // Don't render predefined consumptions
+                                })} */}
                             </div>
                             <div className="userpage__triggers-add">
                                 <input
