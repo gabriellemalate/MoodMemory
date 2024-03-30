@@ -1117,21 +1117,21 @@ const QuickForm = () => {
                                 </button>
                             </div>
                             <div className="userpage__triggers-add">
-                    <input
-                        type="text"
-                        className="userpage__triggers-add-input"
-                        placeholder="custom hurdle"
-                        value={customHurdle}
-                        onChange={handleCustomHurdleChange}
-                    />
-                    <button
-                        className="userpage__triggers-add-press"
-                        onClick={handleCustomHurdleAdd}
-                        type='button'
-                    >
-                        +
-                    </button>
-                </div>
+                                <input
+                                    type="text"
+                                    className="userpage__triggers-add-input"
+                                    placeholder="custom hurdle"
+                                    value={customHurdle}
+                                    onChange={handleCustomHurdleChange}
+                                />
+                                <button
+                                    className="userpage__triggers-add-press"
+                                    onClick={handleCustomHurdleAdd}
+                                    type='button'
+                                >
+                                    +
+                                </button>
+                            </div>
                         </article>
                         <article className='additional-triggers'>
                             <h3 className='add-mood-quick__level-head additional-head'>Triggers</h3>
