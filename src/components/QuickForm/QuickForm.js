@@ -51,10 +51,10 @@ const QuickForm = () => {
     const [customVictory, setCustomVictory] = useState('');
     const [customHurdle, setCustomHurdle] = useState('');
     const [customConsumption, setCustomConsumption] = useState('');
-
     const [showCustomVictoryInput, setShowCustomVictoryInput] = useState(false);
     const [showCustomHurdleInput, setShowCustomHurdleInput] = useState(false);
     const [showCustomConsumptionInput, setShowCustomConsumptionInput] = useState(false);
+    
 
     const handleShowCustomVictoryInput = () => {
         setShowCustomVictoryInput(true);
@@ -1100,19 +1100,21 @@ const QuickForm = () => {
                                 </button>
                             </div>
                             <div className="userpage__triggers-add">
-                                <input
-                                    type="text"
-                                    className="userpage__triggers-add-input"
-                                    placeholder="custom victory"
-                                    value={customVictory}
-                                    onChange={handleCustomVictoryChange}
-                                />
+                                {showCustomVictoryInput && (
+                                    <input
+                                        type="text"
+                                        className="userpage__triggers-add-input"
+                                        placeholder="custom victory"
+                                        value={customVictory}
+                                        onChange={handleCustomVictoryChange}
+                                    />
+                                )}
                                 <button
                                     className="userpage__triggers-add-press"
-                                    onClick={handleCustomVictoryAdd}
+                                    onClick={showCustomVictoryInput ? handleCustomVictoryAdd : handleShowCustomVictoryInput}
                                     type='button'
                                 >
-                                    +
+                                    {showCustomVictoryInput ? "+" : "Add Custom Victory"}
                                 </button>
                             </div>
                         </article>
