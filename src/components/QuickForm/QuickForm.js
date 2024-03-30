@@ -48,6 +48,9 @@ const QuickForm = () => {
     const [selectedConsumptions, setSelectedConsumptions] = useState([]);
     const [customTrigger, setCustomTrigger] = useState('');
     const [sleepHoursTouched, setSleepHoursTouched] = useState(false); 
+    const [customVictory, setCustomVictory] = useState('');
+    const [customHurdle, setCustomHurdle] = useState('');
+    const [customConsumption, setCustomConsumption] = useState('');
 
     const [formData, setFormData] = useState({
         state: '',
