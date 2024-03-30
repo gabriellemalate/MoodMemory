@@ -51,7 +51,7 @@ const QuickForm = () => {
     const [customVictory, setCustomVictory] = useState('');
     const [customHurdle, setCustomHurdle] = useState('');
     const [customConsumption, setCustomConsumption] = useState('');
-    
+
     const handleCustomVictoryChange = (event) => {
         setCustomVictory(event.target.value);
     };
@@ -62,6 +62,30 @@ const QuickForm = () => {
 
     const handleCustomConsumptionChange = (event) => {
         setCustomConsumption(event.target.value);
+    };
+
+    const handleCustomVictoryAdd = () => {
+        if (customVictory.trim() !== '') {
+            const updatedVictories = [...selectedVictories, customVictory.trim()];
+            setSelectedVictories(updatedVictories);
+            setCustomVictory('');
+        }
+    };
+
+    const handleCustomHurdleAdd = () => {
+        if (customHurdle.trim() !== '') {
+            const updatedHurdles = [...selectedHurdles, customHurdle.trim()];
+            setSelectedHurdles(updatedHurdles);
+            setCustomHurdle('');
+        }
+    };
+
+    const handleCustomConsumptionAdd = () => {
+        if (customConsumption.trim() !== '') {
+            const updatedConsumptions = [...selectedConsumptions, customConsumption.trim()];
+            setSelectedConsumptions(updatedConsumptions);
+            setCustomConsumption('');
+        }
     };
 
     const [formData, setFormData] = useState({
