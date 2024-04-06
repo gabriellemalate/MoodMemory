@@ -69,8 +69,8 @@ function EmotionMap({ moodLogs }) {
             return null; // Return null for dates outside the past month
         }).filter(date => date !== null); // Filter out null values
 
-        const firstLogDate = xData.length > 0 ? xData[0] : new Date();
-        const lastLogDate = xData.length > 0 ? xData[xData.length - 1] : new Date();
+        // const firstLogDate = xData.length > 0 ? xData[0] : new Date();
+        // const lastLogDate = xData.length > 0 ? xData[xData.length - 1] : new Date();
 
         const data = emotionData.map(emotion => {
             // Assign numerical values to emotions
