@@ -109,13 +109,12 @@ function EmotionMap({ moodLogs }) {
                 case 'energized':
                     return 7;
                 default:
-                    return 0; // Default to 0 if emotion is not recognized
+                    return 0; 
             }
         });
 
         if (data.length === 0) return;
 
-        // Create new chart
         const newChartInstance = new Chart(ctx, {
             type: 'scatter',
             data: {
