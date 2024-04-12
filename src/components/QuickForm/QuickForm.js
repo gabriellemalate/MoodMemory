@@ -33,12 +33,11 @@ import worried from "../../assets/emotes/worried.png";
 
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { collection, addDoc, Timestamp, doc, setDoc } from 'firebase/firestore';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { collection, Timestamp, doc, setDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { v4 as uuidv4 } from 'uuid';
-// import NavigationPrompt from './NavigationPrompt';
 
 const QuickForm = () => {
     const [user] = useAuthState(auth);
