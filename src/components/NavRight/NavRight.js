@@ -11,7 +11,7 @@ const NavRight = ({ setScrollToFAQ }) => {
     const faqRef = useRef(null);
     const location = useLocation();
     const [totalLogs, setTotalLogs] = useState(0);
-    const [streak, setStreak] = useState(0);
+    // const [streak, setStreak] = useState(0);
 
     const signOut = () => {
         auth.signOut().then(() => {
