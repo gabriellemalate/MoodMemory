@@ -1,0 +1,125 @@
+/* Colours */
+/* Sizes */
+/* Positions */
+.maps {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.maps__eq {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 96%;
+}
+@media (max-width: 450px) {
+  .maps__eq {
+    width: 100%;
+  }
+}
+.maps__top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  width: 70%;
+}
+@media (max-width: 450px) {
+  .maps__top {
+    width: 90%;
+    margin: 0.5rem 0;
+  }
+}
+.maps__head {
+  letter-spacing: 0.12rem;
+  border-bottom: 0.2rem solid rgb(135, 29, 135);
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 1.4rem;
+  color: rgb(235, 249, 242);
+  align-self: flex-start;
+  margin: 0.8rem 1rem 1.4rem;
+  padding-bottom: 0rem;
+}
+@media (min-width: 1280px) {
+  .maps__head {
+    font-size: 2.2rem;
+    border-bottom: 0.3rem solid rgb(135, 29, 135);
+    width: 20rem;
+    margin-bottom: 1rem;
+    align-self: center;
+  }
+}
+@media (max-width: 450px) {
+  .maps__head {
+    border-bottom: 0;
+    padding-bottom: 0;
+    font-size: 1.24rem;
+    letter-spacing: 0;
+    margin: 0rem;
+    color: rgb(135, 29, 135);
+  }
+}
+@media (min-width: 451px) {
+  .maps__head {
+    align-self: center;
+  }
+}
+.maps__mood, .maps__sleep {
+  margin: 0 0 4rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(34, 121, 121, 0.9);
+  border-radius: 2rem;
+  max-width: 42rem;
+}
+@media (max-width: 450px) {
+  .maps__mood, .maps__sleep {
+    border-radius: 0.4rem;
+    margin: 0 0 0.48rem;
+  }
+}
+.maps__mood-head, .maps__sleep-head {
+  letter-spacing: 0.08rem;
+  margin: 0.86rem 0 0.5rem;
+  font-size: 1.15rem;
+}
+@media (max-width: 450px) {
+  .maps__mood-head, .maps__sleep-head {
+    margin: 0.5rem 0 0.4rem;
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 450px) {
+  .blobs_map-1 {
+    display: none;
+  }
+}
+@media (min-width: 1280px) {
+  .blobs_map-1 {
+    outline: rgba(190, 0, 200, 0.9) dotted 1.8rem;
+    top: 6rem;
+    width: 40vw;
+    left: 56vw;
+    height: 35rem;
+    background: rgba(30, 214, 255, 0.7);
+  }
+}
+@media (max-width: 450px) {
+  .blobs_map-2 {
+    display: none;
+  }
+}
+@media (min-width: 1280px) {
+  .blobs_map-2 {
+    top: 42rem;
+    outline: solid 6rem blue;
+    left: 9vw;
+    background: rgba(253, 145, 50, 0.7);
+    width: 30vw;
+    height: 34vh;
+  }
+}/*# sourceMappingURL=MoodMapsPage.css.map */

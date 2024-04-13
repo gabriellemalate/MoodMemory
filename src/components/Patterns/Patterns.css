@@ -1,0 +1,42 @@
+/* Colours */
+/* Sizes */
+/* Positions */
+.patterns {
+  padding: 0 0 0.6rem;
+  width: 98%;
+}
+.patterns__pattern {
+  width: 100%;
+  margin: 0;
+  padding: 0 0.4rem;
+  margin-bottom: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.patterns__pattern-head {
+  font-weight: 400;
+  margin: 0 0 0rem;
+  align-self: flex-start;
+  text-align: start;
+}
+.patterns__pattern-data {
+  margin: 0;
+  font-size: 0.8rem;
+}
+.patterns__pattern-number {
+  color: azure;
+  font-size: 0.88rem;
+}
+.patterns__pattern-keys {
+  font-size: 0.77rem;
+  width: 100%;
+  border: 0.1rem double rgb(12, 54, 96);
+  border-radius: 0.3rem;
+  height: 2rem;
+}
+.patterns__pattern-duration {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}/*# sourceMappingURL=Patterns.css.map */

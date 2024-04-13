@@ -1,0 +1,116 @@
+/* Colours */
+/* Sizes */
+/* Positions */
+.faq {
+  background-color: hsla(189, 89%, 72%, 0.3);
+  border-radius: 1rem;
+  margin-bottom: 3rem;
+  padding-bottom: 1rem;
+  width: 94%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (max-width: 450px) {
+  .faq {
+    display: none;
+  }
+}
+.faq-eq {
+  width: 96%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.faq-back {
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: 0.2rem;
+  color: rgb(193, 13, 85);
+  text-shadow: 2px 2px rgb(224, 179, 197);
+  transition: transform 0.1s;
+}
+@media (min-width: 1280px) {
+  .faq-back {
+    font-size: 2rem;
+    padding: 2rem 0;
+  }
+}
+.faq-back:hover {
+  transform: scale(1.5);
+}
+.faq-head {
+  font-size: 2rem;
+  padding: 0.5rem 0 0.5rem;
+  letter-spacing: 0.15rem;
+  border-bottom: 0.2rem rgb(231, 243, 213) solid;
+  width: 26vw;
+  color: rgb(231, 243, 213);
+}
+@media (min-width: 1280px) {
+  .faq-head {
+    color: rgb(88, 8, 104);
+    border-bottom: 0.6rem rgb(17, 81, 64) dotted;
+    max-width: 10rem;
+    margin: 2rem 0 3rem;
+  }
+}
+.faq-questions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.faq-query {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  padding: 0.6rem 0;
+}
+@media (min-width: 1280px) {
+  .faq-query {
+    padding: 1.4rem 0;
+  }
+}
+.faq-query__head {
+  align-self: flex-start;
+  text-align: start;
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 0 0 0.5rem;
+  color: rgb(180, 66, 193);
+  text-shadow: 2px 2px rgb(231, 199, 212);
+}
+@media (min-width: 1280px) {
+  .faq-query__head {
+    font-size: 1.75rem;
+    margin: 0.8rem 0 1.4rem;
+  }
+}
+.faq-query__answer {
+  margin: 0;
+  width: 100%;
+  color: rgb(23, 23, 65);
+  padding: 0.4rem 0 1rem;
+  text-align: end;
+}
+@media (min-width: 1280px) {
+  .faq-query__answer {
+    font-size: 1.08rem;
+    width: 86%;
+    align-self: flex-end;
+    font-weight: 400;
+    background-color: rgba(243, 224, 102, 0.572);
+    padding: 1rem;
+    border-radius: 2rem;
+  }
+}
+.faq-query__answer-link {
+  margin: 0;
+  color: rgb(231, 243, 213);
+}
+@media (min-width: 1280px) {
+  .faq-query__answer-link {
+    color: rgb(10, 131, 63);
+  }
+}/*# sourceMappingURL=Faq.css.map */

@@ -1,0 +1,59 @@
+/* Colours */
+/* Sizes */
+/* Positions */
+.usermobnav {
+  margin-top: 0.23rem;
+}
+.usermobnav-img {
+  margin-bottom: 0.17rem;
+}
+
+.mobnav {
+  position: fixed;
+  bottom: 0;
+  background-color: rgba(218, 165, 32, 0.9);
+  width: 100%;
+  left: 0;
+  height: 3.5rem;
+}
+@media (min-width: 451px) {
+  .mobnav {
+    display: none;
+  }
+}
+.mobnav-eq {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+}
+.mobnav-item {
+  width: 20%;
+}
+.mobnav-item__option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  height: 3rem;
+}
+.mobnav-item__option-img {
+  width: 1rem;
+}
+.mobnav-item__option-img-plot {
+  background-color: rgb(151, 196, 162);
+  width: 1.1rem;
+  border-radius: 1rem;
+}
+.mobnav-item__option-img-frog {
+  width: 1.3rem;
+}
+.mobnav-item__option-head {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+}/*# sourceMappingURL=MobileNav.css.map */

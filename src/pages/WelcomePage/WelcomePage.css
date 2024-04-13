@@ -1,0 +1,218 @@
+/* Colours */
+/* Sizes */
+/* Positions */
+.welcome {
+  color: rgb(231, 243, 213);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.welcome-eq {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 5rem 0 0;
+  padding: 1rem 0 1rem;
+  justify-content: center;
+  height: fit-screen;
+}
+@media (max-width: 450px) {
+  .welcome-eq {
+    margin: 7rem 0 0;
+  }
+}
+@media (min-width: 1280px) {
+  .welcome-eq {
+    margin-top: 10rem;
+  }
+}
+.welcome__head {
+  padding: 1rem 0 1rem;
+}
+@media (min-width: 451px) {
+  .welcome__head {
+    padding: 3.8rem 0 1rem;
+  }
+}
+@media (min-width: 768px) {
+  .welcome__head {
+    padding: 5rem 0 1rem;
+  }
+}
+.welcome__head-welcome {
+  font-size: 1.8rem;
+  font-weight: 300;
+  margin: 0;
+  letter-spacing: 0.24rem;
+}
+@media (min-width: 768px) {
+  .welcome__head-welcome {
+    font-size: 2.5rem;
+    font-weight: 300;
+  }
+}
+.welcome__logo {
+  padding: 1.5rem 0 2rem;
+  font-size: 3rem;
+}
+@media (min-width: 768px) {
+  .welcome__logo {
+    font-size: 5.5rem;
+  }
+}
+.welcome__logo-mood:hover, .welcome__logo-mood:focus {
+  color: rgb(255, 241, 216);
+  text-shadow: -0.2px 1px 3px #c5eef4;
+}
+.welcome__logo-memory:hover, .welcome__logo-memory:focus {
+  color: rgb(255, 241, 216);
+  text-shadow: 0.3px 1px 3.5px #c5eef4;
+}
+@media (max-width: 450px) {
+  .welcome__logo {
+    margin-top: 1rem;
+  }
+}
+.welcome__button {
+  margin: 3rem 0 1rem;
+  padding: 0.6rem 2rem;
+  border-radius: 2rem;
+  border: 0;
+  background-color: rgb(120, 42, 193);
+  color: aliceblue;
+  font-size: 1rem;
+  letter-spacing: 0.1rem;
+}
+@media (min-width: 768px) {
+  .welcome__button {
+    margin: 5rem 0 1rem;
+    height: 3rem;
+    font-size: 1.2rem;
+  }
+}
+@media (max-width: 450px) {
+  .welcome__button {
+    margin-top: 2.4rem;
+  }
+}
+@media (min-width: 1280px) {
+  .welcome__button {
+    margin-top: 2.4rem;
+  }
+}
+.welcome__button:hover {
+  background-color: #80aaf7;
+  color: #000;
+  outline: 0.3rem dotted #65edff;
+  font-weight: 500;
+}
+@media (min-width: 768px) {
+  .welcome__button:hover {
+    outline: 0.6rem dotted #65edff;
+  }
+}
+.welcome__button:active {
+  outline: 0;
+  color: rgb(19, 19, 98);
+  background-color: rgb(89, 210, 210);
+  font-weight: 600;
+  border: 0;
+}
+
+.morphs {
+  mix-blend-mode: color;
+  animation: morphs 15s ease-in-out infinite alternate;
+  -webkit-background-clip: text;
+  display: block;
+  position: absolute;
+  z-index: -1;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.morphs_2 {
+  background: #46afb4;
+  width: 80vw;
+  height: 35vh;
+  top: 14.5vh;
+  left: 10vw;
+}
+@media (max-width: 450px) {
+  .morphs_2 {
+    height: 55vh;
+  }
+}
+@media (min-width: 1280px) {
+  .morphs_2 {
+    height: 66vh;
+  }
+}
+.morphs_1 {
+  background: rgba(215, 198, 66, 0.8);
+  width: 92vw;
+  height: 60vh;
+  left: 4%;
+  top: 7vh;
+  outline: dotted 1rem #95123b;
+}
+@media (min-width: 451px) {
+  .morphs_1 {
+    outline: dotted 1.4rem #95123b;
+  }
+}
+@media (min-width: 768px) {
+  .morphs_1 {
+    outline: dotted 2rem #95123b;
+  }
+}
+@media (max-width: 450px) {
+  .morphs_1 {
+    top: 8vh;
+    height: 71vh;
+  }
+}
+@media (min-width: 1280px) {
+  .morphs_1 {
+    top: 5rem;
+    height: 80vh;
+    max-width: 92rem;
+    left: 8vw;
+  }
+}
+
+@keyframes morphs {
+  0% {
+    border-radius: 26% 74% 61% 39%/54% 67% 33% 46%;
+  }
+  10% {
+    border-radius: 74% 26% 47% 53%/68% 46% 54% 32%;
+  }
+  20% {
+    border-radius: 48% 52% 30% 70%/27% 37% 63% 73%;
+  }
+  30% {
+    border-radius: 73% 27% 57% 43%/28% 67% 33% 72%;
+  }
+  40% {
+    border-radius: 63% 37% 56% 44%/25% 28% 72% 75%;
+  }
+  50% {
+    border-radius: 39% 61% 70% 30%/61% 29% 71% 39%;
+  }
+  60% {
+    border-radius: 27% 73% 29% 71%/73% 51% 49% 27%;
+  }
+  70% {
+    border-radius: 39% 61% 65% 35%/74% 65% 35% 26%;
+  }
+  80% {
+    border-radius: 55% 45% 37% 63%/38% 30% 70% 62%;
+  }
+  90% {
+    border-radius: 25% 75% 70% 30%/39% 50% 50% 61%;
+  }
+  100% {
+    border-radius: 66% 34% 33% 67%/65% 73% 27% 35%;
+  }
+}/*# sourceMappingURL=WelcomePage.css.map */

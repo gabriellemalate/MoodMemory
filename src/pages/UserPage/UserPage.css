@@ -1,0 +1,340 @@
+/* Colours */
+/* Sizes */
+/* Positions */
+.selectedcount-head {
+  margin: 0;
+  font-weight: 400;
+  font-size: 1rem;
+  color: white;
+}
+.selectedcount-list {
+  padding: 0;
+  margin: 0.2rem;
+}
+.selectedcount-item {
+  font-size: 0.8rem;
+}
+
+.instruction {
+  margin: 0;
+  font-size: 0.9rem;
+  color: aliceblue;
+}
+
+.userpage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.userpage__head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.userpage__head-greet {
+  display: none;
+}
+.userpage__head-name {
+  font-size: 2.2rem;
+  width: 20rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 0.2rem dodgerblue solid;
+}
+@media (max-width: 450px) {
+  .userpage__head-name {
+    padding-bottom: 0.2rem;
+    font-size: 1.8rem;
+    padding-bottom: 0.1rem;
+    margin: 0 0 0.4rem;
+  }
+}
+.userpage__counters {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+.userpage__counters-eq {
+  padding: 0;
+}
+@media (max-width: 450px) {
+  .userpage__counters-eq {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+.userpage__counters-counter {
+  align-self: flex-start;
+  margin: 0 0.3rem 1rem 0.3rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: purple;
+  background-color: rgba(150, 239, 244, 0.747);
+  padding: 0.2rem 1rem;
+  border-radius: 1rem;
+  width: -moz-max-content;
+  width: max-content;
+}
+.userpage__totals {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.userpage__totals-head {
+  width: 90%;
+  background-color: rgb(12, 54, 96);
+  border-radius: 0.2rem;
+  margin-bottom: 0;
+}
+@media (max-width: 450px) {
+  .userpage__totals-head {
+    font-size: 1rem;
+  }
+}
+.userpage__totals-emotions, .userpage__totals-states {
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0.34rem 0;
+}
+.userpage__totals-emotions-head, .userpage__totals-states-head {
+  margin: 0;
+  width: 100%;
+  border-bottom: blue 1px solid;
+  color: rgb(12, 54, 96);
+  font-size: 0.9rem;
+  letter-spacing: 0.06rem;
+  margin-top: 0.6rem;
+}
+.userpage__totals-emotions-item, .userpage__totals-states-item {
+  margin: 0 0.2rem;
+  font-size: 0.9rem;
+  background-color: rgba(120, 10, 113, 0.926);
+  border-radius: 0.4rem;
+  padding: 0.1rem 0.4rem;
+  text-wrap: nowrap;
+  margin-bottom: 0.2rem;
+  color: white;
+}
+.userpage__triggers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.userpage__triggers-head {
+  width: 90%;
+  background-color: rgb(12, 54, 96);
+  border-radius: 0.2rem;
+  margin-bottom: 0;
+}
+@media (max-width: 450px) {
+  .userpage__triggers-head {
+    font-size: 1rem;
+  }
+}
+.userpage__triggers-eq {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 97%;
+}
+.userpage__triggers-options {
+  width: 54%;
+}
+.userpage__triggers-list {
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.userpage__triggers-list-item {
+  width: 48%;
+  background-color: rgba(120, 10, 113, 0.926);
+  margin-bottom: 0.34rem;
+  border-radius: 0.4rem;
+}
+@media (max-width: 450px) {
+  .userpage__triggers-list-item {
+    font-size: 0.9rem;
+    padding: 0.1rem 0;
+  }
+}
+.userpage__triggers-list-item:active {
+  background-color: rgb(102, 226, 178);
+}
+.userpage__triggers-list-item.selected {
+  background-color: rgb(48, 150, 111);
+}
+.userpage__triggers-add {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.userpage__triggers-add-input {
+  resize: none;
+  height: 1.6rem;
+  font-family: avenir;
+  margin-right: 0.4rem;
+}
+.userpage__triggers-user {
+  border: 0.1rem double rgb(11, 107, 20);
+  background-color: rgba(65, 230, 128, 0.307);
+  width: 42%;
+  height: 13rem;
+  border-radius: 0.4rem;
+}
+.userpage__triggers-user-item {
+  background-color: rgba(241, 5, 127, 0.72);
+  margin: 0.2rem 0;
+}
+.userpage__triggers-user-item:hover {
+  background-color: rgba(241, 98, 172, 0.72);
+}
+.userpage__faq {
+  background-color: hsla(189, 89%, 72%, 0.3);
+  margin-bottom: 3rem;
+  padding-bottom: 1rem;
+  width: 98%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4rem;
+  border-top: 0.2rem dodgerblue solid;
+}
+@media (max-width: 450px) {
+  .userpage__faq {
+    font-size: 0.84rem;
+  }
+}
+.userpage__faq-eq {
+  width: 96%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (max-width: 450px) {
+  .userpage__faq-eq {
+    width: 100%;
+  }
+}
+.userpage__faq-head {
+  font-size: 2rem;
+  padding: 0.5rem 0 0.5rem;
+  letter-spacing: 0.15rem;
+  border-bottom: 0.2rem rgb(231, 243, 213) solid;
+  width: 26vw;
+  color: rgb(231, 243, 213);
+}
+@media (min-width: 1280px) {
+  .userpage__faq-head {
+    color: rgb(88, 8, 104);
+    border-bottom: 0.6rem rgb(17, 81, 64) dotted;
+    max-width: 10rem;
+    margin: 2rem 0 3rem;
+  }
+}
+@media (max-width: 450px) {
+  .userpage__faq-head {
+    color: rgb(88, 8, 104);
+    border-bottom: 0.2rem rgb(88, 8, 104) double;
+    font-size: 1.8rem;
+    padding-bottom: 0.2rem;
+    margin: 0;
+  }
+}
+.userpage__faq-questions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.userpage__faq-query {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  padding: 0.6rem 0;
+}
+@media (min-width: 1280px) {
+  .userpage__faq-query {
+    padding: 1.4rem 0;
+  }
+}
+@media (max-width: 450px) {
+  .userpage__faq-query {
+    padding-bottom: 0.2rem;
+  }
+}
+.userpage__faq-query__head {
+  align-self: flex-start;
+  text-align: start;
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 0 0 0.5rem;
+  color: rgb(180, 66, 193);
+  text-shadow: 2px 2px rgb(231, 199, 212);
+}
+@media (min-width: 1280px) {
+  .userpage__faq-query__head {
+    font-size: 1.75rem;
+    margin: 0.8rem 0 1.4rem;
+  }
+}
+.userpage__faq-query__answer {
+  margin: 0;
+  width: 100%;
+  color: rgb(23, 23, 65);
+  padding: 0.4rem 0 1rem;
+  text-align: end;
+}
+@media (min-width: 1280px) {
+  .userpage__faq-query__answer {
+    font-size: 1.08rem;
+    width: 86%;
+    align-self: flex-end;
+    font-weight: 400;
+    background-color: rgba(243, 224, 102, 0.572);
+    padding: 1rem;
+    border-radius: 2rem;
+  }
+}
+@media (max-width: 450px) {
+  .userpage__faq-query__answer {
+    padding-bottom: 0.2rem;
+    text-align: justify;
+  }
+}
+.userpage__faq-query__answer-link {
+  margin: 0;
+  color: rgb(231, 243, 213);
+}
+@media (min-width: 1280px) {
+  .userpage__faq-query__answer-link {
+    color: rgb(10, 131, 63);
+  }
+}
+
+.victory-item {
+  background-color: rgba(60, 218, 157, 0.848);
+}
+
+.hurdle-item {
+  background-color: rgba(238, 177, 133, 0.724);
+}
+
+.triger-item {
+  background-color: rgba(238, 177, 133, 0.724);
+}
+
+.selected {
+  background-color: rgb(166, 55, 166);
+}/*# sourceMappingURL=UserPage.css.map */

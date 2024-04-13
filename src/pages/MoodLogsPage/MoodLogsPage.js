@@ -5,7 +5,7 @@ import MagnifyingGlass from "../../assets/search.svg"
 import Header from '../../components/Header/Header';
 import MobileNav from "../../components/MobileNav/MobileNav";
 import { db, auth } from '../../firebase';
-import { query, collection, orderBy, onSnapshot, getFirestore, where, getDocs, doc, setDoc, getDoc } from 'firebase/firestore';
+import { query, collection, orderBy, onSnapshot, getFirestore, where, getDocs } from 'firebase/firestore';
 import SampleLog from '../../components/SampleLog/SampleLog';
 import { useAuthState } from "react-firebase-hooks/auth";
 
