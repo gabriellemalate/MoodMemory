@@ -525,24 +525,11 @@ function UserPage() {
                                     ? "selected"
                                     : ""
                                     }`}
-                            // onClick={() => handleHurdleItemClick(hurdle)}
                             >
                                 {hurdle} <b>{count}</b>
                             </li>
                         ))}
                     </ul>
-
-                    {/* {selectedHurdleLogs.length > 0 && (
-                        <div className="selected-states">
-                            <h3 className="selected-states-head">
-                                Logs for <b>{selectedHurdleLogs[0]}</b>
-                            </h3>
-                            <ul className="selected-states-list">
-                                
-                            </ul>
-                        </div>
-                    )} */}
-
                     <h3 className="userpage__totals-emotions-head">SLEEP QUALITY is typically -</h3>
                     <p className="instruction">click one to show - max. 7 - recent entries</p>
                     <ul className="userpage__totals-emotions">

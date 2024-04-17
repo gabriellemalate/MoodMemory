@@ -3,7 +3,7 @@ import { auth, db } from '../../firebase';
 import { collection, query, orderBy, getDocs, where } from 'firebase/firestore';
 import Chart from 'chart.js/auto';
 import { registerables } from 'chart.js';
-import 'chartjs-adapter-date-fns';
+// import 'chartjs-adapter-date-fns';
 
 const SleepMap = () => {
     const [sleepData, setSleepData] = useState([]);
