@@ -501,18 +501,6 @@ function UserPage() {
                         ))}
                     </ul>
 
-                    {/* {selectedVictoryLogs.length > 0 && (
-                            <div className="selected-states">
-                                <h3 className="selected-states-head">Logs for <b>{selectedVictoryLogs[0]}</b></h3>
-                                <ul className="selected-states-list">
-                                    {selectedVictoryLogs.map((log) => (
-                                        <li key={log.id} className="selected-states-item">
-                                            {log.date.toDate().toLocaleDateString()}, Title: {log.title}, Notes: {log.notes}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )} */}
 
                     <h3 className="userpage__totals-emotions-head">
                         HURDLES you've logged -
