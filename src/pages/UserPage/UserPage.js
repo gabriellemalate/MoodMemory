@@ -438,7 +438,6 @@ function UserPage() {
             <Header />
             <main className="userpage">
                 <div className="userpage__head">
-                    {/* <h2 className="userpage__head-greet">Hello,</h2> */}
                     <h1 className='userpage__head-name'>
                         {user ? user.displayName : ''}
                     </h1>
