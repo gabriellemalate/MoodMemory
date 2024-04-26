@@ -232,8 +232,6 @@ function UserPage() {
             console.error("Error fetching victory counts:", error);
         }
     };
-
-    // const handleVictoryItemClick = async (victory) => {
     //     try {
     //         if (selectedVictoryLogs[0] === victory) {
     //             // If the currently selected victory matches the clicked victory, clear the selected logs
