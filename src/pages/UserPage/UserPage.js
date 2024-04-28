@@ -264,7 +264,6 @@ function UserPage() {
     useEffect(() => {
         if (user) {
             fetchHurdleCounts(user.uid);
-            // Similar calls for hurdles, consumptions, and triggers
         }
     }, [user]);
 
@@ -410,7 +409,7 @@ function UserPage() {
     const handleEmotionItemClick = async (emotion) => {
         try {
             if (selectedEmotionLogs[0]?.emotion === emotion) {
-                // If the currently selected emotion matches the clicked emotion, clear the selected logs
+                // If currently selected emotion matches the clicked emotion, clear the selected logs
                 setSelectedEmotionLogs([]);
             } else {
                 const db = getFirestore();
