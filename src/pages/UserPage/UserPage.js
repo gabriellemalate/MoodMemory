@@ -368,7 +368,7 @@ function UserPage() {
 
             logsSnapshot.forEach((doc) => {
                 const { quality } = doc.data();
-  
+
                 counts[quality] = (counts[quality] || 0) + 1;
             });
 
@@ -490,7 +490,7 @@ function UserPage() {
                     <ul className="userpage__totals-emotions">
                         {Object.entries(victoryCounts).map(([victory, count]) => (
                             <li key={victory} className={`victory-item userpage__totals-emotions-item ${selectedVictoryLogs[0] === victory ? 'selected' : ''}`}
-                            // onClick={() => handleVictoryItemClick(victory)}
+
                             >
                                 {victory} <b>{count}</b>
                             </li>
@@ -566,7 +566,10 @@ function UserPage() {
                             <article className='userpage__faq-query'>
                                 <h4 className='userpage__faq-query__head'>What is WNL?</h4>
                                 <p className='userpage__faq-query__answer'>{'"within normal limits" no symptoms of depression or elevation. '}
-                                    {/* <a className='userpage__faq-query__answer-link' href='https://agilevirtualpt.com/blog/why-you-want-to-hear-virtual-physical-therapists-use-the-medical-abbreviation-wnl-in-your-sessions/'>More info here</a> */}
+                                    <a className='userpage__faq-query__answer-link' 
+                                    // href='https://agilevirtualpt.com/blog/why-you-want-to-hear-virtual-physical-therapists-use-the-medical-abbreviation-wnl-in-your-sessions/'
+                                    >
+                                        More info here</a>
                                 </p>
                             </article>
                             <article className='userpage__faq-query'>
