@@ -3,7 +3,7 @@ import { auth } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import NotFound from "./pages/NotFound/NotFound";
-// import Success from "./components/Success/Success"
+import Success from "./components/Success/Success"
 import MoodHomePage from "./pages/MoodHomePage/MoodHomePage";
 import MoodLogsPage from "./pages/MoodLogsPage/MoodLogsPage";
 import MoodMapsPage from "./pages/MoodMapsPage/MoodMapsPage";
