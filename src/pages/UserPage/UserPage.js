@@ -515,7 +515,7 @@ function UserPage() {
                         ))}
                     </ul>
                     <h3 className="userpage__totals-emotions-head">SLEEP QUALITY is typically -</h3>
-                    <p className="instruction">click one to show - max. 7 - recent entries</p>
+                    <p className="instruction">click one to show recent entries</p>
                     <ul className="userpage__totals-emotions">
                         {Object.entries(qualityCounts).map(([quality, count]) => (
                             <li key={quality} className={`userpage__totals-emotions-item ${selectedQualityLogs[0]?.quality === quality ? 'selected' : ''}`} onClick={() => handleQualityItemClick(quality)} style={{ backgroundColor: getBckgColor(quality) }}>
