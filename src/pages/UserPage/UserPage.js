@@ -551,13 +551,13 @@ function UserPage() {
                         </li>
                     ))}
                 </ul>
-
+{/* 
                 <section className="userpage__totals">
                     <h4 className="userpage__totals-head">KEY PHRASES & WORDS</h4>
                     <article>
 
                     </article>
-                </section>
+                </section> */}
 
                 <section className='userpage__faq'>
                     <div className='userpage__faq-eq'>
