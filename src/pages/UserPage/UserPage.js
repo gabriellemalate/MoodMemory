@@ -567,7 +567,7 @@ function UserPage() {
                                 <h4 className='userpage__faq-query__head'>What is WNL?</h4>
                                 <p className='userpage__faq-query__answer'>{'"within normal limits" no symptoms of depression or elevation. '}
                                     <a className='userpage__faq-query__answer-link' 
-                                    // href='https://agilevirtualpt.com/blog/why-you-want-to-hear-virtual-physical-therapists-use-the-medical-abbreviation-wnl-in-your-sessions/'
+                                    // href=''
                                     >
                                         More info here</a>
                                 </p>
