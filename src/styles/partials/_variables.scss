@@ -1,0 +1,43 @@
+$blue-light: rgb(222, 235, 247);
+$mint: rgb(134, 190, 148);
+$periwinkle: rgb(94, 122, 175);
+$periwinkle-lite: #80aaf7;
+$glow: #c5eef4; 
+$white: rgb(231, 243, 213);
+$mint-bright:rgb(117, 203, 117);
+$aqua: aquamarine;
+$cyan: #65edff;
+
+$color1: #306D85;
+$color2: #D93A54;
+
+$green:rgb(64, 209, 110, .5);
+$blue: rgb(29, 29, 200);
+$warm: hsla(33, 86%, 54%, 0.3);
+
+/* Colours */
+$loadbackground: #377771;
+$cardBackground: #ffc9ad;
+$cardBackgroundDarker: #ffad85;
+$ground: #ff8e72;
+$groundDarker: #ff6c47;
+$characterHead: #377771;
+$characterBorder: #204642;
+$mouth: #f08080;
+$mouthDark: #cd6e6e;
+
+/* Sizes */
+$containerWidth: 380px;
+$containerHeight: 500px;
+$groundNodeWidth: 250px;
+$groundNodeHeight: 300px;
+$circleOffset: 50px;
+$characterSize: 200px;
+$borderRadius: 20px;
+$eyeRadius: 45px;
+$pupilRadius: 15px;
+$sunRadius: 200px;
+
+/* Positions */
+$groundNodesStartX: -($groundNodeWidth - ($containerWidth / 3) + ($groundNodeWidth / 2) + $borderRadius);
+$groundNodesEndX: $groundNodesStartX - $groundNodeWidth;
