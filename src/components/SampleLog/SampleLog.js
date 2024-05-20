@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './SampleLog.scss';
+// import './SampleLog.scss';
 import LoggedExpand from '../LoggedExpand/LoggedExpand';
 import Energized from '../../assets/emotes/energized.png'
 import SampleExpand from '../SampleExpand/SampleExpand';
