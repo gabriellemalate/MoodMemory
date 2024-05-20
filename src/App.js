@@ -10,7 +10,6 @@ import MoodMapsPage from "./pages/MoodMapsPage/MoodMapsPage";
 import MemoryHomePage from "./pages/MemoryHomePage/MemoryHomePage";
 import WelcomePage from './pages/WelcomePage/WelcomePage';
 import LoadingPage from "./pages/LoadingPage/LoadingPage";
-import Success from "./components/Success/Success";
 import UserPage from './pages/UserPage/UserPage';
 import LoadingWrapper from "./components/LoadingWrapper/LoadingWrapoer";
 
