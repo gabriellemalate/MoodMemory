@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import './LoggedExpand.scss';
 import { deleteDoc, updateDoc, doc, getDoc } from 'firebase/firestore';
@@ -45,22 +44,6 @@ function LoggedExpand({ logData }) {
         const year = date.getFullYear().toString().slice(-2); // Extract last two digits of the year
         return `${month}/${day}/${year}`;
     };
-=======
-import React, { useState, useEffect  } from 'react';
-import './LoggedExpand.scss';
-import { db } from '../../firebase';
-import { query, collection, onSnapshot } from 'firebase/firestore';
-
-function LoggedExpand({ logData }) {
-    // const [expanded, setExpanded] = useState(false);
-    const [comments, setComments] = useState([]);
-    const [newComment, setNewComment] = useState('');
-    // const [logData, setLogData] = useState([]);
-
-    // const toggleExpand = () => {
-    //     setExpanded(!expanded);
-    // };
->>>>>>> develop
 
     const handleAddComment = async () => {
         if (newComment.trim() !== '') {
