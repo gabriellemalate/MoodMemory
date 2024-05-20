@@ -1,21 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import './Logged.scss';
-<<<<<<< HEAD
-import LoggedExpand from '../LoggedExpand/LoggedExpand';
-import { auth } from '../../firebase';
-=======
 import { db } from '../../firebase';
 import { query, collection, onSnapshot } from 'firebase/firestore';
 import LoggedExpand from '../LoggedExpand/LoggedExpand';
->>>>>>> develop
 
 function Logged({ logData, searchTerm }) {
     const [expanded, setExpanded] = useState(false);
     const [userUid, setUserUid] = useState(null);
 
-    const toggleExpand = () => {
-        setExpanded(!expanded);
-    };
+    // const toggleExpand = () => {
+    //     setExpanded(!expanded);
+    // };
 
     useEffect(() => {
         // Get the current user's UID
@@ -25,7 +20,6 @@ function Logged({ logData, searchTerm }) {
         }
     }, []);
 
-<<<<<<< HEAD
     const toggleExpand = () => {
         setExpanded(!expanded);
     };
@@ -38,8 +32,6 @@ function Logged({ logData, searchTerm }) {
         return `${month} ${day}`;
     };
 
-=======
->>>>>>> develop
     const isMatch = (log) => {
         const lowercaseSearchTerm = searchTerm.toLowerCase();
         const lowercaseTitle = log.title.toLowerCase();
@@ -138,20 +130,10 @@ function Logged({ logData, searchTerm }) {
                                 </div>
                             </div>
                         </div>
-<<<<<<< HEAD
                     </div>
                     {expanded && <LoggedExpand logData={logData} />}
                 </article >
             )}
-=======
-                    </article >
-                    {expanded && (
-                        
-                        <LoggedExpand/>
-                        )}
-                );
-            })}
->>>>>>> develop
         </>
     );
 }
